@@ -1,0 +1,47 @@
+<script>
+(function () {
+  const CATEGORY_SLIDE_SELECTOR = '.bcp-grupo-categorias .bcp-contenedor-categoria';
+  const CATEGORY_TITLE_SELECTOR = '.bcp-titulo-categoria';
+  const TRACKING_EXPERIMENT_CODE = 'FA0002';
+  const TRACKING_VARIANT = 'C';
+  const TRACKING_CREATIVE = 'Grid';
+  const TRACKING_POSITION = 'Descubre por Categoria';
+
+  window.digitalData = window.digitalData || [];
+
+  if (typeof window.digitalData.push === 'function') {
+    window.digitalData.push({
+      promotion: {
+        name: 'Beneficios CSI - ViaBCP - ' + TRACKING_EXPERIMENT_CODE + ' - ' + TRACKING_VARIANT,
+        creative: TRACKING_CREATIVE,
+        position: TRACKING_POSITION
+      },
+      event: 'trackPromotionView'
+    });
+  }
+
+  document.addEventListener('click', function (event) {
+    const category = event.target.closest(CATEGORY_SLIDE_SELECTOR);
+
+    if (!category) {
+      return;
+    }
+
+    const categoryTitle = category.querySelector(CATEGORY_TITLE_SELECTOR);
+    const categoryName = categoryTitle ? categoryTitle.textContent.trim() : '';
+
+    if (!categoryName || typeof window.digitalData.push !== 'function') {
+      return;
+    }
+
+    window.digitalData.push({
+      promotion: {
+        name: 'Beneficios CSI - ViaBCP - ' + TRACKING_EXPERIMENT_CODE + ' - ' + TRACKING_VARIANT,
+        creative: TRACKING_CREATIVE,
+        position: TRACKING_POSITION + ' -' + categoryName.trim()
+      },
+      event: 'trackPromotionClick'
+    });
+  });
+})();
+</script>

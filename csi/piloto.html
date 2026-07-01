@@ -1,0 +1,969 @@
+<script>  
+(function () {
+    const CATEGORY_CONTAINER_SELECTOR = '.bcp-contenedor-grupo-categorias';
+    const CATEGORY_SLIDE_SELECTOR = '.bcp-grupo-categorias .bcp-contenedor-categoria';
+    const CATEGORY_ICON_SELECTOR = '.bcp-icono-categoria';
+    const CATEGORY_TITLE_SELECTOR = '.bcp-titulo-categoria';
+    const MAIN_TITLE_SELECTOR = '.bcp-grupo-titulo-lista .bcp-titulo-lista';
+    const EXPERIMENT_STYLE_ID = 'bcp-experimento-categorias-grid-css';
+    const EXPERIMENT_SECTION_CLASS = 'bcp-experimento-categorias';
+    const EXPERIMENT_GRID_CLASS = 'bcp-experimento-categorias-grid';
+    const EXPERIMENT_CAROUSEL_CLASS = 'bcp-experimento-categorias-carousel';
+    const EXPERIMENT_CAROUSEL_TRACK_CLASS = 'bcp-experimento-categorias-carousel-track';
+    const EXPERIMENT_CAROUSEL_NAV_CLASS = 'bcp-experimento-categorias-carousel-nav';
+    const DESKTOP_FIRST_ROW_SIZE = 4;
+    const MOBILE_FIRST_ROW_SIZE = 2;
+    const MOBILE_BREAKPOINT_QUERY = '(max-width: 767px)';
+    const DESKTOP_LABEL_BREAKPOINT_QUERY = '(min-width: 1280px)';
+    const TRACKING_EXPERIMENT_CODE = 'FA0002';
+    const TRACKING_VARIANT = 'P';
+    const TRACKING_CREATIVE = 'Grid';
+    const TRACKING_POSITION = 'Descubre por Categoria';
+    let activeCategoryObserver = null;
+    let cleanupCarouselControls = null;
+    let cleanupResponsiveSplit = null;
+    let renderCategoryFrame = null;
+    let renderedCategorySlides = [];
+    let selectedCategoryIndex = null;
+    let promotionViewTracked = false;
+    const CATEGORY_IMAGES = {
+      'Día del Padre': 'https://www.viabcp.com/wcm/connect/47f1e2e9-6a53-432f-85b2-b06df4965690/papa.png?MOD=AJPERES&attachment=false&id=1781629229624',
+      'Promo': 'https://www.viabcp.com/wcm/connect/5b28a6bf-2031-46a1-bd20-dcf0ee29af68/promos.png?MOD=AJPERES&attachment=false&id=1781553203911',
+      'Promos': 'https://www.viabcp.com/wcm/connect/5b28a6bf-2031-46a1-bd20-dcf0ee29af68/promos.png?MOD=AJPERES&attachment=false&id=1781553203911',
+      'Nuevo': 'https://www.viabcp.com/wcm/connect/05313ae9-39f1-44fe-8cbb-2be9134ae13d/nuevo.png?MOD=AJPERES&attachment=false&id=1781553172944',
+      'Moda': 'https://www.viabcp.com/wcm/connect/f956511b-7b16-43c6-845a-d86c346f0e2d/moda.png?MOD=AJPERES&attachment=false&id=1781553147263',
+      'Moda y accesorios': 'https://www.viabcp.com/wcm/connect/f956511b-7b16-43c6-845a-d86c346f0e2d/moda.png?MOD=AJPERES&attachment=false&id=1781553147263',
+      'Salud': 'https://www.viabcp.com/wcm/connect/10ce8a53-6db0-4576-adaa-75f359f64171/salud.png?MOD=AJPERES&attachment=false&id=1781553236125',
+      'Viaje': 'https://www.viabcp.com/wcm/connect/7938a769-0183-4d51-8dcc-d7224911258b/viaje.png?MOD=AJPERES&attachment=false&id=1781553290988',
+      'Viajes y aventura': 'https://www.viabcp.com/wcm/connect/7938a769-0183-4d51-8dcc-d7224911258b/viaje.png?MOD=AJPERES&attachment=false&id=1781553290988',
+      'Hogar': 'https://www.viabcp.com/wcm/connect/246c65c7-2f8f-4c23-9c9c-07a8c76f9a02/hogar.png?MOD=AJPERES&attachment=false&id=1781553080064',
+      'Hogar y terraza': 'https://www.viabcp.com/wcm/connect/246c65c7-2f8f-4c23-9c9c-07a8c76f9a02/hogar.png?MOD=AJPERES&attachment=false&id=1781553080064',
+      'Tecnologia': 'https://www.viabcp.com/wcm/connect/ed88dc44-37bb-4946-bdb1-e7b662296800/tecnologia.png?MOD=AJPERES&attachment=false&id=1781553263772',
+      'Tecnología': 'https://www.viabcp.com/wcm/connect/ed88dc44-37bb-4946-bdb1-e7b662296800/tecnologia.png?MOD=AJPERES&attachment=false&id=1781553263772',
+      'Deporte': 'https://www.viabcp.com/wcm/connect/f46b28a2-6fa6-4331-b7ff-dfa77240d76d/deporte.png?MOD=AJPERES&attachment=false&id=1781552990970',
+      'Marketplace': 'https://www.viabcp.com/wcm/connect/6229a5d0-dd89-49e9-be7d-809932488ec0/marketplace.png?MOD=AJPERES&attachment=false&id=1781553106921',
+      'Bebés e infantiles': '/wcm/connect/9456dada-a6fa-4615-8870-1c7ee30341f8/bebes.png?MOD=AJPERES&attachment=false&id=1780873665303',
+      'Educacion': 'https://www.viabcp.com/wcm/connect/b68bcd5e-9355-47ef-8e5d-e0f9c393715d/educacion.png?MOD=AJPERES&attachment=false&id=1781553050830',
+      'Educación': 'https://www.viabcp.com/wcm/connect/b68bcd5e-9355-47ef-8e5d-e0f9c393715d/educacion.png?MOD=AJPERES&attachment=false&id=1781553050830',
+      'Servicios': '/wcm/connect/b935a3b3-8ae6-49b2-b0d0-78882ea715da/servicio.png?MOD=AJPERES&attachment=false&id=1780873907182'
+    };
+    const CATEGORY_SVGS = {
+      'american express': [
+        '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="24" height="24" viewBox="0 0 24 24" xml:space="preserve">',
+        '<defs></defs>',
+        '<g transform="matrix(1.5776283502 0 0 1.5776283502 12.2115851115 12)" id="H8Koikv00QpkI-cVdioZv">',
+        '<g>',
+        '<g transform="matrix(1 0 0 1 4.664295 0.04035)" id="HOACV2Nmj1-zEdowqZi7Q">',
+        '<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #ff7800; fill-rule: nonzero; opacity: 1;" transform=" translate(-12.664295, -8.04035)" d="M 9.89929 6.0271 L 11.0392 6.0271 L 11.1195 8.7575 L 11.124 8.7575 L 11.7954 7.09785 C 12.014 6.56024 12.2884 6.32602 12.6319 6.32602 C 12.971 6.32602 13.1762 6.56917 13.2253 7.09785 L 13.3815 8.74635 L 13.3859 8.74858 L 14.3228 6.0271 L 15.4293 6.0271 L 14.0931 9.29065 C 13.8789 9.81264 13.5956 10.0536 13.2231 10.0536 C 12.8617 10.0536 12.6364 9.81264 12.5672 9.29288 L 12.3732 7.8206 L 11.7396 9.29065 C 11.5166 9.80818 11.2043 10.0536 10.8362 10.0536 C 10.457 10.0536 10.2584 9.83048 10.2071 9.28396 L 9.89929 6.0271 Z" stroke-linecap="round"></path>',
+        '</g>',
+        '<g transform="matrix(1 0 0 1 -0.558315 0.013395)" id="YNTd4B5fEnN5bH6uvR7mB">',
+        '<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #ff7800; fill-rule: nonzero; opacity: 1;" transform=" translate(-7.441685, -8.013395)" d="M 5.69057 8.01227 C 5.9181 6.57122 6.46463 5.97339 7.77852 5.97339 C 8.91173 5.97339 9.2508 6.45076 9.2508 7.24936 C 9.2508 7.46574 9.22626 7.70443 9.18611 7.96542 C 9.16826 8.07696 9.14596 8.19519 9.11696 8.30896 C 8.66412 8.39372 7.8566 8.47849 7.31899 8.50749 L 6.71893 8.54095 C 6.71447 8.5811 6.71224 8.6168 6.71224 8.65026 C 6.71224 9.02725 6.9487 9.12986 7.42161 9.12986 C 7.95252 9.12986 8.44105 9.07409 8.84704 9.02279 L 8.80466 9.89277 C 8.3942 9.96192 7.81422 10.0534 7.05131 10.0534 C 5.98279 10.0534 5.63257 9.49793 5.63257 8.6681 C 5.63257 8.46511 5.65488 8.24426 5.69057 8.01227 Z M 6.81262 7.75574 L 7.36138 7.72674 C 7.58445 7.71558 7.91683 7.68658 8.10867 7.66205 C 8.11982 7.62412 8.13098 7.57059 8.13767 7.53266 C 8.14882 7.45905 8.15552 7.39213 8.15552 7.32967 C 8.15552 7.02406 8.00829 6.86122 7.63799 6.86122 C 7.03346 6.86122 6.89516 7.23821 6.81262 7.75574 Z" stroke-linecap="round"></path>',
+        '</g>',
+        '<g transform="matrix(1 0 0 1 -5.1904395 -0.59891)" id="EEAr24EmDpbnjVUfm4Nb1">',
+        '<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: #ff7800; fill-rule: nonzero; opacity: 1;" transform=" translate(-2.8095605, -7.40109)" d="M 2.71922 5.53845 L 3.65612 8.34024 L 4.21603 4.80232 L 5.29124 4.80232 L 4.60641 9.121 C 4.50379 9.77237 4.20265 10.0534 3.74758 10.0534 C 3.31928 10.0534 3.10513 9.87275 2.8999 9.2593 L 1.96523 6.44859 L 1.40309 9.9999 L 0.327881 9.9999 L 1.01271 5.67676 C 1.11533 5.02762 1.4254 4.74878 1.87154 4.74878 C 2.26638 4.74878 2.52291 4.95401 2.71922 5.53845 Z" stroke-linecap="round"></path>',
+        '</g>',
+        '</g>',
+        '</g>',
+        '</svg>'
+      ].join('')
+    };
+
+    function injectExperimentStyles() {
+      const css = [
+        '.bcp-experimento-categorias {',
+        '  margin: 32px 0 40px;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid,',
+        '.bcp-experimento-categorias-carousel-track {',
+        '  margin: 0;',
+        '  padding: 0 8px;',
+        '  list-style: none;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid {',
+        '  display: grid;',
+        '  grid-template-columns: repeat(4, minmax(0, 1fr));',
+        '  column-gap: 14px;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid li,',
+        '.bcp-experimento-categorias-carousel-track li {',
+        '  margin: 0;',
+        '  padding: 0;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel {',
+        '  margin-top: 32px;',
+        '  position: relative;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel-track {',
+        '  display: flex;',
+        '  gap: 14px;',
+        '  margin: -8px 0 -14px;',
+        '  overflow-x: auto;',
+        '  padding: 8px 8px 14px;',
+        '  scroll-behavior: smooth;',
+        '  scrollbar-width: none;',
+        '  -webkit-overflow-scrolling: touch;',
+        '  touch-action: pan-x;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel-track::-webkit-scrollbar {',
+        '  display: none;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel-track li {',
+        '  flex: 0 0 calc((100% - 42px) / 4);',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid button,',
+        '.bcp-experimento-categorias-carousel-track button {',
+        '  appearance: none;',
+        '  width: 100%;',
+        '  min-height: 106px;',
+        '  border: 0;',
+        '  border-radius: 8px;',
+        '  background: #ffffff;',
+        '  box-shadow: 0 2px 4px rgba(82, 112, 148, 0.20), 0 1px 10px rgba(82, 112, 148, 0.12);',
+        '  color: #202E44;',
+        '  cursor: pointer;',
+        '  display: flex;',
+        '  align-items: center;',
+        '  gap: 14px;',
+        '  padding: 14px 32px;',
+        "  font-family: 'Flexo-demi';",
+        '  font-size: 16px;',
+        '  font-weight: 600;',
+        '  line-height: 24px;',
+        '  overflow: hidden;',
+        '  position: relative;',
+        '  text-align: left;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid button[aria-current="true"],',
+        '.bcp-experimento-categorias-carousel-track button[aria-current="true"] {',
+        '  background: #ffffff;',
+        '  box-shadow: 0 2px 4px rgba(82, 112, 148, 0.20), 0 1px 10px rgba(82, 112, 148, 0.12);',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid button::after,',
+        '.bcp-experimento-categorias-carousel-track button::after {',
+        '  background: #0030B3;',
+        '  bottom: -5px;',
+        '  content: "";',
+        '  height: 8px;',
+        '  left: 0;',
+        '  opacity: 0;',
+        '  position: absolute;',
+        '  right: 0;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid button[aria-current="true"]::after,',
+        '.bcp-experimento-categorias-carousel-track button[aria-current="true"]::after {',
+        '  opacity: 1;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid .bcp-experimento-categoria-icono,',
+        '.bcp-experimento-categorias-grid .bcp-experimento-categoria-icono svg,',
+        '.bcp-experimento-categorias-grid .bcp-experimento-categoria-icono img,',
+        '.bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono,',
+        '.bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono svg,',
+        '.bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono img {',
+        '  width: 46px;',
+        '  height: 46px;',
+        '  flex: 0 0 46px;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-grid .bcp-experimento-categoria-icono,',
+        '.bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono {',
+        '  display: flex;',
+        '  align-items: center;',
+        '  justify-content: center;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel-nav {',
+        '  align-items: center;',
+        '  display: flex;',
+        '  gap: 8px;',
+        '  justify-content: flex-end;',
+        '  margin: 12px 8px 0;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel-nav button {',
+        '  appearance: none;',
+        '  align-items: center;',
+        '  background: transparent;',
+        '  border: 0;',
+        '  border-radius: 50%;',
+        '  box-shadow: none;',
+        '  color: #ffffff;',
+        '  cursor: pointer;',
+        '  display: flex;',
+        '  height: 48px;',
+        '  justify-content: center;',
+        '  line-height: 1;',
+        '  padding: 0;',
+        '  width: 48px;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel-nav button svg {',
+        '  display: block;',
+        '  height: 48px;',
+        '  width: 48px;',
+        '}',
+        '',
+        '.bcp-experimento-categorias-carousel-nav button:disabled {',
+        '  cursor: default;',
+        '  opacity: 0.35;',
+        '}',
+        '',
+        '@media (max-width: 1279px) {',
+        '  .bcp-catalogo-productos-beneficios-cuotas-sin-intereses .bcp-grupo-titulo-lista {',
+        '    padding-bottom: 0 !important;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias {',
+        '    margin-top: 16px;',
+        '  }',
+        '}',
+        '',
+        '@media (min-width: 768px) and (max-width: 1279px) {',
+        '  .bcp-experimento-categorias-grid {',
+        '    column-gap: 16px;',
+        '    display: flex;',
+        '    flex-wrap: wrap;',
+        '    justify-content: center;',
+        '    row-gap: 16px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-grid li {',
+        '    flex: 0 1 160px;',
+        '    max-width: 160px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-grid button {',
+        '    align-items: center;',
+        '    flex-direction: column;',
+        '    gap: 12px;',
+        '    justify-content: center;',
+        '    max-width: 160px;',
+        '    min-height: 160px;',
+        '    padding: 16px 12px;',
+        '    text-align: center;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-grid .bcp-experimento-categoria-icono,',
+        '  .bcp-experimento-categorias-grid .bcp-experimento-categoria-icono svg,',
+        '  .bcp-experimento-categorias-grid .bcp-experimento-categoria-icono img {',
+        '    flex: 0 0 60px;',
+        '    height: 60px;',
+        '    width: 60px;',
+        '  }',
+        '}',
+        '',
+        '@media (min-width: 768px) and (max-width: 985px) {',
+        '  .bcp-experimento-categorias-carousel {',
+        '    margin-top: 16px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-nav {',
+        '    display: none;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track {',
+        '    align-items: flex-start;',
+        '    gap: 16px;',
+        '    margin-bottom: -6px;',
+        '    padding-bottom: 6px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track li {',
+        '    flex: 0 0 76px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button {',
+        '    align-items: center;',
+        '    background: transparent;',
+        '    border-radius: 0;',
+        '    box-shadow: none;',
+        '    flex-direction: column;',
+        '    gap: 10px;',
+        '    justify-content: flex-start;',
+        '    min-height: auto;',
+        '    overflow: visible;',
+        '    padding: 0;',
+        '    text-align: center;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button[aria-current="true"] {',
+        '    background: transparent;',
+        '    box-shadow: none;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button::after {',
+        '    display: none;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono {',
+        '    background: #ffffff;',
+        '    border-radius: 8px;',
+        '    box-shadow: 0 2px 4px rgba(82, 112, 148, 0.20), 0 1px 10px rgba(82, 112, 148, 0.12);',
+        '    flex: 0 0 76px;',
+        '    height: 76px;',
+        '    overflow: hidden;',
+        '    position: relative;',
+        '    width: 76px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono::after {',
+        '    background: #0030B3;',
+        '    bottom: -5px;',
+        '    content: "";',
+        '    height: 8px;',
+        '    left: 0;',
+        '    opacity: 0;',
+        '    position: absolute;',
+        '    right: 0;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button[aria-current="true"] .bcp-experimento-categoria-icono::after {',
+        '    opacity: 1;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono svg,',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono img {',
+        '    flex: 0 0 48px;',
+        '    height: 48px;',
+        '    object-fit: contain;',
+        '    width: 48px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-texto {',
+        '    display: block;',
+        '    max-width: 100%;',
+        '    overflow: hidden;',
+        '    text-overflow: ellipsis;',
+        '    white-space: nowrap;',
+        '  }',
+        '}',
+        '',
+        '@media (max-width: 767px) {',
+        '  .bcp-experimento-categorias-grid {',
+        '    column-gap: 16px;',
+        '    display: flex;',
+        '    flex-wrap: wrap;',
+        '    justify-content: center;',
+        '    margin-right: 24px;',
+        '    row-gap: 16px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-grid li {',
+        '    flex: 0 0 128px;',
+        '    max-width: 128px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel {',
+        '    margin-top: 16px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-nav {',
+        '    display: none;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track {',
+        '    align-items: flex-start;',
+        '    gap: 16px;',
+        '    margin-bottom: -6px;',
+        '    padding-bottom: 6px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track li {',
+        '    flex: 0 0 76px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-grid button {',
+        '    align-items: center;',
+        '    flex-direction: column;',
+        '    gap: 8px;',
+        '    height: 112px;',
+        '    justify-content: center;',
+        '    min-height: 112px;',
+        '    padding: 12px 8px;',
+        '    text-align: center;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-grid .bcp-experimento-categoria-icono,',
+        '  .bcp-experimento-categorias-grid .bcp-experimento-categoria-icono svg,',
+        '  .bcp-experimento-categorias-grid .bcp-experimento-categoria-icono img {',
+        '    flex: 0 0 52px;',
+        '    height: 52px;',
+        '    width: 52px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-grid .bcp-experimento-categoria-texto {',
+        '    font-size: 16px;',
+        '    line-height: 24px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button {',
+        '    align-items: center;',
+        '    background: transparent;',
+        '    border-radius: 0;',
+        '    box-shadow: none;',
+        '    flex-direction: column;',
+        '    gap: 10px;',
+        '    justify-content: flex-start;',
+        '    min-height: auto;',
+        '    overflow: visible;',
+        '    padding: 0;',
+        '    text-align: center;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button[aria-current="true"] {',
+        '    background: transparent;',
+        '    box-shadow: none;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button::after {',
+        '    display: none;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono {',
+        '    background: #ffffff;',
+        '    border-radius: 8px;',
+        '    box-shadow: 0 2px 4px rgba(82, 112, 148, 0.20), 0 1px 10px rgba(82, 112, 148, 0.12);',
+        '    flex: 0 0 76px;',
+        '    height: 76px;',
+        '    overflow: hidden;',
+        '    position: relative;',
+        '    width: 76px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono::after {',
+        '    background: #0030B3;',
+        '    bottom: -5px;',
+        '    content: "";',
+        '    height: 8px;',
+        '    left: 0;',
+        '    opacity: 0;',
+        '    position: absolute;',
+        '    right: 0;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track button[aria-current="true"] .bcp-experimento-categoria-icono::after {',
+        '    opacity: 1;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono svg,',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-icono img {',
+        '    flex: 0 0 48px;',
+        '    height: 48px;',
+        '    object-fit: contain;',
+        '    width: 48px;',
+        '  }',
+        '',
+        '  .bcp-experimento-categorias-carousel-track .bcp-experimento-categoria-texto {',
+        '    display: block;',
+        '    max-width: 100%;',
+        '    overflow: hidden;',
+        '    text-overflow: ellipsis;',
+        '    white-space: nowrap;',
+        '  }',
+        '}'
+      ].join('\n');
+
+      let style = document.getElementById(EXPERIMENT_STYLE_ID);
+
+      if (!style) {
+        style = document.createElement('style');
+        style.id = EXPERIMENT_STYLE_ID;
+        document.head.appendChild(style);
+      }
+
+      style.textContent = css;
+    }
+
+    function updateMainTitle() {
+      const title = document.querySelector(MAIN_TITLE_SELECTOR);
+
+      if (title) {
+        title.textContent = 'Descubre por categoría';
+      }
+    }
+
+    function trackPromotionView() {
+      if (promotionViewTracked) {
+        return;
+      }
+
+      window.digitalData = window.digitalData || [];
+
+      if (typeof window.digitalData.push !== 'function') {
+        return;
+      }
+
+      window.digitalData.push({
+        promotion: {
+          name: 'Beneficios CSI - ViaBCP - ' + TRACKING_EXPERIMENT_CODE + ' - ' + TRACKING_VARIANT,
+          creative: TRACKING_CREATIVE,
+          position: TRACKING_POSITION
+        },
+        event: 'trackPromotionView'
+      });
+
+      promotionViewTracked = true;
+    }
+
+    function trackPromotionClick(categoryName) {
+      window.digitalData = window.digitalData || [];
+
+      if (typeof window.digitalData.push !== 'function') {
+        return;
+      }
+
+      window.digitalData.push({
+        promotion: {
+          name: 'Beneficios CSI - ViaBCP - ' + TRACKING_EXPERIMENT_CODE + ' - ' + TRACKING_VARIANT,
+          creative: TRACKING_CREATIVE,
+          position: TRACKING_POSITION + ' -' + categoryName.trim()
+        },
+        event: 'trackPromotionClick'
+      });
+    }
+
+    function getFirstRowSize() {
+      return window.matchMedia(MOBILE_BREAKPOINT_QUERY).matches
+        ? MOBILE_FIRST_ROW_SIZE
+        : DESKTOP_FIRST_ROW_SIZE;
+    }
+
+    function getCategoryLabelMode() {
+      return window.matchMedia(DESKTOP_LABEL_BREAKPOINT_QUERY).matches
+        ? 'desktop'
+        : 'compact';
+    }
+
+    function getCategoryName(slide, index) {
+      const categoryTitle = slide.querySelector(CATEGORY_TITLE_SELECTOR);
+      const categoryName = categoryTitle ? categoryTitle.textContent.trim() : '';
+
+      return categoryName || 'Categoria ' + (index + 1);
+    }
+
+    function getCategorySignature(slides) {
+      return slides
+        .map((slide, index) => getCategoryName(slide, index))
+        .join('|');
+    }
+
+    function areSameCategorySlides(slides) {
+      return slides.length === renderedCategorySlides.length &&
+        slides.every((slide, index) => slide === renderedCategorySlides[index]);
+    }
+
+    function getCurrentCategorySlide(index) {
+      const container = document.querySelector(CATEGORY_CONTAINER_SELECTOR);
+      const slides = container
+        ? Array.from(container.querySelectorAll(CATEGORY_SLIDE_SELECTOR))
+        : [];
+
+      return slides[index] || null;
+    }
+
+    function triggerOriginalCategoryClick(slide) {
+      if (!slide) {
+        return;
+      }
+
+      const clickTarget = slide.querySelector('a, button, [role="button"]') || slide;
+
+      if (typeof clickTarget.click === 'function') {
+        clickTarget.click();
+      } else {
+        clickTarget.dispatchEvent(new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        }));
+      }
+    }
+
+    function syncActiveCategory(grid, slides) {
+      const activeIndexes = slides
+        .map((slide, index) => slide.classList.contains('active') ? index : -1)
+        .filter((index) => index >= 0);
+      const activeIndex = activeIndexes.length ? activeIndexes[0] : -1;
+
+      if (selectedCategoryIndex !== null) {
+        setCurrentButton(grid, selectedCategoryIndex);
+        return;
+      }
+
+      if (activeIndex >= 0) {
+        selectedCategoryIndex = activeIndex;
+        setCurrentButton(grid, activeIndex);
+        return;
+      }
+
+      if (selectedCategoryIndex !== null) {
+        setCurrentButton(grid, selectedCategoryIndex);
+        return;
+      }
+
+      setCurrentButton(grid, activeIndex);
+    }
+
+    function setCurrentButton(grid, activeIndex) {
+      const buttons = Array.from(grid.querySelectorAll('[data-categoria-index]'));
+
+      buttons.forEach((button, index) => {
+        if (Number(button.dataset.categoriaIndex) === activeIndex) {
+          button.setAttribute('aria-current', 'true');
+        } else {
+          button.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    function getCategorySvgMarkup(categoryName) {
+      const normalizedCategoryName = categoryName.trim().toLowerCase();
+
+      if (
+        normalizedCategoryName.indexOf('american express') === 0 ||
+        normalizedCategoryName.indexOf('amarican express') === 0
+      ) {
+        return CATEGORY_SVGS['american express'];
+      }
+
+      return CATEGORY_SVGS[normalizedCategoryName];
+    }
+
+    function createCategoryIcon(slide, categoryName) {
+      const icon = document.createElement('span');
+      const originalIcon = slide.querySelector(CATEGORY_ICON_SELECTOR);
+      const imageSrc = CATEGORY_IMAGES[categoryName];
+      const svgMarkup = getCategorySvgMarkup(categoryName);
+
+      icon.className = 'bcp-experimento-categoria-icono';
+
+      if (svgMarkup) {
+        icon.innerHTML = svgMarkup;
+      } else if (imageSrc) {
+        const image = document.createElement('img');
+
+        image.src = imageSrc;
+        image.alt = '';
+        image.loading = 'lazy';
+        icon.appendChild(image);
+      } else if (originalIcon) {
+        icon.appendChild(originalIcon.cloneNode(true));
+      }
+
+      return icon;
+    }
+
+    function getCategoryDisplayName(categoryName) {
+      const normalizedCategoryName = categoryName.trim().toLowerCase();
+
+      if (normalizedCategoryName === 'día del padre' || normalizedCategoryName === 'dia del padre') {
+        return getCategoryLabelMode() === 'desktop' ? 'Día del Padre' : 'Papá';
+      }
+
+      if (
+        normalizedCategoryName.indexOf('american express') === 0 ||
+        normalizedCategoryName.indexOf('amarican express') === 0
+      ) {
+        return getCategoryLabelMode() === 'desktop' ? 'American Express' : 'Amex';
+      }
+
+      const firstWord = categoryName.trim().split(/\s+/)[0];
+
+      return firstWord || categoryName;
+    }
+
+    function createCategoryItem(slide, index, categoryName, grid) {
+      const item = document.createElement('li');
+      const button = document.createElement('button');
+      const label = document.createElement('span');
+
+      button.type = 'button';
+      button.dataset.categoriaIndex = String(index);
+      button.setAttribute('aria-label', categoryName);
+      label.className = 'bcp-experimento-categoria-texto';
+      label.textContent = getCategoryDisplayName(categoryName);
+      button.appendChild(createCategoryIcon(slide, categoryName));
+      button.appendChild(label);
+      button.addEventListener('click', function () {
+        const currentSlide = getCurrentCategorySlide(index) || slide;
+
+        selectedCategoryIndex = index;
+        setCurrentButton(grid, index);
+        trackPromotionClick(categoryName);
+        triggerOriginalCategoryClick(currentSlide);
+      });
+
+      item.appendChild(button);
+      return item;
+    }
+
+    function createCarouselControls(carousel, track) {
+      const nav = document.createElement('div');
+      const previous = document.createElement('button');
+      const next = document.createElement('button');
+      const visibleItemsPerPage = DESKTOP_FIRST_ROW_SIZE;
+      let currentPage = 0;
+
+      nav.className = EXPERIMENT_CAROUSEL_NAV_CLASS;
+      previous.type = 'button';
+      next.type = 'button';
+      previous.setAttribute('aria-label', 'Ver categorias anteriores');
+      next.setAttribute('aria-label', 'Ver mas categorias');
+      previous.innerHTML = [
+        '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">',
+        '<circle r="23.5" transform="matrix(-1.19249e-08 -1 -1 1.19249e-08 24 24)" fill="#FF7800" stroke="#FF7800"></circle>',
+        '<path fill-rule="evenodd" clip-rule="evenodd" d="M31.998 24.9979L18.414 24.9979L21.709 28.2929C22.1 28.6839 22.1 29.3159 21.709 29.7069C21.318 30.0979 20.685 30.0979 20.295 29.7069L15.295 24.7069C14.904 24.3159 14.904 23.6839 15.295 23.2929L20.291 18.2929C20.486 18.0979 20.742 17.9999 20.998 17.9999C21.254 17.9999 21.51 18.0979 21.705 18.2929C22.096 18.6829 22.096 19.3159 21.706 19.7069L18.417 22.9979L31.998 22.9979C32.551 22.9979 32.998 23.4449 32.998 23.9979C32.998 24.5509 32.551 24.9979 31.998 24.9979Z" fill="white"></path>',
+        '</svg>'
+      ].join('');
+      next.innerHTML = [
+        '<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">',
+        '<circle cx="24" cy="24" r="23.5" transform="rotate(-90 24 24)" fill="#FF7800" stroke="#FF7800"></circle>',
+        '<path fill-rule="evenodd" clip-rule="evenodd" d="M16.0024 24.9979L29.5864 24.9979L26.2914 28.2929C25.9004 28.6839 25.9004 29.3159 26.2914 29.7069C26.6824 30.0979 27.3154 30.0979 27.7054 29.7069L32.7054 24.7069C33.0964 24.3159 33.0964 23.6839 32.7054 23.2929L27.7094 18.2929C27.5144 18.0979 27.2584 17.9999 27.0024 17.9999C26.7464 17.9999 26.4904 18.0979 26.2954 18.2929C25.9044 18.6829 25.9044 19.3159 26.2944 19.7069L29.5834 22.9979L16.0024 22.9979C15.4494 22.9979 15.0024 23.4449 15.0024 23.9979C15.0024 24.5509 15.4494 24.9979 16.0024 24.9979Z" fill="white"></path>',
+        '</svg>'
+      ].join('');
+
+      function getMaxPage() {
+        return Math.max(0, Math.ceil(track.children.length / visibleItemsPerPage) - 1);
+      }
+
+      function updateControlState() {
+        const maxPage = getMaxPage();
+
+        if (track.clientWidth > 0) {
+          currentPage = Math.min(maxPage, Math.max(0, Math.round(track.scrollLeft / track.clientWidth)));
+        }
+
+        previous.disabled = currentPage <= 0;
+        next.disabled = currentPage >= maxPage;
+      }
+
+      function scrollToCurrentPage() {
+        const target = track.children[currentPage * visibleItemsPerPage];
+        const left = target ? target.offsetLeft - track.offsetLeft : currentPage * track.clientWidth;
+
+        if (track.scrollTo) {
+          track.scrollTo({
+            left: left,
+            behavior: 'smooth'
+          });
+        } else {
+          track.scrollLeft = left;
+        }
+
+        updateControlState();
+        window.setTimeout(updateControlState, 350);
+      }
+
+      previous.addEventListener('click', function () {
+        currentPage = Math.max(0, currentPage - 1);
+        scrollToCurrentPage();
+      });
+
+      next.addEventListener('click', function () {
+        currentPage = Math.min(getMaxPage(), currentPage + 1);
+        scrollToCurrentPage();
+      });
+
+      track.addEventListener('scroll', updateControlState, { passive: true });
+      window.addEventListener('resize', updateControlState);
+
+      nav.appendChild(previous);
+      nav.appendChild(next);
+      carousel.appendChild(nav);
+      requestAnimationFrame(updateControlState);
+      window.setTimeout(updateControlState, 250);
+      window.setTimeout(updateControlState, 800);
+
+      return function cleanupControls() {
+        track.removeEventListener('scroll', updateControlState);
+        window.removeEventListener('resize', updateControlState);
+      };
+    }
+
+    function createCategoryGrid(container, slides) {
+      if (activeCategoryObserver) {
+        activeCategoryObserver.disconnect();
+      }
+
+      if (cleanupCarouselControls) {
+        cleanupCarouselControls();
+        cleanupCarouselControls = null;
+      }
+
+      document.querySelectorAll('.bcp-experimento-lista-categorias, .' + EXPERIMENT_SECTION_CLASS)
+        .forEach((element) => element.remove());
+
+      const section = document.createElement('section');
+      const grid = document.createElement('ul');
+      const carousel = document.createElement('div');
+      const carouselTrack = document.createElement('ul');
+
+      section.className = EXPERIMENT_SECTION_CLASS;
+      grid.className = EXPERIMENT_GRID_CLASS;
+      carousel.className = EXPERIMENT_CAROUSEL_CLASS;
+      carouselTrack.className = EXPERIMENT_CAROUSEL_TRACK_CLASS;
+      section.appendChild(grid);
+      carousel.appendChild(carouselTrack);
+      section.appendChild(carousel);
+
+      const firstRowSize = getFirstRowSize();
+      container.dataset.experimentoFirstRowSize = String(firstRowSize);
+
+      slides.forEach((slide, index) => {
+        const categoryName = getCategoryName(slide, index);
+        const targetList = index < firstRowSize ? grid : carouselTrack;
+
+        targetList.appendChild(createCategoryItem(slide, index, categoryName, section));
+      });
+
+      if (!carouselTrack.children.length) {
+        carousel.remove();
+      } else {
+        cleanupCarouselControls = createCarouselControls(carousel, carouselTrack);
+      }
+
+      container.before(section);
+      container.hidden = true;
+
+      const navigation = container
+        .closest('.bcp-contenedor-filtros')
+        ?.querySelector('.bcp-div-category');
+
+      if (navigation) {
+        navigation.hidden = true;
+      }
+
+      syncActiveCategory(grid, slides);
+
+      const observer = new MutationObserver(function () {
+        syncActiveCategory(grid, slides);
+      });
+
+      activeCategoryObserver = observer;
+
+      slides.forEach((slide) => {
+        observer.observe(slide, {
+          attributes: true,
+          attributeFilter: ['class']
+        });
+      });
+    }
+
+    function setupResponsiveSplit(container) {
+      if (cleanupResponsiveSplit) {
+        cleanupResponsiveSplit();
+        cleanupResponsiveSplit = null;
+      }
+
+      const mediaQueries = [
+        window.matchMedia(MOBILE_BREAKPOINT_QUERY),
+        window.matchMedia(DESKTOP_LABEL_BREAKPOINT_QUERY)
+      ];
+      const cleanupMediaQueries = [];
+
+      function rerenderOnBreakpointChange() {
+        const nextFirstRowSize = String(getFirstRowSize());
+        const nextLabelMode = getCategoryLabelMode();
+
+        if (
+          container.dataset.experimentoFirstRowSize !== nextFirstRowSize ||
+          container.dataset.experimentoCategoriaLabelMode !== nextLabelMode
+        ) {
+          renderCategoryGrid();
+        }
+      }
+
+      mediaQueries.forEach((media) => {
+        if (media.addEventListener) {
+          media.addEventListener('change', rerenderOnBreakpointChange);
+          cleanupMediaQueries.push(function () {
+            media.removeEventListener('change', rerenderOnBreakpointChange);
+          });
+        } else if (media.addListener) {
+          media.addListener(rerenderOnBreakpointChange);
+          cleanupMediaQueries.push(function () {
+            media.removeListener(rerenderOnBreakpointChange);
+          });
+        }
+      });
+
+      cleanupResponsiveSplit = function () {
+        cleanupMediaQueries.forEach((cleanup) => cleanup());
+      };
+    }
+
+    function renderCategoryGrid() {
+      const container = document.querySelector(CATEGORY_CONTAINER_SELECTOR);
+
+      if (!container) {
+        return false;
+      }
+
+      const slides = Array.from(container.querySelectorAll(CATEGORY_SLIDE_SELECTOR));
+
+      if (!slides.length) {
+        return false;
+      }
+
+      const categorySignature = getCategorySignature(slides);
+      const firstRowSize = String(getFirstRowSize());
+      const categoryLabelMode = getCategoryLabelMode();
+
+      if (
+        container.dataset.experimentoCategorias === 'grid-casero' &&
+        container.dataset.experimentoCategoriaFirma === categorySignature &&
+        container.dataset.experimentoFirstRowSize === firstRowSize &&
+        container.dataset.experimentoCategoriaLabelMode === categoryLabelMode &&
+        areSameCategorySlides(slides)
+      ) {
+        return true;
+      }
+
+      if (selectedCategoryIndex !== null && selectedCategoryIndex >= slides.length) {
+        selectedCategoryIndex = null;
+      }
+
+      injectExperimentStyles();
+      updateMainTitle();
+      container.dataset.experimentoCategorias = 'grid-casero';
+      container.dataset.experimentoCategoriaFirma = categorySignature;
+      container.dataset.experimentoCategoriaLabelMode = categoryLabelMode;
+      createCategoryGrid(container, slides);
+      renderedCategorySlides = slides;
+      setupResponsiveSplit(container);
+      trackPromotionView();
+      return true;
+    }
+
+    function scheduleRenderCategoryGrid() {
+      if (renderCategoryFrame) {
+        return;
+      }
+
+      renderCategoryFrame = requestAnimationFrame(function () {
+        renderCategoryFrame = null;
+        renderCategoryGrid();
+      });
+    }
+
+    renderCategoryGrid();
+
+    const observer = new MutationObserver(scheduleRenderCategoryGrid);
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  })();
+</script>
