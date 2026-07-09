@@ -1,1 +1,72 @@
-.
+<script>
+  (function () {
+    var SELECTOR = '.bcp_header a.bcp_btn_otro[href*="abretucuenta.viabcp.com"]';
+    var EXPERIMENT_CODE = 'TC0062';
+    var PROMOTION_NAME = 'Home - ViaBCP - ' + EXPERIMENT_CODE + ' - C';
+    var PROMOTION_CREATIVE = 'Button';
+    var PROMOTION_POSITION = 'Abrir Cuenta';
+    var promotionViewTracked = false;
+    var trackedButtons = [];
+
+    function pushPromotionEvent(eventName) {
+      window.digitalData = window.digitalData || [];
+      window.digitalData.push({
+        promotion: {
+          name: PROMOTION_NAME,
+          creative: PROMOTION_CREATIVE,
+          position: PROMOTION_POSITION
+        },
+        event: eventName
+      });
+    }
+
+    function trackPromotionView() {
+      if (promotionViewTracked) {
+        return;
+      }
+
+      promotionViewTracked = true;
+      pushPromotionEvent('trackPromotionView');
+    }
+
+    function bindPromotionClick(button) {
+      if (trackedButtons.indexOf(button) > -1) {
+        return;
+      }
+
+      trackedButtons.push(button);
+      button.addEventListener('click', function () {
+        pushPromotionEvent('trackPromotionClick');
+      });
+    }
+
+    function bindControlTracking() {
+      var buttons = document.querySelectorAll(SELECTOR);
+
+      if (!buttons.length) {
+        return false;
+      }
+
+      buttons.forEach(function (button) {
+        bindPromotionClick(button);
+      });
+
+      trackPromotionView();
+
+      return true;
+    }
+
+    if (!bindControlTracking()) {
+      var observer = new MutationObserver(function () {
+        if (bindControlTracking()) {
+          observer.disconnect();
+        }
+      });
+
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    }
+  })();
+</script>

@@ -1,1 +1,287 @@
-.
+<script>
+  (function () {
+    var BUTTON_TEXT = 'Adquiere tu tarjeta';
+    var MOBILE_BUTTON_TEXT = 'Adquiere tu tarjeta';
+    var COMPACT_BUTTON_TEXT = 'Tarjeta';
+    var TARGET_HREF = 'https://www.mitarjetabcp.viabcp.com/?rfid=header:botones-principales:button:adquiere-tu-tarjeta';
+    var ARIA_LABEL = 'Enlace a adquirir tu Tarjeta de Credito BCP';
+    var SELECTOR = '.bcp_header a.bcp_btn_otro[href*="abretucuenta.viabcp.com"]';
+    var BANKING_SELECTOR = 'a.bcp_btn_banca';
+    var EXPERIMENT_CODE = 'TC0062';
+    var PROMOTION_NAME = 'Home - ViaBCP - ' + EXPERIMENT_CODE + ' - P';
+    var PROMOTION_CREATIVE = 'Button';
+    var PROMOTION_POSITION = 'Adquirir Tarjeta';
+    var ORANGE = '#FF7800';
+    var ORANGE_HOVER = '#ff961f';
+    var WHITE = '#FFFFFF';
+    var SECONDARY = '#4d5b70';
+    var SECONDARY_BORDER = '#acb2bd';
+    var BUTTON_GAP = '6px';
+    var promotionViewTracked = false;
+    var compactMediaQuery = window.matchMedia('(max-width: 413px)');
+
+    function isMobileHeaderButton(button) {
+      return !!button.closest('.bcp_nivel1_mobile');
+    }
+
+    function getActionContainer(button) {
+      return button.closest('.bcp_botones_derecha') || button.closest('.bcp_nivel1_mobile ul');
+    }
+
+    function getMovableNode(button, container) {
+      if (container && container.tagName === 'UL') {
+        return button.closest('li') || button;
+      }
+
+      return button;
+    }
+
+    function setIconColor(element, color) {
+      var paths = element.querySelectorAll('svg path');
+
+      paths.forEach(function (path) {
+        path.setAttribute('fill', color);
+      });
+    }
+
+    function createCardIcon() {
+      var wrapper = document.createElement('span');
+
+      wrapper.innerHTML = '<svg data-bcp-card-icon="true" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><style>svg{overflow:visible}@keyframes kf_center-pivot_transform_0{0%{animation-timing-function:cubic-bezier(0.5,0,0.5,1);transform:translateX(7.333px) translateY(7.333px) translate(0.5px,0.5px) scaleX(0.7) scaleY(0.7) translate(-0.5px,-0.5px)}10.4%{animation-timing-function:linear(0,0.0765,0.2686,0.5192,0.7771,1.0028,1.1714,1.2727,1.3088,1.2907,1.2348,1.1586,1.0784,1.0069,0.9523,0.9184,0.9049,0.9087,0.9248,0.9479,0.9728,0.9954,1.013,1.0243,1.0292,1.0286,1.024,1.017,1.0093,1.0022,0.9965,0.9928,0.9911,0.9911,0.9924,0.9944,0.9968,0.9991,1.0009,1.0021,1.0027,1.0028,1.0024,1.0018,1.0011,1.0004,0.9998,0.9994,0.9992,0.9991,0.9992);transform:translateX(7.333px) translateY(7.333px) translate(0.5px,0.5px) scaleX(1.24) scaleY(1.24) translate(-0.5px,-0.5px)}68.55%,100%{transform:translateX(7.333px) translateY(7.333px) translate(0.5px,0.5px) scaleX(1) scaleY(1) translate(-0.5px,-0.5px)}}#center-pivot{transform-origin:0 0;animation:kf_center-pivot_transform_0 2.5s linear infinite}</style><g id="Elastic_____ic_card_credit_w_white"><g id="center-pivot" transform="translate(7.33333 7.33333)"><g id="c_ic_card_credit" transform="translate(-7.33333 -7.33334)"><path id="color____" transform="translate(1.33333 2.66667)" fill-rule="evenodd" clip-rule="evenodd" d="M12.6667 0C13.0349 0 13.3333 0.298477 13.3333 0.666667V10C13.3333 10.3682 13.0349 10.6667 12.6667 10.6667H0.666667C0.298477 10.6667 0 10.3682 0 10V0.666667C0 0.298477 0.298477 0 0.666667 0H12.6667ZM12 4.66667H1.33333V9.33333H12V4.66667ZM4 7.33333C4.36819 7.33333 4.66667 7.63181 4.66667 8C4.66667 8.36819 4.36819 8.66667 4 8.66667H2.66667C2.29848 8.66667 2 8.36819 2 8C2 7.63181 2.29848 7.33333 2.66667 7.33333H4ZM12 1.33333H1.33333V3.33333H12V1.33333Z" fill="white"/></g></g></g></svg>';
+      wrapper.firstChild.querySelector('style').textContent = wrapper.firstChild.querySelector('style').textContent.replace('svg{overflow:visible}', '[data-bcp-card-icon="true"]{overflow:visible}');
+
+      return wrapper.firstChild;
+    }
+
+    function injectButtonStyles() {
+      if (document.getElementById('bcp-adquiere-tarjeta-styles')) {
+        return;
+      }
+
+      var style = document.createElement('style');
+
+      style.id = 'bcp-adquiere-tarjeta-styles';
+      style.textContent = [
+        '[data-bcp-target-personalized="adquiere-tu-tarjeta"] {',
+        '  align-items: center !important;',
+        '  background-color: ' + ORANGE + ' !important;',
+        '  display: flex !important;',
+        '  gap: 0 !important;',
+        '}',
+        '[data-bcp-target-personalized="adquiere-tu-tarjeta"]:hover,',
+        '[data-bcp-target-personalized="adquiere-tu-tarjeta"]:focus {',
+        '  background-color: ' + ORANGE_HOVER + ' !important;',
+        '}',
+        '[data-bcp-target-personalized="adquiere-tu-tarjeta"] [data-bcp-card-icon="true"] {',
+        '  display: inline-block !important;',
+        '  flex-shrink: 0 !important;',
+        '  margin-right: ' + BUTTON_GAP + ' !important;',
+        '}'
+      ].join('\n');
+
+      (document.head || document.documentElement).appendChild(style);
+    }
+
+    function pushPromotionEvent(eventName) {
+      window.digitalData = window.digitalData || [];
+      window.digitalData.push({
+        promotion: {
+          name: PROMOTION_NAME,
+          creative: PROMOTION_CREATIVE,
+          position: PROMOTION_POSITION
+        },
+        event: eventName
+      });
+    }
+
+    function trackPromotionView() {
+      if (promotionViewTracked) {
+        return;
+      }
+
+      promotionViewTracked = true;
+      pushPromotionEvent('trackPromotionView');
+    }
+
+    function bindPromotionClick(button) {
+      if (button.getAttribute('data-bcp-promotion-click-bound') === 'true') {
+        return;
+      }
+
+      button.setAttribute('data-bcp-promotion-click-bound', 'true');
+      button.addEventListener('click', function () {
+        pushPromotionEvent('trackPromotionClick');
+      });
+    }
+
+    function updateCardButtonIcon(button) {
+      var cardIcon = button.querySelector('[data-bcp-card-icon="true"]');
+      var imageIcon = button.querySelector('img');
+      var label = button.querySelector('span');
+
+      if (imageIcon) {
+        imageIcon.style.display = 'none';
+      }
+
+      if (!cardIcon && label) {
+        button.insertBefore(createCardIcon(), label);
+        cardIcon = button.querySelector('[data-bcp-card-icon="true"]');
+      }
+
+      if (cardIcon) {
+        cardIcon.style.flexShrink = '0';
+        cardIcon.style.marginRight = BUTTON_GAP;
+      }
+    }
+
+    function getButtonText(button) {
+      if (compactMediaQuery.matches) {
+        return COMPACT_BUTTON_TEXT;
+      }
+
+      return isMobileHeaderButton(button) ? MOBILE_BUTTON_TEXT : BUTTON_TEXT;
+    }
+
+    function applySecondaryButtonStyles(button) {
+      button.style.alignItems = 'center';
+      button.style.backgroundColor = 'transparent';
+      button.style.border = '1px solid ' + SECONDARY_BORDER;
+      button.style.borderRadius = '20px';
+      button.style.color = SECONDARY;
+      button.style.cursor = 'pointer';
+      button.style.display = 'flex';
+      button.style.flexDirection = 'row';
+      button.style.fontFamily = 'Flexo-Demi, sans-serif';
+      button.style.fontSize = '14px';
+      button.style.fontStretch = 'normal';
+      button.style.fontStyle = 'normal';
+      button.style.fontWeight = '400';
+      button.style.gap = '6px';
+      button.style.height = '40px';
+      button.style.justifyContent = 'center';
+      button.style.letterSpacing = 'normal';
+      button.style.lineHeight = '24px';
+      button.style.textAlign = 'center';
+      button.style.textDecoration = 'none';
+      button.style.transition = 'box-shadow .2s linear, color .2s linear, background-color .2s linear';
+      button.style.userSelect = 'none';
+    }
+
+    function updateButtonStyles(button, bankingButton) {
+      button.classList.remove('bcp_boton_transparente', 'bcp_boton_naranja_sin_fondo');
+      button.classList.add('bcp_boton_naranja');
+      button.style.alignItems = 'center';
+      button.style.backgroundColor = ORANGE;
+      button.style.border = 'none';
+      button.style.color = WHITE;
+      button.style.display = 'flex';
+      button.style.gap = '0';
+      updateCardButtonIcon(button);
+
+      var label = button.querySelector('span');
+
+      if (label) {
+        label.style.color = WHITE;
+      }
+
+      if (bankingButton) {
+        bankingButton.classList.remove('bcp_boton_naranja');
+        bankingButton.classList.add('bcp_boton_naranja_sin_fondo');
+        applySecondaryButtonStyles(bankingButton);
+        setIconColor(bankingButton, SECONDARY);
+
+        var bankingLabel = bankingButton.querySelector('span');
+
+        if (bankingLabel) {
+          bankingLabel.style.color = SECONDARY;
+          bankingLabel.style.fontFamily = 'Flexo-Demi, sans-serif';
+          bankingLabel.style.fontSize = '14px';
+          bankingLabel.style.lineHeight = '24px';
+        }
+      }
+    }
+
+    function moveAfterBankingButton(button) {
+      var container = getActionContainer(button);
+
+      if (!container) {
+        return;
+      }
+
+      var movableNode = getMovableNode(button, container);
+      var bankingButton = container.querySelector(BANKING_SELECTOR);
+      var bankingNode = bankingButton && getMovableNode(bankingButton, container);
+
+      updateButtonStyles(button, bankingButton);
+
+      if (!bankingNode || bankingNode === movableNode || bankingNode.nextSibling === movableNode) {
+        return;
+      }
+
+      container.insertBefore(movableNode, bankingNode.nextSibling);
+    }
+
+    function updateHeaderButton() {
+      var buttons = document.querySelectorAll(SELECTOR);
+
+      if (!buttons.length) {
+        return false;
+      }
+
+      buttons.forEach(function (button) {
+        var label = button.querySelector('span');
+
+        button.href = TARGET_HREF;
+        button.setAttribute('aria-label', ARIA_LABEL);
+        button.setAttribute('data-bcp-target-personalized', 'adquiere-tu-tarjeta');
+        injectButtonStyles();
+        bindPromotionClick(button);
+
+        if (label) {
+          label.textContent = getButtonText(button);
+        }
+
+        moveAfterBankingButton(button);
+      });
+
+      trackPromotionView();
+
+      return true;
+    }
+
+    function bindCompactTextChange() {
+      var updateText = function () {
+        var buttons = document.querySelectorAll('[data-bcp-target-personalized="adquiere-tu-tarjeta"]');
+
+        buttons.forEach(function (button) {
+          var label = button.querySelector('span');
+
+          if (label) {
+            label.textContent = getButtonText(button);
+          }
+        });
+      };
+
+      if (compactMediaQuery.addEventListener) {
+        compactMediaQuery.addEventListener('change', updateText);
+      } else if (compactMediaQuery.addListener) {
+        compactMediaQuery.addListener(updateText);
+      }
+    }
+
+    bindCompactTextChange();
+
+    if (!updateHeaderButton()) {
+      var observer = new MutationObserver(function () {
+        if (updateHeaderButton()) {
+          observer.disconnect();
+        }
+      });
+
+      observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true
+      });
+    }
+  })();
+</script>
