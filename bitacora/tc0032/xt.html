@@ -1,0 +1,560 @@
+
+
+<script>
+  (function enhanceStepperWithWait() {
+    // Utilidades
+    function decodeAmp(url) {
+      if (typeof url !== 'string') return url;
+      return url.replace(/&amp;amp;(?:amp;)?/g, '&amp;');
+    }
+
+    function waitFor(selector, { tries = 200, interval = 50 } = {}) {
+      return new Promise((resolve, reject) => {
+        let n = 0;
+        const t = setInterval(() => {
+          const el = document.querySelector(selector);
+          if (el) {
+            clearInterval(t);
+            resolve(el);
+          } else if (++n >= tries) {
+            clearInterval(t);
+            reject(new Error('Timeout esperando ' + selector));
+          }
+        }, interval);
+      });
+    }
+
+    function once(fn) {
+      let done = false;
+      return function () {
+        if (done) return;
+        done = true;
+        return fn.apply(this, arguments);
+      };
+    }
+
+    // Estado navegación
+    const navState = {
+      ignoreScroll: false,
+      lock: false,
+      lockMs: 260,
+      targetIndex: null,
+      animTimer: null
+    };
+
+    // Calcular índice activo por DOM
+    function getActiveSlideIndex() {
+      const slidesAll = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual');
+      let idx = Array.from(slidesAll).findIndex(sl => sl.classList.contains('cards_pasos_manual_activo'));
+      return idx >= 0 ? idx : 0;
+    }
+
+    function getCounts() {
+      const slidesAll = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual');
+      const dotsAll = document.querySelectorAll('.dots-component__item');
+      const steppers = document.querySelectorAll('.st_pasos_stepper');
+      return {
+        totalSlides: slidesAll.length,
+        lastSlideIndex: slidesAll.length - 1,
+        lastDotIndex: dotsAll.length - 1,
+        lastNumberedIndex: steppers.length - 1
+      };
+    }
+
+    // Datos de negocio
+    const NEW_INDEX = 1;
+    const NEW_TITLE = 'Ingresa tu tarjeta de débito';
+    const NEW_SUB = 'Número y clave.';
+    const IMAGE_MAP = [
+      'https://www.viabcp.com/wcm/connect/e9bebb3d-888e-49c6-a229-d8aa07447ca5/home-cards-pasoapaso-1-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768938948070',
+      'https://www.viabcp.com/wcm/connect/da08c445-2970-4323-9679-1051c44e7a82/home-cards-pasoapaso-2-250226.png?MOD=AJPERES&attachment=false&id=1772054077545',
+      'https://www.viabcp.com/wcm/connect/8590112d-fbe2-48c0-884e-d1f5877584f3/home-cards-pasoapaso-3-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942553839',
+      'https://www.viabcp.com/wcm/connect/1678ebb4-1c91-472c-9704-f452ee1d9f8d/home-cards-pasoapaso-4-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942653328',
+      'https://www.viabcp.com/wcm/connect/e5306ca0-80d4-46b8-bc98-c535c58a1941/home-cards-pasoapaso-5-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942695793',
+      'https://www.viabcp.com/wcm/connect/c45a192d-4c89-4209-b360-f6541a825448/home-cards-pasoapaso-6-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942755404',
+      'https://www.viabcp.com/wcm/connect/6de16847-84b1-4a2d-b12e-4d8f7b6946fc/home-cards-pasoapaso-7-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942900064'
+    ];
+
+    const applyOnce = once(applyEnhancement);
+
+    // Observar mutaciones para reaplicar una vez si el DOM se rehace
+    const mo = new MutationObserver(() => {
+      const root = document.querySelector('.pasos_desktop_st');
+      if (root && !root.dataset.stepperEnhanced) {
+        applyOnce();
+      }
+    });
+
+    // Iniciar
+    waitFor('.pasos_desktop_st').then(() => applyOnce()).catch(() => {});
+
+    function applyEnhancement() {
+      const root = document.querySelector('.pasos_desktop_st');
+      if (!root || root.dataset.stepperEnhanced === 'true') return;
+
+      // Insertar paso en stepper
+      const steps = root.querySelectorAll('.st_contenedor_pasos_stepper');
+      const stepsParent = steps[0] && steps[0].parentNode;
+      if (!stepsParent || steps.length === 0) return;
+
+      const newStep = document.createElement('div');
+      newStep.className = 'st_contenedor_pasos_stepper';
+
+      const badge = document.createElement('div');
+      badge.className = 'st_pasos_stepper';
+      const badgeSpan = document.createElement('span');
+      badgeSpan.textContent = '2';
+      badge.appendChild(badgeSpan);
+
+      const content = document.createElement('div');
+      const title = document.createElement('p');
+      title.className = 'titulo_step';
+      title.textContent = NEW_TITLE;
+      const sub = document.createElement('p');
+      sub.className = 'bajada_step';
+      sub.textContent = NEW_SUB;
+      content.appendChild(title);
+      content.appendChild(sub);
+
+      newStep.appendChild(badge);
+      newStep.appendChild(content);
+
+      stepsParent.insertBefore(newStep, steps[NEW_INDEX] || null);
+
+      // Renumerar 1..N
+      root.querySelectorAll('.st_contenedor_pasos_stepper .st_pasos_stepper span')
+        .forEach((sp, i) => sp.textContent = String(i + 1));
+
+      // Insertar slide en índice 1
+      const imgsContainer = root.querySelector('.cards_pasos_imagenes');
+      const rightArrow = imgsContainer && imgsContainer.querySelector('.cards_pasos_flecha_derecha');
+      let slides = imgsContainer ? Array.from(imgsContainer.querySelectorAll('.cards_pasos_manual')) : [];
+      if (!imgsContainer || slides.length === 0) return;
+
+      const newSlide = document.createElement('div');
+      newSlide.className = 'cards_pasos_manual cards_pasos_manual_desactivo';
+      const imgEl = document.createElement('img');
+      imgEl.style.width = '320px';
+      imgEl.alt = 'Paso 2';
+      imgEl.src = decodeAmp(IMAGE_MAP[1]);
+      newSlide.appendChild(imgEl);
+
+      if (slides[NEW_INDEX]) {
+        imgsContainer.insertBefore(newSlide, slides[NEW_INDEX]);
+      } else if (rightArrow) {
+        imgsContainer.insertBefore(newSlide, rightArrow);
+      } else {
+        imgsContainer.appendChild(newSlide);
+      }
+
+      // Insertar dot en índice 1
+      const dotsContainer = root.querySelector('.dots-component');
+      let dots = dotsContainer ? Array.from(dotsContainer.querySelectorAll('.dots-component__item')) : [];
+      if (!dotsContainer) return;
+      const newDot = document.createElement('div');
+      newDot.className = 'dots-component__item';
+      dotsContainer.insertBefore(newDot, dots[NEW_INDEX] || null);
+
+      // Reasignar clics de steps y dots
+      function bindStepAndDotClicks() {
+        const steps = root.querySelectorAll('.st_contenedor_pasos_stepper');
+        const dots = root.querySelectorAll('.dots-component__item');
+
+        steps.forEach((el, i) => {
+          el.onclick = null;
+          el.addEventListener('click', function () {
+            window.cambioDePasos(i, 'directo');
+          });
+        });
+
+        dots.forEach((el, i) => {
+          el.onclick = null;
+          el.addEventListener('click', function () {
+            window.cambioDePasos(i, 'directo');
+          });
+        });
+      }
+      bindStepAndDotClicks();
+
+      // Parchear goToSlide para ignorar scroll programático
+      const originalGoToSlide = window.goToSlide;
+      window.goToSlide = function (index) {
+        try {
+          const slider_home_paso = document.querySelector('.slider_home_paso');
+          if (!slider_home_paso) return;
+
+          const { totalSlides, lastSlideIndex } = getCounts();
+          index = Math.max(0, Math.min(index, lastSlideIndex));
+
+          navState.ignoreScroll = true;
+          navState.targetIndex = index;
+          window.currentIndex = index;
+
+          const medidaScroll = slider_home_paso.scrollWidth / (totalSlides || 1);
+          const targetLeft = medidaScroll * index;
+
+          slider_home_paso.scroll({
+            left: targetLeft,
+            behavior: 'smooth'
+          });
+
+          clearTimeout(navState.animTimer);
+          navState.animTimer = setTimeout(() => {
+            navState.ignoreScroll = false;
+            navState.targetIndex = null;
+          }, navState.lockMs + 60);
+        } catch (e) {
+          if (typeof originalGoToSlide === 'function') originalGoToSlide(index);
+        }
+      };
+
+      // Parchear cambioDePasos y mantener tracking
+      const originalCambio = window.cambioDePasos;
+      window.cambioDePasos = function (contadorDePasos, type) {
+        const titulos = document.querySelectorAll('.titulo_step');
+        const steppers = document.querySelectorAll('.st_pasos_stepper');
+        const dotsAll = document.querySelectorAll('.dots-component__item');
+        const slidesAll = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual');
+
+        const { lastNumberedIndex, lastSlideIndex, lastDotIndex } = getCounts();
+
+        contadorDePasos = Math.max(0, Math.min(contadorDePasos, lastSlideIndex));
+
+        titulos.forEach(el => el.classList.remove('activo'));
+        titulos[contadorDePasos]?.classList.add('activo');
+
+        steppers.forEach(el => el.classList.remove('activo'));
+        if (contadorDePasos <= lastNumberedIndex && steppers[contadorDePasos]) {
+          steppers[contadorDePasos].classList.add('activo');
+        }
+
+        dotsAll.forEach(d => d.classList.remove('active-dot'));
+        if (contadorDePasos <= lastDotIndex) {
+          dotsAll[contadorDePasos]?.classList.add('active-dot');
+        }
+
+        slidesAll.forEach((sl, i) => {
+          if (!sl) return;
+          if (i === contadorDePasos) {
+            sl.classList.add('cards_pasos_manual_activo');
+            sl.classList.remove('cards_pasos_manual_desactivo');
+          } else {
+            sl.classList.remove('cards_pasos_manual_activo');
+            sl.classList.add('cards_pasos_manual_desactivo');
+          }
+        });
+
+        const pasoActual = contadorDePasos + 1;
+        if (type == 'directo') {
+          digitalData.push({
+            element: { container: 'Cards-home-Tutorial', type: 'Icono', name: 'Paso ' + pasoActual },
+            event: 'trackElement'
+          });
+        } else {
+          digitalData.push({
+            element: { container: 'Cards-home-Tutorial', type: 'Arrows', name: type + '-Paso ' + pasoActual },
+            event: 'trackElement'
+          });
+        }
+
+        window.goToSlide(contadorDePasos);
+      };
+
+      // Sincronizar índice durante scroll manual
+      const slider_home_paso = document.querySelector('.slider_home_paso');
+      if (slider_home_paso) {
+        slider_home_paso.addEventListener('scroll', function (e) {
+          if (navState.ignoreScroll) return;
+          e.stopImmediatePropagation();
+          const total = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual').length || 1;
+          const medidaScroll = slider_home_paso.scrollWidth / total;
+          const medidaActual = slider_home_paso.scrollLeft / medidaScroll;
+          window.currentIndex = Math.max(0, Math.min(Math.round(medidaActual), total - 1));
+        }, true);
+      }
+
+      // Reemplazar imágenes por mapping
+      const finalSlides = root.querySelectorAll('.cards_pasos_manual');
+      finalSlides.forEach((slide, index) => {
+        const newSrc = decodeAmp(IMAGE_MAP[index]);
+        if (!newSrc) return;
+        let img = slide.querySelector('img');
+        if (!img) {
+          img = document.createElement('img');
+          img.style.width = '320px';
+          img.alt = `Paso ${index + 1}`;
+          slide.appendChild(img);
+        }
+        img.src = newSrc;
+      });
+
+      // Delegar flechas con lock
+      (function attachArrowDelegation() {
+        document.addEventListener('click', function (e) {
+          const right = e.target.closest('.cards_pasos_flecha_derecha');
+          const left = e.target.closest('.cards_pasos_flecha_izquierda');
+          if (!right && !left) return;
+
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          e.stopPropagation();
+
+          if (navState.lock) return;
+          navState.lock = true;
+          setTimeout(() => { navState.lock = false; }, navState.lockMs);
+
+          const { lastSlideIndex } = getCounts();
+          let idx = getActiveSlideIndex();
+
+          if (right) {
+            idx = (idx + 1) > lastSlideIndex ? 0 : (idx + 1);
+            window.cambioDePasos(idx, 'Derecha');
+          } else {
+            idx = (idx - 1) < 0 ? lastSlideIndex : (idx - 1);
+            window.cambioDePasos(idx, 'Izquierda');
+          }
+        }, true);
+      })();
+
+      // Marcar mejora aplicada y observar por corto tiempo
+      root.dataset.stepperEnhanced = 'true';
+      mo.observe(document.documentElement, { childList: true, subtree: true });
+      setTimeout(() => mo.disconnect(), 5000);
+    }
+  })();
+</script>
+
+<script>
+  (function patchMobileOnly() {
+    // Utilidades
+    function decodeAmp(u) { return typeof u === 'string' ? u.replace(/&amp;amp;(?:amp;)?/g, '&amp;') : u; }
+    function waitFor(sel, { tries = 200, interval = 50 } = {}) {
+      return new Promise((res, rej) => {
+        let n = 0;
+        const t = setInterval(() => {
+          const el = document.querySelector(sel);
+          if (el) { clearInterval(t); res(el); }
+          else if (++n >= tries) { clearInterval(t); rej(new Error('Timeout ' + sel)); }
+        }, interval);
+      });
+    }
+
+    // Imágenes
+    const IMAGES = (window.STEPPER_IMAGES || [
+      'https://www.viabcp.com/wcm/connect/e9bebb3d-888e-49c6-a229-d8aa07447ca5/home-cards-pasoapaso-1-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768938948070',
+      'https://www.viabcp.com/wcm/connect/da08c445-2970-4323-9679-1051c44e7a82/home-cards-pasoapaso-2-250226.png?MOD=AJPERES&attachment=false&id=1772054077545',
+      'https://www.viabcp.com/wcm/connect/8590112d-fbe2-48c0-884e-d1f5877584f3/home-cards-pasoapaso-3-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942553839',
+      'https://www.viabcp.com/wcm/connect/1678ebb4-1c91-472c-9704-f452ee1d9f8d/home-cards-pasoapaso-4-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942653328',
+      'https://www.viabcp.com/wcm/connect/e5306ca0-80d4-46b8-bc98-c535c58a1941/home-cards-pasoapaso-5-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942695793',
+      'https://www.viabcp.com/wcm/connect/c45a192d-4c89-4209-b360-f6541a825448/home-cards-pasoapaso-6-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942755404',
+      'https://www.viabcp.com/wcm/connect/6de16847-84b1-4a2d-b12e-4d8f7b6946fc/home-cards-pasoapaso-7-200126.png?MOD=AJPERES&amp;attachment=false&amp;id=1768942900064'
+    ]).map(decodeAmp);
+
+    // Estado
+    const navState = { ignoreScroll: false, lock: false, lockMs: 260, animTimer: null };
+
+    // Helpers
+    function mSlider() { return document.querySelector('.pasos_mobile .slider_home_paso'); }
+    function mSlides() { return Array.from(document.querySelectorAll('.pasos_mobile .slide_home_paso')); }
+    function getActiveIdxByScroll() {
+      const slider = mSlider(), slides = mSlides();
+      if (!slider || !slides.length) return 0;
+      const step = slider.scrollWidth / (slides.length || 1);
+      const idx = Math.round(slider.scrollLeft / (step || 1));
+      return Math.max(0, Math.min(idx, slides.length - 1));
+    }
+    function buildMobileSlide(titleText, subText, imgSrc, withNumber = true, num = 2) {
+      const slide = document.createElement('div'); slide.className = 'slide_home_paso';
+      const cont = document.createElement('div'); cont.className = 'contenedor_info_paso';
+      const body = document.createElement('div'); body.className = 'body_info_paso';
+      if (withNumber) { const n = document.createElement('span'); n.className = 'number_paso'; n.textContent = String(num); body.appendChild(n); }
+      const title = document.createElement('p'); title.className = 'subtitle_paso'; title.textContent = titleText;
+      const sub = document.createElement('p'); sub.className = 'bajada_paso'; sub.textContent = subText;
+      const img = document.createElement('img'); img.alt = ''; img.src = imgSrc;
+      body.appendChild(title); body.appendChild(sub); cont.appendChild(body); cont.appendChild(img); slide.appendChild(cont);
+      return slide;
+    }
+    function renumberMobile() {
+      const slides = mSlides(); if (!slides.length) return;
+      const last = slides.length - 1;
+      slides.forEach((sl, i) => {
+        const body = sl.querySelector('.body_info_paso'); if (!body) return;
+        const isLast = (i === last);
+        let numEl = body.querySelector('.number_paso');
+        if (isLast) { if (numEl) numEl.remove(); }
+        else {
+          if (!numEl) { numEl = document.createElement('span'); numEl.className = 'number_paso'; body.insertBefore(numEl, body.firstChild); }
+          numEl.textContent = String(i + 1);
+        }
+      });
+    }
+    function applyMobileImages() {
+      const slides = mSlides(); if (!slides.length) return;
+      slides.forEach((sl, i) => {
+        const url = IMAGES[i]; if (!url) return;
+        const img = sl.querySelector('img'); if (!img) return;
+        img.src = url;
+      });
+    }
+    function scrollToIndexMobile(idx) {
+      const slider = mSlider(); const slides = mSlides();
+      if (!slider || !slides.length) return;
+      idx = Math.max(0, Math.min(idx, slides.length - 1));
+      navState.ignoreScroll = true;
+      const step = slider.scrollWidth / (slides.length || 1);
+      slider.scroll({ left: step * idx, behavior: 'smooth' });
+      clearTimeout(navState.animTimer);
+      navState.animTimer = setTimeout(() => { navState.ignoreScroll = false; }, navState.lockMs + 60);
+    }
+    function cambioConTrackingSinScroll(idx, tipo) {
+      const originalGo = window.goToSlide;
+      window.goToSlide = function () { };
+      try { if (typeof window.cambioDePasos === 'function') window.cambioDePasos(idx, tipo); }
+      finally { window.goToSlide = originalGo; }
+    }
+
+    // Aplicar solo en mobile
+    waitFor('.pasos_mobile .slider_home_paso').then(() => {
+      const root = document.querySelector('.pasos_mobile');
+      if (!root || root.dataset.mobilePatched === 'true') return;
+
+      const slider = mSlider(); const slides = mSlides();
+      if (!slider || !slides.length) return;
+
+      const NEW_IDX = 1;
+      const NEW_TITLE = 'Ingresa tu tarjeta de débito';
+      const NEW_SUB = 'Número y clave.';
+      const NEW_IMG = IMAGES[1];
+
+      const slide2 = buildMobileSlide(NEW_TITLE, NEW_SUB, NEW_IMG, true, 2);
+      slider.insertBefore(slide2, slides[NEW_IDX] || null);
+
+      renumberMobile();
+      applyMobileImages();
+
+      const prevBtn = document.getElementById('prev_home_paso');
+      const nextBtn = document.getElementById('next_home_paso');
+
+      if (prevBtn) {
+        const prevClone = prevBtn.cloneNode(true);
+        prevBtn.parentNode.replaceChild(prevClone, prevBtn);
+        prevClone.addEventListener('click', (e) => {
+          e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
+          if (navState.lock) return; navState.lock = true; setTimeout(() => navState.lock = false, navState.lockMs);
+
+          const slides = mSlides(); if (!slides.length) return;
+          const last = slides.length - 1;
+          let idx = getActiveIdxByScroll();
+          idx = (idx - 1) < 0 ? last : (idx - 1);
+
+          cambioConTrackingSinScroll(idx, 'Derecha');
+          scrollToIndexMobile(idx);
+        }, true);
+      }
+
+      if (nextBtn) {
+        const nextClone = nextBtn.cloneNode(true);
+        nextBtn.parentNode.replaceChild(nextClone, nextBtn);
+        nextClone.addEventListener('click', (e) => {
+          e.preventDefault(); e.stopImmediatePropagation(); e.stopPropagation();
+          if (navState.lock) return; navState.lock = true; setTimeout(() => navState.lock = false, navState.lockMs);
+
+          const slides = mSlides(); if (!slides.length) return;
+          const last = slides.length - 1;
+          let idx = getActiveIdxByScroll();
+          idx = (idx + 1) > last ? 0 : (idx + 1);
+
+          cambioConTrackingSinScroll(idx, 'Izquierda');
+          scrollToIndexMobile(idx);
+        }, true);
+      }
+
+      const mobileSlider = mSlider();
+      if (mobileSlider) {
+        mobileSlider.addEventListener('scroll', (e) => {
+          if (navState.ignoreScroll) return;
+          const idx = getActiveIdxByScroll();
+          window.currentIndex = idx;
+        }, true);
+      }
+
+      root.dataset.mobilePatched = 'true';
+    }).catch(() => { });
+  })();
+</script>
+
+
+<script>
+  // Calcular índice de step por id del badge
+  function getStepIndexByBadgeId(badgeId) {
+    const badges = Array.from(document.querySelectorAll('.st_pasos_stepper'));
+    const idx = badges.findIndex(b => b.id === badgeId);
+    return idx >= 0 ? idx : 0;
+  }
+
+  // Activar título, slide y dot por índice
+  function activateStepByIndex(index, source = 'directo') {
+    if (typeof window.cambioDePasos === 'function') {
+      window.cambioDePasos(index, source);
+      return;
+    }
+
+    const titles = document.querySelectorAll('.titulo_step');
+    const steppers = document.querySelectorAll('.st_pasos_stepper');
+    const dots = document.querySelectorAll('.dots-component__item');
+    const slides = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual');
+
+    titles.forEach(t => t.classList.remove('activo'));
+    titles[index]?.classList.add('activo');
+
+    steppers.forEach(s => s.classList.remove('activo'));
+    steppers[index]?.classList.add('activo');
+
+    dots.forEach(d => d.classList.remove('active-dot'));
+    dots[index]?.classList.add('active-dot');
+
+    slides.forEach((sl, i) => {
+      if (i === index) {
+        sl.classList.add('cards_pasos_manual_activo');
+        sl.classList.remove('cards_pasos_manual_desactivo');
+      } else {
+        sl.classList.remove('cards_pasos_manual_activo');
+        sl.classList.add('cards_pasos_manual_desactivo');
+      }
+    });
+
+    if (typeof window.goToSlide === 'function') {
+      window.goToSlide(index);
+    }
+  }
+
+  // Activar por id del badge
+  function activateStepById(badgeId, source = 'directo') {
+    const idx = getStepIndexByBadgeId(badgeId);
+    activateStepByIndex(idx, source);
+  }
+</script>
+
+<script>
+  // Verificar visibilidad en flujo
+  function isVisible(el) {
+    if (!el) return false;
+    const st = getComputedStyle(el);
+    if (st.display === 'none' || st.visibility === 'hidden') return false;
+    if (el.offsetParent === null && st.position !== 'fixed') return false;
+    return true;
+  }
+
+
+
+  // Mover carrusel mobile a un índice
+  function activateMobileIndex(index) {
+    const slider = document.querySelector('.pasos_mobile .slider_home_paso');
+    const slides = document.querySelectorAll('.pasos_mobile .slide_home_paso');
+    if (!slider || !slides.length) return;
+    index = Math.max(0, Math.min(index, slides.length - 1));
+    const step = slider.scrollWidth / (slides.length || 1);
+    slider.scroll({ left: step * index, behavior: 'smooth' });
+  }
+
+</script>

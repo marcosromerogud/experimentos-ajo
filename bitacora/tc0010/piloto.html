@@ -1,0 +1,207 @@
+<style>
+    .tc010-button-fixed {
+        position: fixed;
+        bottom: 64px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        /* background-color: #002DA0F2; */
+        background-color: #002DA0F2;
+        background-image:
+            linear-gradient(#002DA0F2, #002DA0F2),
+            linear-gradient(135deg, #0040ffbc 0%, #0040ffbc 70%, #ff7700bd 80%, #c15020bd 85%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        backdrop-filter: blur(14px) saturate(180%);
+        -webkit-backdrop-filter: blur(14px) saturate(180%);
+        border-radius: 59px;
+        width: 449px;
+        height: 64px;
+        z-index: 10;
+        border: 2px solid transparent;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s ease, transform 0.4s ease;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .tc010-button-fixed-container {
+        transition: all 0.4s ease, transform 0.4s ease;
+    }
+
+    @media (min-width: 769px) {
+        .tc010-button-fixed-container:hover {
+            background-color: #0A47F0F2;
+            border-radius: 59px;
+        }
+        .tc010-button-fixed-container:focus,
+        .tc010-button-fixed-container:active {
+            background-color: #002473F2;
+            border-radius: 59px;
+            outline: none;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .tc010-button-fixed {
+            max-width: 327px;
+        }
+    }
+
+
+    .tc010-button-fixed-active {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+        pointer-events: auto;
+    }
+
+    @media (max-width: 768px) {
+        .tc010-button-fixed {
+            bottom: 20px;
+        }
+    }
+
+    .tc010-button-fixed-text {
+        color: #fff;
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: "Flexo-Demi";
+    }
+
+    .tc010-button-fixed-arrow {
+        width: 40px;
+        height: 40px;
+        background-color: #FF7800;
+        border-radius: 33.33px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: tc010-pulse 1.2s ease-in-out infinite;
+    }
+
+    @keyframes tc010-pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+
+    .tc010-button-fixed-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        padding: 0 11px 0 24px;
+    }
+
+    .bcp_contactanos {
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .bcp_contactanos {
+            display: none !important;
+        }
+        .bcp_contenedor_flotante {
+            display: none !important;
+        }
+        .bcp_footer_ayuda_flotante {
+            display: none !important;
+        }
+        .bcp_footer_ayuda_flotante .container {
+            display: none !important;
+        }
+    }
+    
+</style>
+
+<script>
+    (function() {
+        // Función para ocultar elementos flotantes en móviles
+        function ocultarElementosFlotantes() {
+            if (window.innerWidth <= 768) {
+                const elementos = [
+                    document.querySelector('.bcp_contenedor_flotante'),
+                    document.querySelector('.bcp_contactanos'),
+                    document.querySelector('.bcp_footer_ayuda_flotante')
+                ];
+                elementos.forEach(el => {
+                    if (el) {
+                        el.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // Ejecutar al cargar y al redimensionar
+        ocultarElementosFlotantes();
+        window.addEventListener('resize', ocultarElementosFlotantes);
+
+        // Referencias
+        const contenedorBody = document.querySelector('body#content');
+        const buttonBannerCta = document.querySelector('a.bcp-btn-conoce.bcp_boton_naranja.medium');
+        const buttonFixed = document.createElement('div');
+        let visto = false;
+
+        buttonFixed.classList.add('tc010-button-fixed')
+
+
+        // Intersection Observer
+        const options = {
+            root: null,
+            rootMargin: '-60px',
+            threshold: 0.1
+        }
+
+        const callback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    buttonFixed.classList.remove('tc010-button-fixed-active');
+                    if (!visto) {
+                        digitalData.push({
+                            "promotion": {
+                                "name": "Boton-Fix-Cards-TC010-P",
+                                "creative": "Boton",
+                                "position": "Pagina de Tarjeta",
+                            },
+                            "event": "trackPromotionView"
+                        });
+                        visto = true;
+                    }
+                } else {
+                    buttonFixed.classList.add('tc010-button-fixed-active');
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver(callback, options);
+        observer.observe(buttonBannerCta);
+
+
+        buttonFixed.innerHTML = `
+        <a class="tc010-button-fixed-container" href="https://www.mitarjetabcp.viabcp.com/" target="_blank">
+            <p class="tc010-button-fixed-text">Pide tu Tarjeta de Crédito BCP</p>
+            <div class="tc010-button-fixed-arrow">
+                <img class="tc010-button-fixed-arrow-icon" width="15" height="10" src="https://www.viabcp.com/wcm/connect/f6f3d577-d20b-46cc-bb78-7bce2a2c274b/arrow.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f6f3d577-d20b-46cc-bb78-7bce2a2c274b-pL40QUi&cache=none" alt="Arrow">
+            </div>
+        </a>
+        `;
+
+        contenedorBody.appendChild(buttonFixed);
+
+        buttonFixed.addEventListener('click', () => {
+            digitalData.push({
+                "promotion": {
+                    "name": "Boton-Fix-Cards-TC010-P",
+                    "creative": "Boton",
+                    "position": "Pagina de Tarjeta",
+                },
+                "event": "trackPromotionClick"
+            });
+
+        });
+    })();
+</script>

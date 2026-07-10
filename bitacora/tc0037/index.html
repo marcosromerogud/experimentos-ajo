@@ -1,0 +1,197 @@
+<style>
+  .m-button-fixed {
+    position: fixed;
+    bottom: 64px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background-color: #002da0f2;
+    background-image:
+      linear-gradient(#002da0f2, #002da0f2),
+      linear-gradient(
+        135deg,
+        #0040ffbc 0%,
+        #0040ffbc 70%,
+        #ff7700bd 80%,
+        #c15020bd 85%
+      );
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border-radius: 59px;
+    width: 449px;
+    height: 64px;
+    z-index: 10;
+    border: 2px solid transparent;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition:
+      all 0.4s ease,
+      transform 0.4s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .m-button-fixed-container {
+    transition:
+      all 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  @media (min-width: 769px) {
+    .m-button-fixed-container:hover {
+      background-color: #0a47f0f2;
+      border-radius: 59px;
+    }
+    .m-button-fixed-container:focus,
+    .m-button-fixed-container:active {
+      background-color: #002473f2;
+      border-radius: 59px;
+      outline: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .m-button-fixed {
+      max-width: 327px;
+    }
+  }
+
+  .m-button-fixed-active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+
+  @media (max-width: 768px) {
+    .m-button-fixed {
+      bottom: 20px;
+    }
+  }
+
+  .m-button-fixed-text {
+    color: #fff;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: "Flexo-Demi";
+  }
+
+  .m-button-fixed-arrow {
+    width: 40px;
+    height: 40px;
+    background-color: #ff7800;
+    border-radius: 33.33px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: m-pulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes m-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  .m-button-fixed-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 0 11px 0 24px;
+    text-decoration: none;
+  }
+
+  .bcp_contactanos {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .bcp_contactanos {
+      display: none !important;
+    }
+    .bcp_contenedor_flotante {
+      display: none !important;
+    }
+    .bcp_footer_ayuda_flotante {
+      display: none !important;
+    }
+    .bcp_footer_ayuda_flotante .container {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const buttonFixed = document.querySelector(".dc-adobe-buton-flotante");
+    if (buttonFixed) buttonFixed.style.display = "none";
+
+    const seccionRef = document.querySelector(".section_pasos_home_new");
+
+    const buttonNuevo = document.createElement("div");
+    buttonNuevo.classList.add("m-button-fixed");
+
+    buttonNuevo.innerHTML = `
+    <a class="m-button-fixed-container" href="https://www.mitarjetabcp.viabcp.com/login">
+        <p class="m-button-fixed-text">Pide tu Tarjeta de Crédito BCP</p>
+        <div class="m-button-fixed-arrow">
+            <img class="m-button-fixed-arrow-icon" width="15" height="10" src="https://www.viabcp.com/wcm/connect/f6f3d577-d20b-46cc-bb78-7bce2a2c274b/arrow.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f6f3d577-d20b-46cc-bb78-7bce2a2c274b-pL40QUi&cache=none" alt="Arrow">
+        </div>
+    </a>
+    `;
+
+    document.querySelector("body").appendChild(buttonNuevo);
+
+    let visto = false;
+    let ticking = false;
+
+    function onScroll() {
+      if (!seccionRef) return;
+      const rect = seccionRef.getBoundingClientRect();
+      const umbral85 = rect.top + seccionRef.offsetHeight * 0.85;
+
+      if (umbral85 <= window.innerHeight) {
+        buttonNuevo.classList.add("m-button-fixed-active");
+        if (!visto) {
+          digitalData.push({
+            promotion: {
+              name: "Home - Cards - TC0037 - P",
+              creative: "Floating Button",
+              position: "Pide tu Tarjeta",
+            },
+            event: "trackPromotionView",
+          });
+          visto = true;
+        }
+      } else if (rect.top > 0) {
+        buttonNuevo.classList.remove("m-button-fixed-active");
+      }
+      ticking = false;
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    }, { passive: true });
+    onScroll();
+
+    buttonNuevo.addEventListener("click", () => {
+      digitalData.push({
+        promotion: {
+          name: "Home - Cards - TC0037 - P",
+          creative: "Floating Button",
+          position: "Pide tu Tarjeta",
+        },
+        event: "trackPromotionClick",
+      });
+    });
+  })();
+</script>

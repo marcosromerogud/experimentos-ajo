@@ -1,0 +1,521 @@
+
+<style>
+  :root {
+    --color-bg-m-detail: #F5F8FF;
+    --color-text-m-detail: #202E44;
+    --color-title-m-detail: #002A8D;
+  }
+
+  .summary-m-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .summary-m-detail {
+    cursor: pointer;
+    background-color: var(--color-bg-m-detail);
+    font-size: 16px;
+    line-height: 24px;
+    padding-block: 20px;
+    padding-inline: 16px;
+    font-weight: 600;
+    color: var(--color-text-m-detail);
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
+
+  .summary-m-detail p {
+    margin-bottom: 0;
+  }
+
+  .summary-m-detail::marker {
+    content: '';
+  }
+
+  .summary-m-detail__text {
+    padding-inline: 20px;
+    color: var(--color-text-m-detail);
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .summary-m-detail__icon {
+    transition: transform 0.3s ease-in-out;
+    rotate: 180deg;
+  }
+
+  .m-preguntas-frecuentes {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    padding-top: 56px;
+  }
+
+  @media (max-width: 768px) {
+    .m-preguntas-frecuentes {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .m-preguntas-frecuentes__title {
+    color: var(--color-title-m-detail);
+    font-family: 'Flexo-Demi' !important; 
+    font-size: 40px;
+    line-height: 48px;
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .m-preguntas-frecuentes__title {
+      text-align: center;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  .summary-m-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .summary-m-card-container--final {
+    margin-bottom: 0;
+  }
+
+  .summary-m-detail__link {
+    display: inline-block;
+    padding-inline: 20px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #FF7800;
+    font-weight: 600;
+  }
+
+
+
+  .summary-m-detail__content {
+    overflow: hidden;
+    transition: height 0.4s ease-out, opacity 0.3s ease-out, margin-bottom 0.3s ease-out;
+  }
+
+  .summary-m-detail-container:not([open]) .summary-m-detail__content {
+    height: 0 !important;
+    opacity: 0;
+    margin-bottom: 0;
+  }
+
+  .summary-m-detail__text span {
+    font-weight: 600;
+  }
+
+
+  /* Seccion de card */
+  .summary-m-card {
+    display: flex;
+    gap: 10px;
+    align-items: start;
+  }
+
+  .summary-m-card__name {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .summary-content__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .summary-content__cards {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .summary-m-detail__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+  .summary-m-detail__text-title {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: var(--color-text-m-detail);
+  }
+
+  .summary-m-orange {
+    color: #FF7800;
+    text-decoration: none;
+  }
+
+  /* Animación del icono */
+  .summary-m-detail__header img {
+    transition: transform 0.3s ease-in-out;
+    flex-shrink: 0;
+  }
+
+  .summary-m-detail-container.rotating .summary-m-detail__header img {
+    transform: rotate(180deg);
+  }
+
+  .m-preguntas-frecuentes__content {
+    width: 632px;
+    max-width: 632px;
+    align-self: end;
+    justify-self: end;
+  }
+
+  @media (max-width: 768px) {
+    .m-preguntas-frecuentes__content {
+      width: 100%;
+      max-width: 100%;
+      align-self: start;
+      justify-self: start;
+    }
+  }
+
+  .summary-m-question {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-m-detail);
+    font-family: 'Flexo-Demi' !important;
+  }
+</style>
+
+
+
+
+
+<script>
+
+    // Almecenar evento
+    // digitalData.push({
+    //     promotion: {
+    //         name: "Home - Exp TC005 - Rediseño FAQ",
+    //         creative: "Personalización",
+    //         position: "Preguntas Frecuentes",
+    //     },
+    //     event: "trackPromotionView",
+    // });
+
+  // Elemento de referencia para insertar el nuevo contenido antes
+  const elementoReferencia = document.querySelector('.banner_adquierela_aqui');
+
+  // Elemento actual de preguntas frecuentes (antes de la modificación)
+  const preguntasActuales = document.querySelector('.dc-adobe-frequent-questions.container');
+
+  // Borrar contenido actual
+  preguntasActuales.innerHTML = ``
+
+  // Contenido nuevo a insertar
+  const preguntasNuevasHTML = `
+    <section class="m-preguntas-frecuentes container">
+      <h3 class="m-preguntas-frecuentes__title">
+        ¿Tienes preguntas?
+      </h3>
+      <div class="m-preguntas-frecuentes__content">
+        <details class="summary-m-detail-container">
+          <summary class="summary-m-detail">
+            <div class="summary-m-detail__header">
+              <h2 class="summary-m-question">¿Qué es una tarjeta de crédito?</h2>
+              <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z' fill='%23606C7F'/%3E%3C/svg%3E" alt="" width="24" height="24">
+            </div>
+          </summary>
+          <div class="summary-m-detail__content">
+            <p class="summary-m-detail__text">Una tarjeta de crédito es un <span>medio de pago que te permite comprar o
+                acceder a servicios sin pagar de inmediato.</span>El BCP te asigna una <span>línea de crédito,</span> que
+              es el monto máximo que puedes usar y que pagarás luego según la modalidad que elijas (pago total o pago
+              mínimo).</p>
+            <a class="summary-m-detail__link" href="https://www.mitarjetabcp.viabcp.com/login">Píde tu tarjeta de crédito</a>
+          </div>
+        </details>
+        <details class="summary-m-detail-container">
+          <summary class="summary-m-detail">
+            <div class="summary-m-detail__header">
+              <h2 class="summary-m-question">¿Cuáles son los tipos de Tarjetas de Crédito BCP?</h2>
+              <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z' fill='%23606C7F'/%3E%3C/svg%3E" alt="" width="24" height="24">
+            </div>
+          </summary>
+          <div class="summary-m-detail__content summary-content__cards">
+            <div class="summary-m-detail__text">
+              <p class="summary-m-detail__text-title">Tarjetas Visa:</p>
+              <div class="summary-m-card-container">
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/cfdcb3f1-8936-4a91-a1f5-6cb917ba0264/Rounded+rectangle.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cfdcb3f1-8936-4a91-a1f5-6cb917ba0264-pnZ4Tbj"
+                    width="32" height="20" alt="Tarjeta BCP Visa Light">
+                  <p class="summary-m-card__name">Visa Light</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/28e1e511-7b9f-464a-877e-7560be17f02d/Visa+Cl%C3%A1sica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-28e1e511-7b9f-464a-877e-7560be17f02d-pnZ4S4m"
+                    width="32" height="20" alt="Tarjeta BCP Visa Clásica">
+                  <p class="summary-m-card__name">Visa Clásica</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/0eeb51f6-e91d-4a4d-83d3-af4c1461a227/Visa+Cl%C3%A1sica+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-0eeb51f6-e91d-4a4d-83d3-af4c1461a227-pnZ4VNH"
+                    width="32" height="20" alt="Tarjeta BCP Visa Clásica Latam PASS">
+                  <p class="summary-m-card__name">Visa Clásica Latam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/db7653d8-4820-4ecb-92ef-ad5d76c9b1a2/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-db7653d8-4820-4ecb-92ef-ad5d76c9b1a2-pnZ4TuX"
+                    width="32" height="20" alt="Tarjeta BCP Visa Oro Latam PASS">
+                  <p class="summary-m-card__name">Visa Oro Latam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-pnZ4Wgg"
+                    width="32" height="20" alt="Tarjeta BCP Visa Platinum Latam PASS">
+                  <p class="summary-m-card__name">Visa Platinum Latam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-pnZ4T.X"
+                    width="32" height="20" alt="Tarjeta BCP Visa Signature Latam PASS">
+                  <p class="summary-m-card__name">Visa Signature Latam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-pnZ4UVB"
+                    width="32" height="20" alt="Tarjeta BCP Visa Infinite ShapphireLatam PASS">
+                  <p class="summary-m-card__name">Visa Infinite ShapphireLatam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Desktop_142x90+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-pnZ4UkV"
+                    width="32" height="20" alt="Tarjeta BCP Visa Infinite Iridium Latam PASS">
+                  <p class="summary-m-card__name">Visa Infinite Iridium Latam PASS</p>
+                </article>
+              </div>
+
+            </div>
+            <div class="summary-m-detail__text">
+              <p class="summary-m-detail__text-title">Tarjetas VISA Qore:</p>
+              <div class="summary-m-card-container">
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/78c8b3d8-a71c-4098-912e-8120a53ff870/Tarjetas-Qore-Horizontal-Gold-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-78c8b3d8-a71c-4098-912e-8120a53ff870-pEdoyra"
+                    width="32" height="20" alt="Tarjeta BCP Visa Oro BCP Qore">
+                  <p class="summary-m-card__name">Visa Oro BCP Qore</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/8c4d314b-2c80-484f-8871-d4b6f79216e1/Tarjetas-Qore-Horizontal-Signature-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8c4d314b-2c80-484f-8871-d4b6f79216e1-pE8RMt3"
+                    width="32" height="20" alt="Tarjeta BCP Visa Signature BCP Qore">
+                  <p class="summary-m-card__name">Visa Signature BCP Qore</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/5dd6241e-5775-4611-9e7f-88423542dfe4/Tarjetas-Qore-Horizontal-Infinite-239x154px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5dd6241e-5775-4611-9e7f-88423542dfe4-pE8R-0W"
+                    width="32" height="20" alt="Tarjeta BCP Visa Infinite BCP Qore">
+                  <p class="summary-m-card__name">Visa Infinite BCP Qore</p>
+                </article>
+              </div>
+
+            </div>
+            <div class="summary-m-detail__text">
+              <p class="summary-m-detail__text-title">Tarjetas American Express:</p>
+              <div class="summary-m-card-container summary-m-card-container--final">
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/891af71d-5ff6-4be4-93de-a1fa831f23ed/Amex+Clasica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-891af71d-5ff6-4be4-93de-a1fa831f23ed-pBjUMc1"
+                    width="32" height="20" alt="Tarjeta BCP American Express Clásica">
+                  <p class="summary-m-card__name">American Express Clásica Latam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/be3c4938-459c-4d0e-ad6b-d2631d43b6b9/Amex+Oro.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-be3c4938-459c-4d0e-ad6b-d2631d43b6b9-pBjUVs0"
+                    width="32" height="20" alt="Tarjeta BCP American Express Oro">
+                  <p class="summary-m-card__name">American Express Oro Latam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-pBjVGxF"
+                    width="32" height="20" alt="Tarjeta BCP American Express Platinum">
+                  <p class="summary-m-card__name">American Express Platinum Latam PASS</p>
+                </article>
+                <article class="summary-m-card">
+                  <img
+                    src="https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-pBjVUKe"
+                    width="32" height="20" alt="Tarjeta BCP American Express Black">
+                      <p class="summary-m-card__name">American Express Black Latam PASS</p>
+                </article>
+              </div>
+
+            </div>
+          </div>
+        </details>
+        <details class="summary-m-detail-container">
+          <summary class="summary-m-detail">
+            <div class="summary-m-detail__header">
+              <h2 class="summary-m-question">¿Cómo sacar una tarjeta de crédito?</h2>
+              <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z' fill='%23606C7F'/%3E%3C/svg%3E" alt="" width="24" height="24">
+            </div>
+          </summary>
+          <div class="summary-m-detail__content">
+            <p class="summary-m-detail__text">Para solicitar una tarjeta de crédito necesitas ser <span>mayor de 18
+                años,</span> tener <span>DNI vigente, demostrar ingresos mensuales que sustenten tu capacidad de
+                pago</span> y no estar reportado como moroso en Infocorp. En el BCP puedes hacer todo el proceso de forma
+              digital y acceder incluso a opciones diseñadas para quienes aún no tienen historial crediticio.</p>
+            <a class="summary-m-detail__link" href="https://www.mitarjetabcp.viabcp.com/login">Píde tu tarjeta de crédito</a>
+          </div>
+        </details>
+        <details class="summary-m-detail-container">
+          <summary class="summary-m-detail">
+            <div class="summary-m-detail__header">
+              <h2 class="summary-m-question">¿Qué pasa si no pago mi tarjeta de crédito?</h2>
+              <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z' fill='%23606C7F'/%3E%3C/svg%3E" alt="" width="24" height="24">
+            </div>
+          </summary>
+          <div class="summary-m-detail__content">
+            <p class="summary-m-detail__text">Si no pagas tu tarjeta de crédito, <span>entrarás en mora y se aplicarán
+                intereses </span> por el retraso. Esto no solo incrementa tu deuda, sino que también puede afectar
+              negativamente tu historial crediticio. <span>El BCP te recomienda pagar antes de la fecha límite</span> para
+              evitar cargos adicionales y mantener buen historial crediticio.</p>
+          </div>
+        </details>
+        <details class="summary-m-detail-container">
+          <summary class="summary-m-detail">
+            <div class="summary-m-detail__header">
+              <h2 class="summary-m-question">¿Cómo funciona una tarjeta de crédito?</h2>
+              <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z' fill='%23606C7F'/%3E%3C/svg%3E" alt="" width="24" height="24">
+            </div>
+          </summary>
+          <div class="summary-m-detail__content">
+            <p class="summary-m-detail__text"><span>Funciona como una línea de crédito que el banco te asigna tras evaluar tu capacidad de pago.</span>  Puedes hacer compras en comercios físicos o virtuales, incluso si no tienes liquidez en ese momento, y luego devolver el monto usado en una o más cuotas. En el BCP, esta línea de crédito tiene un tope máximo y genera intereses si no se paga el total al cierre de cada periodo.</p>
+          </div>
+        </details>
+        <details class="summary-m-detail-container">
+          <summary class="summary-m-detail">
+            <div class="summary-m-detail__header">
+              <h2 class="summary-m-question">¿Cuál es la mejor tarjeta de crédito en Perú?</h2>
+              <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z' fill='%23606C7F'/%3E%3C/svg%3E" alt="" width="24" height="24">
+            </div>
+          </summary>
+          <div class="summary-m-detail__content">
+            <p class="summary-m-detail__text"><span>La mejor tarjeta de crédito varía según tu estilo de vida y lo que necesites</span>. Si buscas respaldo, aceptación amplia, beneficios reales y una experiencia digital sencilla, <span>una Tarjeta de Crédito BCP suele ser la alternativa más sólida para el día a día </span> y para compras importantes.</p>
+          </div>
+        </details>
+        <details class="summary-m-detail-container">
+          <summary class="summary-m-detail">
+            <div class="summary-m-detail__header">
+              <h2 class="summary-m-question">¿Por qué no puedo acceder a una tarjeta de crédito?</h2>
+              <img src="data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z' fill='%23606C7F'/%3E%3C/svg%3E" alt="" width="24" height="24">
+            </div>
+          </summary>
+          <div class="summary-m-detail__content">
+            <p class="summary-m-detail__text">Si no puedes acceder a una tarjeta de crédito, 
+              <span>
+                regístrate en <span >
+                  <a class="summary-m-orange" href="https://www.yoando.com.pe/landing" target="_blank">ANDO</a>
+                </span>,
+              </span>cumple retos en el tiempo asignado y construye tu historial crediticio para poder solicitar una tarjeta de crédito, sin los requisitos de una evaluación tradicional.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+  ` 
+  
+  // Insertar nuevo contenido
+  elementoReferencia.insertAdjacentHTML('beforebegin', preguntasNuevasHTML);
+  
+
+  // Funciones para trabajar la apertura y cierre de los detalles (NO MOVER)
+  function closeDetail(detail) {
+    const content = detail.querySelector('.summary-m-detail__content');
+    const height = content.scrollHeight;
+    
+    // Rotar icono inmediatamente
+    detail.classList.remove('rotating');
+    
+    // Establecer altura actual antes de animar
+    content.style.height = height + 'px';
+    
+    // Forzar reflow
+    content.offsetHeight;
+    
+    // Animar cierre
+    content.style.height = '0px';
+    content.style.opacity = '0';
+    content.style.marginBottom = '0px';
+    
+    setTimeout(() => {
+      detail.removeAttribute('open');
+    }, 400);
+  }
+  function openDetail(detail) {
+    // Rotar icono inmediatamente
+    detail.classList.add('rotating');
+    
+    detail.setAttribute('open', '');
+    const content = detail.querySelector('.summary-m-detail__content');
+    
+    // Obtener altura del contenido
+    requestAnimationFrame(() => {
+      const height = content.scrollHeight;
+      
+      // Iniciar desde 0
+      content.style.height = '0px';
+      content.style.opacity = '0';
+      content.style.marginBottom = '0px';
+      
+      // Forzar reflow
+      content.offsetHeight;
+      
+      // Animar apertura
+      requestAnimationFrame(() => {
+        content.style.height = height + 'px';
+        content.style.opacity = '1';
+        content.style.marginBottom = '32px';
+      });
+      
+      // Limpiar altura después de la animación para que sea responsive
+      setTimeout(() => {
+        content.style.height = 'auto';
+      }, 400);
+    });
+  }
+
+  document.querySelectorAll('.summary-m-detail-container').forEach((detail) => {
+ 
+    const summary = detail.querySelector('.summary-m-detail');
+    
+    summary.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const isOpen = detail.hasAttribute('open');
+      
+      if (!isOpen) {
+        // Cerrar otras preguntas con animación suave
+        document.querySelectorAll('.summary-m-detail-container').forEach((otherDetail) => {
+          if (otherDetail !== detail && otherDetail.hasAttribute('open')) {
+            closeDetail(otherDetail);
+          }
+        });
+        
+        // Abrir esta pregunta con animación
+        setTimeout(() => {
+          openDetail(detail);
+        }, 50);
+      } else {
+        // Cerrar esta pregunta con animación suave
+        closeDetail(detail);
+      }
+    });
+  });
+
+</script>

@@ -1,0 +1,236 @@
+<script>
+(function promoViewScrollOnce(){
+  const SEL         = '.id-Z7_8ILI09412PVV0062BTDN8MN5Q4 .bcp-grupo-categoria-tarjetas:not(.ocultar)';
+  const KEY         = '__promo_view_tc0029_ctrl';      // bandera one-shot por vista
+  const VIEW_OFFSET = 700;                          // px extra para adelantar
+  const EXP_NAME    = 'Beneficios TC Detalle - ViaBCP - TC0029 - C';
+
+  // --- utils
+  function getDocumentTop(el){
+    // Calcular distancia del elemento al topo del documento
+    let y = 0;
+    let n = el;
+    while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+    return y;
+  }
+
+  function isVisible(el){
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const vh   = window.innerHeight || document.documentElement.clientHeight || 0;
+    // Condición de visibilidad básica: cualquier parte visible
+    const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+    return visible;
+  }
+
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0029] digitalData push error:', e); }
+    return false;
+  }
+
+  function fireOnce(){
+    if (window[KEY]) return;
+    const ok = pushDigitalData({
+      promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta' },
+      event: 'trackPromotionView'
+    });
+    console.warn('[TC0029] fireOnce', { position: 'Adquiere tu Tarjeta', t: performance.now() });
+    if (ok) window[KEY] = true;
+  }
+
+  // --- core
+  function start(){
+    const el = document.querySelector(SEL);
+    if (!el) return;
+
+    // 1) Disparar si ya es visible en la primera pantalla
+    if (isVisible(el)) { setTimeout(() => fireOnce(), 200); return; }
+
+    // 2) Escuchar scroll hasta que sea visible (one-shot)
+    const onScroll = () => {
+      if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+      if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // 3) Intentar también tras load por posibles layout shifts
+    window.addEventListener('load', () => {
+      if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    }, { once: true });
+  }
+
+  // Iniciar ahora (primera carga)
+  start();
+
+  // Re‐iniciar al volver con bfcache (back/forward)
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+      start();
+    }
+  });
+})();
+</script>
+
+<script>
+(function promoViewScrollOnce(){
+  const SEL         = '.id-Z7_8ILI09412PVV0062BTDN8MN5Q5 .bcp_listado_boxes_beneficios_exclusivos_tarjetas:not(.ocultarseccionparam)';
+  const KEY         = '__promo_view_tc0029-1_ctrl';      // bandera one-shot por vista
+  const VIEW_OFFSET = 0;                          // px extra para adelantar
+  const EXP_NAME    = 'Beneficios TC Detalle - ViaBCP - TC0029 - C';
+
+  // --- utils
+  function getDocumentTop(el){
+    // Calcular distancia del elemento al topo del documento
+    let y = 0;
+    let n = el;
+    while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+    return y;
+  }
+
+  function isVisible(el){
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const vh   = window.innerHeight || document.documentElement.clientHeight || 0;
+    // Condición de visibilidad básica: cualquier parte visible
+    const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+    return visible;
+  }
+
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0029] digitalData push error:', e); }
+    return false;
+  }
+
+  function fireOnce(){
+    if (window[KEY]) return;
+    const ok = pushDigitalData({
+      promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta 1' },
+      event: 'trackPromotionView'
+    });
+    console.warn('[TC0029] fireOnce', { position: 'Adquiere tu Tarjeta 1', t: performance.now() });
+    if (ok) window[KEY] = true;
+  }
+
+  // --- core
+  function start(){
+    const el = document.querySelector(SEL);
+    if (!el) return;
+
+    // 1) Disparar si ya es visible en la primera pantalla
+    if (isVisible(el)) { setTimeout(() => fireOnce(), 1000); return; }
+
+    // 2) Escuchar scroll hasta que sea visible (one-shot)
+    const onScroll = () => {
+      if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+      if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // 3) Intentar también tras load por posibles layout shifts
+    window.addEventListener('load', () => {
+      if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    }, { once: true });
+  }
+
+  // Iniciar ahora (primera carga)
+  start();
+
+  // Re‐iniciar al volver con bfcache (back/forward)
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+      start();
+    }
+  });
+})();
+</script>
+
+<script>
+(function promoViewScrollOnce(){
+  const SEL         = '.id-Z7_8ILI09412PVV0062BTDN8MN5Q7 .bcp-catalogo-productos-beneficios-cuotas-sin-intereses:not(.ocultarxparam)';
+  const KEY         = '__promo_view_tc0029-2_ctrl';      // bandera one-shot por vista
+  const VIEW_OFFSET = 0;                          // px extra para adelantar
+  const EXP_NAME    = 'Beneficios TC Detalle - ViaBCP - TC0029 - C';
+
+  // --- utils
+  function getDocumentTop(el){
+    // Calcular distancia del elemento al topo del documento
+    let y = 0;
+    let n = el;
+    while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+    return y;
+  }
+
+  function isVisible(el){
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const vh   = window.innerHeight || document.documentElement.clientHeight || 0;
+    // Condición de visibilidad básica: cualquier parte visible
+    const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+    return visible;
+  }
+
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0029] digitalData push error:', e); }
+    return false;
+  }
+
+  function fireOnce(){
+    if (window[KEY]) return;
+    const ok = pushDigitalData({
+      promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta 2' },
+      event: 'trackPromotionView'
+    });
+    console.warn('[TC0029] fireOnce', { position: 'Adquiere tu Tarjeta 2', t: performance.now() });
+    if (ok) window[KEY] = true;
+  }
+
+  // --- core
+  function start(){
+    const el = document.querySelector(SEL);
+    if (!el) return;
+
+    // 1) Disparar si ya es visible en la primera pantalla
+    if (isVisible(el)) { setTimeout(() => fireOnce(), 1500); return; }
+
+    // 2) Escuchar scroll hasta que sea visible (one-shot)
+    const onScroll = () => {
+      if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+      if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // 3) Intentar también tras load por posibles layout shifts
+    window.addEventListener('load', () => {
+      if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    }, { once: true });
+  }
+
+  // Iniciar ahora (primera carga)
+  start();
+
+  // Re‐iniciar al volver con bfcache (back/forward)
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+      start();
+    }
+  });
+})();
+</script>

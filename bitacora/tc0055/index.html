@@ -1,0 +1,738 @@
+<style>
+  @keyframes slideFromBottom {
+    from {
+      opacity: 0;
+      transform: translate(-50%, calc(-50% + 40px));
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  @keyframes slideFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .m-point-card {
+    background-color: white;
+  }
+
+  .m-point-cards {
+    position: fixed;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    width: 93%;
+    max-width: 384px;
+    min-width: 320px;
+    animation: slideFromBottom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  .m-point-cards__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    animation: fadeIn 0.3s ease-out both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .m-point-cards__overlay {
+      display: none;
+    }
+
+    .m-point-cards {
+      transform: none;
+      left: auto;
+      top: auto;
+      right: 14px;
+      bottom: 24px;
+      width: 384px;
+      animation: slideFromRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+  }
+
+  .m-point-cards__close {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+    margin-left: auto;
+    cursor: pointer;
+    margin-bottom: 8px;
+    box-shadow:
+      0px 4px 8px rgba(0, 36, 115, 0.18),
+      0px 1px 3px rgba(0, 36, 115, 0.12);
+  }
+
+  .m-point-cards__close-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .m-point-card {
+    box-shadow:
+      0px 5px 5px -3px rgba(82, 112, 148, 0.2),
+      0px 3px 14px 2px rgba(82, 112, 148, 0.12);
+    border-radius: 8px;
+    background-color: white;
+  }
+
+  .m-point-card__cabecera {
+    background-color: #fff6e6;
+    border-radius: 8px;
+    display: flex;
+  }
+
+  .m-point-card__title,
+  .m-point-card__subtitle {
+    font-family: "Flexo-Demi", sans-serif;
+    color: #002473;
+    font-weight: 600;
+  }
+
+  .m-point-card__title {
+    font-size: 16px;
+    line-height: 24px;
+    padding-top: 22px;
+    padding-left: 24px;
+    padding-bottom: 22px;
+  }
+
+  .m-point-card__subtitle {
+    font-size: 20px;
+    line-height: 20px;
+    padding-bottom: 12px;
+  }
+
+  .m-point-card p {
+    margin: 0;
+  }
+
+  .m-point-card__cuerpo {
+    padding-top: 16px;
+    padding-bottom: 24px;
+    padding-inline: 24px;
+  }
+
+  .m-point-card__input-wrapper {
+    margin-bottom: 33px;
+    position: relative;
+  }
+
+  .m-point-card__input {
+    border-radius: 6px;
+    border: 1px solid #868f9e;
+    width: 100%;
+    padding: 11px 16px;
+    line-height: 24px;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+  }
+
+  .m-point-card__input--error {
+    border-color: #d0021b;
+  }
+
+  .m-point-card__input-error {
+    position: absolute;
+    display: none;
+    color: #d0021b;
+    font-size: 12px;
+    line-height: 16px;
+    bottom: -20px;
+  }
+
+  .m-point-card__input-error--visible {
+    display: block;
+  }
+
+  .m-point-card__input::placeholder {
+    color: #606c7f;
+    font-family: "Flexo-Demi", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .m-point-card__button {
+    width: 100%;
+    background-color: #ff7800;
+    border: none;
+    color: white;
+    padding: 8px 0;
+    font-family: "Flexo-Demi", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  .m-point-card__disclaimer {
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #606c7f;
+  }
+
+  .m-point-card__link {
+    text-decoration: underline;
+  }
+
+  /* Vistas de respuesta */
+  .m-point-card__view--hidden {
+    display: none;
+  }
+
+  .m-point-card__view-text--loading {
+    text-align: center;
+    color: #606c7f;
+    padding: 24px 0;
+  }
+
+  .m-point-card__view-text--success {
+    color: #002473;
+    font-weight: 600;
+  }
+
+  .m-point-card__view-text--no-offer {
+    color: #606c7f;
+  }
+
+  .m-point-card__view-text--error {
+    color: #d0021b;
+  }
+
+  .m-point-card__subtitle--card {
+    text-align: center;
+    color: #002a8d;
+    font-size: 20px;
+    font-family: "Flexo-Demi", sans-serif;
+    line-height: 28px;
+  }
+
+  .m-point-card__cabecera--response {
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+    padding: 16px 24px;
+    padding-bottom: 0;
+    position: relative;
+  }
+
+  .m-point-card__felicitaciones {
+    color: #202e44;
+    font-family: "Flexo-Demi", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+  }
+
+  .m-point-card__title--response {
+    padding: 0;
+  }
+
+  .m-point-card__image {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 29px;
+    z-index: 1;
+  }
+
+  .m-point-card__background {
+    margin: 0 auto;
+    position: relative;
+    z-index: 0;
+  }
+
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes cardImageIn {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(24px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0) scale(1);
+    }
+  }
+
+  @keyframes cardFloat {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(-6px);
+    }
+  }
+
+  @keyframes backgroundIn {
+    from {
+      opacity: 0;
+      transform: scaleX(0.85);
+    }
+    to {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  .m-point-card__cabecera--response {
+    animation: fadeSlideUp 0.45s ease-out both;
+  }
+
+  .m-point-card__cabecera--response .m-point-card__title--response {
+    animation: fadeSlideUp 0.45s 0.1s ease-out both;
+  }
+
+  .m-point-card__cabecera--response .m-point-card__subtitle--card {
+    animation: fadeSlideUp 0.45s 0.2s ease-out both;
+  }
+
+  .m-point-card__image {
+    animation:
+      cardImageIn 0.55s 0.25s ease-out both,
+      cardFloat 3s 0.8s ease-in-out infinite;
+  }
+
+  .m-point-card__background {
+    animation: backgroundIn 0.5s 0.15s ease-out both;
+  }
+
+  .m-point-card__cuerpo--response button {
+    margin-bottom: 0;
+  }
+
+  .m-point-card__chicotarjeta--centered {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .m-point-card__no-oferta-hint {
+    color: #202e44;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .m-point-card__button--loading {
+    opacity: 0.8;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .m-point-cards--hidden,
+  .m-point-cards__overlay--hidden {
+    display: none;
+  }
+
+  .m-point-card__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+</style>
+
+<div class="m-point-cards__overlay m-point-cards__overlay--hidden"></div>
+<aside class="m-point-cards m-point-cards--hidden">
+  <div class="m-point-cards__close">
+    <img
+      class="m-point-cards__close-image"
+      src="https://www.viabcp.com/wcm/connect/0ce049ff-e436-408a-b7e3-765e0d98d259/icono-cerrar.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-0ce049ff-e436-408a-b7e3-765e0d98d259-pOQ.Dvc&cache=false"
+      alt="icono-cerrar"
+    />
+  </div>
+
+  <div class="m-point-card">
+    <div class="m-point-card__cabecera">
+      <p class="m-point-card__title">
+        ¡Descubre si tienes una Tarjeta de Crédito BCP preaprobada!
+      </p>
+      <img
+        class="m-point-card__chicotarjeta"
+        src="https://www.viabcp.com/wcm/connect/8317974f-7fef-4e95-b1f5-1f626c7ab757/ilustacion-tarjeta.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8317974f-7fef-4e95-b1f5-1f626c7ab757-pORbVYh&cache=false"
+        alt="ilustacion tarjeta"
+      />
+    </div>
+    <!-- form -->
+    <div class="m-point-card__cuerpo" id="view-form">
+      <p class="m-point-card__subtitle">Averígualo solo con tu DNI</p>
+      <div class="m-point-card__input-wrapper">
+        <input
+          class="m-point-card__input"
+          id="dni-input"
+          type="text"
+          name="dni"
+          maxlength="8"
+          placeholder="Ingresa tu DNI"
+          inputmode="numeric"
+        />
+        <p class="m-point-card__input-error" id="dni-error">
+          Ingresa un DNI válido
+        </p>
+      </div>
+      <button class="m-point-card__button" id="btn-submit">
+        Descubrir oferta
+      </button>
+      <p class="m-point-card__disclaimer">
+        Este sitio está protegido por reCAPTCHA y se aplican las
+        <a
+          class="m-point-card__link"
+          href="https://policies.google.com/privacy"
+          target="_blank"
+        >
+          Políticas de privacidad
+        </a>
+        y
+        <a
+          class="m-point-card__link"
+          href="https://policies.google.com/terms"
+          target="_blank"
+        >
+          Términos del servicio de Google.
+        </a>
+      </p>
+    </div>
+  </div>
+</aside>
+
+<script>
+  (function () {
+    //
+
+    const TARJETAS = {
+      TCRMIN: {
+        nombre: "Visa Light",
+        img: "https://www.viabcp.com/wcm/connect/cfdcb3f1-8936-4a91-a1f5-6cb917ba0264/Rounded+rectangle.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cfdcb3f1-8936-4a91-a1f5-6cb917ba0264-pnZ4Tbj",
+      },
+      TCRCLL: {
+        nombre: "Visa Clásica LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/0eeb51f6-e91d-4a4d-83d3-af4c1461a227/Visa+Cl%C3%A1sica+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-0eeb51f6-e91d-4a4d-83d3-af4c1461a227-pnZ4VNH",
+      },
+      TCRORL: {
+        nombre: "Visa Oro LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/db7653d8-4820-4ecb-92ef-ad5d76c9b1a2/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-db7653d8-4820-4ecb-92ef-ad5d76c9b1a2-pnZ4TuX",
+      },
+      TCRPLL: {
+        nombre: "Visa Platinum LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-pnZ4Wgg",
+      },
+      TCRPL1: {
+        nombre: "Visa Signature LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-pnZ4T.X",
+      },
+      TCRBA7: {
+        nombre: "Visa Infinite Sapphire LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-pnZ4UVB",
+      },
+      TCRINF: {
+        nombre: "Visa Infinite Iridium LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Desktop_142x90+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-pnZ4UkV",
+      },
+      AMXCLL: {
+        nombre: "AMEX Clásica LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/891af71d-5ff6-4be4-93de-a1fa831f23ed/Amex+Clasica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-891af71d-5ff6-4be4-93de-a1fa831f23ed-pBjUMc1",
+      },
+      AMXORL: {
+        nombre: "AMEX Oro LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/be3c4938-459c-4d0e-ad6b-d2631d43b6b9/Amex+Oro.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-be3c4938-459c-4d0e-ad6b-d2631d43b6b9-pBjUVs0",
+      },
+      AMXPLL: {
+        nombre: "AMEX Platinum LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-pBjVGxF",
+      },
+      AMXGRE: {
+        nombre: "AMEX Black LATAM Pass",
+        img: "https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-pBjVUKe",
+      },
+      TCRLY1: {
+        nombre: "Visa Infinite Qore",
+        img: "https://www.viabcp.com/wcm/connect/5dd6241e-5775-4611-9e7f-88423542dfe4/Tarjetas-Qore-Horizontal-Infinite-239x154px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5dd6241e-5775-4611-9e7f-88423542dfe4-pMaxu2P",
+      },
+      TCRLY2: {
+        nombre: "Visa Signature Qore",
+        img: "https://www.viabcp.com/wcm/connect/8c4d314b-2c80-484f-8871-d4b6f79216e1/Tarjetas-Qore-Horizontal-Signature-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8c4d314b-2c80-484f-8871-d4b6f79216e1-pMaxtMy",
+      },
+      TCRLY3: {
+        nombre: "Visa Oro Qore",
+        img: "https://www.viabcp.com/wcm/connect/78c8b3d8-a71c-4098-912e-8120a53ff870/Tarjetas-Qore-Horizontal-Gold-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-78c8b3d8-a71c-4098-912e-8120a53ff870-pMaxtq5",
+      },
+      GENERI: {
+        nombre: "Sin Oferta",
+        img: "https://www.viabcp.com/wcm/connect/9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0/banner-sin-oferta.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0-pPiq5Cm&cache=false",
+      },
+    };
+
+    setTimeout(function () {
+      document
+        .querySelector(".m-point-cards")
+        .classList.remove("m-point-cards--hidden");
+      overlay.classList.remove("m-point-cards__overlay--hidden");
+      digitalData.push({
+        promotion: {
+          name: "Ayuda BCP - Fechas de Pago - ViaBCP - TC0055 - P",
+          creative: "Modal",
+          position: "Descubrir Oferta",
+        },
+        event: "trackPromotionView",
+      });
+    }, 3500);
+
+    let noOfertaMode = false;
+
+    const contentCard = document.querySelector(".m-point-cards .m-point-card");
+    const dniInput = document.getElementById("dni-input");
+    const dniError = document.getElementById("dni-error");
+    const btnSubmit = document.getElementById("btn-submit");
+    const overlay = document.querySelector(".m-point-cards__overlay");
+    const cardTitle = document.querySelector(".m-point-card__title");
+    const discaimer = document.querySelector(".m-point-card__disclaimer");
+    const content = document.querySelector(".m-point-card__subtitle");
+    const imagenChico = document.querySelector(".m-point-card__chicotarjeta");
+    const inputCard = document.querySelector(".m-point-card__input");
+    const subtitleCard = document.querySelector(".m-point-card__subtitle");
+    const oldEntryPoint = document.querySelector(".bcp-descubre-tu-tarjeta");
+
+    // oldEntryPoint.remove();
+
+    function closeModal() {
+      document.querySelector(".m-point-cards").remove();
+      overlay.remove();
+    }
+
+    const manejarError = (error) => {
+      digitalData.push({
+        error: {
+          code: "error-solicitar-tarjeta",
+          message: error,
+        },
+        event: "trackError",
+      });
+    };
+
+    const encriptarIDC = async (idc) => {
+      // Encripta el IDC usando SHA-512
+      const encoder = new TextEncoder();
+      const data = encoder.encode(idc);
+      const hashBuffer = await crypto.subtle.digest("SHA-512", data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray
+        .map((b) => b.toString(16).padStart(2, "0"))
+        .join("");
+      return hashHex;
+    };
+
+    async function fetchOferta(dni) {
+      try {
+        // Generamos IDC
+        const { generarIDC } =
+          await import("https://www.viabcp.com/wcm/connect/016f5c19-ac9d-4ace-9447-ddbbc66a9fa4/generador-identificadores.js?MOD=AJPERES");
+        const idc = generarIDC("DNI", dni, false);
+
+        // Generamos HASH
+        const dniHasheado = await encriptarIDC(idc.toUpperCase());
+
+        //Creamos las opciones para el siguiente fetch
+        const requestOptions = {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            nroDocumentoHash: dniHasheado,
+            campana: "BASE_PERSONALIZACION_TC",
+          }),
+        };
+
+        const response = await fetch(
+          "https://www.viabcp.com/apis/public/productocampana/multiuso",
+          requestOptions,
+        );
+
+        if (response.status == "200") {
+          const result = await response.text();
+          const resultado = JSON.parse(result);
+
+          if (resultado.length > 0) {
+            const codigoTarjeta = resultado[0].data.split("/")[6];
+            return codigoTarjeta;
+          } else {
+            return null;
+          }
+        } else {
+          manejarError(response.status);
+        }
+      } catch (error) {
+        manejarError(error);
+        alert("Error de conexión. Verifica tu internet e intenta nuevamente.");
+      }
+    }
+
+    document
+      .querySelector(".m-point-cards__close")
+      .addEventListener("click", closeModal);
+
+    dniInput.addEventListener("input", function () {
+      this.value = this.value.replace(/\D/g, "");
+      setError(false);
+    });
+
+    btnSubmit.addEventListener("click", async function () {
+      if (noOfertaMode) {
+        window.open("https://www.mitarjetabcp.viabcp.com/login", "_blank");
+        return;
+      }
+
+      const dni = dniInput.value.trim();
+
+      if (dni.length !== 8) {
+        setError(true);
+        return;
+      }
+
+      setLoading(true);
+      const codigoTarjeta = await fetchOferta(dni);
+      setLoading(false);
+
+      digitalData.push({
+        promotion: {
+          name: "Ayuda BCP - Fechas de Pago - ViaBCP - TC0055 - P",
+          creative: "Modal",
+          position: "Descubrir Oferta",
+        },
+        event: "trackPromotionClick",
+      });
+
+      if (codigoTarjeta && TARJETAS[codigoTarjeta]) {
+        const { nombre, img } = TARJETAS[codigoTarjeta];
+        if (codigoTarjeta === "GENERI") {
+          setOferta(nombre, img, false);
+        } else {
+          setOferta(nombre, img, true);
+        }
+      } else {
+        setOferta("", "", false);
+      }
+
+      setError(false);
+    });
+
+    function setOferta(nombre, imagen, oferta) {
+      if (oferta === true) {
+        contentCard.innerHTML =
+          '<div class="m-point-card__cabecera m-point-card__cabecera--response">' +
+          '<div class="m-point-card__title m-point-card__title--response">' +
+          '<p class="m-point-card__felicitaciones">¡Felicidades!</p>' +
+          '<p class="m-point-card__felicitaciones">Tienes una Tarjeta de Crédito</p>' +
+          "</div>" +
+          '<p class="m-point-card__subtitle--card">' +
+          nombre +
+          "</p>" +
+          '<img class="m-point-card__image" width="155" src="' +
+          imagen +
+          '" alt="' +
+          nombre +
+          '" />' +
+          '<img class="m-point-card__background" width="209" src="https://www.viabcp.com/wcm/connect/c87147d3-3534-4a2d-a4bf-f878914acddd/CURVA_VECTOR.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c87147d3-3534-4a2d-a4bf-f878914acddd-pPci1Wg&cache=false" alt="ilustacion tarjeta 2" />' +
+          "</div>" +
+          '<div class="m-point-card__cuerpo m-point-card__cuerpo--response">' +
+          '<button class="m-point-card__button" id="btn-accept">¡La quiero!</button>' +
+          "</div>";
+
+        document
+          .getElementById("btn-accept")
+          .addEventListener("click", function () {
+            closeModal();
+            window.location.href = "https://www.mitarjetabcp.viabcp.com/login";
+          });
+      } else {
+        imagenChico.src =
+          "https://www.viabcp.com/wcm/connect/9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0/banner-sin-oferta.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0-pPiq5Cm&cache=false";
+        imagenChico.classList.add("m-point-card__chicotarjeta--centered");
+        discaimer.style.display = "none";
+        cardTitle.style.display = "none";
+        inputCard.style.display = "none";
+        noOfertaMode = true;
+        btnSubmit.textContent = "Iniciar evaluación";
+        subtitleCard.textContent = "Estás a un paso de tu evaluación";
+        const hint = document.createElement("p");
+        hint.className = "m-point-card__no-oferta-hint";
+        hint.textContent =
+          "Continúa y descubre si puedes obtener tu tarjeta de crédito";
+        subtitleCard.insertAdjacentElement("afterend", hint);
+      }
+    }
+
+    function setLoading(isLoading) {
+      if (isLoading) {
+        btnSubmit.disabled = true;
+        btnSubmit.classList.add("m-point-card__button--loading");
+        btnSubmit.innerHTML =
+          '<span class="m-point-card__spinner"></span>Descubriendo oferta...';
+      } else {
+        btnSubmit.disabled = false;
+        btnSubmit.classList.remove("m-point-card__button--loading");
+        btnSubmit.textContent = "Descubrir oferta";
+      }
+    }
+
+    function setError(show) {
+      if (show) {
+        dniInput.classList.add("m-point-card__input--error");
+        dniError.classList.add("m-point-card__input-error--visible");
+      } else {
+        dniInput.classList.remove("m-point-card__input--error");
+        dniError.classList.remove("m-point-card__input-error--visible");
+      }
+    }
+  })();
+</script>

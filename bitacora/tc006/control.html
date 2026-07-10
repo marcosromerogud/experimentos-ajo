@@ -1,0 +1,1195 @@
+
+<!-- MARK: Útiles -->
+<script>
+	/**
+	 * Librería de Utilidades QI
+	 *
+	 * Una colección de funciones utilitarias
+	 *
+	 * @version 0.5.0
+	 * @author Joffré Sánchez
+	 * @license MIT
+	 */
+
+	(function (
+		entorno = typeof window !== "undefined" ? window : this,
+		configuracionInicial = {}
+	) {
+		// Verificar que estamos en un entorno de navegador o similar
+		if (typeof entorno !== "object") {
+			console.error("QI: El entorno proporcionado no es válido.");
+			return;
+		}
+
+		// Crear el namespace QI de forma segura
+		entorno.QI = entorno.QI || {};
+		const QI = entorno.QI;
+		const VERSION = "0.5.0";
+
+		// Objeto para almacenar configuraciones globales
+		const CONFIGURACION = {
+			debug: false,
+			intervaloPorDefecto: 768,
+			intervaloMinimo: 128,
+			tiempoEsperaMaximo: 30000, // 30 segundos
+		};
+		Object.assign(CONFIGURACION, configuracionInicial);
+
+		// Mapa para almacenar observadores activos
+		const observadoresActivos = new Map();
+
+		/**
+		 * Función de utilidad para logging cuando el modo debug está activo
+		 * @param {string} mensaje - Mensaje a mostrar
+		 * @param {string} tipo - Tipo de log (log, warn, error)
+		 */
+		const registrarDebug = (mensaje, tipo = "log") => {
+			if (CONFIGURACION.debug) {
+				console[tipo](`[QI] ${mensaje}`);
+			}
+		};
+
+		/**
+		 * Valida si un valor es un objeto válido (no null, no array)
+		 * @param {*} valor - Valor a validar
+		 * @returns {boolean} - True si es un objeto válido
+		 */
+		const esObjetoValido = (valor) =>
+			valor !== null &&
+			typeof valor === "object" &&
+			!Array.isArray(valor) &&
+			!(valor instanceof Date) &&
+			!(valor instanceof RegExp);
+
+		/**
+		 * Ejecuta una función en el siguiente ciclo de eventos.
+		 *
+		 * @param {Function} callback - La función a ejecutar.
+		 * @example
+		 * QI.siguienteTick(() => {
+		 *     console.log('Ejecutado en el siguiente ciclo de eventos');
+		 * });
+		 */
+		QI.siguienteTick = (callback) => {
+			if (typeof callback === "function") {
+				Promise.resolve().then(callback);
+			} else {
+				console.error(
+					"siguienteTick: El argumento debe ser una función."
+				);
+			}
+		};
+
+		/**
+		 * Convierte un valor a cadena de texto, manejando null y undefined
+		 * @param {*} texto - El valor a convertir a cadena
+		 * @returns {string} La cadena resultante o cadena vacía si el valor es null o undefined
+		 *
+		 * Ejemplos:
+		 * forzarCadena('hola')     => 'hola'
+		 * forzarCadena(123)        => '123'
+		 * forzarCadena(null)       => ''
+		 * forzarCadena(undefined)  => ''
+		 */
+		QI.forzarCadena = (texto) => {
+			if (texto === null || texto === undefined) {
+				return "";
+			}
+			return String(texto);
+		};
+
+		/**
+		 * Obtiene un valor de un objeto siguiendo una ruta de propiedades
+		 *
+		 * @param {string} ruta - Ruta de propiedades separadas por punto (ej: "usuario.perfil.nombre")
+		 * @param {Object} objeto - Objeto del cual extraer el valor
+		 * @param {*} [valorPorDefecto=null] - Valor a retornar si la ruta no existe
+		 * @returns {*} - Valor encontrado o valorPorDefecto
+		 * @example
+		 * const datos = { usuario: { perfil: { nombre: 'Juan' } } };
+		 * QI.obtenerValor('usuario.perfil.nombre', datos); // 'Juan'
+		 * QI.obtenerValor('usuario.edad', datos, 0); // 0
+		 */
+		QI.obtenerValor = (ruta, objeto, valorPorDefecto = null) => {
+			if (typeof ruta !== "string") {
+				registrarDebug(
+					"obtenerValor: La ruta debe ser una cadena de texto",
+					"error"
+				);
+				return valorPorDefecto;
+			}
+
+			if (!esObjetoValido(objeto)) {
+				registrarDebug(
+					"obtenerValor: El segundo parámetro debe ser un objeto válido",
+					"error"
+				);
+				return valorPorDefecto;
+			}
+
+			if (ruta.trim() === "") {
+				registrarDebug(
+					"obtenerValor: La ruta no puede estar vacía",
+					"warn"
+				);
+				return valorPorDefecto;
+			}
+
+			try {
+				const propiedades = ruta.split(".");
+				let valorActual = objeto;
+
+				for (let i = 0; i < propiedades.length; i++) {
+					const propiedad = propiedades[i].trim();
+
+					if (propiedad === "") {
+						registrarDebug(
+							`obtenerValor: Propiedad vacía encontrada en la ruta: ${ruta}`,
+							"warn"
+						);
+						return valorPorDefecto;
+					}
+
+					// Verificar si la propiedad existe y el valor actual no es null/undefined
+					if (valorActual == null || !(propiedad in valorActual)) {
+						registrarDebug(
+							`obtenerValor: Propiedad '${propiedad}' no encontrada en la ruta: ${ruta}`,
+							"warn"
+						);
+						return valorPorDefecto;
+					}
+
+					valorActual = valorActual[propiedad];
+				}
+
+				return valorActual;
+			} catch (error) {
+				registrarDebug(
+					`obtenerValor: Error procesando la ruta '${ruta}': ${error.message}`,
+					"error"
+				);
+				return valorPorDefecto;
+			}
+		};
+
+		/**
+		 * Asigna valores a un objeto siguiendo rutas de propiedades
+		 * @param {Object} objeto - Objeto destino
+		 * @param {Object} valores - Objeto con claves/rutas y valores
+		 * @returns {Object} - Objeto actualizado
+		 * @example
+		 * const objeto = { a: { b: 1 } };
+		 * QI.asignarValor(objeto, { 'a.b': 2 }); // { a: { b: 2 } }
+		 */
+		QI.asignarValor = (objeto, valores = {}) => {
+			for (const clave of Object.keys(valores)) {
+				const objetivo = clave.trim();
+				let origen, destino;
+
+				if (clave.includes(".")) {
+					const ruta = clave.split(".");
+					const prop = ruta.shift();
+					origen = valores[clave];
+					destino = objeto[prop];
+
+					if (typeof destino === "object" && destino !== null) {
+						objeto[prop] = QI.asignarValor(destino, {
+							[ruta.join(".")]: origen,
+						});
+					} else {
+						objeto[prop] = origen;
+					}
+				} else {
+					origen = valores[clave];
+					destino = objeto[objetivo];
+
+					if (typeof destino === "object" && destino !== null) {
+						objeto[objetivo] = QI.asignarValor(destino, origen);
+					} else {
+						objeto[objetivo] = origen;
+					}
+				}
+			}
+
+			return { ...objeto };
+		};
+
+		/**
+		 * Valida el contexto proporcionado.
+		 * @param {Document|Element} contexto - Contexto donde buscar
+		 * @returns {boolean} - True si el contexto es válido
+		 */
+		const esContextoValido = (contexto) => {
+			return (
+				contexto && (contexto.querySelector || contexto === document)
+			);
+		};
+
+		/**
+		 * Valida si el elemento es un nodo HTML nativo.
+		 * @param {*} elemento - El elemento a validar
+		 * @returns {boolean} - True si es un nodo nativo, false en caso contrario
+		 */
+		const esNodoNativo = (elemento) => {
+			return elemento instanceof Node;
+		};
+
+		/**
+		 * Busca el primer nodo que coincide con el selector.
+		 * @param {string} selector - Selector CSS del elemento a buscar
+		 * @param {Document|Element} contexto - Contexto donde buscar
+		 * @returns {Node|null} - Primer nodo encontrado o null
+		 */
+		const buscarNodoPorSelector = (selector, contexto) => {
+			return contexto.querySelector(selector);
+		};
+
+		/**
+		 * Obtiene un único nodo DOM a partir de diferentes tipos de entrada
+		 *
+		 * @param {Node|NodeList|Array|string} elemento - Elemento a convertir
+		 * @param {Document|Element} [contexto=document] - Contexto donde buscar
+		 * @returns {Element|null} - Primer elemento encontrado o null
+		 * @example
+		 * QI.obtenerNodo('.mi-clase'); // Primer elemento con la clase
+		 * QI.obtenerNodo(document.getElementById('mi-id')); // Retorna el mismo elemento
+		 */
+		QI.obtenerNodo = (elemento, contexto = document) => {
+			if (!esContextoValido(contexto)) {
+				registrarDebug(
+					"obtenerNodo: Contexto inválido proporcionado",
+					"error"
+				);
+				return null;
+			}
+
+			try {
+				// Manejar caso de nodo existente
+				if (esNodoNativo(elemento)) {
+					return elemento;
+				}
+
+				// Manejar caso de NodeList o Array
+				if (elemento instanceof NodeList || Array.isArray(elemento)) {
+					for (let i = 0; i < elemento.length; i++) {
+						if (esNodoNativo(elemento[i])) {
+							return elemento[i];
+						}
+					}
+					registrarDebug(
+						"obtenerNodo: No se encontraron nodos válidos en la colección",
+						"warn"
+					);
+					return null;
+				}
+
+				// Manejar caso de selector de cadena
+				if (typeof elemento === "string") {
+					const selectorSeguro = QI.forzarCadena(elemento);
+					if (selectorSeguro.trim() === "") {
+						registrarDebug(
+							"obtenerNodo: El selector no puede estar vacío",
+							"warn"
+						);
+						return null;
+					}
+					return buscarNodoPorSelector(selectorSeguro, contexto);
+				}
+
+				registrarDebug(
+					"obtenerNodo: Tipo de elemento no soportado",
+					"error"
+				);
+				return null;
+			} catch (error) {
+				registrarDebug(
+					`obtenerNodo: Error al procesar elemento: ${error.message}`,
+					"error"
+				);
+				return null;
+			}
+		};
+
+		/**
+		 * Obtiene múltiples nodos DOM a partir de diferentes tipos de entrada
+		 *
+		 * @param {Node|NodeList|Array|string} elementos - Elementos a convertir
+		 * @param {Document|Element} [contexto=document] - Contexto donde buscar
+		 * @returns {Array<Element>} - Array de elementos encontrados
+		 * @example
+		 * QI.obtenerNodos('.mi-clase'); // Todos los elementos con la clase
+		 * QI.obtenerNodos([elem1, elem2]); // Retorna el mismo array
+		 */
+		QI.obtenerNodos = (elementos, contexto = document) => {
+			if (!esContextoValido(contexto)) {
+				registrarDebug(
+					"obtenerNodos: Contexto inválido proporcionado",
+					"error"
+				);
+				return [];
+			}
+
+			const nodosEncontrados = [];
+
+			try {
+				// Manejar caso de NodeList
+				if (elementos instanceof NodeList) {
+					return Array.from(elementos);
+				}
+
+				// Manejar caso de Array
+				if (Array.isArray(elementos)) {
+					elementos.forEach((el) => {
+						if (esNodoNativo(el)) {
+							nodosEncontrados.push(el);
+						}
+					});
+					return nodosEncontrados;
+				}
+
+				// Manejar caso de un único nodo
+				if (esNodoNativo(elementos)) {
+					return [elementos];
+				}
+
+				// Manejar caso de selector de cadena
+				if (typeof elementos === "string") {
+					const selectorSeguro = QI.forzarCadena(elementos);
+					if (selectorSeguro.trim() === "") {
+						registrarDebug(
+							"obtenerNodos: El selector no puede estar vacío",
+							"warn"
+						);
+						return [];
+					}
+					return Array.from(
+						contexto.querySelectorAll(selectorSeguro)
+					);
+				}
+
+				registrarDebug(
+					"obtenerNodos: Tipo de elementos no soportado",
+					"error"
+				);
+				return [];
+			} catch (error) {
+				registrarDebug(
+					`obtenerNodos: Error al procesar elementos: ${error.message}`,
+					"error"
+				);
+				return [];
+			}
+		};
+
+		/**
+		 * Ejecuta el callback con el elemento encontrado.
+		 * @param {Element|Array<Element>} elemento - Elemento o elementos encontrados
+		 * @param {Function} callback - Función a ejecutar
+		 */
+		const ejecutarCallback = (elemento, callback) => {
+			QI.siguienteTick(() => {
+				if (Array.isArray(elemento)) {
+					elemento.forEach((nodo) => callback(nodo));
+				} else {
+					callback(elemento);
+				}
+			});
+		};
+
+		/**
+		 * Espera a que un nodo aparezca en el DOM y ejecuta un callback
+		 *
+		 * @param {string} selector - Selector CSS del elemento a esperar
+		 * @param {Function} callback - Función a ejecutar cuando se encuentre el elemento
+		 * @param {Object} [opciones={}] - Opciones de configuración
+		 * @param {boolean} [opciones.unaVez=true] - Si ejecutar el callback solo una vez
+		 * @param {boolean} [opciones.multiple=false] - Si ejecutar para múltiples elementos
+		 * @param {number} [opciones.tiempoLimite=30000] - Tiempo máximo de espera en ms
+		 * @param {Element} [opciones.contexto=document.body] - Contexto donde observar
+		 * @returns {Function} - Función para cancelar la observación
+		 *
+		 * @example
+		 * const cancelar = QI.esperarNodo('.elemento-futuro', (elemento) => {
+		 *     console.log('Elemento encontrado:', elemento);
+		 * }, { unaVez: false });
+		 *
+		 * // Para cancelar la observación
+		 * cancelar();
+		 */
+		QI.esperarNodo = (selector, callback, opciones = {}) => {
+			const config = {
+				unaVez: true,
+				multiple: false,
+				tiempoLimite: CONFIGURACION.tiempoEsperaMaximo,
+				contexto: document.body,
+				...opciones,
+			};
+
+			const selectorSeguro = QI.forzarCadena(selector);
+			if (selectorSeguro.trim() === "") {
+				registrarDebug(
+					"esperarNodo: El selector debe ser una cadena no vacía",
+					"error"
+				);
+				return () => {};
+			}
+
+			let observador = null;
+			let timeoutId = null;
+
+			const limpiarRecursos = () => {
+				if (observador) {
+					observador.disconnect();
+					observadoresActivos.delete(selector);
+				}
+				if (timeoutId) {
+					clearTimeout(timeoutId);
+				}
+			};
+
+			const verificarElementoExistente = () => {
+				// Obtener el elemento o elementos existentes según la configuración
+				const elementosEncontrados = QI.obtenerNodos(
+					selectorSeguro,
+					config.contexto
+				);
+
+				if (elementosEncontrados.length > 0) {
+					if (config.multiple) {
+						elementosEncontrados.forEach((item) => {
+							ejecutarCallback(item, callback);
+						});
+					} else {
+						ejecutarCallback(elementosEncontrados[0], callback);
+					}
+
+					// Ejecutar el callback con los elementos encontrados
+					if (config.unaVez) {
+						limpiarRecursos(); // Limpiar recursos si es necesario
+					}
+					return true; // Elemento encontrado
+				}
+
+				return false; // Elemento no encontrado
+			};
+
+			const procesarNodo = (nodo) => {
+				if (nodo instanceof Element && nodo.matches(selectorSeguro)) {
+					funcion(nodo);
+					if (config.unaVez && !config.multiple) {
+						limpiarRecursos();
+						return false;
+					}
+					return true;
+				}
+				return false;
+			};
+
+			timeoutId = setTimeout(() => {
+				registrarDebug(
+					`esperarNodo: Tiempo límite alcanzado para selector: ${selector}`,
+					"warn"
+				);
+				limpiarRecursos();
+			}, config.tiempoLimite);
+
+			observador = new MutationObserver((mutaciones) => {
+				for (const mutacion of mutaciones) {
+					if (mutacion.type === "childList") {
+						for (nodo of mutacion.addedNodes) {
+							const procesado = procesarNodo(nodo);
+							if (procesado && !config.multiple) {
+								break;
+							}
+						}
+
+						if (config.unaVez) {
+							limpiarRecursos();
+						}
+					}
+				}
+			});
+
+			observador.observe(config.contexto, {
+				attributes: false,
+				childList: true,
+				subtree: true,
+			});
+
+			observadoresActivos.set(selector, observador);
+			verificarElementoExistente(); // Verificar si el elemento ya existe al inicio
+
+			return () => {
+				limpiarRecursos();
+				registrarDebug(
+					`esperarNodo: Cancelando observación para selector: ${selector}`,
+					"log"
+				);
+			};
+		};
+
+		function serializarObjeto(obj, registro = new WeakSet()) {
+			// Manejar tipos primitivos y null/undefined
+			if (obj === null || obj === undefined || typeof obj !== "object") {
+				return String(obj);
+			}
+
+			// Manejar referencias circulares
+			if (registro.has(obj)) {
+				return "Referencia circular";
+			}
+			registro.add(obj);
+
+			// Manejar arrays
+			if (Array.isArray(obj)) {
+				const arreglo = obj.map((item) =>
+					serializarObjeto(item, registro)
+				);
+				return ["[", arreglo.join(" | "), "]"].join("");
+				// return arreglo.join(" | ");
+			}
+
+			// Manejar fechas
+			if (obj instanceof Date) {
+				return obj.toISOString();
+			}
+
+			// Manejar otros objetos
+			let salida = [];
+			for (const [clave, valor] of Object.entries(obj)) {
+				// Ignorar funciones
+				if (typeof valor === "function") {
+					continue;
+				}
+
+				const valorSerializado = serializarObjeto(valor, registro);
+				// if (typeof valor === "object" && !Array.isArray(valor)) {
+				if (typeof valor === "object" && !Array.isArray(valor)) {
+					salida.push([clave, ":[", valorSerializado, "]"].join(""));
+				} else {
+					salida.push([clave, ":", valorSerializado].join(""));
+				}
+			}
+
+			registro.delete(obj);
+			return salida.join(" | ").replace("[ [", "[[").replace("] ]", "]]");
+		}
+
+		QI.serializarObjeto = serializarObjeto;
+
+		/**
+		 * Espera a que un valor específico esté disponible en un objeto
+		 *
+		 * @param {string} ruta - Ruta del valor a esperar
+		 * @param {Object} objeto - Objeto donde buscar el valor
+		 * @param {Function} callback - Función a ejecutar cuando se encuentre el valor
+		 * @param {Object} [opciones={}] - Opciones de configuración
+		 * @param {number} [opciones.intervalo=768] - Intervalo máximo entre verificaciones
+		 * @param {number} [opciones.tiempoLimite=30000] - Tiempo máximo de espera
+		 * @param {*} [opciones.valorEsperado] - Valor específico a esperar (opcional)
+		 * @returns {Function} - Función para cancelar la espera
+		 * @example
+		 * const cancelar = QI.esperarValor('api.datos.usuario', window, (valor) => {
+		 *     console.log('Usuario cargado:', valor);
+		 * });
+		 */
+		QI.esperarValor = (ruta, objeto, callback, opciones = {}) => {
+			// Validar argumentos
+			if (typeof ruta !== "string" || ruta.trim() === "") {
+				registrarDebug(
+					"esperarValor: La ruta debe ser una cadena no vacía",
+					"error"
+				);
+				return () => {};
+			}
+
+			if (!esObjetoValido(objeto)) {
+				registrarDebug(
+					"esperarValor: El objeto debe ser un objeto válido",
+					"error"
+				);
+				return () => {};
+			}
+
+			if (typeof callback !== "function") {
+				registrarDebug(
+					"esperarValor: El callback debe ser una función",
+					"error"
+				);
+				return () => {};
+			}
+
+			// Configuración por defecto
+			const config = {
+				intervalo: CONFIGURACION.intervaloPorDefecto,
+				tiempoLimite: CONFIGURACION.tiempoEsperaMaximo,
+				valorEsperado: undefined,
+				...opciones,
+			};
+
+			// Validar y ajustar intervalo
+			if (
+				typeof config.intervalo !== "number" ||
+				config.intervalo < CONFIGURACION.intervaloMinimo
+			) {
+				registrarDebug(
+					`esperarValor: Intervalo inválido, usando valor por defecto: ${CONFIGURACION.intervaloPorDefecto}ms`,
+					"warn"
+				);
+				config.intervalo = CONFIGURACION.intervaloPorDefecto;
+			}
+
+			let cancelado = false;
+			var timeoutId = null;
+			let intervalId = null;
+			const tiempoInicio = Date.now();
+
+			// Función para limpiar recursos
+			const limpiarRecursos = () => {
+				if (timeoutId) {
+					clearTimeout(timeoutId);
+				}
+				if (intervalId) {
+					clearTimeout(intervalId);
+				}
+				cancelado = true;
+			};
+
+			// Función de cancelación
+			const funcionCancelacion = () => {
+				registrarDebug(
+					`esperarValor: Cancelando espera para ruta: ${ruta}`,
+					"log"
+				);
+				limpiarRecursos();
+			};
+
+			// Función recursiva para verificar el valor
+			const verificarValor = () => {
+				if (cancelado) return;
+
+				// Verificar timeout
+				if (
+					config.tiempoLimite > 0 &&
+					Date.now() - tiempoInicio > config.tiempoLimite
+				) {
+					registrarDebug(
+						`esperarValor: Tiempo límite alcanzado para ruta: ${ruta}`,
+						"warn"
+					);
+					callback(null);
+					limpiarRecursos();
+					return;
+				}
+
+				try {
+					const valor = QI.obtenerValor(ruta, objeto);
+
+					// Verificar si el valor existe y coincide con el esperado (si se especificó)
+					const valorEncontrado =
+						valor != null &&
+						(config.valorEsperado === undefined ||
+							valor === config.valorEsperado);
+
+					if (valorEncontrado) {
+						callback(valor);
+						limpiarRecursos();
+					} else {
+						// Calcular próximo intervalo con jitter para evitar sincronización
+						const jitter = Math.random() * 0.3 + 0.85; // Entre 85% y 115%
+						const proximoIntervalo =
+							Math.round(
+								CONFIGURACION.intervaloMinimo +
+									Math.random() *
+										(config.intervalo -
+											CONFIGURACION.intervaloMinimo)
+							) * jitter;
+
+						intervalId = setTimeout(
+							verificarValor,
+							proximoIntervalo
+						);
+					}
+				} catch (error) {
+					registrarDebug(
+						`esperarValor: Error verificando valor: ${error.message}`,
+						"error"
+					);
+					callback(null);
+					limpiarRecursos();
+				}
+			};
+
+			// Iniciar verificación
+			verificarValor();
+
+			return funcionCancelacion;
+		};
+
+		QI.insertarDentroDe = (elemento, contenedor, inicio = false) => {
+			const elementosHTML = QI.obtenerNodos(elemento);
+			const contenedorHTML = QI.obtenerNodo(contenedor);
+
+			if (!elementosHTML) {
+				console.error("Contenido inválido.");
+				return;
+			}
+
+			if (!contenedorHTML) {
+				console.error("El contenedor no existe.");
+				return;
+			}
+
+			for (const item of elementosHTML) {
+				if (inicio) {
+					contenedorHTML.insertBefore(
+						item,
+						contenedorHTML.firstChild
+					);
+				} else {
+					contenedorHTML.appendChild(item);
+				}
+			}
+		};
+
+		QI.insertarAntesDe = (elemento, referencia) => {
+			const elementosHTML = QI.obtenerNodos(elemento);
+			const referenciaHTML = QI.obtenerNodo(referencia);
+
+			if (!elementosHTML) {
+				console.error("Contenido inválido.", { elemento });
+				return;
+			}
+
+			if (!referenciaHTML) {
+				console.error("La referencia no existe.", { referencia });
+				return;
+			}
+
+			var contenedorHTML = referenciaHTML.parentNode;
+
+			for (const item of elementosHTML) {
+				contenedorHTML.insertBefore(item, referenciaHTML);
+			}
+		};
+
+		QI.insertarDespuesDe = (elemento, referencia) => {
+			const elementosHTML = QI.obtenerNodos(elemento); // Obtener nodos a insertar
+			const referenciaHTML = QI.obtenerNodo(referencia); // Obtener nodo de referencia
+
+			if (!elementosHTML) {
+				console.error("Contenido inválido.", { elemento });
+				return;
+			}
+
+			// Verificar si el nodo de referencia existe
+			if (!referenciaHTML) {
+				console.error("La referencia no existe.", { referencia });
+				return;
+			}
+
+			const contenedorHTML = referenciaHTML.parentNode; // Obtener el contenedor del nodo de referencia
+
+			// Insertar cada elemento inmediatamente después del nodo de referencia
+			for (const item of elementosHTML) {
+				contenedorHTML.insertBefore(item, referenciaHTML.nextSibling);
+			}
+		};
+
+		// factory de funcion de taggeos
+		QI.generarTaggeo = (objeto, plantilla, opciones) => {
+			// Configuración por defecto
+			const config = {
+				metodo: "push",
+				entorno: window,
+				...opciones,
+			};
+
+			const ambito = config.entorno ?? window;
+
+			return (valores = {}) => {
+				// Crear un nuevo objeto combinando la plantilla con el objeto recibido
+				const item = QI.asignarValor(plantilla, valores);
+
+				// Validar si datos es un string y si existe un objeto con ese nombre en el entorno global
+				let objetoDatos;
+				if (typeof objeto === "string") {
+					objetoDatos = ambito[objeto];
+				} else {
+					objetoDatos = objeto;
+				}
+
+				// si el metodo es null se invoca el objeto como función
+				if (config.metodo) {
+					// Verificar si el objeto tiene el método push
+					if (typeof objetoDatos[config.metodo] === "function") {
+						registrarDebug("Agregando elemento al objeto", item);
+						objetoDatos[config.metodo](item);
+					} else {
+						console.warn(
+							`El objeto no tiene el método ${config.metodo}: "${objeto}"`
+						);
+					}
+				} else {
+					objeto(item);
+				}
+			};
+		};
+
+		/**
+		 * Calcula el hash de un texto utilizando el algoritmo FNV-1a de 32 bits.
+		 * Este algoritmo es conocido por su simplicidad y velocidad, y se utiliza
+		 * comúnmente para la generación de hashes en aplicaciones de software.
+		 *
+		 * El hash se calcula de la siguiente manera:
+		 * 1. Se inicializa un valor base (offset basis).
+		 * 2. Se aplica una operación XOR con el código de cada carácter del texto.
+		 * 3. Se multiplica y suma el resultado para obtener el hash final.
+		 * 4. El resultado se convierte a base 36 para una salida más corta.
+		 *
+		 * @param {string} texto - El texto a hashear.
+		 * @returns {string} - El hash resultante en formato de cadena en base 36.
+		 *
+		 * @example
+		 * const hash1 = QI.hash('Hola Mundo'); // Devuelve un hash en base 36
+		 * const hash2 = QI.hash('Texto de prueba'); // Devuelve otro hash en base 36
+		 */
+		QI.hash = (texto) => {
+			const cadena = QI.forzarCadena(texto); // genera cadena segura
+			let h = 0x811c9dc5; // Offset basis inicial para FNV-1a de 32 bits
+			for (let i = 0; i < cadena.length; i++) {
+				h ^= cadena.charCodeAt(i); // XOR con el código del carácter
+				h += (h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24); // Multiplicación y suma
+			}
+			return (h >>> 0).toString(36); // Convierte a base 36 para una salida más corta
+		};
+
+		/**
+		 * Aplica una transformación a un texto, intercambiando ciertos caracteres
+		 * según la jerga "malespin" de Centroamérica. Los caracteres que no están
+		 * en los mapas se mantienen sin cambios.
+		 *
+		 * Transformaciones:
+		 * - 'a' ↔ 'e'
+		 * - 'i' ↔ 'o'
+		 * - 'b' ↔ 't'
+		 * - 'f' ↔ 'g'
+		 * - 'p' ↔ 'm'
+		 *
+		 * Para letras mayúsculas, se aplican las mismas reglas.
+		 *
+		 * Si el texto es `null` o `undefined`, se devuelve una cadena vacía.
+		 *
+		 * @param {*} texto - Texto a transformar (cualquier tipo, se convertirá a cadena).
+		 * @returns {string} - Texto transformado o cadena vacía si el valor es `null` o `undefined`.
+		 *
+		 * @example
+		 * QI.malespin('Hola Mundo'); // 'Holo Munde'
+		 * QI.malespin('abcdefg'); // 'ebcdefg'
+		 * QI.malespin(null); // ''
+		 * QI.malespin(undefined); // ''
+		 */
+		QI.malespin = (texto) => {
+			// Asegurarse de que el texto sea una cadena
+			const textoOriginal = QI.forzarCadena(texto);
+			const caracteres = [...textoOriginal];
+
+			// Mapas de caracteres para la transformación
+			const mapaMinusculas = {
+				a: "e",
+				e: "a",
+				i: "o",
+				o: "i",
+				b: "t",
+				t: "b",
+				f: "g",
+				g: "f",
+				p: "m",
+				m: "p",
+			};
+			const mapaMayusculas = {
+				A: "E",
+				E: "A",
+				I: "O",
+				O: "I",
+				B: "T",
+				T: "B",
+				F: "G",
+				G: "F",
+				P: "M",
+				M: "P",
+			};
+
+			try {
+				// Transformar los caracteres según los mapas
+				return caracteres
+					.map((c) => {
+						if (c in mapaMinusculas) {
+							return mapaMinusculas[c];
+						} else if (c in mapaMayusculas) {
+							return mapaMayusculas[c];
+						}
+						return c; // Retornar el carácter original si no está en los mapas
+					})
+					.join("");
+			} catch (error) {
+				registrarDebug(
+					`malespin: Error al procesar el texto: ${error.message}`,
+					"error"
+				);
+				return textoOriginal; // Retornar el texto original en caso de error
+			}
+		};
+
+		/**
+		 * Objeto QI.sesion
+		 *
+		 * Este objeto proporciona una interfaz para manejar la sesión del usuario utilizando
+		 * el sessionStorage del navegador. Implementa el patrón Singleton para asegurar que
+		 * solo haya una instancia de la sesión en la aplicación.
+		 *
+		 * Métodos:
+		 * - establecer(clave, valor): Almacena un valor en la sesión.
+		 * - obtener(clave): Recupera un valor de la sesión.
+		 * - eliminar(clave): Elimina un valor de la sesión.
+		 *
+		 * Ejemplo de uso:
+		 *
+		 * // Establecer un valor en la sesión
+		 * QI.sesion.establecer('usuario', { nombre: 'Juan', edad: 30 });
+		 *
+		 * // Obtener un valor de la sesión
+		 * const usuario = QI.sesion.obtener('usuario');
+		 * console.log(usuario); // { nombre: 'Juan', edad: 30 }
+		 *
+		 * // Eliminar un valor de la sesión
+		 * QI.sesion.eliminar('usuario');
+		 */
+		QI.sesion = (() => {
+			// Almacena la instancia única de la sesión
+			let instancia;
+
+			// Función para codificar un objeto en una cadena segura
+			const codificar = (objeto) => {
+				// Convierte el objeto a una cadena JSON, lo codifica en base64 y aplica la transformación de malespin
+				return QI.malespin(btoa(QI.malespin(JSON.stringify(objeto))));
+			};
+
+			// Función para decodificar una cadena segura a un objeto
+			const decodificar = (cadena) => {
+				// Aplica la transformación de malespin y convierte la cadena de base64 a un objeto JSON
+				return JSON.parse(QI.malespin(atob(QI.malespin(cadena))));
+			};
+
+			// Constructor de la sesión
+			const crearSesion = () => {
+				const almacen = sessionStorage; // Utiliza sessionStorage para almacenar datos
+
+				return {
+					/**
+					 * Establece un valor en la sesión.
+					 *
+					 * Este método almacena un valor en el sessionStorage bajo una clave específica.
+					 * El valor se codifica para asegurar su integridad y privacidad.
+					 *
+					 * @param {string} clave - La clave bajo la cual se almacenará el valor.
+					 * @param {*} valor - El valor a almacenar, puede ser de cualquier tipo.
+					 * @returns {boolean|null} - Retorna true si la operación fue exitosa, null en caso de error.
+					 */
+					establecer(clave, valor) {
+						try {
+							almacen.setItem(QI.hash(clave), codificar(valor));
+							return true; // Indicar que la operación fue exitosa
+						} catch (error) {
+							console.error(
+								"Error al establecer el valor en sessionStorage:",
+								error
+							);
+							return null; // Retornar null en caso de error
+						}
+					},
+
+					/**
+					 * Obtiene un valor de la sesión.
+					 *
+					 * Este método recupera un valor almacenado en el sessionStorage utilizando una clave.
+					 * Si el valor no existe, retorna null.
+					 *
+					 * @param {string} clave - La clave del valor a obtener.
+					 * @returns {*} - El valor almacenado o null si no existe.
+					 */
+					obtener(clave) {
+						try {
+							const codigo = QI.hash(clave); // Genera un código hash de la clave
+							const valorAlmacenado = almacen.getItem(codigo); // Recupera el valor
+							if (valorAlmacenado === null) return null; // Retorna null si no existe
+							return decodificar(valorAlmacenado); // Decodifica y retorna el valor
+						} catch (error) {
+							console.error(
+								"Error al obtener el valor de sessionStorage:",
+								error
+							);
+							return null; // Retornar null en caso de error
+						}
+					},
+
+					/**
+					 * Elimina un valor de la sesión.
+					 *
+					 * Este método elimina un valor almacenado en el sessionStorage utilizando una clave.
+					 *
+					 * @param {string} clave - La clave del valor a eliminar.
+					 */
+					eliminar(clave) {
+						try {
+							almacen.removeItem(QI.hash(clave)); // Elimina el valor del sessionStorage
+						} catch (error) {
+							console.error(
+								"Error al eliminar el valor de sessionStorage:",
+								error
+							);
+						}
+					},
+				};
+			};
+
+			/**
+			 * Obtiene la instancia de la sesión. Si no existe, se crea una nueva.
+			 *
+			 * Este método asegura que solo haya una instancia de la sesión en la aplicación.
+			 * Si la instancia ya ha sido creada, se retorna la existente.
+			 *
+			 * @returns {Object} - La instancia de la sesión.
+			 */
+			if (!instancia) {
+				instancia = crearSesion(); // Crear una nueva instancia si no existe
+			}
+
+			return instancia; // Retornar la instancia existente
+		})();
+
+		/**
+		 * Configura opciones globales de la librería
+		 *
+		 * @param {Object} nuevaConfiguracion - Objeto con nuevas configuraciones
+		 * @param {boolean} [nuevaConfiguracion.debug] - Activar modo debug
+		 * @param {number} [nuevaConfiguracion.intervaloPorDefecto] - Intervalo por defecto
+		 * @param {number} [nuevaConfiguracion.tiempoEsperaMaximo] - Tiempo máximo de espera
+		 * @example
+		 * QI.configurar({ debug: true, intervaloPorDefecto: 500 });
+		 */
+		QI.configurar = (nuevaConfiguracion) => {
+			if (!esObjetoValido(nuevaConfiguracion)) {
+				registrarDebug(
+					"configurar: La configuración debe ser un objeto válido",
+					"error"
+				);
+				return;
+			}
+			Object.assign(CONFIGURACION, nuevaConfiguracion);
+			registrarDebug("Configuración actualizada", "log");
+		};
+
+		/**
+		 * Obtiene la configuración actual
+		 *
+		 * @returns {Object} - Copia de la configuración actual
+		 */
+		QI.obtenerConfiguracion = () => {
+			return { ...CONFIGURACION };
+		};
+
+		/**
+		 * Limpia todos los observadores activos
+		 * @example
+		 * QI.limpiarObservadores(); // Limpia todos los observadores
+		 */
+		QI.limpiarObservadores = () => {
+			let contador = 0;
+			observadoresActivos.forEach((observador) => {
+				observador.disconnect();
+				contador++;
+			});
+			observadoresActivos.clear();
+			registrarDebug(
+				`Se limpiaron ${contador} observadores activos`,
+				"log"
+			);
+		};
+
+		/**
+		 * Obtiene información sobre la librería
+		 *
+		 * @returns {Object} - Información de la librería
+		 * @example
+		 * const info = QI.info();
+		 * console.log(info.version); // Muestra la versión de la librería
+		 */
+		QI.info = () => {
+			return {
+				version: VERSION,
+				observadoresActivos: observadoresActivos.size,
+				configuracion: QI.obtenerConfiguracion(),
+			};
+		};
+
+		// Limpiar observadores cuando se cierre la página
+		if (typeof entorno.addEventListener === "function") {
+			entorno.addEventListener("beforeunload", QI.limpiarObservadores);
+		}
+
+		registrarDebug(`Librería QI v${VERSION} cargada correctamente`, "log");
+	})(typeof window !== "undefined" ? window : this);
+</script>
+
+<!-- MARK: Experimento -->
+<script>
+	(function () {
+		if (window.expTC006) {
+			return window.expTC006;
+		}
+		const promotion = {
+			name: "ViaBCP-Home-TC006-C",
+			creative: "Experimento",
+			position: "Banner",
+		};
+
+		const taggearPromocion = QI.generarTaggeo("digitalData", {
+			promotion,
+			event: "trackPromotionView",
+		});
+
+
+		function iniciar() {
+			const parrafo = QI.obtenerNodo(".respuesta_pregunta p:has(a[href*='mi-espacio'])");
+
+			if(parrafo){
+
+				taggearPromocion();
+
+				QI.obtenerNodo("a", parrafo)
+					.addEventListener(
+						"click",
+						() => {
+							taggearPromocion({
+								event: "trackPromotionClick",
+							});
+						},
+						{ capture: true }
+					);
+			}
+		}
+
+		const experimento = {
+			iniciar,
+		};
+
+		// Guardar en window para acceso global
+		window.expTC006 = experimento;
+		return experimento;
+	})();
+
+	QI.siguienteTick(() => {
+		expTC006.iniciar();
+	});
+</script>

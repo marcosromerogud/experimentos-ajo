@@ -1,0 +1,50 @@
+<script>
+(function () {
+    "use strict";
+
+    const OFFER_ID = "tc0052";
+    const SELECTOR = ".bcp-contenedor-banner .bcp-descripcion-qr";
+    const NEW_TEXT = "Escanea el código y saca tu Préstamo desde la app, rápido y sin hacer colas.";
+
+    function updateText() {
+        const el = document.querySelector(SELECTOR);
+
+        if (!el) return false;
+
+        // Evita reescrituras innecesarias
+        if (el.dataset.offerApplied === OFFER_ID) return true;
+
+        el.textContent = NEW_TEXT;
+        el.dataset.offerApplied = OFFER_ID;
+
+        return true;
+    }
+
+    function safeApply() {
+        // intento inmediato
+        if (updateText()) return;
+
+        // fallback controlado
+        const observer = new MutationObserver(() => {
+            if (updateText()) {
+                observer.disconnect(); // clave: cortar el observer
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+
+        // safety timeout (evita loops eternos)
+        setTimeout(() => observer.disconnect(), 5000);
+    }
+
+    try {
+        safeApply();
+    } catch (e) {
+        console.error(`[${OFFER_ID}] Error`, e);
+    }
+
+})();
+</script>

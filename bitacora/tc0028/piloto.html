@@ -1,0 +1,902 @@
+<style id="tc0028-styles">
+/* Definir estilos scopeados del banner (grid por áreas) */
+
+/* Mobile por defecto: 2 columnas, 2 filas
+   Col 1: content (fila 1) + cta (fila 2)
+   Col 2: image (fila 1 y fila 2)
+   Ocultar subtítulo en mobile */
+.tc0028-scope .tc0028-banner {
+  --bg-mobile: var(--d-9-d-9-d-9, rgba(255, 255, 255, 0.05));
+  --bg-desktop: var(--transparent_white-white_10, rgba(255, 255, 255, 0.10));
+  --title-color: var(--on-white, #FFF);
+  --subtitle-color: var(--on-white, #FFF);
+  --link-color: #FF623F;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "content image"
+    "cta     image";
+  align-items: center;
+  gap: 8px 12px;
+  padding: 12px 16px;
+  min-height: 120px; /* mobile ≈ 120px */
+  background: var(--bg-mobile);
+  border-radius: 12px;
+  box-sizing: border-box;
+
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: var(--title-color);
+}
+
+/* Definir áreas hijas */
+.tc0028-scope .tc0028-banner__content   { grid-area: content; display: grid; gap: 6px; align-content: center; justify-items: center; }
+.tc0028-scope .tc0028-banner__cta       { grid-area: cta;     display: grid; justify-items: center; }
+.tc0028-scope .tc0028-banner__imageWrap { grid-area: image;   display: flex; align-items: center; justify-content: center; }
+
+/* Estilar título */
+.tc0028-scope .tc0028-banner__title {
+  margin: 0;
+  color: var(--title-color);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px; /* 133.333% */
+}
+
+/* Estilar subtítulo (ocultar en mobile) */
+.tc0028-scope .tc0028-banner__subtitle {
+  display: none; /* oculto en mobile */
+  margin: 0;
+  color: var(--subtitle-color);
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+/* Estilar entry point */
+.tc0028-scope .tc0028-entry {
+  color: var(--link-color);
+  text-align: center;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline !important;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+  cursor: pointer;
+}
+
+/* Estilar imagen */
+.tc0028-scope .tc0028-banner__img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 90px;
+  object-fit: contain;
+  border: 0;
+}
+
+/* Desktop forzado por clase en el parent: 3 columnas, 1 fila
+   [Imagen] | [Título + Subtítulo] | [CTA] */
+.tc0028-scope.tc0028--desktop .tc0028-banner {
+  grid-template-columns: 1fr 1.8fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "image content cta";
+  gap: 24px;
+  padding: 12px 24px;
+  min-height: 90px; /* desktop ≈ 90px */
+  background: var(--bg-desktop);
+  border-radius: 24px;
+}
+
+/* Ajustar alineaciones en desktop */
+.tc0028-scope.tc0028--desktop .tc0028-banner__content { justify-items: start; gap: 4px; }
+.tc0028-scope.tc0028--desktop .tc0028-banner__title   { text-align: left; }
+.tc0028-scope.tc0028--desktop .tc0028-banner__subtitle{ display: block; text-align: left; }
+/* .tc0028-scope.tc0028--desktop .tc0028-banner__img     { max-height: 66px; } */
+
+/* Accesibilidad foco visible */
+.tc0028-scope a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .tc0028-scope .tc0028-banner {
+    margin: 0 24px;
+    padding: 0 0 0 16px;
+    gap: 4px 10px;
+  }
+  .tc0028-scope .tc0028-banner__title {
+    color: var(--on-white, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+  }
+  .tc0028-scope .tc0028-entry {
+    color: var(#FF623F);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .tc0028-scope .tc0028-banner__content {
+    justify-items: flex-start;
+  }
+  .tc0028-scope .tc0028-banner__cta {
+    justify-items: flex-start;
+    align-self: baseline;
+  }
+  .tc0028-scope .tc0028-banner__img  {
+    max-height: 120px;
+  }
+}
+</style>
+<script>
+(function () {
+  "use strict";
+
+  // ===== CONFIG =====
+  const CFG = {
+    parentSelector: ".id-Z7_8ILI09412H67E0659TH42MJ341",
+    insertPosition: "afterbegin", // "afterbegin" | "beforeend" | "beforebegin" | "afterend"
+    bodyWidthBreakpoint: 768,
+
+    titleText: "Descubre si hoy tienes tu Tarjeta Visa Qore BCP",
+    subtitleText: "Compres lo que compres, págalo con tus puntos.",
+    linkHref: "https://www.mitarjetabcp.viabcp.com/login",
+    linkText: "Descúbrela aquí",
+
+    imgDesktop: { src: "https://www.viabcp.com/wcm/connect/be1e1971-834c-42a1-b0b7-4ed078ee3334/landingQore_entryPoint1-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771513282274", alt: "Imagen descriptiva desktop" },
+    imgMobile:  { src: "https://www.viabcp.com/wcm/connect/9c45736b-875f-4bf7-a57b-d5bfa3ab2d40/landingQore-entryPoint2-mobile-190226.png?MOD=AJPERES&attachment=false&id=1771513074805",  alt: "Imagen descriptiva mobile"  },
+
+    scopeClass: "tc0028-scope",
+    desktopStateClass: "tc0028--desktop",
+    blockSelector: '[data-offer-id="tc0028"][data-instance="banner"]',
+
+    debug: true
+  };
+
+  const log = (...a)=> CFG.debug && console.log("[tc0028]", ...a);
+  const warn = (...a)=> CFG.debug && console.warn("[tc0028]", ...a);
+  const $ = (s, r=document)=>{ try { return r.querySelector(s); } catch(e) { warn("querySelector error", s, e.message); return null; } };
+
+  // ===== HTML (SIN escapes por ahora para aislar el problema) =====
+  const html = `
+<section class="tc0028-banner container" role="region" aria-label="Promoción destacada" data-offer-id="tc0028" data-instance="banner" data-version="3.2.0">
+  <div class="tc0028-banner__content">
+    <h2 class="tc0028-banner__title">${CFG.titleText}</h2>
+    <p class="tc0028-banner__subtitle">${CFG.subtitleText}</p>
+  </div>
+
+  <div class="tc0028-banner__imageWrap">
+    <img class="tc0028-banner__img" src="" alt="" loading="lazy" decoding="async" />
+  </div>
+
+  <div class="tc0028-banner__cta">
+    <a class="tc0028-entry" href="${CFG.linkHref}" aria-label="${CFG.linkText} hacia ${CFG.linkHref}">${CFG.linkText}</a>
+  </div>
+</section>
+`.trim();
+
+  function isDesktopByBody(){
+    const w = Math.round((document.body?.getBoundingClientRect().width) || window.innerWidth || 0);
+    return w >= (CFG.bodyWidthBreakpoint || 1024);
+  }
+
+  function applyState(parent){
+    const desktop = isDesktopByBody();
+    parent.classList.toggle(CFG.desktopStateClass, desktop);
+
+    const block = $(CFG.blockSelector, parent);
+    if (!block) { warn("applyState: block no encontrado"); return; }
+
+    // Imagen
+    const img = block.querySelector(".tc0028-banner__img");
+    if (img) {
+      const chosen = desktop ? CFG.imgDesktop : CFG.imgMobile;
+      img.src = (chosen && chosen.src) ? chosen.src : "";
+      img.alt = (chosen && typeof chosen.alt === "string") ? chosen.alt : "";
+      log("img set =>", desktop ? "desktop" : "mobile", img.src);
+    } else {
+      warn("No se encontró .tc0028-banner__img");
+    }
+
+    // Subtítulo visible solo en desktop (refuerzo inline)
+    const sub = block.querySelector(".tc0028-banner__subtitle");
+    if (sub) {
+      sub.style.display = desktop ? "block" : "none";
+      log("subtitle display:", sub.style.display);
+    }
+  }
+
+  function safeInsert() {
+    const parent = $(CFG.parentSelector);
+    if (!parent) { warn("Parent no encontrado:", CFG.parentSelector); return; }
+
+    // Asegurar scope manual
+    if (!parent.classList.contains(CFG.scopeClass)) parent.classList.add(CFG.scopeClass);
+
+    // Log del template (para ver exactamente qué se va a insertar)
+    log("HTML a insertar:", html);
+
+    // Inserción idempotente
+    const already = $(CFG.blockSelector, parent);
+    if (already) {
+      log("Ya existe el bloque. No se duplica.");
+    } else {
+      parent.insertAdjacentHTML(CFG.insertPosition, html);
+      log("HTML insertado con", CFG.insertPosition);
+    }
+
+    // Verificación POST-inserción
+    const block = $(CFG.blockSelector, parent);
+    if (!block) {
+      warn("Post-inserción: NO se localizó el bloque. ¿El template fue alterado?");
+      return;
+    }
+
+    // DEBUG del contenido interno
+    const title = block.querySelector(".tc0028-banner__title");
+    const sub   = block.querySelector(".tc0028-banner__subtitle");
+    const cta   = block.querySelector(".tc0028-entry");
+
+    log("DEBUG nodes =>", {
+      titleExists: !!title, titleText: title?.textContent || "(vacío)",
+      subtitleExists: !!sub, subtitleText: sub?.textContent || "(vacío)",
+      ctaExists: !!cta, ctaHref: cta?.getAttribute("href") || "(sin href)", ctaText: cta?.textContent || "(vacío)"
+    });
+
+    // Refuerzo por si el parser hubiese vaciado algo (no debería, pero lo forzamos)
+    if (title && !title.textContent) title.textContent = String(CFG.titleText || "");
+    if (sub   && !sub.textContent)   sub.textContent   = String(CFG.subtitleText || "");
+    if (cta) {
+      if (!cta.textContent) cta.textContent = String(CFG.linkText || "");
+      if (!cta.getAttribute("href")) cta.setAttribute("href", String(CFG.linkHref || "#"));
+    }
+
+    // Aplicar estado (desktop/mobile), setear imagen y visibilidad
+    applyState(parent);
+
+    // Listeners
+    const onResize = (function(){ let id; return function(){ clearTimeout(id); id=setTimeout(()=>applyState(parent),120); }; })();
+    window.addEventListener("resize", onResize, { passive:true });
+    window.addEventListener("orientationchange", onResize, { passive:true });
+  }
+
+  // Run
+  try {
+    safeInsert();
+  } catch (e) {
+    console.error("[tc0028] EXCEPCIÓN en safeInsert:", e);
+  }
+
+})();
+</script>
+
+<style id="tc0028-2-styles">
+/* Definir estilos generales del banner */
+
+/* Mobile por defecto: estructurar en 2 columnas y 3 áreas principales */
+.tc0028-2-scope .tc0028-2-banner {
+  --bg-mobile: var(--d-9-d-9-d-9, rgba(255, 255, 255, 0.05));
+  --bg-desktop: var(--transparent_white-white_10, rgba(255, 255, 255, 0.10));
+  --title-color: var(--on-white, #FFF);
+  --subtitle-color: var(--on-white, #FFF);
+  --link-color: #FF623F;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "content image"
+    "subtitle image"
+    "cta image";
+  gap: 24px;
+  align-items: center;
+  padding: 12px 16px;
+  min-height: 120px;
+  background: var(--bg-mobile);
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: var(--title-color);
+}
+
+/* Ajustar layout para desktop */
+.tc0028-2-scope.tc0028-2--desktop .tc0028-2-banner {
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 0.5fr 1fr 0.7fr;
+  gap: 0;
+  padding: 0 64px;
+  min-height: 90px;
+  background: var(--bg-desktop);
+  border-radius: 24px;
+  align-items: center;
+}
+
+/* Posicionar contenido principal */
+.tc0028-2-scope.tc0028-2--desktop .tc0028-2-banner__content  {
+  max-width: 590px;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  justify-items: start;
+  align-self: center;
+}
+
+/* Mostrar subtítulo en desktop */
+.tc0028-2-scope.tc0028-2--desktop .tc0028-2-banner__subtitle {
+  display: block;
+  text-align: left;
+  margin: 15px 0 18px;
+}
+
+/* Posicionar CTA */
+.tc0028-2-scope.tc0028-2--desktop .tc0028-2-banner__cta {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  justify-items: start;
+  align-self: baseline;
+}
+
+/* Posicionar imagen */
+.tc0028-2-scope.tc0028-2--desktop .tc0028-2-banner__imageWrap {
+  grid-column: 2 / 3;
+  grid-row: 1 / 4;
+  justify-content: center;
+  align-self: center;
+  padding: 16px;
+}
+
+/* Definir áreas internas para mobile */
+.tc0028-2-scope .tc0028-2-banner__content   { grid-area: content; display: grid; gap: 0; align-content: center; justify-items: center; }
+.tc0028-2-scope .tc0028-2-banner__cta       { grid-area: cta;     display: grid; justify-items: center; }
+.tc0028-2-scope .tc0028-2-banner__imageWrap { grid-area: image;   display: flex; align-items: center; justify-content: center; }
+
+/* Estilar título */
+.tc0028-2-scope .tc0028-2-banner__title {
+  color: var(--on-white, #FFF);
+  font-size: 46px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 56px;
+  margin: 0;
+}
+
+/* Estilar subtítulo */
+.tc0028-2-scope .tc0028-2-banner__subtitle {
+  color: var(--on-white, #FFF);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+/* Estilar CTA */
+.tc0028-2-scope .tc0028-2-entry {
+  display: flex;
+  height: 48px;
+  padding: 8px 16px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  border-radius: 8px;
+  background: var(--link-color);
+}
+
+/* Estilar imagen */
+.tc0028-2-scope .tc0028-2-banner__img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  max-height: 304px;
+  object-fit: contain;
+  border: 0;
+}
+
+/* Estilos de foco accesible */
+.tc0028-2-scope a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  /* Reorganizar en una sola columna en mobile */
+  .tc0028-2-scope .tc0028-2-banner {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  /* Ordenar contenido */
+  .tc0028-2-scope .tc0028-2-banner__content { grid-column: 1 / 2; grid-row: 1 / 2; justify-items: flex-start; }
+  .tc0028-2-scope .tc0028-2-banner__subtitle { display: block; text-align:center; }
+
+  /* Posicionar imagen */
+  .tc0028-2-scope .tc0028-2-banner__imageWrap { grid-column: 1 / 2; grid-row: 2 / 3; justify-content:center; padding: 16px 12px; }
+
+  /* Posicionar CTA */
+  .tc0028-2-scope .tc0028-2-banner__cta { grid-column: 1 / 2; grid-row: 3 / 4; justify-items:center; }
+
+  .tc0028-2-scope .tc0028-2-banner {
+    margin: 0 24px;
+    padding: 32px 24px;
+    gap: 4px 10px;
+  }
+
+  .tc0028-2-scope .tc0028-2-banner__title {
+    color: var(--on-white, #FFF);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    text-align: center;
+  }
+
+  .tc0028-2-scope .tc0028-2-entry {
+    color: var(#FF623F);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .tc0028-2-scope .tc0028-2-banner__cta {
+    justify-items: center;
+    align-self: baseline;
+  }
+
+  .tc0028-2-scope .tc0028-2-banner__img {
+    max-height: 195px;
+  }
+}
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  // Definir configuración principal del módulo
+  const CFG = {
+    parentSelector: ".id-Z7_8ILI09412H67E0659TH42MJ367",
+    insertPosition: "beforeend",
+    bodyWidthBreakpoint: 768,
+
+    titleText: "Descubre si hoy tienes tu Tarjeta Visa Qore BCP",
+    subtitleText: "Compres lo que compres, págalo con tus puntos.",
+    linkHref: "https://www.mitarjetabcp.viabcp.com/login",
+    linkText: "Descúbrela aquí",
+
+    imgDesktop: { src: "https://www.viabcp.com/wcm/connect/693c4410-8d8a-45f7-8d79-af15a08f6306/landingQore_entryPoint1-2-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771534011938", alt: "Imagen descriptiva desktop" },
+    imgMobile:  { src: "https://www.viabcp.com/wcm/connect/ce5bafb1-5f45-4ad7-a05f-5705b28afa7a/landingQore_entryPoint1-2-mobile190226.png?MOD=AJPERES&attachment=false&id=1771533963873",  alt: "Imagen descriptiva mobile"  },
+
+    scopeClass: "tc0028-2-scope",
+    desktopStateClass: "tc0028-2--desktop",
+    blockSelector: '[data-offer-id="tc0028-2"][data-instance="banner"]',
+
+    debug: true
+  };
+
+  const log = (...a)=> CFG.debug && console.log("[tc0028-2]", ...a);
+  const warn = (...a)=> CFG.debug && console.warn("[tc0028-2]", ...a);
+  const $ = (s, r=document)=>{ try { return r.querySelector(s); } catch(e) { warn("querySelector error", s, e.message); return null; } };
+
+  // Definir HTML del banner
+  const html = `
+<section class="tc0028-2-banner container" role="region" aria-label="Promoción destacada" data-offer-id="tc0028-2" data-instance="banner" data-version="3.2.0">
+  <div class="tc0028-2-banner__content">
+    <h2 class="tc0028-2-banner__title">${CFG.titleText}</h2>
+    <p class="tc0028-2-banner__subtitle">${CFG.subtitleText}</p>
+  </div>
+
+  <div class="tc0028-2-banner__imageWrap">
+    <img class="tc0028-2-banner__img" src="" alt="" loading="lazy" decoding="async" />
+  </div>
+
+  <div class="tc0028-2-banner__cta">
+    <a class="tc0028-2-entry" href="${CFG.linkHref}" aria-label="${CFG.linkText} hacia ${CFG.linkHref}">${CFG.linkText}</a>
+  </div>
+</section>
+`.trim();
+
+  function isDesktopByBody(){
+    const w = Math.round((document.body?.getBoundingClientRect().width) || window.innerWidth || 0);
+    return w >= (CFG.bodyWidthBreakpoint || 1024);
+  }
+
+  function applyState(parent){
+    const desktop = isDesktopByBody();
+    parent.classList.toggle(CFG.desktopStateClass, desktop);
+
+    const block = $(CFG.blockSelector, parent);
+    if (!block) { warn("applyState: block no encontrado"); return; }
+
+    // Actualizar imagen según resolución
+    const img = block.querySelector(".tc0028-2-banner__img");
+    if (img) {
+      const chosen = desktop ? CFG.imgDesktop : CFG.imgMobile;
+      img.src = (chosen && chosen.src) ? chosen.src : "";
+      img.alt = (chosen && typeof chosen.alt === "string") ? chosen.alt : "";
+      log("img set =>", desktop ? "desktop" : "mobile", img.src);
+    }
+  }
+
+  function safeInsert() {
+    const parent = $(CFG.parentSelector);
+    if (!parent) { warn("Parent no encontrado:", CFG.parentSelector); return; }
+
+    // Aplicar clase de scope
+    if (!parent.classList.contains(CFG.scopeClass)) parent.classList.add(CFG.scopeClass);
+
+    log("HTML a insertar:", html);
+
+    // Insertar bloque solo si no existe
+    const already = $(CFG.blockSelector, parent);
+    if (!already) {
+      parent.insertAdjacentHTML(CFG.insertPosition, html);
+      log("HTML insertado con", CFG.insertPosition);
+    }
+
+    const block = $(CFG.blockSelector, parent);
+    if (!block) {
+      warn("Post-inserción: NO se localizó el bloque.");
+      return;
+    }
+
+    const title = block.querySelector(".tc0028-2-banner__title");
+    const sub   = block.querySelector(".tc0028-2-banner__subtitle");
+    const cta   = block.querySelector(".tc0028-2-entry");
+
+    log("DEBUG nodes =>", {
+      titleExists: !!title, titleText: title?.textContent || "(vacío)",
+      subtitleExists: !!sub, subtitleText: sub?.textContent || "(vacío)",
+      ctaExists: !!cta, ctaHref: cta?.getAttribute("href") || "(sin href)", ctaText: cta?.textContent || "(vacío)"
+    });
+
+    // Asegurar contenido por seguridad
+    if (title && !title.textContent) title.textContent = String(CFG.titleText || "");
+    if (sub   && !sub.textContent)   sub.textContent   = String(CFG.subtitleText || "");
+    if (cta) {
+      if (!cta.textContent) cta.textContent = String(CFG.linkText || "");
+      if (!cta.getAttribute("href")) cta.setAttribute("href", String(CFG.linkHref || "#"));
+    }
+
+    applyState(parent);
+
+    // Asignar listeners de cambio de tamaño
+    const onResize = (function(){ let id; return function(){ clearTimeout(id); id=setTimeout(()=>applyState(parent),120); }; })();
+    window.addEventListener("resize", onResize, { passive:true });
+    window.addEventListener("orientationchange", onResize, { passive:true });
+  }
+
+  try {
+    safeInsert();
+  } catch (e) {
+    console.error("[tc0028-2] EXCEPCIÓN en safeInsert:", e);
+  }
+
+})();
+</script>
+
+<script>
+(function promoViewScrollOnce(){
+  const SEL         = '.id-Z7_8ILI09412H67E0659TH42MJ341.tc0028-scope .tc0028-banner';
+  const KEY         = '__promo_view_tc0028';      // bandera one-shot por vista
+  const VIEW_OFFSET = 0;                          // px extra para adelantar
+  const EXP_NAME    = 'Qore - ViaBCP - TC0028 - P';
+
+  // --- utils
+  function getDocumentTop(el){
+    // Calcular distancia del elemento al topo del documento
+    let y = 0;
+    let n = el;
+    while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+    return y;
+  }
+
+  function isVisible(el){
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const vh   = window.innerHeight || document.documentElement.clientHeight || 0;
+    // Condición de visibilidad básica: cualquier parte visible
+    const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+    return visible;
+  }
+
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0028] digitalData push error:', e); }
+    return false;
+  }
+
+  function fireOnce(){
+    if (window[KEY]) return;
+    const ok = pushDigitalData({
+      promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta 1' },
+      event: 'trackPromotionView'
+    });
+    if (ok) window[KEY] = true;
+  }
+
+  // --- core
+  function start(){
+    const el = document.querySelector(SEL);
+    if (!el) return;
+
+    // 1) Disparar si ya es visible en la primera pantalla
+    if (isVisible(el)) { fireOnce(); return; }
+
+    // 2) Escuchar scroll hasta que sea visible (one-shot)
+    const onScroll = () => {
+      if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+      if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // 3) Intentar también tras load por posibles layout shifts
+    window.addEventListener('load', () => {
+      if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    }, { once: true });
+  }
+
+  // Iniciar ahora (primera carga)
+  start();
+
+  // Re‐iniciar al volver con bfcache (back/forward)
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+      start();
+    }
+  });
+})();
+</script>
+
+<script>
+(function promoViewScrollOnce(){
+  const SEL         = '.id-Z7_8ILI09412H67E0659TH42MJ367.tc0028-2-scope .tc0028-2-banner';
+  const KEY         = '__promo_view_tc0028-2';      // bandera one-shot por vista
+  const VIEW_OFFSET = 0;                          // px extra para adelantar
+  const EXP_NAME    = 'Qore - ViaBCP - TC0028 - P';
+
+  // --- utils
+  function getDocumentTop(el){
+    // Calcular distancia del elemento al topo del documento
+    let y = 0;
+    let n = el;
+    while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+    return y;
+  }
+
+  function isVisible(el){
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const vh   = window.innerHeight || document.documentElement.clientHeight || 0;
+    // Condición de visibilidad básica: cualquier parte visible
+    const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+    return visible;
+  }
+
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0028] digitalData push error:', e); }
+    return false;
+  }
+
+  function fireOnce(){
+    if (window[KEY]) return;
+    const ok = pushDigitalData({
+      promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta 2' },
+      event: 'trackPromotionView'
+    });
+    if (ok) window[KEY] = true;
+  }
+
+  // --- core
+  function start(){
+    const el = document.querySelector(SEL);
+    if (!el) return;
+
+    // 1) Disparar si ya es visible en la primera pantalla
+    if (isVisible(el)) { fireOnce(); return; }
+
+    // 2) Escuchar scroll hasta que sea visible (one-shot)
+    const onScroll = () => {
+      if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+      if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // 3) Intentar también tras load por posibles layout shifts
+    window.addEventListener('load', () => {
+      if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+    }, { once: true });
+  }
+
+  // Iniciar ahora (primera carga)
+  start();
+
+  // Re‐iniciar al volver con bfcache (back/forward)
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+      start();
+    }
+  });
+})();
+</script>
+
+<script>
+(function promoClickTrack(){
+  // Definir selectores y metadatos base
+  const SEL       = '.tc0028-scope .tc0028-entry';
+  const EXP_NAME  = 'Qore - ViaBCP - TC0028 - P';
+  const ACTION    = 'trackPromotionClick';
+
+  // Mapear atributos opcionales del elemento al payload
+  const MAP_ATTR = {
+    href:  el => el?.getAttribute('href') || '',
+    text:  el => (el?.textContent || '').trim(),
+    id:    el => el?.id || '',
+    role:  el => el?.getAttribute('role') || '',
+    label: el => el?.getAttribute('aria-label') || ''
+  };
+
+  // --- utils
+  function $(s, root = document){ try { return root.querySelector(s); } catch(_) { return null; } }
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0028] digitalData push error:', e); }
+    return false;
+  }
+
+  function buildPayload(target){
+    // Permitir personalizar construcción desde fuera si se requiere
+    if (typeof window.onBuildPromoClickPayload === 'function') {
+      try { return window.onBuildPromoClickPayload(target, { EXP_NAME, ACTION }); }
+      catch(e){ console.warn('[TC0028] onBuildPromoClickPayload error:', e); }
+    }
+    const data = {};
+    for (const k in MAP_ATTR) { try { data[k] = MAP_ATTR[k](target); } catch(_){} }
+    return {
+      promotion: {
+        name: EXP_NAME,
+        creative: 'Banner',
+        position: 'Adquiere tu Tarjeta 1'
+      },
+    //   link: data,
+      event: ACTION
+    };
+  }
+
+  // --- core
+  function onClick(e){
+    // Usar delegación para capturar clics en hijos
+    const target = e.target?.closest(SEL);
+    if (!target) return;
+
+    // Enviar evento de clic
+    const ok = pushDigitalData(buildPayload(target));
+
+    if (ok) { /* opcional: console.debug('click tagged'); */ }
+  }
+
+  function start(){
+    // Asegurar existencia del contenedor principal si se desea limitar el alcance
+    const scope = $('.tc0028-scope') || document;
+    scope.addEventListener('click', onClick, true);
+  }
+
+  // Iniciar
+  start();
+
+  // Re-iniciar al volver con bfcache
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      // No limpiar listeners: al usar delegación global, el handler sigue válido
+      // Si el alcance fuera un nodo que se recrea, reanudar aquí según necesidad
+    }
+  });
+})();
+</script>
+
+<script>
+(function promoClickTrack(){
+  // Definir selectores y metadatos base
+  const SEL       = '.tc0028-2-scope .tc0028-2-entry';
+  const EXP_NAME  = 'Qore - ViaBCP - TC0028 - P';
+  const ACTION    = 'trackPromotionClick';
+
+  // Mapear atributos opcionales del elemento al payload
+  const MAP_ATTR = {
+    href:  el => el?.getAttribute('href') || '',
+    text:  el => (el?.textContent || '').trim(),
+    id:    el => el?.id || '',
+    role:  el => el?.getAttribute('role') || '',
+    label: el => el?.getAttribute('aria-label') || ''
+  };
+
+  // --- utils
+  function $(s, root = document){ try { return root.querySelector(s); } catch(_) { return null; } }
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0028] digitalData push error:', e); }
+    return false;
+  }
+
+  function buildPayload(target){
+    // Permitir personalizar construcción desde fuera si se requiere
+    if (typeof window.onBuildPromoClickPayload === 'function') {
+      try { return window.onBuildPromoClickPayload(target, { EXP_NAME, ACTION }); }
+      catch(e){ console.warn('[TC0028] onBuildPromoClickPayload error:', e); }
+    }
+    const data = {};
+    for (const k in MAP_ATTR) { try { data[k] = MAP_ATTR[k](target); } catch(_){} }
+    return {
+      promotion: {
+        name: EXP_NAME,
+        creative: 'Banner',
+        position: 'Adquiere tu Tarjeta 2'
+      },
+    //   link: data,
+      event: ACTION
+    };
+  }
+
+  // --- core
+  function onClick(e){
+    // Usar delegación para capturar clics en hijos
+    const target = e.target?.closest(SEL);
+    if (!target) return;
+
+    // Enviar evento de clic
+    const ok = pushDigitalData(buildPayload(target));
+
+    if (ok) { /* opcional: console.debug('click tagged'); */ }
+  }
+
+  function start(){
+    // Asegurar existencia del contenedor principal si se desea limitar el alcance
+    const scope = $('.tc0028-2-scope') || document;
+    scope.addEventListener('click', onClick, true);
+  }
+
+  // Iniciar
+  start();
+
+  // Re-iniciar al volver con bfcache
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      // No limpiar listeners: al usar delegación global, el handler sigue válido
+      // Si el alcance fuera un nodo que se recrea, reanudar aquí según necesidad
+    }
+  });
+})();
+</script>

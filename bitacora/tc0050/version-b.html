@@ -1,0 +1,1215 @@
+<style>
+
+    @keyframes pulse-bcp {
+        0% {
+        box-shadow: 0 0 0 0 rgba(0, 42, 141, 0.75);
+        }
+        60% {
+        box-shadow: 0 0 0 0.65rem rgba(0, 42, 141, 0);
+        }
+        100% {
+        box-shadow: 0 0 0 0 rgba(255, 216, 159, 0);
+        }
+    }
+    .tc0050-scope bcp-card-content.bcp-card-content-host-4-31-1 {
+        border: 3px solid var(--primary-700, #002A8D);
+        border-top: none;
+        /* box-shadow: 0 0 0 5px rgba(0, 42, 141, 0.30), 0 0 0 10px rgba(0, 42, 141, 0.05); */
+        border-radius: 24px;
+        height: 100%;
+    }
+
+    .tc0050-scope .bcp-card-section .bcp-ffw-card {
+        animation: pulse-bcp 1.8s ease-in-out infinite;
+    }
+
+    .tc0050-scope section.bcp-ffw-card {
+        border-radius: 24px;
+    }
+
+    .tc0050-scope .bcp-card-section__content-body__favorita {
+        /* height: 45px !important; */
+        border-radius: 20px 20px 0 0 !important;
+        /* border: 2px solid var(--primary-700, #002A8D); */
+        border: none;
+        /* box-shadow: 0 0 0 5px rgba(0, 42, 141, 0.30), 0 0 0 10px rgba(0, 42, 141, 0.05); */
+        background: var(--primary-700, #002A8D) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.40);
+    }
+
+    .tc0050-scope bcp-card-content {
+        border: 3px solid var(--primary-700, #002A8D);
+        border-top: none;
+        /* box-shadow: 0 0 0 5px rgba(0, 42, 141, 0.30), 0 0 0 10px rgba(0, 42, 141, 0.05); */
+        border-radius: 24px;
+        height: 100%;
+    }
+
+    .tc0050-scope bcp-card-content .bcp-card-section__content-body {
+        height: auto !important;
+    }
+
+    .tc0050-scope .tc0050-favorita {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .tc0050-scope .tc0050-favorita-icon {
+        width: 22px;
+        height: 22px;
+        flex-shrink: 0;
+    }
+
+    .tc0050-scope .tc0050-favorita-text {
+        color: var(--on-white, #FFF);
+        font-family: Flexo;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .tc0050-scope .tc0050-favorita .tc0050-favorita-text {
+        color: var(--on-white, #FFF);
+
+        /* D/Character-L */
+        font-family: Flexo;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin: 0;
+    }
+
+    .tc0050-scope .bcp-card-section__content-body__card-display {
+        background: linear-gradient(to bottom,
+                var(--primary-700, #002A8D) 0%,
+                var(--primary-700, #002A8D) 50%,
+                #ffffff 50%,
+                #ffffff 100%);
+
+        border-radius: 0 0 10px 10px;
+    }
+
+    .tc0050-scope .bcp-card-section__content-body__card-display {
+        position: relative;
+        /* background: var(--primary-700, #002A8D); */
+        overflow: hidden;
+    }
+
+    .tc0050-scope .bcp-card-section__content-body__card-display::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        height: 80%;
+        /* mitad inferior */
+
+        background: #ffffff;
+
+        border-radius: 20px 20px 0 0;
+
+        z-index: 0;
+    }
+
+    .tc0050-scope .bcp-card-section__content-body__card-display>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    .tc0050-scope .tc0050-favorita {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* luz superior */
+    .tc0050-scope .tc0050-favorita::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        /* hace que “venga desde arriba” */
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 120%;
+        height: 120%;
+
+        background: radial-gradient(ellipse at top center,
+                rgba(255, 255, 255, 0.55) 0%,
+                rgba(255, 255, 255, 0.35) 20%,
+                rgba(255, 255, 255, 0.15) 35%,
+                rgba(255, 255, 255, 0.00) 55%);
+
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .tc0050-scope .tc0050-favorita>* {
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+
+        .tc0050-scope .bcp-card-section__content-body__card-display {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom,
+                    var(--primary-700, #002A8D) 0%,
+                    var(--primary-700, #002A8D) 50%,
+                    #ffffff 50%,
+                    #ffffff 100%) !important;
+            padding-top: 10px;
+        }
+
+        .tc0050-scope .bcp-card-section__content-body__card-display__bonus-button {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .tc0050-scope .bcp-card-section-benefit {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tc0050-scope .card-option-bonus {
+            max-width: 100% !important;
+        }
+
+    }
+</style>
+
+<script>
+    (function () {
+        "use strict";
+
+        // ===== CONFIG =====
+        const CFG = {
+            cardAttr: "TCRORL",
+            itemSelector: "card-option.item",
+            favoritaSelector: ".bcp-card-section__content-body__favorita",
+            scopeClass: "tc0050-scope",
+            favoritaClass: "tc0050-favorita",
+            favoritaTextClass: "tc0050-favorita-text",
+            labelText: "LA MÁS PEDIDA",
+            imgTitle: "https://www.viabcp.com/wcm/connect/1f5dc7bd-21a4-49ef-afd7-a3929742fe48/tc0050-icon-maspedida.png?MOD=AJPERES&attachment=false&id=1778871560427",
+            debug: true
+        };
+
+        // ===== UTILS =====
+        const log = (...a) => CFG.debug && console.log("[tc0050]", ...a);
+        const warn = (...a) => CFG.debug && console.warn("[tc0050]", ...a);
+
+        const $ = (s, r = document) => {
+            try { return r.querySelector(s); }
+            catch (e) { warn("querySelector error", s); return null; }
+        };
+
+
+        function isVisible(el) {
+            return el && !el.classList.contains("display-none");
+        }
+
+        function isSliderReady() {
+            const items = document.querySelectorAll(CFG.itemSelector);
+
+            if (!items.length) return false;
+
+            const visibleItems = Array.from(items).filter(
+                el => !el.classList.contains("display-none")
+            );
+
+            return visibleItems.length > 0;
+        }
+
+        function waitForCondition(checkFn, timeout = 5000, interval = 100) {
+            return new Promise((resolve, reject) => {
+                const start = Date.now();
+
+                const timer = setInterval(() => {
+                    const result = checkFn();
+
+                    if (result) {
+                        clearInterval(timer);
+                        resolve(result);
+                    }
+
+                    if (Date.now() - start > timeout) {
+                        clearInterval(timer);
+                        reject("Timeout waiting condition");
+                    }
+                }, interval);
+            });
+        }
+
+        function isMobile() {
+            return window.matchMedia("(max-width: 768px)").matches;
+        }
+
+        function getActiveTabType() {
+            const activeTab = document.querySelector(
+                '.tabs-container [role="tab"][aria-selected="true"]'
+            );
+
+            if (!activeTab) return null;
+
+            const text = activeTab.textContent.trim().toUpperCase();
+
+            if (text.includes("VISA")) return "VISA";
+            if (text.includes("AMEX")) return "AMEX";
+
+            return null;
+        }
+
+        function getCardType(card) {
+            const attr = card.getAttribute("data-tio-aux");
+
+            if (!attr) return null;
+
+            if (attr.startsWith("TCR")) return "VISA";
+            if (attr.startsWith("AMX")) return "AMEX";
+
+            return null;
+        }
+
+        function applyMobileLayout(card) {
+
+            if (card.getAttribute("data-tio-aux") !== CFG.cardAttr) return;
+
+            if (!isMobile()) return;
+
+            const body = card.querySelector(".bcp-card-section__content-body");
+            if (!body) return;
+
+            const titleContainer = body.querySelector(
+                ".bcp-card-section__content-body__cardname"
+            );
+
+            const display = body.querySelector(
+                ".bcp-card-section__content-body__card-display"
+            );
+
+            const image = display?.querySelector("img.card-option-image");
+
+            const bonus = body.querySelector(
+                ".bcp-card-section__content-body__card-display__bonus-button"
+            );
+
+            const benefit = body.querySelector(".bcp-card-section-benefit");
+
+            if (!titleContainer || !display || !image) {
+                log("Mobile layout: elementos faltantes");
+                return;
+            }
+
+            // evitar duplicación
+            if (card.classList.contains("tc0050-mobile-applied")) {
+                log("Mobile ya aplicado, skip");
+                return;
+            }
+
+            card.classList.add("tc0050-mobile-applied");
+
+            // ocultar título original
+            titleContainer.style.display = "";
+
+            // mover título debajo de imagen
+            image.insertAdjacentElement("afterend", titleContainer);
+
+            // estilos display
+            display.style.display = "flex";
+            display.style.flexDirection = "column";
+            display.style.background = "none";
+
+            // bonus botón
+            if (bonus) {
+                bonus.style.width = "80%";
+                bonus.style.margin = "0 auto";
+            }
+
+            // beneficios
+            if (benefit) {
+                benefit.style.width = "80%";
+                benefit.style.margin = "0 auto";
+                benefit.style.display = "flex";
+                benefit.style.justifyContent = "space-between";
+            }
+
+            log("Mobile layout aplicado");
+        }
+
+        function applyBonusTextChange(card) {
+
+            const container = card.querySelector(
+                ".bcp-card-section__content-body__card-display__bonus-button .card-option-bonus"
+            );
+
+            if (!container) return;
+
+            const originalP = container.querySelector("p");
+
+            if (!originalP) return;
+
+            // evitar duplicación
+            let expP = container.querySelector(".tc0050-bonus-exp");
+
+            if (!expP) {
+                expP = document.createElement("p");
+                expP.className = "tc0050-bonus-exp paragraph-md bcp-font-bold primary-700";
+                expP.textContent = "Membresía GRATIS por consumo mínimo mensual*";
+
+                container.appendChild(expP);
+            }
+
+            // toggle
+            originalP.style.display = "none";
+            expP.style.display = "";
+
+            log("Bonus swap aplicado");
+        }
+
+
+        function cleanupOtherScopes() {
+
+            const activeTab = getActiveTabType();
+
+            if (isMobile() && activeTab && activeTab !== "VISA") {
+
+                const parent = document.querySelector(".comparator__body");
+
+                if (parent) {
+                    const items = [...parent.children];
+
+                    items
+                        .sort((a, b) => {
+                            const ai = parseInt(a.dataset.tc0050Index || 0, 10);
+                            const bi = parseInt(b.dataset.tc0050Index || 0, 10);
+                            return ai - bi;
+                        })
+                        .forEach(el => parent.appendChild(el));
+                }
+            }
+
+            const scoped = document.querySelectorAll("." + CFG.scopeClass);
+
+            scoped.forEach(el => {
+
+                const card = el.querySelector("bcp-card");
+
+                // limpiar TODO lo que no sea el target real
+                if (!card || card.getAttribute("data-tio-aux") !== CFG.cardAttr) {
+
+                    el.classList.remove(CFG.scopeClass);
+
+                    if (!card) return;
+
+                    card.classList.remove("tc0050-mobile-applied");
+
+                    const paragraph = card.querySelector(
+                        ".bcp-card-section__content-body__card-display__bonus-button .card-option-bonus p"
+                    );
+
+                    if (paragraph) {
+                        paragraph.classList.remove("tc0050-bonus-updated");
+                        paragraph.textContent = "";
+                    }
+
+                    const favorita = card.querySelector(CFG.favoritaSelector);
+
+                    if (favorita) {
+                        favorita.classList.remove("tc0050-existing-processed");
+                        favorita.classList.remove(CFG.favoritaClass);
+
+                        const icon = favorita.querySelector(".tc0050-favorita-icon");
+                        if (icon) icon.remove();
+
+
+                        if (CFG.favoritaTextClass) {
+                            favorita
+                                .querySelectorAll("." + CFG.favoritaTextClass)
+                                .forEach(el => el.remove());
+                        }
+
+                        favorita.querySelectorAll(`.tc0050-favorita-icon`).forEach(el => el.remove());
+
+                    }
+                }
+            });
+        }
+
+        function forceGlobalCleanup() {
+
+            document.querySelectorAll("bcp-card").forEach(card => {
+
+                const attr = card.getAttribute("data-tio-aux");
+
+                // SOLO limpiar los que NO son target
+                if (attr !== CFG.cardAttr) {
+
+                    const body = card.querySelector(".bcp-card-section__content-body");
+
+                    if (!body) return;
+
+                    const display = body.querySelector(
+                        ".bcp-card-section__content-body__card-display"
+                    );
+
+                    const title = body.querySelector(
+                        ".bcp-card-section__content-body__cardname"
+                    );
+
+                    const bonus = body.querySelector(
+                        ".bcp-card-section__content-body__card-display__bonus-button"
+                    );
+
+                    // RESET estilos SIEMPRE
+                    if (display) display.removeAttribute("style");
+                    if (bonus) bonus.removeAttribute("style");
+
+                    // RESET título posición SIEMPRE
+                    if (title && display && display.contains(title)) {
+                        body.insertBefore(title, display);
+                    }
+
+                    // ELIMINAR MOBILE FLAG
+                    card.classList.remove("tc0050-mobile-applied");
+
+                    // LIMPIAR FAVORITA
+                    const fav = card.querySelector(CFG.favoritaSelector);
+                    if (fav) {
+                        fav.innerHTML = "";
+                        fav.classList.remove(CFG.favoritaClass, "tc0050-existing-processed");
+                    }
+
+                    // BENEFIT STYLES
+                    const benefit = body.querySelector(".bcp-card-section-benefit");
+
+                    if (benefit) {
+                        benefit.removeAttribute("style");
+                    }
+
+                    // BONUS TEXT
+                    const container = body.querySelector(
+                        ".bcp-card-section__content-body__card-display__bonus-button .card-option-bonus"
+                    );
+
+                    if (container) {
+
+                        const originalP = container.querySelector("p:not(.tc0050-bonus-exp)");
+                        const expP = container.querySelector(".tc0050-bonus-exp");
+
+                        if (originalP) {
+                            originalP.style.display = "";
+                        }
+
+                        if (expP) {
+                            expP.style.display = "none";
+                        }
+                    }
+                }
+            });
+
+            // limpiar scopes sueltos
+            document.querySelectorAll("." + CFG.scopeClass).forEach(el => {
+                el.classList.remove(CFG.scopeClass);
+            });
+
+            log("Global cleanup aplicado ");
+        }
+
+        // ===== CORE =====
+
+        function findTargetItem() {
+
+
+            if (!isSliderReady()) {
+                log("Slider aún no listo");
+                return null;
+            }
+
+            // buscar la card DIRECTAMENTE
+            const targetCard = document.querySelector(
+                `bcp-card[data-tio-aux="${CFG.cardAttr}"]`
+            );
+
+            if (!targetCard) {
+                log("Card aún no existe en DOM");
+                return null;
+            }
+
+            // subir al item
+            const targetItem = targetCard.closest(CFG.itemSelector);
+            if (!targetItem) {
+                log("Item wrapper aún no disponible");
+                return null;
+            }
+
+            // validar VISIBILIDAD REAL
+            if (targetItem.classList.contains("display-none")) {
+                log("Card encontrada pero en tab inactivo, skip");
+                return null;
+            }
+
+            // obtener items visibles REALES
+            const visibleItems = Array.from(
+                document.querySelectorAll(CFG.itemSelector)
+            ).filter(el => !el.classList.contains("display-none"));
+
+            if (!visibleItems.length) {
+                log("No hay items visibles realmente");
+                return null;
+            }
+
+            const firstItem = visibleItems[0];
+
+            // evitar override si ya es primera
+            if (targetItem === firstItem) {
+                log("Ya es primer item visible, skip");
+                return null;
+            }
+
+            return { card: targetCard, item: targetItem };
+        }
+
+        function getTargetAnyTab() {
+            const cards = document.querySelectorAll("bcp-card");
+
+            const card = [...cards].find(
+                el => el.getAttribute("data-tio-aux") === CFG.cardAttr
+            );
+
+            if (!card) return null;
+
+            const item = card.closest(CFG.itemSelector);
+            if (!item) return null;
+
+            return { card, item };
+        }
+
+        function getValidTargetDesktop() {
+
+            const cards = document.querySelectorAll("bcp-card");
+
+            const card = [...cards].find(
+                el => el.getAttribute("data-tio-aux") === CFG.cardAttr
+            );
+
+            if (!card) return null;
+
+            const item = card.closest(CFG.itemSelector);
+            if (!item) return null;
+
+            if (item.classList.contains("display-none")) return null;
+
+            return { card, item };
+        }
+
+        function getValidTargetMobile() {
+
+            const cards = document.querySelectorAll("bcp-card");
+
+            const matches = [...cards].filter(
+                el => el.getAttribute("data-tio-aux") === CFG.cardAttr
+            );
+
+            if (!matches.length) return null;
+
+            const card = matches.find(c => {
+                const type = getCardType(c);
+                return type === activeTab;
+            });
+
+            if (!card) return null;
+
+            const item = card.closest(CFG.itemSelector);
+            if (!item) return null;
+
+            return { card, item };
+        }
+
+        function getValidTargetGlobal() {
+
+            const cards = document.querySelectorAll("bcp-card");
+
+            const card = [...cards].find(
+                el => el.getAttribute("data-tio-aux") === CFG.cardAttr
+            );
+
+            if (!card) return null;
+
+            const item = card.closest(CFG.itemSelector);
+            if (!item) return null;
+
+            return { card, item };
+        }
+
+
+        function getVisibleTarget() {
+            const visibleItems = document.querySelectorAll(
+                "card-option.item:not(.display-none) bcp-card"
+            );
+
+            const card = [...visibleItems].find(
+                el => el.getAttribute("data-tio-aux") === CFG.cardAttr
+            );
+
+            if (!card) return null;
+
+            const item = card.closest(CFG.itemSelector);
+            if (!item) return null;
+
+            return { card, item };
+        }
+
+        function getValidTargetStrict() {
+            const card = document.querySelector(
+                `card-option.item:not(.display-none) bcp-card[data-tio-aux="${CFG.cardAttr}"]`
+            );
+
+            if (!card) return null;
+
+            const item = card.closest(CFG.itemSelector);
+            if (!item) return null;
+
+            return { card, item };
+        }
+
+
+        function listenTabChanges() {
+
+
+
+
+            document.addEventListener("click", (e) => {
+
+                const tab = e.target.closest('[role="tab"]');
+                if (!tab) return;
+
+                setTimeout(() => {
+
+                    // STEP 1: limpieza GLOBAL SIEMPRE
+                    forceGlobalCleanup();
+
+                    const result = getValidTargetGlobal();
+
+                    if (!result) {
+                        log("No target → solo cleanup ejecutado");
+                        return;
+                    }
+
+                    // STEP 2: aplicar solo si corresponde
+                    applyExperiment(result);
+
+                }, 300);
+
+            });
+        }
+
+        function applyExperiment({ card, item }) {
+            if (!item || !card) {
+                log("Abort: item/card inválidos");
+                return;
+            }
+
+            const realCard = item.querySelector("bcp-card");
+
+            if (
+                !realCard ||
+                realCard.getAttribute("data-tio-aux") !== CFG.cardAttr
+            ) {
+                log("Abort: item no contiene el target real");
+                return;
+            }
+
+
+
+            const currentCard = item.querySelector("bcp-card");
+
+            if (item.classList.contains(CFG.scopeClass) && (!currentCard || currentCard.getAttribute("data-tio-aux") !== CFG.cardAttr)) {
+                log("Abort: item reciclado por Angular");
+                cleanupOtherScopes(null);
+                item.classList.remove(CFG.scopeClass);
+
+                if (currentCard) {
+                    currentCard.classList.remove("tc0050-mobile-applied");
+
+                    const paragraph = currentCard.querySelector(
+                        ".bcp-card-section__content-body__card-display__bonus-button .card-option-bonus p"
+                    );
+
+                    if (paragraph) {
+                        paragraph.classList.remove("tc0050-bonus-updated");
+                        paragraph.textContent = ""; // reset real
+                    }
+                }
+
+                return;
+            }
+
+            cleanupOtherScopes(null);
+            const parent = item.parentNode;
+            if (!parent) return;
+            const isVisibleNow = !item.classList.contains("display-none");
+            const cardType = getCardType(card);
+
+            if (cardType !== "VISA") {
+
+                const currentCard = item.querySelector("bcp-card");
+
+                log("Cleanup nodo actual (no VISA)");
+
+                // quitar scope
+                item.classList.remove(CFG.scopeClass);
+
+                if (currentCard) {
+
+                    // layout mobile
+                    currentCard.classList.remove("tc0050-mobile-applied");
+
+                    const body = currentCard.querySelector(".bcp-card-section__content-body");
+
+                    const display = body?.querySelector(
+                        ".bcp-card-section__content-body__card-display"
+                    );
+
+                    const title = body?.querySelector(
+                        ".bcp-card-section__content-body__cardname"
+                    );
+
+                    if (display) {
+                        display.removeAttribute("style");
+                    }
+
+
+                    // reset bonus
+                    const bonus = body?.querySelector(
+                        ".bcp-card-section__content-body__card-display__bonus-button"
+                    );
+
+                    if (bonus) {
+                        bonus.removeAttribute("style");
+                    }
+
+
+                    // reset texto bonus
+                    const paragraph = body?.querySelector(
+                        ".bcp-card-section__content-body__card-display__bonus-button .card-option-bonus p"
+                    );
+
+                    if (paragraph) {
+                        paragraph.textContent = "";
+                        paragraph.classList.remove("tc0050-bonus-updated");
+                    }
+
+                    if (title && body) {
+                        const originalPosition = body.querySelector(
+                            ":scope > .bcp-card-section__content-body__cardname"
+                        );
+
+                        // solo mover si no está en el nivel correcto
+                        if (!originalPosition) {
+                            body.insertBefore(title, body.firstChild);
+                        }
+                    }
+
+                    // limpiar favorita COMPLETA
+                    const favorita = currentCard.querySelector(CFG.favoritaSelector);
+
+                    if (favorita) {
+                        favorita.innerHTML = "";
+                        favorita.classList.remove(
+                            "tc0050-existing-processed",
+                            CFG.favoritaClass
+                        );
+                    }
+                }
+
+                return; //salir aquí SIEMPRE
+            }
+
+            const isActuallyVisible = !item.classList.contains("display-none")
+            if (card.getAttribute("data-tio-aux") !== CFG.cardAttr || !isActuallyVisible) {
+                log("Abort: card no coincide con target");
+                return;
+            }
+            const isTargetHidden = item.classList.contains("display-none");
+
+            if (card.getAttribute("data-tio-aux") !== CFG.cardAttr) {
+                log("Abort: card no coincide con target");
+                return;
+            }
+            const targetIsHidden = item.classList.contains("display-none");
+
+            const itemsSameGroup = [...parent.children].filter(el => {
+                const c = el.querySelector("bcp-card");
+                if (!c) return false;
+
+                const sameType = getCardType(c) === cardType;
+
+                // MISMA visibilidad que el target
+                const sameVisibility =
+                    el.classList.contains("display-none") === targetIsHidden;
+
+                return sameType && sameVisibility;
+            });
+
+            if (!itemsSameGroup.length) return;
+
+
+            if (!itemsSameGroup.includes(item)) {
+                log("Abort: item fuera de grupo");
+                return;
+            }
+
+            const firstItem = isMobile()
+                ? itemsSameGroup[0]
+                : parent.firstElementChild;
+
+
+            if (item === firstItem) {
+                log("Mobile: ya es primero en su tab visual");
+                cleanupOtherScopes(item);
+
+                applyScope(item);
+
+                document.querySelectorAll("." + CFG.scopeClass).forEach(el => {
+                    if (el !== item) {
+                        el.classList.remove(CFG.scopeClass);
+                    }
+                });
+
+                applyExistingFavoritaOverride(card);
+                if (
+                    item.classList.contains(CFG.scopeClass) &&
+                    isVisibleNow &&
+                    cardType === "VISA"
+                ) {
+                    applyMobileLayout(card);
+                    // applyBonusTextChange(card);
+                }
+                return;
+            }
+            parent.insertBefore(item, firstItem);
+
+            cleanupOtherScopes(item);
+            applyScope(item);
+
+            document.querySelectorAll("." + CFG.scopeClass).forEach(el => {
+                if (el !== item) {
+                    el.classList.remove(CFG.scopeClass);
+                }
+            });
+
+            applyFavorita(card);
+            if (
+                item.classList.contains(CFG.scopeClass) &&
+                isVisibleNow &&
+                cardType === "VISA"
+            ) {
+                applyMobileLayout(card);
+                // applyBonusTextChange(card);
+            }
+            log("Mobile aplicado");
+            return;
+        }
+
+        function applyScope(item) {
+            if (!item.classList.contains(CFG.scopeClass)) {
+                item.classList.add(CFG.scopeClass);
+                log("scopeClass aplicado al item");
+            }
+        }
+
+        function moveItemToFirstPosition(item) {
+            const parent = item.parentNode;
+            if (!parent) return;
+
+            if (parent.firstElementChild !== item) {
+                parent.insertBefore(item, parent.firstElementChild);
+                log("Item movido a primera posición");
+            }
+        }
+
+        function applyFavorita(card) {
+            const container = $(CFG.favoritaSelector, card);
+            if (!container) {
+                warn("Contenedor favorita no encontrado");
+                return;
+            }
+
+            if (container.querySelector("." + CFG.favoritaTextClass)) {
+                log("Favorita ya aplicada por contenido, skip");
+                return;
+            }
+
+            container.classList.add(CFG.favoritaClass);
+
+            // === IMG ===
+            const img = document.createElement("img");
+            img.src = CFG.imgTitle;
+            img.alt = CFG.labelText;
+            img.className = "tc0050-favorita-icon";
+            img.loading = "lazy";
+
+            // === TEXT ===
+            const p = document.createElement("p");
+            p.className = CFG.favoritaTextClass;
+            p.textContent = CFG.labelText;
+
+            // Orden correcto: img + texto
+            container.appendChild(img);
+            container.appendChild(p);
+
+            log("Favorita aplicada con imagen");
+        }
+        function applyExistingFavoritaOverride(card) {
+
+            const container = card.querySelector(CFG.favoritaSelector);
+            if (!container) {
+                log("No existe contenedor favorita base");
+                return;
+            }
+
+            // evitar doble ejecución
+            if (container.classList.contains("tc0050-existing-processed")) {
+                log("Favorita base ya procesada, skip");
+                return;
+            }
+
+            container.classList.add("tc0050-existing-processed");
+            container.classList.add(CFG.favoritaClass);
+
+            // ===== TEXTO EXISTENTE =====
+
+            let paragraph = container.querySelector("p");
+
+            if (!paragraph || !paragraph.classList.contains(CFG.favoritaTextClass)) {
+                paragraph = document.createElement("p");
+                paragraph.className = CFG.favoritaTextClass;
+                container.appendChild(paragraph);
+            }
+
+            paragraph.textContent = CFG.labelText;
+
+            // ===== ICONO =====
+            let img = container.querySelector(".tc0050-favorita-icon");
+
+
+            if (!img || !img.isConnected) {
+                img = document.createElement("img");
+                img.src = CFG.imgTitle;
+                img.alt = CFG.labelText;
+                img.className = "tc0050-favorita-icon";
+                img.loading = "lazy";
+
+                container.insertBefore(img, container.firstChild);
+            }
+            log("Override de favorita base aplicado");
+        }
+
+        function initExperiment() {
+
+            // DESKTOP FLOW
+            if (!isMobile()) {
+                log("Modo desktop detectado");
+
+                waitForCondition(getValidTargetDesktop, 6000, 120)
+                    .then(applyExperiment)
+                    .catch(() => log("Timeout desktop"));
+
+                return;
+            }
+
+            // MOBILE FLOW
+            log("Modo mobile detectado");
+
+            waitForCondition(getValidTargetGlobal, 6000, 120)
+                .then((result) => {
+                    forceGlobalCleanup();
+
+                    log("Target global encontrado")
+                    document.querySelectorAll(CFG.itemSelector).forEach((el, i) => {
+                        if (!el.dataset.tc0050Index) {
+                            el.dataset.tc0050Index = i;
+                        }
+                    });
+
+                    applyExperiment(result);
+                    listenTabChanges();
+                })
+                .catch(() => log("Timeout mobile"));
+        }
+
+        // ===== RUN =====
+        try {
+            // setTimeout(observeAndRun, 500);
+            initExperiment();
+        } catch (e) {
+            console.error("[tc0050] EXCEPCIÓN:", e);
+        }
+
+    })();
+
+</script>
+
+
+<script>
+    (function promoViewScrollOnce() {
+
+        const SEL = '.tc0050-scope';
+        const KEY = '__promo_view_tc0050_pilB';
+        const VIEW_OFFSET = 0;
+        const EXP_NAME = 'Felicitaciones - Cards - TC0050 - EXP - B';
+
+        // ===== UTILS =====
+
+        function getDocumentTop(el) {
+            let y = 0;
+            let n = el;
+            while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+            return y;
+        }
+
+        function isVisible(el) {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+
+            return (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+        }
+
+        function pushDigitalData(payload) {
+            try {
+                if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+                if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+                if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+                window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+            } catch (e) {
+                console.warn('[TC0050] digitalData push error:', e);
+            }
+            return false;
+        }
+
+        function fireOnce() {
+            if (window[KEY]) return;
+
+            const ok = pushDigitalData({
+                promotion: { name: EXP_NAME, creative: 'Featured Card', position: 'La mas Pedida' },
+                event: 'trackPromotionView'
+            });
+
+            console.warn('[TC0050] fireOnce', {
+                position: 'La mas Pedida',
+                t: performance.now()
+            });
+
+            if (ok) window[KEY] = true;
+        }
+
+        // ===== TRACKING CORE =====
+
+        function initTracking(el) {
+
+            // 1) visible inmediatamente
+            if (isVisible(el)) {
+                setTimeout(() => fireOnce(), 500);
+                return;
+            }
+
+            // 2) scroll listener
+            const onScroll = () => {
+                if (window[KEY]) {
+                    window.removeEventListener('scroll', onScroll);
+                    return;
+                }
+
+                if (isVisible(el)) {
+                    fireOnce();
+                    window.removeEventListener('scroll', onScroll);
+                }
+            };
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // 3) load fallback
+            window.addEventListener('load', () => {
+                if (!window[KEY] && isVisible(el)) {
+                    fireOnce();
+                    window.removeEventListener('scroll', onScroll);
+                }
+            }, { once: true });
+        }
+
+        // ===== WAIT FOR SCOPE (FIX SPA) =====
+
+        function waitForScopeAndStart() {
+            const startTime = Date.now();
+            const timeout = 6000;
+
+            const interval = setInterval(() => {
+
+                const el = document.querySelector(SEL);
+
+                if (el) {
+                    clearInterval(interval);
+
+                    console.warn('[TC0050] scope encontrado → iniciar tracking');
+
+                    initTracking(el);
+                }
+
+                if (Date.now() - startTime > timeout) {
+                    clearInterval(interval);
+                    console.warn('[TC0050] timeout esperando scope');
+                }
+
+            }, 150);
+        }
+
+        function listenTabChangesTracking() {
+
+            document.addEventListener('click', () => {
+
+                // pequeño delay para Angular render
+                setTimeout(() => {
+
+                    if (window[KEY]) return;
+
+                    const el = document.querySelector(SEL);
+
+                    if (!el) {
+                        console.warn('[TC0050] no hay scope tras click');
+                        return;
+                    }
+
+                    if (isVisible(el)) {
+                        console.warn('[TC0050] visible tras interacción (tab probable)');
+                        fireOnce();
+                    }
+
+                }, 400);
+
+            });
+
+        }
+
+        // ===== RUN =====
+
+        // primera carga
+        waitForScopeAndStart();
+        listenTabChangesTracking();
+
+        // BFCache (back/forward)
+        window.addEventListener('pageshow', (ev) => {
+            if (ev.persisted) {
+                window[KEY] = false;
+                waitForScopeAndStart();
+                listenTabChangesTracking();
+            }
+        });
+
+    })();
+</script>

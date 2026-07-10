@@ -1,0 +1,40 @@
+<script>
+  (() => {
+    // === Detectar Lead / No Lead ===
+    const maStiubt = sessionStorage.getItem("stiubt");
+    if (!maStiubt) return;
+    const maInfo = JSON.parse(maStiubt);
+    const maIsLead = maInfo[6] !== "GENERI";
+    const maTrackPosition = maIsLead
+      ? "Nueva Version - Lead"
+      : "Nueva Version - No Lead";
+
+    // === trackPromotionView — al cargar la página ===
+    digitalData.push({
+      promotion: {
+        name: "Descubre tu Oferta TC - ViaBCP - TC0042 - C",
+        creative: "Page",
+        position: maTrackPosition,
+      },
+      event: "trackPromotionView",
+    });
+
+    // === trackPromotionClick — en cualquier botón CTA ===
+    document
+      .querySelectorAll(
+        ".bcp_btn_solicita.bcp_boton_naranja, .boton_banner_st",
+      )
+      .forEach((btn) => {
+        btn.addEventListener("click", function () {
+          digitalData.push({
+            promotion: {
+              name: "Descubre tu Oferta TC - ViaBCP - TC0042 - C",
+              creative: "Page",
+              position: maTrackPosition,
+            },
+            event: "trackPromotionClick",
+          });
+        });
+      });
+  })();
+</script>

@@ -1,0 +1,232 @@
+<script>
+  (function () {
+    const nuevasOpciones = [
+      {
+        seccion: "Tarjetas",
+        texto: "Ampliación línea de crédito",
+        href: "https://www.viabcp.com/tarjetas/ampliacion-linea-credito",
+        hrefMobile: "https://www.viabcp.com/bmo-para-ti",
+        rfid: "header:productos:ampliacion-linea-de-credito:tarjetas"
+      }
+    ];
+    const promocion = {
+      name: "Productos - Tarjetas - ViaBCP - TC0058 - P",
+      creative: "Header",
+      position: "Ampliacion de Linea"
+    };
+    let promocionVistaRegistrada = false;
+
+    function normalizarTexto(texto) {
+      return texto.replace(/\s+/g, " ").trim().toLowerCase();
+    }
+
+    function obtenerProductoPorSeccion(seccion) {
+      const productos = document.querySelectorAll(".bcp_productos .bcp_producto");
+
+      for (let i = 0; i < productos.length; i++) {
+        const titulo = productos[i].querySelector(".bcp_titulo_producto span");
+
+        if (titulo && normalizarTexto(titulo.textContent) === normalizarTexto(seccion)) {
+          return productos[i];
+        }
+      }
+
+      return null;
+    }
+
+    function crearOpcion(opcion) {
+      const li = document.createElement("li");
+      const enlace = document.createElement("a");
+      const href = obtenerHrefPorDispositivo(opcion);
+
+      enlace.setAttribute("data-translate", "true");
+      enlace.href = agregarRfid(href, opcion.rfid);
+      enlace.target = "_self";
+      enlace.textContent = opcion.texto;
+      enlace.addEventListener("click", function () {
+        registrarPromocion("trackPromotionClick");
+      });
+
+      li.appendChild(enlace);
+      return li;
+    }
+
+    function registrarPromocion(evento) {
+      window.digitalData = window.digitalData || [];
+      window.digitalData.push({
+        promotion: {
+          name: promocion.name,
+          creative: promocion.creative,
+          position: promocion.position
+        },
+        event: evento
+      });
+    }
+
+    function registrarPromotionView() {
+      if (promocionVistaRegistrada) {
+        return;
+      }
+
+      promocionVistaRegistrada = true;
+      registrarPromocion("trackPromotionView");
+    }
+
+    function observarVistaLista(producto, lista) {
+      if (!producto || !lista || lista.getAttribute("data-promotion-view-observada") === "true") {
+        return;
+      }
+
+      lista.setAttribute("data-promotion-view-observada", "true");
+      let listaEnViewport = false;
+      let observadorInterseccion = null;
+      let observadorCambios = null;
+
+      function productoEstaActivo() {
+        const boton = producto.querySelector(".bcp_titulo_producto");
+
+        return producto.classList.contains("activo") || (boton && boton.getAttribute("aria-expanded") === "true");
+      }
+
+      function listaTieneTamanoVisible() {
+        const medidas = lista.getBoundingClientRect();
+
+        return medidas.width > 0 && medidas.height > 0;
+      }
+
+      function limpiarObservadores() {
+        if (observadorInterseccion) {
+          observadorInterseccion.disconnect();
+        }
+
+        if (observadorCambios) {
+          observadorCambios.disconnect();
+        }
+      }
+
+      function intentarRegistrarVista() {
+        if (promocionVistaRegistrada || !productoEstaActivo() || !listaTieneTamanoVisible()) {
+          return;
+        }
+
+        if (!("IntersectionObserver" in window) || listaEnViewport) {
+          registrarPromotionView();
+          limpiarObservadores();
+        }
+      }
+
+      if (!("IntersectionObserver" in window)) {
+        intentarRegistrarVista();
+        return;
+      }
+
+      observadorInterseccion = new IntersectionObserver(function (entradas) {
+        for (let i = 0; i < entradas.length; i++) {
+          listaEnViewport = entradas[i].isIntersecting;
+          intentarRegistrarVista();
+        }
+      }, { threshold: 0.1 });
+
+      observadorInterseccion.observe(lista);
+
+      observadorCambios = new MutationObserver(intentarRegistrarVista);
+      observadorCambios.observe(producto, { attributes: true, attributeFilter: ["class"] });
+
+      const boton = producto.querySelector(".bcp_titulo_producto");
+
+      if (boton) {
+        observadorCambios.observe(boton, { attributes: true, attributeFilter: ["aria-expanded"] });
+      }
+    }
+
+    function obtenerHrefPorDispositivo(opcion) {
+      const esMobile = window.matchMedia("(max-width: 767px)").matches;
+
+      return esMobile && opcion.hrefMobile ? opcion.hrefMobile : opcion.href;
+    }
+
+    function agregarRfid(href, rfid) {
+      const separador = href.indexOf("?") === -1 ? "?" : "&";
+
+      return href + separador + "rfid=" + rfid;
+    }
+
+    function obtenerReferenciaVerTodos(lista) {
+      const itemVerTodos = lista.querySelector(".bcp_ver_todos");
+
+      if (itemVerTodos) {
+        return itemVerTodos;
+      }
+
+      const items = lista.querySelectorAll("li");
+
+      for (let i = 0; i < items.length; i++) {
+        const enlace = items[i].querySelector("a");
+
+        if (enlace && normalizarTexto(enlace.textContent) === "ver todos") {
+          return items[i];
+        }
+      }
+
+      return null;
+    }
+
+    function agregarOpcion(opcion) {
+      const producto = obtenerProductoPorSeccion(opcion.seccion);
+      const lista = producto ? producto.querySelector(".bcp_enlaces") : null;
+
+      if (!lista) {
+        return false;
+      }
+
+      if (lista.querySelector('[data-menu-piloto="' + opcion.seccion + '"]')) {
+        observarVistaLista(producto, lista);
+        return true;
+      }
+
+      const nuevaOpcion = crearOpcion(opcion);
+      const referencia = obtenerReferenciaVerTodos(lista);
+
+      nuevaOpcion.setAttribute("data-menu-piloto", opcion.seccion);
+      lista.insertBefore(nuevaOpcion, referencia);
+      observarVistaLista(producto, lista);
+      return true;
+    }
+
+    function aplicarCambios() {
+      let seccionesListas = 0;
+
+      for (let i = 0; i < nuevasOpciones.length; i++) {
+        if (agregarOpcion(nuevasOpciones[i])) {
+          seccionesListas++;
+        }
+      }
+
+      return seccionesListas === nuevasOpciones.length;
+    }
+
+    function iniciar() {
+      let intentos = 0;
+      const maxIntentos = 20;
+      const intervalo = 250;
+
+      if (aplicarCambios()) {
+        return;
+      }
+
+      const reintento = window.setInterval(function () {
+        intentos++;
+
+        if (aplicarCambios() || intentos >= maxIntentos) {
+          window.clearInterval(reintento);
+        }
+      }, intervalo);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", iniciar);
+    } else {
+      iniciar();
+    }
+  })();
+</script>

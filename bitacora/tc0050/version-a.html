@@ -1,0 +1,157 @@
+<script>
+(function promoViewScrollOnce(){
+
+  const SEL         = '.congratulation-section__comparator .comparator__body';
+  const KEY         = '__promo_view_tc0050_ctrl'; 
+  const VIEW_OFFSET = 0;
+  const EXP_NAME    = 'Felicitaciones - Cards - TC0050 - EXP - A';
+
+  // ===== UTILS =====
+
+  function getDocumentTop(el){
+    let y = 0;
+    let n = el;
+    while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+    return y;
+  }
+
+  function isVisible(el){
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    const vh   = window.innerHeight || document.documentElement.clientHeight || 0;
+
+    return (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+  }
+
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){
+      console.warn('[TC0050] digitalData push error:', e);
+    }
+    return false;
+  }
+
+  function fireOnce(){
+    if (window[KEY]) return;
+
+    const ok = pushDigitalData({
+      promotion: { name: EXP_NAME, creative: 'Featured Card', position: 'La mas Pedida' },
+      event: 'trackPromotionView'
+    });
+
+    console.warn('[TC0050] fireOnce', {
+      position: 'La mas Pedida',
+      t: performance.now()
+    });
+
+    if (ok) window[KEY] = true;
+  }
+
+  // ===== TRACKING CORE =====
+
+  function initTracking(el){
+
+    // 1) visible inmediatamente
+    if (isVisible(el)) {
+      setTimeout(() => fireOnce(), 500);
+      return;
+    }
+
+    // 2) scroll listener
+    const onScroll = () => {
+      if (window[KEY]) {
+        window.removeEventListener('scroll', onScroll);
+        return;
+      }
+
+      if (isVisible(el)) {
+        fireOnce();
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // 3) load fallback
+    window.addEventListener('load', () => {
+      if (!window[KEY] && isVisible(el)) {
+        fireOnce();
+        window.removeEventListener('scroll', onScroll);
+      }
+    }, { once: true });
+  }
+
+  // ===== WAIT FOR SCOPE (FIX SPA) =====
+
+  function waitForScopeAndStart(){
+    const startTime = Date.now();
+    const timeout = 6000;
+
+    const interval = setInterval(() => {
+
+      const el = document.querySelector(SEL);
+
+      if (el) {
+        clearInterval(interval);
+
+        console.warn('[TC0050] scope encontrado → iniciar tracking');
+
+        initTracking(el);
+      }
+
+      if (Date.now() - startTime > timeout) {
+        clearInterval(interval);
+        console.warn('[TC0050] timeout esperando scope');
+      }
+
+    }, 150);
+  }
+
+    function listenTabChangesTracking(){
+
+    document.addEventListener('click', () => {
+
+        // pequeño delay para Angular render
+        setTimeout(() => {
+
+        if (window[KEY]) return;
+
+        const el = document.querySelector(SEL);
+
+        if (!el) {
+            console.warn('[TC0050] no hay scope tras click');
+            return;
+        }
+
+        if (isVisible(el)) {
+            console.warn('[TC0050] visible tras interacción (tab probable)');
+            fireOnce();
+        }
+
+        }, 400);
+
+    });
+
+    }
+
+  // ===== RUN =====
+
+  // primera carga
+  waitForScopeAndStart();
+  listenTabChangesTracking();
+
+  // BFCache (back/forward)
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      window[KEY] = false;
+      waitForScopeAndStart();
+        listenTabChangesTracking();
+    }
+  });
+
+})();
+</script>

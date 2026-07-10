@@ -1,0 +1,1689 @@
+<style id="tc0029-styles">
+    /* Definir estilos scopeados del banner (grid por áreas) */
+
+    /* Mobile por defecto: 2 columnas, 2 filas
+   Col 1: content (fila 1) + cta (fila 2)
+   Col 2: image (fila 1 y fila 2)
+   Ocultar subtítulo en mobile */
+    .tc0029-scope .tc0029-banner {
+        --bg-mobile: var(--d-9-d-9-d-9, rgba(255, 255, 255, 0.05));
+        --bg-desktop: var(--transparent_white-white_10, rgba(255, 255, 255, 0.10));
+        --title-color: var(--on-white, #FFF);
+        --subtitle-color: var(--on-white, #FFF);
+        --link-color: #FF623F;
+
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "content image"
+            "cta     image";
+        align-items: center;
+        gap: 8px 12px;
+        padding: 12px 16px;
+        min-height: 120px;
+        /* mobile ≈ 120px */
+        border-radius: 16px;
+        background:  #EBF4FF;
+        border-radius: 12px;
+        box-sizing: border-box;
+
+        font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color: var(--title-color);
+    }
+
+    /* Definir áreas hijas */
+    .tc0029-scope .tc0029-banner__content {
+        grid-area: content;
+        display: grid;
+        gap: 6px;
+        align-content: center;
+        justify-items: center;
+    }
+
+    .tc0029-scope .tc0029-banner__cta {
+        grid-area: cta;
+        display: grid;
+        justify-items: center;
+    }
+
+    .tc0029-scope .tc0029-banner__imageWrap {
+        grid-area: image;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Estilar título */
+    .tc0029-scope .tc0029-banner__title {
+        color: #002A8D;
+
+        font-family: Flexo;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 40px;
+        margin: 0;
+    }
+
+    /* Estilar subtítulo (ocultar en mobile) */
+    .tc0029-scope .tc0029-banner__subtitle {
+        color:  #202E44;
+        text-align: center;
+
+        /* R/Paragraph-L */
+        font-family: Flexo;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+    }
+
+    /* Estilar entry point */
+    .tc0029-scope .tc0029-entry {
+        color: #FFF;
+        text-align: center;
+        font-family: Flexo;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px;
+        display: flex;
+        padding: 16px 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 24px;
+        background: #FF7800;
+    }
+
+    /* Estilar imagen */
+    .tc0029-scope .tc0029-banner__img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        max-height: 224px;
+        object-fit: contain;
+        border: 0;
+    }
+
+    /* Desktop forzado por clase en el parent: 3 columnas, 1 fila
+   [Imagen] | [Título + Subtítulo] | [CTA] */
+    .tc0029-scope.tc0029--desktop .tc0029-banner {
+        grid-template-columns: 1fr 2.5fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: "image content cta";
+        gap: 24px;
+        padding: 12px 24px;
+        min-height: 90px;
+        /* desktop ≈ 90px */
+        border-radius: 16px;
+        background: #EBF4FF;
+        margin: 50px auto;
+    }
+
+    /* Ajustar alineaciones en desktop */
+    .tc0029-scope.tc0029--desktop .tc0029-banner__content {
+        justify-items: start;
+        gap: 4px;
+    }
+
+    .tc0029-scope.tc0029--desktop .tc0029-banner__title {
+        text-align: left;
+    }
+
+    .tc0029-scope.tc0029--desktop .tc0029-banner__subtitle {
+        display: block;
+        text-align: left;
+    }
+
+    /* .tc0029-scope.tc0029--desktop .tc0029-banner__img     { max-height: 66px; } */
+
+    /* Accesibilidad foco visible */
+    .tc0029-scope a:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .tc0029-scope .tc0029-banner {
+            margin: 0;
+            padding: 24px;
+            gap: 0;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 0.5fr 0.3fr;
+            grid-template-areas: none;
+        }
+
+        .tc0029-scope .tc0029-banner__title {
+            color: #002A8D;
+            text-align: center;
+            font-family: Flexo;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px;
+        }
+
+        .tc0029-scope .tc0029-entry {
+            color: var(#FF623F);
+            text-align: center;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .tc0029-scope .tc0029-banner__content {
+            justify-items: center;
+            grid-row-start: 2;
+            grid-row-end: 3;
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+        .tc0029-scope .tc0029-banner__imageWrap {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .tc0029-scope .tc0029-banner__cta {
+            justify-items: center;
+            align-self: center;
+            grid-row-start: 3;
+            grid-row-end: 4;
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+
+        .tc0029-scope .tc0029-banner__img {
+            max-height: 224px;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        "use strict";
+
+        // ===== CONFIG =====
+        const CFG = {
+            parentSelector: ".id-Z7_8ILI09412PVV0062BTDN8MN5Q4 .bcp-grupo-categoria-tarjetas:not(.ocultar)",
+            insertPosition: "beforeend", // "afterbegin" | "beforeend" | "beforebegin" | "afterend"
+            bodyWidthBreakpoint: 768,
+
+            titleText: "Adquiere hoy tu Tarjeta de Crédito BCP",
+            subtitleText: "y disfruta de todos sus beneficios.",
+            linkHref: "https://www.mitarjetabcp.viabcp.com/?pcid=viabcp:beneficios:adquiere-tu-tarjeta:experimento:obtenla-aqui",
+            linkText: "Obtenla aquí",
+
+            imgDesktop: { src: "https://www.viabcp.com/wcm/connect/18c4427a-d7a6-455e-9973-2e53b461803f/landingBeneficios_entryPoint-desktop-230226.png?MOD=AJPERES&attachment=false&id=1771887245514", alt: "Imagen descriptiva desktop" },
+            imgMobile: { src: "https://www.viabcp.com/wcm/connect/18c4427a-d7a6-455e-9973-2e53b461803f/landingBeneficios_entryPoint-desktop-230226.png?MOD=AJPERES&attachment=false&id=1771887245514", alt: "Imagen descriptiva mobile" },
+
+            scopeClass: "tc0029-scope",
+            desktopStateClass: "tc0029--desktop",
+            blockSelector: '[data-offer-id="tc0029"][data-instance="banner"]',
+
+            debug: true
+        };
+
+        const log = (...a) => CFG.debug && console.log("[tc0029]", ...a);
+        const warn = (...a) => CFG.debug && console.warn("[tc0029]", ...a);
+        const $ = (s, r = document) => { try { return r.querySelector(s); } catch (e) { warn("querySelector error", s, e.message); return null; } };
+
+        // ===== HTML (SIN escapes por ahora para aislar el problema) =====
+        const html = `
+<section class="tc0029-banner container" role="region" aria-label="Promoción destacada" data-offer-id="tc0029" data-instance="banner" data-version="3.2.0">
+  <div class="tc0029-banner__content">
+    <h2 class="tc0029-banner__title">${CFG.titleText}</h2>
+    <p class="tc0029-banner__subtitle">${CFG.subtitleText}</p>
+  </div>
+
+  <div class="tc0029-banner__imageWrap">
+    <img class="tc0029-banner__img" src="" alt="" loading="lazy" decoding="async" />
+  </div>
+
+  <div class="tc0029-banner__cta">
+    <a class="tc0029-entry" href="${CFG.linkHref}" aria-label="${CFG.linkText} hacia ${CFG.linkHref}">${CFG.linkText}</a>
+  </div>
+</section>
+`.trim();
+
+        function isDesktopByBody() {
+            const w = Math.round((document.body?.getBoundingClientRect().width) || window.innerWidth || 0);
+            return w >= (CFG.bodyWidthBreakpoint || 1024);
+        }
+
+        function applyState(parent) {
+            const desktop = isDesktopByBody();
+            parent.classList.toggle(CFG.desktopStateClass, desktop);
+
+            const block = $(CFG.blockSelector, parent);
+            if (!block) { warn("applyState: block no encontrado"); return; }
+
+            // Imagen
+            const img = block.querySelector(".tc0029-banner__img");
+            if (img) {
+                const chosen = desktop ? CFG.imgDesktop : CFG.imgMobile;
+                img.src = (chosen && chosen.src) ? chosen.src : "";
+                img.alt = (chosen && typeof chosen.alt === "string") ? chosen.alt : "";
+                log("img set =>", desktop ? "desktop" : "mobile", img.src);
+            } else {
+                warn("No se encontró .tc0029-banner__img");
+            }
+
+            // Subtítulo visible solo en desktop (refuerzo inline)
+            const sub = block.querySelector(".tc0029-banner__subtitle");
+            if (sub) {
+                // sub.style.display = desktop ? "block" : "none";
+                // log("subtitle display:", sub.style.display);
+            }
+        }
+
+        function safeInsert() {
+            const parent = $(CFG.parentSelector);
+            if (!parent) { warn("Parent no encontrado:", CFG.parentSelector); return; }
+
+            // Asegurar scope manual
+            if (!parent.classList.contains(CFG.scopeClass)) parent.classList.add(CFG.scopeClass);
+
+            // Log del template (para ver exactamente qué se va a insertar)
+            log("HTML a insertar:", html);
+
+            // Inserción idempotente
+            const already = $(CFG.blockSelector, parent);
+            if (already) {
+                log("Ya existe el bloque. No se duplica.");
+            } else {
+                parent.insertAdjacentHTML(CFG.insertPosition, html);
+                log("HTML insertado con", CFG.insertPosition);
+            }
+
+            // Verificación POST-inserción
+            const block = $(CFG.blockSelector, parent);
+            if (!block) {
+                warn("Post-inserción: NO se localizó el bloque. ¿El template fue alterado?");
+                return;
+            }
+
+            // DEBUG del contenido interno
+            const title = block.querySelector(".tc0029-banner__title");
+            const sub = block.querySelector(".tc0029-banner__subtitle");
+            const cta = block.querySelector(".tc0029-entry");
+
+            log("DEBUG nodes =>", {
+                titleExists: !!title, titleText: title?.textContent || "(vacío)",
+                subtitleExists: !!sub, subtitleText: sub?.textContent || "(vacío)",
+                ctaExists: !!cta, ctaHref: cta?.getAttribute("href") || "(sin href)", ctaText: cta?.textContent || "(vacío)"
+            });
+
+            // Refuerzo por si el parser hubiese vaciado algo (no debería, pero lo forzamos)
+            if (title && !title.textContent) title.textContent = String(CFG.titleText || "");
+            if (sub && !sub.textContent) sub.textContent = String(CFG.subtitleText || "");
+            if (cta) {
+                if (!cta.textContent) cta.textContent = String(CFG.linkText || "");
+                if (!cta.getAttribute("href")) cta.setAttribute("href", String(CFG.linkHref || "#"));
+            }
+
+            // Aplicar estado (desktop/mobile), setear imagen y visibilidad
+            applyState(parent);
+
+            // Listeners
+            const onResize = (function () { let id; return function () { clearTimeout(id); id = setTimeout(() => applyState(parent), 120); }; })();
+            window.addEventListener("resize", onResize, { passive: true });
+            window.addEventListener("orientationchange", onResize, { passive: true });
+        }
+
+        // Run
+        try {
+            safeInsert();
+        } catch (e) {
+            console.error("[tc0029] EXCEPCIÓN en safeInsert:", e);
+        }
+
+    })();
+</script>
+
+<style id="tc0029-1-styles">
+    /* Definir estilos scopeados del banner (grid por áreas) */
+
+    /* Mobile por defecto: 2 columnas, 2 filas
+   Col 1: content (fila 1) + cta (fila 2)
+   Col 2: image (fila 1 y fila 2)
+   Ocultar subtítulo en mobile */
+    .tc0029-1-scope .tc0029-1-banner {
+        --bg-mobile: var(--d-9-d-9-d-9, rgba(255, 255, 255, 0.05));
+        --bg-desktop: var(--transparent_white-white_10, rgba(255, 255, 255, 0.10));
+        --title-color: var(--on-white, #FFF);
+        --subtitle-color: var(--on-white, #FFF);
+        --link-color: #FF623F;
+
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "content image"
+            "cta     image";
+        align-items: center;
+        gap: 8px 12px;
+        padding: 12px 16px;
+        min-height: 120px;
+        /* mobile ≈ 120px */
+        border-radius: 12px;
+        background: #EBF4FF;
+        border-radius: 12px;
+        box-sizing: border-box;
+
+        font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color: var(--title-color);
+    }
+
+    /* Definir áreas hijas */
+    .tc0029-1-scope .tc0029-1-banner__content {
+        grid-area: content;
+        display: grid;
+        gap: 6px;
+        align-content: center;
+        justify-items: center;
+    }
+
+    .tc0029-1-scope .tc0029-1-banner__cta {
+        grid-area: cta;
+        display: grid;
+        justify-items: center;
+    }
+
+    .tc0029-1-scope .tc0029-1-banner__imageWrap {
+        grid-area: image;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Estilar título */
+    .tc0029-1-scope .tc0029-1-banner__title {
+        color: #002A8D;
+
+        /* D/H3 */
+        font-family: Flexo;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px;
+        margin: 0;
+    }
+
+    /* Estilar subtítulo (ocultar en mobile) */
+    .tc0029-1-scope .tc0029-1-banner__subtitle {
+        color: #202E44;
+        text-align: center;
+
+        /* R/Paragraph-M */
+        font-family: Flexo;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        margin: 0;
+    }
+
+    /* Estilar entry point */
+    .tc0029-1-scope .tc0029-1-entry {
+        color: #FF7800;
+        text-align: center;
+
+        /* D/Paragraph-L */
+        font-family: Flexo;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        position: relative;
+    }
+
+    .tc0029-1-scope .tc0029-1-entry::after {
+        content: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00IDExLjAwMjNIMTcuNTg0TDE0LjI4OSA3LjcwNzI1QzEzLjg5OCA3LjMxNjI1IDEzLjg5OCA2LjY4NDI1IDE0LjI4OSA2LjI5MzI1QzE0LjY4IDUuOTAyMjUgMTUuMzEzIDUuOTAyMjUgMTUuNzAzIDYuMjkzMjVMMjAuNzAzIDExLjI5MzNDMjEuMDk0IDExLjY4NDIgMjEuMDk0IDEyLjMxNjMgMjAuNzAzIDEyLjcwNzNMMTUuNzA3IDE3LjcwNzJDMTUuNTEyIDE3LjkwMjIgMTUuMjU2IDE4LjAwMDIgMTUgMTguMDAwMkMxNC43NDQgMTguMDAwMiAxNC40ODggMTcuOTAyMiAxNC4yOTMgMTcuNzA3MkMxMy45MDIgMTcuMzE3MiAxMy45MDIgMTYuNjg0MiAxNC4yOTIgMTYuMjkzM0wxNy41ODEgMTMuMDAyM0g0QzMuNDQ3IDEzLjAwMjMgMyAxMi41NTUzIDMgMTIuMDAyM0MzIDExLjQ0OTMgMy40NDcgMTEuMDAyMyA0IDExLjAwMjNaIiBmaWxsPSIjRkY3ODAwIi8+Cjwvc3ZnPgo=);
+        height: 22px;
+        width: 24px;
+        margin-left: 6px;
+        display: inline-block;
+        vertical-align: middle;
+        /* margin: 0; */
+        top: 0;
+        bottom: 0;
+        position: absolute;
+    }
+
+    /* Estilar imagen */
+    .tc0029-1-scope .tc0029-1-banner__img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        max-height: 90px;
+        object-fit: contain;
+        border: 0;
+    }
+
+    /* Desktop forzado por clase en el parent: 3 columnas, 1 fila
+   [Imagen] | [Título + Subtítulo] | [CTA] */
+    .tc0029-1-scope.tc0029-1--desktop .tc0029-1-banner {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: "image content cta";
+        gap: 24px;
+        padding: 14px 24px 0;
+        min-height: 90px;
+        /* desktop ≈ 90px */
+        border-radius: 12px;
+        background: #EBF4FF;
+        margin: 80px auto;
+    }
+
+    /* Ajustar alineaciones en desktop */
+    .tc0029-1-scope.tc0029-1--desktop .tc0029-1-banner__content {
+        justify-items: start;
+        align-self: baseline;
+        gap: 6px;
+        padding: 12px 0;
+    }
+
+    .tc0029-1-scope.tc0029-1--desktop .tc0029-1-banner__title {
+        text-align: left;
+    }
+
+    .tc0029-1-scope.tc0029-1--desktop .tc0029-1-banner__subtitle {
+        display: block;
+        text-align: left;
+    }
+
+    /* .tc0029-1-scope.tc0029-1--desktop .tc0029-1-banner__img     { max-height: 66px; } */
+
+    /* Accesibilidad foco visible */
+    .tc0029-1-scope a:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .tc0029-1-scope .tc0029-1-banner {
+            margin: 40px 24px;
+            padding: 10px 16px;
+            gap: 4px 10px;
+        }
+
+        .tc0029-1-scope .tc0029-1-banner__title {
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 24px;
+            /* 150% */
+        }
+
+        .tc0029-1-scope .tc0029-1-entry {
+            color: var(#FF623F);
+            text-align: center;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .tc0029-1-scope .tc0029-1-banner__content {
+            justify-items: flex-start;
+        }
+
+        .tc0029-1-scope .tc0029-1-banner__cta {
+            justify-items: flex-start;
+            align-self: baseline;
+        }
+
+        .tc0029-1-scope .tc0029-1-banner__img {
+            max-height: 58px;
+        }
+        .tc0029-1-scope .tc0029-1-entry::after {
+            top: -2px;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        "use strict";
+
+        // ===== CONFIG =====
+        const CFG = {
+            parentSelector: ".id-Z7_8ILI09412PVV0062BTDN8MN5Q5 .bcp_listado_boxes_beneficios_exclusivos_tarjetas:not(.ocultarseccionparam)",
+            insertPosition: "afterbegin", // "afterbegin" | "beforeend" | "beforebegin" | "afterend"
+            bodyWidthBreakpoint: 768,
+
+            titleText: "Adquiere hoy tu Tarjeta de Crédito BCP",
+            subtitleText: "y disfruta de miles de beneficios.",
+            linkHref: "https://www.mitarjetabcp.viabcp.com/login",
+            linkText: "Obtenla aquí",
+
+            imgDesktop: { src: "https://www.viabcp.com/wcm/connect/be1e1971-834c-42a1-b0b7-4ed078ee3334/landingQore_entryPoint1-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771513282274", alt: "Imagen descriptiva desktop" },
+            imgMobile: { src: "https://www.viabcp.com/wcm/connect/9c45736b-875f-4bf7-a57b-d5bfa3ab2d40/landingQore-entryPoint2-mobile-190226.png?MOD=AJPERES&attachment=false&id=1771513074805", alt: "Imagen descriptiva mobile" },
+
+            scopeClass: "tc0029-1-scope",
+            desktopStateClass: "tc0029-1--desktop",
+            blockSelector: '[data-offer-id="tc0029-1"][data-instance="banner"]',
+            urlParamKey: "param",
+
+            imgMap: {
+                'amex-clasica-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/717ca95a-cf71-4fb4-8f6e-df29a0b39cca/landingBeneficios_entryPoint1_Amex_clasica_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967292553', alt: 'Amex clasica latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/524ddb12-2950-4c87-9d00-6ab0bb9dd291/landingBeneficios_entryPoint1_amex_cl%C3%A1sica_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968553118', alt: 'Amex clasica latam pass' }
+                },
+                'amex-oro-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/882ac165-a32f-482a-bff7-1248ebd03c11/landingBeneficios_entryPoint1_Amex_oro_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967333543', alt: 'Amex oro latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/18aea0e3-432f-4cdb-ab86-bd3f73179e78/landingBeneficios_entryPoint1_amex_oro_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968594541', alt: 'Amex oro latam pass' }
+                },
+                'amex-platinum-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/1d507831-328e-4de8-ba52-7cc4672ab7b4/landingBeneficios_entryPoint1_Amex_platinum_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967367602', alt: 'Amex platinum latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/9131e3a0-0fa7-4a40-828b-96ecee719232/landingBeneficios_entryPoint1_amex_platinum_latam_pass-mobile-200226.png?MOD=AJPERES&attachment=false&id=1771968624221', alt: 'Amex platinum latam pass' }
+                },
+                'amex-black-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/65e7b42c-721e-4bb1-a77b-aa29552bc58c/landingBeneficios_entryPoint1_Amex_black_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967397868', alt: 'Amex black latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/e1ce82f3-3fa4-486a-b2bd-673860072d27/landingBeneficios_entryPoint1_amex_black_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968650975', alt: 'Amex black latam pass' }
+                },
+                'visa-clasica-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/efc56b84-af8e-46a3-9a3e-68d606a160eb/landingBeneficios_entryPoint1_Visa_clasicaL_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967473911', alt: 'Visa clasica latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/3f3e3687-a083-4854-8415-30161c13c8aa/landingBeneficios_entryPoint1_visa_clasica_latam_pass_mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968214615', alt: 'Visa clasica latam pass' }
+                },
+                'visa-oro-qore': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/8a1ca119-a869-4ab6-8ff2-1e4dc15d91e5/landingBeneficios_entryPoint1_visa_oro_qore-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967506665', alt: 'Visa oro qore' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/6ec98ff9-63f6-4e3b-8f78-077da305ad87/landingBeneficios_entryPoint1_visa_oro_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968110619', alt: 'Visa oro qore' }
+                },
+                'visa-oro-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/aba0a684-a9f6-4ed0-9cd8-9c9147c459f8/landingBeneficios_entryPoint1_visa_oro_latam_pass-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967559285', alt: 'Visa oro latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/4093e68b-e1a0-4863-91dc-33cc5f0b52ea/landingBeneficios_entryPoint1_visa_oro_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968306680', alt: 'Visa oro latam pass' }
+                },
+                'visa-platinum-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/df6d684b-1ac6-40a6-a4b4-e3c2bf29a699/landingBeneficios_entryPoint1_visa_platinum_latam_pass-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967591451', alt: 'Visa platinum latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/0f916de2-79f0-45ef-8acd-a1785d00f98d/landingBeneficios_entryPoint1_visa_platinum_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968358587', alt: 'Visa platinum latam pass' }
+                },
+                'visa-signature-qore': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/3a3027af-789c-4e28-9e23-e376d0fd6c79/landingBeneficios_entryPoint1_Visa_signatureQore_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967626155', alt: 'Visa signature qore' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/44bce389-3dea-46a1-a762-b157ffc2cdeb/landingBeneficios_entryPoint1_visa_signature_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968391497', alt: 'Visa signature qore' }
+                },
+                'visa-signature-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/0a50c335-e488-4dc5-b171-f149c1d9d7cc/landingBeneficios_entryPoint1_Visa_signature_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967661786', alt: 'Visa signature latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/112f00a4-5618-43b2-a5e4-4e1c0defc67a/landingBeneficios_entryPoint1_visa_signature_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968430975', alt: 'Visa signature latam pass' }
+                },
+                'visa-infinite-qore': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/e7b69f00-deb1-4512-abfd-a73c379dabe2/landingBeneficios_entryPoint1_Visa_infiniteQore_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967704718', alt: 'Visa infinite qore' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/2236dd47-390c-413e-8d4f-d5f94b7055fb/landingBeneficios_entryPoint1_visa_infinite_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968463038', alt: 'Visa infinite qore' }
+                },
+                'visa-infinite-sapphire-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/52bd6525-3053-4c00-b250-3cfb7d2d7f20/landingBeneficios_entryPoint1_Visa_sapphire_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967736023', alt: 'Visa infinite sapphire latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/011fe244-9bf9-4738-a759-9c4452c9fe42/landingBeneficios_entryPoint1_visa_sapphire_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968491598', alt: 'Visa infinite sapphire latam pass' }
+                },
+                'visa-infinitive-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/9e059c2d-078b-4737-81d9-d9ef5b0435f8/landingBeneficios_entryPoint1_Visa_iridium_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967766399', alt: 'Visa infinite latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/d77ac976-8217-48ad-ad6d-179ce140828a/landingBeneficios_entryPoint1_visa_iridium_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968516450', alt: 'Visa infinite latam pass' }
+                }
+            },
+
+
+            debug: true
+        };
+
+        const log = (...a) => CFG.debug && console.log("[tc0029-1]", ...a);
+        const warn = (...a) => CFG.debug && console.warn("[tc0029-1]", ...a);
+        const $ = (s, r = document) => { try { return r.querySelector(s); } catch (e) { warn("querySelector error", s, e.message); return null; } };
+
+        // ===== HTML (SIN escapes por ahora para aislar el problema) =====
+        const html = `
+<section class="tc0029-1-banner container" role="region" aria-label="Promoción destacada" data-offer-id="tc0029-1" data-instance="banner" data-version="3.2.0">
+  <div class="tc0029-1-banner__content">
+    <h2 class="tc0029-1-banner__title">${CFG.titleText}</h2>
+    <p class="tc0029-1-banner__subtitle">${CFG.subtitleText}</p>
+  </div>
+
+  <div class="tc0029-1-banner__imageWrap">
+    <img class="tc0029-1-banner__img" src="" alt="" loading="lazy" decoding="async" />
+  </div>
+
+  <div class="tc0029-1-banner__cta">
+    <a class="tc0029-1-entry" href="${CFG.linkHref}" aria-label="${CFG.linkText} hacia ${CFG.linkHref}">${CFG.linkText}</a>
+  </div>
+</section>
+`.trim();
+
+
+        // === helpers para imágenes dinámicas por param ===
+        function getUrlParamValue() {
+            try {
+                const usp = new URLSearchParams(window.location.search);
+                return (usp.get(CFG.urlParamKey) || "").toLowerCase().trim();
+            } catch (e) {
+                warn("URLSearchParams error:", e);
+                return "";
+            }
+        }
+
+        function getDynamicImage(desktop) {
+            const key = getUrlParamValue();
+            if (key && CFG.imgMap && CFG.imgMap[key]) {
+                const entry = CFG.imgMap[key];
+                const chosen = desktop ? entry.desktop : entry.mobile;
+                if (chosen && chosen.src) {
+                    return {
+                        src: chosen.src,
+                        alt: typeof chosen.alt === "string" ? chosen.alt : (desktop ? (CFG.imgDesktop.alt || "") : (CFG.imgMobile.alt || ""))
+                    };
+                }
+            }
+            // fallback
+            return desktop ? CFG.imgDesktop : CFG.imgMobile;
+        }
+
+
+        function isDesktopByBody() {
+            const w = Math.round((document.body?.getBoundingClientRect().width) || window.innerWidth || 0);
+            return w >= (CFG.bodyWidthBreakpoint || 1024);
+        }
+
+        function applyState(parent) {
+            const desktop = isDesktopByBody();
+            parent.classList.toggle(CFG.desktopStateClass, desktop);
+
+            const block = $(CFG.blockSelector, parent);
+            if (!block) { warn("applyState: block no encontrado"); return; }
+
+            // Imagen
+            const img = block.querySelector(".tc0029-1-banner__img");
+
+            if (img) {
+                const chosen = getDynamicImage(desktop);
+                img.src = chosen?.src || "";
+                img.alt = typeof chosen?.alt === "string" ? chosen.alt : "";
+                log("img set =>", desktop ? "desktop" : "mobile", img.src, "(param:", getUrlParamValue() || "none", ")");
+            } else {
+                warn("No se encontró .tc0029-1-banner__img");
+            }
+
+
+            // Subtítulo visible solo en desktop (refuerzo inline)
+            const sub = block.querySelector(".tc0029-1-banner__subtitle");
+            if (sub) {
+                sub.style.display = desktop ? "block" : "none";
+                log("subtitle display:", sub.style.display);
+            }
+        }
+
+        function safeInsert() {
+            const parent = $(CFG.parentSelector);
+            if (!parent) { warn("Parent no encontrado:", CFG.parentSelector); return; }
+
+            // Asegurar scope manual
+            if (!parent.classList.contains(CFG.scopeClass)) parent.classList.add(CFG.scopeClass);
+
+            // Log del template (para ver exactamente qué se va a insertar)
+            log("HTML a insertar:", html);
+
+            // Inserción idempotente
+            const already = $(CFG.blockSelector, parent);
+            if (already) {
+                log("Ya existe el bloque. No se duplica.");
+            } else {
+                parent.insertAdjacentHTML(CFG.insertPosition, html);
+                log("HTML insertado con", CFG.insertPosition);
+            }
+
+            // Verificación POST-inserción
+            const block = $(CFG.blockSelector, parent);
+            if (!block) {
+                warn("Post-inserción: NO se localizó el bloque. ¿El template fue alterado?");
+                return;
+            }
+
+            // DEBUG del contenido interno
+            const title = block.querySelector(".tc0029-1-banner__title");
+            const sub = block.querySelector(".tc0029-1-banner__subtitle");
+            const cta = block.querySelector(".tc0029-1-entry");
+
+            log("DEBUG nodes =>", {
+                titleExists: !!title, titleText: title?.textContent || "(vacío)",
+                subtitleExists: !!sub, subtitleText: sub?.textContent || "(vacío)",
+                ctaExists: !!cta, ctaHref: cta?.getAttribute("href") || "(sin href)", ctaText: cta?.textContent || "(vacío)"
+            });
+
+            // Refuerzo por si el parser hubiese vaciado algo (no debería, pero lo forzamos)
+            if (title && !title.textContent) title.textContent = String(CFG.titleText || "");
+            if (sub && !sub.textContent) sub.textContent = String(CFG.subtitleText || "");
+            if (cta) {
+                if (!cta.textContent) cta.textContent = String(CFG.linkText || "");
+                if (!cta.getAttribute("href")) cta.setAttribute("href", String(CFG.linkHref || "#"));
+            }
+
+            // Aplicar estado (desktop/mobile), setear imagen y visibilidad
+            applyState(parent);
+
+            // Listeners
+            const onResize = (function () { let id; return function () { clearTimeout(id); id = setTimeout(() => applyState(parent), 120); }; })();
+            window.addEventListener("resize", onResize, { passive: true });
+            window.addEventListener("orientationchange", onResize, { passive: true });
+        }
+
+        // Run
+        try {
+            safeInsert();
+        } catch (e) {
+            console.error("[tc0029-1] EXCEPCIÓN en safeInsert:", e);
+        }
+
+    })();
+</script>
+
+
+<style id="tc0029-2-styles">
+    /* Definir estilos scopeados del banner (grid por áreas) */
+
+    /* Mobile por defecto: 2 columnas, 2 filas
+   Col 1: content (fila 1) + cta (fila 2)
+   Col 2: image (fila 1 y fila 2)
+   Ocultar subtítulo en mobile */
+    .tc0029-2-scope .tc0029-2-banner {
+        --bg-mobile: var(--d-9-d-9-d-9, rgba(255, 255, 255, 0.05));
+        --bg-desktop: var(--transparent_white-white_10, rgba(255, 255, 255, 0.10));
+        --title-color: var(--on-white, #FFF);
+        --subtitle-color: var(--on-white, #FFF);
+        --link-color: #FF623F;
+
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            "content image"
+            "cta     image";
+        align-items: center;
+        gap: 8px 12px;
+        padding: 12px 16px;
+        min-height: 120px;
+        /* mobile ≈ 120px */
+        border-radius: 16px;
+        background: #EBF4FF;
+        border-radius: 12px;
+        box-sizing: border-box;
+
+        font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif;
+        color: var(--title-color);
+    }
+
+    /* Definir áreas hijas */
+    .tc0029-2-scope .tc0029-2-banner__content {
+        grid-area: content;
+        display: grid;
+        gap: 6px;
+        align-content: center;
+        justify-items: center;
+    }
+
+    .tc0029-2-scope .tc0029-2-banner__cta {
+        grid-area: cta;
+        display: grid;
+        justify-items: center;
+    }
+
+    .tc0029-2-scope .tc0029-2-banner__imageWrap {
+        grid-area: image;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Estilar título */
+    .tc0029-2-scope .tc0029-2-banner__title {
+        color: #002A8D;
+        font-family: Flexo;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 40px;
+        margin: 0;
+    }
+
+    /* Estilar subtítulo (ocultar en mobile) */
+    .tc0029-2-scope .tc0029-2-banner__subtitle {
+        color: #202E44;
+        text-align: center;
+
+        /* R/Paragraph-L */
+        font-family: Flexo;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+    }
+
+    /* Estilar entry point */
+    .tc0029-2-scope .tc0029-2-entry {
+        color: #FFF;
+        text-align: center;
+        /* font-family: Flexo; */
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px;
+        display: inline-flex;
+        padding: 16px 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        border-radius: 24px;
+        background: #FF7800;
+    }
+
+    /* Estilar imagen */
+    .tc0029-2-scope .tc0029-2-banner__img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+        max-height: 224px;
+        object-fit: contain;
+        border: 0;
+    }
+
+    /* Desktop forzado por clase en el parent: 3 columnas, 1 fila
+   [Imagen] | [Título + Subtítulo] | [CTA] */
+    .tc0029-2-scope.tc0029-2--desktop .tc0029-2-banner {
+        grid-template-columns: 1fr 1.5fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: "image content cta";
+        gap: 24px;
+        padding: 12px 24px;
+        min-height: 90px;
+        /* desktop ≈ 90px */
+        border-radius: 16px;
+        background: #EBF4FF;
+        margin-top: 80px;
+    }
+
+    /* Ajustar alineaciones en desktop */
+    .tc0029-2-scope.tc0029-2--desktop .tc0029-2-banner__content {
+        justify-items: start;
+        gap: 4px;
+    }
+
+    .tc0029-2-scope.tc0029-2--desktop .tc0029-2-banner__title {
+        text-align: left;
+    }
+
+    .tc0029-2-scope.tc0029-2--desktop .tc0029-2-banner__subtitle {
+        display: block;
+        text-align: left;
+    }
+
+    /* .tc0029-2-scope.tc0029-2--desktop .tc0029-2-banner__img     { max-height: 66px; } */
+
+    /* Accesibilidad foco visible */
+    .tc0029-2-scope a:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 2px;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+        .tc0029-2-scope .tc0029-2-banner {
+            margin: 40px 24px;
+            padding: 24px;
+            gap: 4px 0;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 0.5fr 0.3fr;
+        }
+
+        .tc0029-2-scope .tc0029-2-banner__title {
+            color:  #002A8D;
+            text-align: center;
+
+            /* D/H2 */
+            font-family: Flexo;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px;
+        }
+
+        .tc0029-2-scope .tc0029-2-entry {
+            color: var(#FF623F);
+            text-align: center;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+        }
+
+        .tc0029-2-scope .tc0029-2-banner__content {
+            justify-items: center;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+
+        .tc0029-2-scope .tc0029-2-banner__imageWrap {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+
+        .tc0029-2-scope .tc0029-2-banner__cta {
+            justify-items: center;
+            align-self: baseline;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row-start: 3;
+            grid-row-end: 4;
+        }
+
+        .tc0029-2-scope .tc0029-2-banner__img {
+            max-height: 224px;
+        }
+    }
+</style>
+
+<script>
+    (function () {
+        "use strict";
+
+        // ===== CONFIG =====
+        const CFG = {
+            parentSelector: ".id-Z7_8ILI09412PVV0062BTDN8MN5Q7 .bcp-catalogo-productos-beneficios-cuotas-sin-intereses:not(.ocultarxparam)",
+            insertPosition: "beforeend", // "afterbegin" | "beforeend" | "beforebegin" | "afterend"
+            bodyWidthBreakpoint: 768,
+
+            titleText: "Adquiere hoy tu Tarjeta de Crédito BCP",
+            subtitleText: "y disfruta de todos sus beneficios.",
+            linkHref: "https://www.mitarjetabcp.viabcp.com/login",
+            linkText: "Obtenla aquí",
+
+            imgDesktop: { src: "https://www.viabcp.com/wcm/connect/be1e1971-834c-42a1-b0b7-4ed078ee3334/landingQore_entryPoint1-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771513282274", alt: "Imagen descriptiva desktop" },
+            imgMobile: { src: "https://www.viabcp.com/wcm/connect/9c45736b-875f-4bf7-a57b-d5bfa3ab2d40/landingQore-entryPoint2-mobile-190226.png?MOD=AJPERES&attachment=false&id=1771513074805", alt: "Imagen descriptiva mobile" },
+
+            scopeClass: "tc0029-2-scope",
+            desktopStateClass: "tc0029-2--desktop",
+            blockSelector: '[data-offer-id="tc0029-2"][data-instance="banner"]',
+            urlParamKey: "param",
+
+            imgMap: {
+                'amex-clasica-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/1a28ffc9-25ba-4dd0-9448-eabfdb2b915b/landingBeneficios_entryPoint2_amex_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965076646', alt: 'Amex clasica latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/1a28ffc9-25ba-4dd0-9448-eabfdb2b915b/landingBeneficios_entryPoint2_amex_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965076646', alt: 'Amex clasica latam pass' }
+                },
+                'amex-oro-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/a681d6ab-8d74-4f59-bd0e-ac916b51690f/landingBeneficios_entryPoint2_Amex_oro_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965117643', alt: 'Amex oro latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/a681d6ab-8d74-4f59-bd0e-ac916b51690f/landingBeneficios_entryPoint2_Amex_oro_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965117643', alt: 'Amex oro latam pass' }
+                },
+                'amex-platinum-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/86d1a6f7-f8a9-4244-9cc2-3b9d115a2ecf/landingBeneficios_entryPoint2_Amex_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965154217', alt: 'Amex platinum latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/86d1a6f7-f8a9-4244-9cc2-3b9d115a2ecf/landingBeneficios_entryPoint2_Amex_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965154217', alt: 'Amex platinum latam pass' }
+                },
+                'amex-black-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/a54c8625-977b-4cf2-8543-09458e3ff1a2/landingBeneficios_entryPoint2_Amex_black_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965200685', alt: 'Amex black latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/a54c8625-977b-4cf2-8543-09458e3ff1a2/landingBeneficios_entryPoint2_Amex_black_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965200685', alt: 'Amex black latam pass' }
+                },
+                'visa-clasica-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/ebc3a3a4-9999-4723-9fdc-73b67b04524f/landingBeneficios_entryPoint2_visa_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771961255766', alt: 'Visa clasica latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/ebc3a3a4-9999-4723-9fdc-73b67b04524f/landingBeneficios_entryPoint2_visa_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771961255766', alt: 'Visa clasica latam pass' }
+                },
+                'visa-oro-qore': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/05df8810-6556-4887-8a7b-7c1674da8bff/landingBeneficios_entryPoint2_Visa_oroQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965259380', alt: 'Visa oro qore' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/05df8810-6556-4887-8a7b-7c1674da8bff/landingBeneficios_entryPoint2_Visa_oroQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965259380', alt: 'Visa oro qore' }
+                },
+                'visa-oro-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/008ee017-4e30-492c-83bc-73b7c1e9b339/landingBeneficios_entryPoint2_visa_oro_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965296028', alt: 'Visa oro latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/008ee017-4e30-492c-83bc-73b7c1e9b339/landingBeneficios_entryPoint2_visa_oro_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965296028', alt: 'Visa oro latam pass' }
+                },
+                'visa-platinum-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/dde3b724-9eec-42f3-995b-bda19eaff5e4/landingBeneficios_entryPoint2_Visa_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965341548', alt: 'Visa platinum latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/dde3b724-9eec-42f3-995b-bda19eaff5e4/landingBeneficios_entryPoint2_Visa_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965341548', alt: 'Visa platinum latam pass' }
+                },
+                'visa-signature-qore': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/52559507-9057-4e61-8eeb-e035f653273d/landingBeneficios_entryPoint2_Visa_signatureQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965376079', alt: 'Visa signature qore' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/52559507-9057-4e61-8eeb-e035f653273d/landingBeneficios_entryPoint2_Visa_signatureQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965376079', alt: 'Visa signature qore' }
+                },
+                'visa-signature-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/e0a20833-4eb7-4d5b-a427-3f5f7c5c74b7/landingBeneficios_entryPoint2_Visa_signature_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965417147', alt: 'Visa signature latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/e0a20833-4eb7-4d5b-a427-3f5f7c5c74b7/landingBeneficios_entryPoint2_Visa_signature_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965417147', alt: 'Visa signature latam pass' }
+                },
+                'visa-infinite-qore': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/a890b81a-1b3a-466b-92c9-422a241bed48/landingBeneficios_entryPoint2_Visa_infiniteQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965455382', alt: 'Visa infinite qore' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/a890b81a-1b3a-466b-92c9-422a241bed48/landingBeneficios_entryPoint2_Visa_infiniteQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965455382', alt: 'Visa infinite qore' }
+                },
+                'visa-infinite-sapphire-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/95fe5b7d-f098-4ab5-83e2-5ad321c4b838/landingBeneficios_entryPoint2_Visa_sapphire_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965494243', alt: 'Visa infinite sapphire latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/95fe5b7d-f098-4ab5-83e2-5ad321c4b838/landingBeneficios_entryPoint2_Visa_sapphire_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965494243', alt: 'Visa infinite sapphire latam pass' }
+                },
+                'visa-infinitive-latam-pass': {
+                    desktop: { src: 'https://www.viabcp.com/wcm/connect/8e23a0d8-0272-49cf-9d10-1795b3c84ab1/landingBeneficios_entryPoint2_Visa_iridium_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965539650', alt: 'Visa infinite latam pass' },
+                    mobile: { src: 'https://www.viabcp.com/wcm/connect/8e23a0d8-0272-49cf-9d10-1795b3c84ab1/landingBeneficios_entryPoint2_Visa_iridium_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965539650', alt: 'Visa infinite latam pass' }
+                }
+            },
+
+            debug: true
+        };
+
+        const log = (...a) => CFG.debug && console.log("[tc0029-2]", ...a);
+        const warn = (...a) => CFG.debug && console.warn("[tc0029-2]", ...a);
+        const $ = (s, r = document) => { try { return r.querySelector(s); } catch (e) { warn("querySelector error", s, e.message); return null; } };
+
+        // ===== HTML (SIN escapes por ahora para aislar el problema) =====
+        const html = `
+<section class="tc0029-2-banner container" role="region" aria-label="Promoción destacada" data-offer-id="tc0029-2" data-instance="banner" data-version="3.2.0">
+  <div class="tc0029-2-banner__content">
+    <h2 class="tc0029-2-banner__title">${CFG.titleText}</h2>
+    <p class="tc0029-2-banner__subtitle">${CFG.subtitleText}</p>
+  </div>
+
+  <div class="tc0029-2-banner__imageWrap">
+    <img class="tc0029-2-banner__img" src="" alt="" loading="lazy" decoding="async" />
+  </div>
+
+  <div class="tc0029-2-banner__cta">
+    <a class="tc0029-2-entry" href="${CFG.linkHref}" aria-label="${CFG.linkText} hacia ${CFG.linkHref}">${CFG.linkText}</a>
+  </div>
+</section>
+`.trim();
+
+        function getUrlParamValue() {
+            try {
+                const usp = new URLSearchParams(window.location.search);
+                return (usp.get(CFG.urlParamKey) || "").toLowerCase().trim();
+            } catch (e) {
+                warn("URLSearchParams error:", e);
+                return "";
+            }
+        }
+
+        function getDynamicImage(desktop) {
+            const key = getUrlParamValue();
+            if (key && CFG.imgMap && CFG.imgMap[key]) {
+                const entry = CFG.imgMap[key];
+                const chosen = desktop ? entry.desktop : entry.mobile;
+                if (chosen && chosen.src) {
+                    return {
+                        src: chosen.src,
+                        alt: typeof chosen.alt === "string" ? chosen.alt : (desktop ? (CFG.imgDesktop.alt || "") : (CFG.imgMobile.alt || ""))
+                    };
+                }
+            }
+            // fallback
+            return desktop ? CFG.imgDesktop : CFG.imgMobile;
+        }
+
+        function isDesktopByBody() {
+            const w = Math.round((document.body?.getBoundingClientRect().width) || window.innerWidth || 0);
+            return w >= (CFG.bodyWidthBreakpoint || 1024);
+        }
+
+        function applyState(parent) {
+            const desktop = isDesktopByBody();
+            parent.classList.toggle(CFG.desktopStateClass, desktop);
+
+            const block = $(CFG.blockSelector, parent);
+            if (!block) { warn("applyState: block no encontrado"); return; }
+
+            // Imagen
+            const img = block.querySelector(".tc0029-2-banner__img");
+            if (img) {
+                const chosen = getDynamicImage(desktop);
+                img.src = chosen?.src || "";
+                img.alt = typeof chosen?.alt === "string" ? chosen.alt : "";
+                log("img set =>", desktop ? "desktop" : "mobile", img.src, "(param:", getUrlParamValue() || "none", ")");
+            } else {
+                warn("No se encontró .tc0029-2-banner__img");
+            }
+
+            // Subtítulo visible solo en desktop (refuerzo inline)
+            const sub = block.querySelector(".tc0029-2-banner__subtitle");
+            if (sub) {
+                // sub.style.display = desktop ? "block" : "none";
+                // log("subtitle display:", sub.style.display);
+            }
+        }
+
+        function safeInsert() {
+            const parent = $(CFG.parentSelector);
+            if (!parent) { warn("Parent no encontrado:", CFG.parentSelector); return; }
+
+            // Asegurar scope manual
+            if (!parent.classList.contains(CFG.scopeClass)) parent.classList.add(CFG.scopeClass);
+
+            // Log del template (para ver exactamente qué se va a insertar)
+            log("HTML a insertar:", html);
+
+            // Inserción idempotente
+            const already = $(CFG.blockSelector, parent);
+            if (already) {
+                log("Ya existe el bloque. No se duplica.");
+            } else {
+                parent.insertAdjacentHTML(CFG.insertPosition, html);
+                log("HTML insertado con", CFG.insertPosition);
+            }
+
+            // Verificación POST-inserción
+            const block = $(CFG.blockSelector, parent);
+            if (!block) {
+                warn("Post-inserción: NO se localizó el bloque. ¿El template fue alterado?");
+                return;
+            }
+
+            // DEBUG del contenido interno
+            const title = block.querySelector(".tc0029-2-banner__title");
+            const sub = block.querySelector(".tc0029-2-banner__subtitle");
+            const cta = block.querySelector(".tc0029-2-entry");
+
+            log("DEBUG nodes =>", {
+                titleExists: !!title, titleText: title?.textContent || "(vacío)",
+                subtitleExists: !!sub, subtitleText: sub?.textContent || "(vacío)",
+                ctaExists: !!cta, ctaHref: cta?.getAttribute("href") || "(sin href)", ctaText: cta?.textContent || "(vacío)"
+            });
+
+            // Refuerzo por si el parser hubiese vaciado algo (no debería, pero lo forzamos)
+            if (title && !title.textContent) title.textContent = String(CFG.titleText || "");
+            if (sub && !sub.textContent) sub.textContent = String(CFG.subtitleText || "");
+            if (cta) {
+                if (!cta.textContent) cta.textContent = String(CFG.linkText || "");
+                if (!cta.getAttribute("href")) cta.setAttribute("href", String(CFG.linkHref || "#"));
+            }
+
+            // Aplicar estado (desktop/mobile), setear imagen y visibilidad
+            applyState(parent);
+
+            // Listeners
+            const onResize = (function () { let id; return function () { clearTimeout(id); id = setTimeout(() => applyState(parent), 120); }; })();
+            window.addEventListener("resize", onResize, { passive: true });
+            window.addEventListener("orientationchange", onResize, { passive: true });
+        }
+
+        // Run
+        try {
+            safeInsert();
+        } catch (e) {
+            console.error("[tc0029-2] EXCEPCIÓN en safeInsert:", e);
+        }
+
+    })();
+</script>
+
+<script>
+    (function promoViewScrollOnce() {
+        const SEL = '.id-Z7_8ILI09412PVV0062BTDN8MN5Q4 .bcp-grupo-categoria-tarjetas:not(.ocultar)';
+        const KEY = '__promo_view_tc0029_ctrl';      // bandera one-shot por vista
+        const VIEW_OFFSET = 500;                          // px extra para adelantar
+        const EXP_NAME = 'Beneficios TC Detalle - ViaBCP - TC0029 - P';
+
+        // --- utils
+        function getDocumentTop(el) {
+            // Calcular distancia del elemento al topo del documento
+            let y = 0;
+            let n = el;
+            while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+            return y;
+        }
+
+        function isVisible(el) {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+            // Condición de visibilidad básica: cualquier parte visible
+            const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+            return visible;
+        }
+
+        function pushDigitalData(payload) {
+            try {
+                if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+                if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+                if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+                window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+            } catch (e) { console.warn('[TC0029] digitalData push error:', e); }
+            return false;
+        }
+
+        function fireOnce() {
+            if (window[KEY]) return;
+            const ok = pushDigitalData({
+                promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta' },
+                event: 'trackPromotionView'
+            });
+            console.warn('[TC0029] fireOnce', { position: 'Adquiere tu Tarjeta', t: performance.now() });
+            if (ok) window[KEY] = true;
+        }
+
+        // --- core
+        function start() {
+            const el = document.querySelector(SEL);
+            if (!el) return;
+
+            // 1) Disparar si ya es visible en la primera pantalla
+            if (isVisible(el)) { setTimeout(() => fireOnce(), 200); return; }
+
+            // 2) Escuchar scroll hasta que sea visible (one-shot)
+            const onScroll = () => {
+                if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+                if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // 3) Intentar también tras load por posibles layout shifts
+            window.addEventListener('load', () => {
+                if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+            }, { once: true });
+        }
+
+        // Iniciar ahora (primera carga)
+        start();
+
+        // Re‐iniciar al volver con bfcache (back/forward)
+        window.addEventListener('pageshow', (ev) => {
+            if (ev.persisted) {
+                window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+                start();
+            }
+        });
+    })();
+</script>
+
+<script>
+    (function promoViewScrollOnce() {
+        const SEL = '.bcp_listado_boxes_beneficios_exclusivos_tarjetas.tc0029-1-scope .tc0029-1-banner';
+        const KEY = '__promo_view_tc0029-1_ctrl';      // bandera one-shot por vista
+        const VIEW_OFFSET = 0;                          // px extra para adelantar
+        const EXP_NAME = 'Beneficios TC Detalle - ViaBCP - TC0029 - P';
+
+        // --- utils
+        function getDocumentTop(el) {
+            // Calcular distancia del elemento al topo del documento
+            let y = 0;
+            let n = el;
+            while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+            return y;
+        }
+
+        function isVisible(el) {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+            // Condición de visibilidad básica: cualquier parte visible
+            const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+            return visible;
+        }
+
+        function pushDigitalData(payload) {
+            try {
+                if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+                if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+                if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+                window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+            } catch (e) { console.warn('[TC0029] digitalData push error:', e); }
+            return false;
+        }
+
+        function fireOnce() {
+            if (window[KEY]) return;
+            const ok = pushDigitalData({
+                promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta 1' },
+                event: 'trackPromotionView'
+            });
+            console.warn('[TC0029] fireOnce', { position: 'Adquiere tu Tarjeta 1', t: performance.now() });
+            if (ok) window[KEY] = true;
+        }
+
+        // --- core
+        function start() {
+            const el = document.querySelector(SEL);
+            if (!el) return;
+
+            // 1) Disparar si ya es visible en la primera pantalla
+            if (isVisible(el)) { setTimeout(() => fireOnce(), 1000); return; }
+
+            // 2) Escuchar scroll hasta que sea visible (one-shot)
+            const onScroll = () => {
+                if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+                if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // 3) Intentar también tras load por posibles layout shifts
+            window.addEventListener('load', () => {
+                if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+            }, { once: true });
+        }
+
+        // Iniciar ahora (primera carga)
+        start();
+
+        // Re‐iniciar al volver con bfcache (back/forward)
+        window.addEventListener('pageshow', (ev) => {
+            if (ev.persisted) {
+                window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+                start();
+            }
+        });
+    })();
+</script>
+
+<script>
+    (function promoViewScrollOnce() {
+        // const SEL = '.id-Z7_8ILI09412PVV0062BTDN8MN5Q7 .bcp-catalogo-productos-beneficios-cuotas-sin-intereses:not(.ocultarxparam)';
+        const SEL = '.bcp-catalogo-productos-beneficios-cuotas-sin-intereses.tc0029-2-scope .tc0029-2-banner';
+        
+        const KEY = '__promo_view_tc0029-2_ctrl';      // bandera one-shot por vista
+        const VIEW_OFFSET = 0;                          // px extra para adelantar
+        const EXP_NAME = 'Beneficios TC Detalle - ViaBCP - TC0029 - P';
+
+        // --- utils
+        function getDocumentTop(el) {
+            // Calcular distancia del elemento al topo del documento
+            let y = 0;
+            let n = el;
+            while (n) { y += n.offsetTop || 0; n = n.offsetParent; }
+            return y;
+        }
+
+        function isVisible(el) {
+            if (!el) return false;
+            const rect = el.getBoundingClientRect();
+            const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+            // Condición de visibilidad básica: cualquier parte visible
+            const visible = (rect.top <= vh - VIEW_OFFSET) && (rect.bottom >= 0 + VIEW_OFFSET);
+            return visible;
+        }
+
+        function pushDigitalData(payload) {
+            try {
+                if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+                if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+                if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+                window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+            } catch (e) { console.warn('[TC0029] digitalData push error:', e); }
+            return false;
+        }
+
+        function fireOnce() {
+            if (window[KEY]) return;
+            const ok = pushDigitalData({
+                promotion: { name: EXP_NAME, creative: 'Banner', position: 'Adquiere tu Tarjeta 2' },
+                event: 'trackPromotionView'
+            });
+            console.warn('[TC0029] fireOnce', { position: 'Adquiere tu Tarjeta 2', t: performance.now() });
+            if (ok) window[KEY] = true;
+        }
+
+        // --- core
+        function start() {
+            const el = document.querySelector(SEL);
+            if (!el) return;
+
+            // 1) Disparar si ya es visible en la primera pantalla
+            if (isVisible(el)) { setTimeout(() => fireOnce(), 1500); return; }
+
+            // 2) Escuchar scroll hasta que sea visible (one-shot)
+            const onScroll = () => {
+                if (window[KEY]) { window.removeEventListener('scroll', onScroll); return; }
+                if (isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+            };
+            window.addEventListener('scroll', onScroll, { passive: true });
+
+            // 3) Intentar también tras load por posibles layout shifts
+            window.addEventListener('load', () => {
+                if (!window[KEY] && isVisible(el)) { fireOnce(); window.removeEventListener('scroll', onScroll); }
+            }, { once: true });
+        }
+
+        // Iniciar ahora (primera carga)
+        start();
+
+        // Re‐iniciar al volver con bfcache (back/forward)
+        window.addEventListener('pageshow', (ev) => {
+            if (ev.persisted) {
+                window[KEY] = false; // permitir disparar de nuevo en esta "nueva vista"
+                start();
+            }
+        });
+    })();
+</script>
+
+
+<script>
+(function promoClickTrack(){
+  // Definir selectores y metadatos base
+  const SEL       = '.tc0029-scope .tc0029-entry';
+  const EXP_NAME  = 'Beneficios TC - ViaBCP - TC0029 - P';
+  const ACTION    = 'trackPromotionClick';
+
+  // Mapear atributos opcionales del elemento al payload
+  const MAP_ATTR = {
+    href:  el => el?.getAttribute('href') || '',
+    text:  el => (el?.textContent || '').trim(),
+    id:    el => el?.id || '',
+    role:  el => el?.getAttribute('role') || '',
+    label: el => el?.getAttribute('aria-label') || ''
+  };
+
+  // --- utils
+  function $(s, root = document){ try { return root.querySelector(s); } catch(_) { return null; } }
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0029] digitalData push error:', e); }
+    return false;
+  }
+
+  function buildPayload(target){
+    // Permitir personalizar construcción desde fuera si se requiere
+    if (typeof window.onBuildPromoClickPayload === 'function') {
+      try { return window.onBuildPromoClickPayload(target, { EXP_NAME, ACTION }); }
+      catch(e){ console.warn('[TC0029] onBuildPromoClickPayload error:', e); }
+    }
+    const data = {};
+    for (const k in MAP_ATTR) { try { data[k] = MAP_ATTR[k](target); } catch(_){} }
+    return {
+      promotion: {
+        name: EXP_NAME,
+        creative: 'Banner',
+        position: 'Adquiere tu Tarjeta'
+      },
+    //   link: data,
+      event: ACTION
+    };
+  }
+
+  // --- core
+  function onClick(e){
+    // Usar delegación para capturar clics en hijos
+    const target = e.target?.closest(SEL);
+    if (!target) return;
+
+    // Enviar evento de clic
+    const ok = pushDigitalData(buildPayload(target));
+
+    if (ok) { /* opcional: console.debug('click tagged'); */ }
+  }
+
+  function start(){
+    // Asegurar existencia del contenedor principal si se desea limitar el alcance
+    const scope = $('.tc0029-scope') || document;
+    scope.addEventListener('click', onClick, true);
+  }
+
+  // Iniciar
+  start();
+
+  // Re-iniciar al volver con bfcache
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      // No limpiar listeners: al usar delegación global, el handler sigue válido
+      // Si el alcance fuera un nodo que se recrea, reanudar aquí según necesidad
+    }
+  });
+})();
+</script>
+
+<script>
+(function promoClickTrack(){
+  // Definir selectores y metadatos base
+  const SEL       = '.tc0029-1-scope .tc0029-1-entry';
+  const EXP_NAME  = 'Beneficios TC Detalle - ViaBCP - TC0029 - P';
+  const ACTION    = 'trackPromotionClick';
+
+  // Mapear atributos opcionales del elemento al payload
+  const MAP_ATTR = {
+    href:  el => el?.getAttribute('href') || '',
+    text:  el => (el?.textContent || '').trim(),
+    id:    el => el?.id || '',
+    role:  el => el?.getAttribute('role') || '',
+    label: el => el?.getAttribute('aria-label') || ''
+  };
+
+  // --- utils
+  function $(s, root = document){ try { return root.querySelector(s); } catch(_) { return null; } }
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0029] digitalData push error:', e); }
+    return false;
+  }
+
+  function buildPayload(target){
+    // Permitir personalizar construcción desde fuera si se requiere
+    if (typeof window.onBuildPromoClickPayload === 'function') {
+      try { return window.onBuildPromoClickPayload(target, { EXP_NAME, ACTION }); }
+      catch(e){ console.warn('[TC0029] onBuildPromoClickPayload error:', e); }
+    }
+    const data = {};
+    for (const k in MAP_ATTR) { try { data[k] = MAP_ATTR[k](target); } catch(_){} }
+    return {
+      promotion: {
+        name: EXP_NAME,
+        creative: 'Banner',
+        position: 'Adquiere tu Tarjeta 1'
+      },
+    //   link: data,
+      event: ACTION
+    };
+  }
+
+  // --- core
+  function onClick(e){
+    // Usar delegación para capturar clics en hijos
+    const target = e.target?.closest(SEL);
+    if (!target) return;
+
+    // Enviar evento de clic
+    const ok = pushDigitalData(buildPayload(target));
+
+    if (ok) { /* opcional: console.debug('click tagged'); */ }
+  }
+
+  function start(){
+    // Asegurar existencia del contenedor principal si se desea limitar el alcance
+    const scope = $('.tc0029-1-scope') || document;
+    scope.addEventListener('click', onClick, true);
+  }
+
+  // Iniciar
+  start();
+
+  // Re-iniciar al volver con bfcache
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      // No limpiar listeners: al usar delegación global, el handler sigue válido
+      // Si el alcance fuera un nodo que se recrea, reanudar aquí según necesidad
+    }
+  });
+})();
+</script>
+
+<script>
+(function promoClickTrack(){
+  // Definir selectores y metadatos base
+  const SEL       = '.tc0029-2-scope .tc0029-2-entry';
+  const EXP_NAME  = 'Beneficios TC Detalle - ViaBCP - TC0029 - P';
+  const ACTION    = 'trackPromotionClick';
+
+  // Mapear atributos opcionales del elemento al payload
+  const MAP_ATTR = {
+    href:  el => el?.getAttribute('href') || '',
+    text:  el => (el?.textContent || '').trim(),
+    id:    el => el?.id || '',
+    role:  el => el?.getAttribute('role') || '',
+    label: el => el?.getAttribute('aria-label') || ''
+  };
+
+  // --- utils
+  function $(s, root = document){ try { return root.querySelector(s); } catch(_) { return null; } }
+  function pushDigitalData(payload){
+    try{
+      if (Array.isArray(window.digitalData)) { window.digitalData.push(payload); return true; }
+      if (!window.digitalData) { window.digitalData = []; window.digitalData.push(payload); return true; }
+      if (Array.isArray(window.digitalData.events)) { window.digitalData.events.push(payload); return true; }
+      window.digitalData.events = []; window.digitalData.events.push(payload); return true;
+    }catch(e){ console.warn('[TC0029] digitalData push error:', e); }
+    return false;
+  }
+
+  function buildPayload(target){
+    // Permitir personalizar construcción desde fuera si se requiere
+    if (typeof window.onBuildPromoClickPayload === 'function') {
+      try { return window.onBuildPromoClickPayload(target, { EXP_NAME, ACTION }); }
+      catch(e){ console.warn('[TC0029] onBuildPromoClickPayload error:', e); }
+    }
+    const data = {};
+    for (const k in MAP_ATTR) { try { data[k] = MAP_ATTR[k](target); } catch(_){} }
+    return {
+      promotion: {
+        name: EXP_NAME,
+        creative: 'Banner',
+        position: 'Adquiere tu Tarjeta 2'
+      },
+    //   link: data,
+      event: ACTION
+    };
+  }
+
+  // --- core
+  function onClick(e){
+    // Usar delegación para capturar clics en hijos
+    const target = e.target?.closest(SEL);
+    if (!target) return;
+
+    // Enviar evento de clic
+    const ok = pushDigitalData(buildPayload(target));
+
+    if (ok) { /* opcional: console.debug('click tagged'); */ }
+  }
+
+  function start(){
+    // Asegurar existencia del contenedor principal si se desea limitar el alcance
+    const scope = $('.tc0029-2-scope') || document;
+    scope.addEventListener('click', onClick, true);
+  }
+
+  // Iniciar
+  start();
+
+  // Re-iniciar al volver con bfcache
+  window.addEventListener('pageshow', (ev) => {
+    if (ev.persisted) {
+      // No limpiar listeners: al usar delegación global, el handler sigue válido
+      // Si el alcance fuera un nodo que se recrea, reanudar aquí según necesidad
+    }
+  });
+})();
+</script>

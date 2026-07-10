@@ -1,0 +1,42 @@
+<style>
+  .bcp_producto:has(button[aria-label="Tarjetas"]) .bcp_img_promocion {
+    background-image: url("https://www.viabcp.com/wcm/connect/99937548-5998-422c-9582-09688e3e131a/imagen-tarjetas-mega-menu.png?MOD=AJPERES&attachment=false&id=1777407756296") !important;
+  }
+
+  @media (min-width: 1280px) {
+    .bcp_producto:has(button[aria-label="Tarjetas"]) .bcp_img_promocion {
+      background-image: url("https://www.viabcp.com/wcm/connect/c733f80f-d6c4-4b7b-8dd8-9a700ab8f0ef/c73edd306dffe6d7c9d7cd9dea7c7d26387066b4.png?MOD=AJPERES&attachment=false&id=1777407893628") !important;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    .bcp_producto:has(button[aria-label="Tarjetas"]) .bcp_img_promocion {
+      margin-right: 8px;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    function cambiarBannerTarjetas() {
+      const tituloEl = [...document.querySelectorAll(".bcp_titulo")].find(el =>
+        el.textContent.trim().includes("Conoce si tienes una Tarjeta pre-aprobada")
+      );
+      if (!tituloEl) return false;
+
+      tituloEl.textContent = "Descubre si tienes una tarjeta preaprobada";
+      return true;
+    }
+
+    if (cambiarBannerTarjetas()) return;
+
+    const observer = new MutationObserver(() => {
+      if (cambiarBannerTarjetas()) observer.disconnect();
+    });
+
+    observer.observe(document.body || document.documentElement, {
+      childList: true,
+      subtree: true
+    });
+  })();
+</script>

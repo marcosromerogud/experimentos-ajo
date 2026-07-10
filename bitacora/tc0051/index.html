@@ -1,0 +1,198 @@
+<style>
+    .tc0051-qr {
+            margin-top: 16px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 24px;
+        min-height: 96px;
+        max-height: 96px;
+    
+    }
+    .tc0051-qr img {
+        min-width: 96px;
+        max-width: 96px;
+        min-height: 96px;
+        max-height: 96px;
+        box-shadow: 0px 1px 8px 0px #52709433, 0px 3px 3px 0px #5270941F, 0px 3px 4px 0px #52709424;
+        border-radius: 8px;
+    }
+    .tc0051-qr .bcp-descripcion-qr {
+        color: #002a8d !important;
+        font-family: "Flexo-demi";
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 20px;
+        min-width: 146px;
+        max-width: 146px;
+    }
+
+</style>
+
+<script>
+(function () {
+    "use strict";
+
+    // ===== CONFIG =====
+    const CFG = {
+        parentSelector: ".bcp_banner_producto_pnd .bcp_banner_textos",
+        insertPosition: "beforeend",
+
+        scopeClass: "tc0051-scope",
+
+        qr: {
+            blockSelector: '[data-offer-id="tc0051"][data-instance="qr"]',
+            imageUrl: "/wcm/connect/24b148fa-3136-4274-84ca-e47d2e1c52ed/imagen+%289%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-24b148fa-3136-4274-84ca-e47d2e1c52ed-pA81u.g",
+            alt: "Código QR"
+        },
+
+        debug: true
+    };
+
+    const log = (...a) => CFG.debug && console.log("[tc0051]", ...a);
+    const warn = (...a) => CFG.debug && console.warn("[tc0051]", ...a);
+
+    const $ = (s, r = document) => {
+        try {
+            return r.querySelector(s);
+        } catch (e) {
+            warn("querySelector error:", s, e.message);
+            return null;
+        }
+    };
+
+    function getInsertionScope(parent) {
+        if (!parent) return null;
+
+        switch (CFG.insertPosition) {
+            case "beforebegin":
+            case "afterend":
+                return parent.parentNode;
+
+            case "afterbegin":
+            case "beforeend":
+            default:
+                return parent;
+        }
+    }
+
+    // 
+    function buildQRNode() {
+        // container principal
+        const container = document.createElement("div");
+        container.className = "bcp-container-qr tc0051-qr container";
+        container.setAttribute("data-offer-id", "tc0051");
+        container.setAttribute("data-instance", "qr");
+
+        // imagen
+        const img = document.createElement("img");
+        img.className = "bcp-img-qr";
+        img.setAttribute("aria-hidden", "true");
+        img.setAttribute("alt", CFG.qr.alt);
+
+        // importante: lazy + fallback inmediato
+        img.setAttribute("data-src", CFG.qr.imageUrl);
+        img.src = CFG.qr.imageUrl;
+
+        // div description
+        const div = document.createElement("div");
+        div.className = "bcp-descripcion-qr";
+        div.textContent = "Escanea el código y saca tu Préstamo desde la app, rápido y sin hacer colas";
+
+        // append
+        container.appendChild(img);
+        container.appendChild(div);
+
+        return container;
+    }
+
+    function applyQR() {
+
+        const parent = $(CFG.parentSelector);
+        if (!parent) {
+            warn("Parent no encontrado:", CFG.parentSelector);
+            return;
+        }
+        
+        if (!isDesktop()) {
+            if (existingQR) {
+                existingQR.remove();
+                log("QR removido (no desktop)");
+            }
+            return;
+        }
+
+
+        // scope isolation
+        if (!parent.classList.contains(CFG.scopeClass)) {
+            parent.classList.add(CFG.scopeClass);
+        }
+        
+        // ===== DEVICE CHECK (FIRST VALIDATION) =====
+        function isDesktop() {
+            return window.innerWidth >= 1024;
+        }
+
+
+        const scope = getInsertionScope(parent);
+        if (!scope) {
+            warn("No se pudo resolver el scope");
+            return;
+        }
+
+        const existingQR = $(CFG.qr.blockSelector, scope);
+
+        const shouldShowQR = true;
+
+        if (!shouldShowQR) {
+            if (existingQR) {
+                existingQR.remove();
+                log("QR removido");
+            }
+            return;
+        }
+
+        if (existingQR) {
+            log("QR ya existe, no se duplica");
+            return;
+        }
+
+        //
+        const qrNode = buildQRNode();
+
+        if (CFG.insertPosition === "beforeend") {
+            parent.appendChild(qrNode);
+        } else if (CFG.insertPosition === "afterbegin") {
+            parent.prepend(qrNode);
+        } else {
+            parent.appendChild(qrNode);
+        }
+
+        log("QR insertado correctamente (DOM API)");
+    }
+
+    function safeInsert() {
+        applyQR();
+
+        const onUpdate = (function () {
+            let id;
+            return function () {
+                clearTimeout(id);
+                id = setTimeout(applyQR, 120);
+            };
+        })();
+
+        window.addEventListener("resize", onUpdate, { passive: true });
+        window.addEventListener("orientationchange", onUpdate, { passive: true });
+    }
+
+    try {
+        safeInsert();
+    } catch (e) {
+        console.error("[tc0051] EXCEPCIÓN:", e);
+    }
+
+})();
+
+</script>
