@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Adobe Target QA Helper",
+  "version": "1.0",
+  "description": "Activa QA Mode de Adobe Target desde un link QA.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "cookies"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
