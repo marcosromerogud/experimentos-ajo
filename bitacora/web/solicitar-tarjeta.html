@@ -1,0 +1,1350 @@
+[Component name="plantillas de presentacion
+(ux-frontend)/codigohtml-componentes-presentacionenlista/microcomponentes/microcomp.referenciaformulariowebcomponent"]
+<style type="text/css">
+	.d-none-m {
+		display: none;
+	}
+
+	.bcp_headline_tyc_st {
+		font-size: 10px;
+		font-weight: normal;
+		font-stretch: normal;
+		font-style: normal;
+		line-height: normal;
+		letter-spacing: normal;
+		text-align: center;
+		color: #868f9e;
+		margin: 24px;
+	}
+
+	.headline_post_login {
+		margin: 0 24px 83px;
+	}
+
+	/* F O R M U L A R I O   D E   D N I */
+	.st_ingresar_dni:focus {
+		box-shadow: none !important;
+	}
+
+	.st_mensaje_error_dni {
+		opacity: calc(0);
+		color: #e30425 !important;
+	}
+
+	.st_chaptchaLegal {
+		margin: 20px auto 0;
+		width: 100%;
+		text-align: left;
+	}
+
+	.st_botonbuscar_dni {
+		width: 200px;
+		border: none;
+		cursor: pointer;
+		border-radius: 20px;
+		height: 40px;
+		padding: 12px 24px;
+		font-size: 16px;
+		line-height: 16px;
+		font-weight: bold;
+		background-color: #ff7800;
+		color: #fff;
+		display: block;
+	}
+
+	.st_botonbuscar_dni.degradado {
+		background: linear-gradient(
+			77deg,
+			rgba(2, 47, 161, 1) 30%,
+			rgba(255, 120, 0, 1) 100%
+		) !important;
+	}
+
+	.st_botonbuscar_dni:hover {
+		background: #ff961f;
+	}
+</style>
+
+<style>
+	.bcp_slider_adqui_st img {
+		width: 100%;
+	}
+
+	.bcp_contenedor_slider_adqui {
+		position: relative;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.bcp_contenedor_slider_adqui .bcp_form_descubre {
+		position: relative;
+		z-index: 1;
+	}
+
+	.bcp_contenedor_slider_adqui .bcp_titulo_principal,
+	.bcp_contenedor_slider_adqui .st_formDNI_subtitle_bcp {
+		font-family: "Flexo";
+		font-style: normal;
+		text-align: center;
+		color: #002a8d;
+	}
+
+	.bcp_contenedor_slider_adqui .st_ingresar_dni {
+		margin: auto auto 5px;
+		display: block;
+		border: solid 1px #868f9e !important;
+		box-shadow: none !important;
+		width: 256px;
+		height: 48px;
+		padding: 12px 16px;
+		background-color: #fff;
+		border-radius: 8px !important;
+		font-family: "Flexo-Demi" !important;
+		font-style: normal;
+		font-weight: 500;
+		font-size: 16px !important;
+		line-height: 24px !important;
+		color: #202e44 !important;
+		cursor: text;
+		transition: box-shadow 0.2s linear, color 0.2s linear;
+		outline: unset;
+	}
+
+	.bcp_contenedor_slider_adqui .st_ingresar_dni::placeholder {
+		color: #99a1ad !important;
+	}
+
+	.bcp_contenedor_slider_adqui .st_ingresar_dni:hover {
+		border: solid 2px #99a1ad !important;
+		box-shadow: none !important;
+	}
+
+	.bcp_contenedor_slider_adqui .st_mensaje_error_dni {
+		width: 298px;
+		margin: auto;
+		display: block;
+		text-align: left;
+		padding-left: 16px;
+	}
+
+	.bcp_contenedor_slider_adqui .bcp_titulo_principal b {
+		font-family: "Flexo-demi";
+		font-weight: normal;
+	}
+
+	.bcp_contenedor_slider_adqui .bcp_formulario .bcp-clausula,
+	.bcp_contenedor_slider_adqui .bcp_formulario .bcp_legal_captcha {
+		text-align: center;
+		color: #606c7f;
+		margin-bottom: 25px;
+	}
+
+	.bcp_contenedor_slider_adqui .bcp_formulario .bcp_legal_captcha a {
+		/* color: #606c7f !important; */
+	}
+
+	.bcp_contenedor_slider_adqui .st_formDNI_subtitle_bcp {
+		color: #202e44 !important;
+	}
+
+	@media (min-width: 389px) and(max-width:500px) {
+		.bcp_contenedor_slider_adqui {
+			margin-top: 20px !important;
+		}
+	}
+
+	@media (min-width: 768px) {
+		.d-none-d {
+			display: none;
+		}
+
+		.d-none-m {
+			display: block;
+		}
+
+		.bcp_contenedor_slider_adqui {
+			margin-top: 0;
+		}
+
+		.bcp_slider_adqui_st {
+			/* height: 730px;
+            padding: 0px 0px 40px 0px; */
+		}
+
+		.bcp_slider_adqui_st .bcp_slide_tarjetas .slider-tarjetas1 {
+			margin-top: -60px;
+		}
+
+		.bcp_contenedor_slider_adqui .bcp_form_descubre {
+			padding: 0 15px;
+			margin-top: 0;
+		}
+
+		.bcp_slider_adqui_st .container {
+			width: 587px;
+		}
+
+		.bcp_slider_adqui_st .bcp_titulo_principal {
+			font-size: 32px;
+			line-height: 48px;
+			margin-bottom: 5px;
+			padding: 0 20px;
+		}
+
+		.bcp_contenedor_slider_adqui .st_formDNI_subtitle_bcp {
+			font-size: 16px;
+			margin-bottom: 24px;
+		}
+
+		.bcp_contenedor_slider_adqui .st_ingresar_dni {
+			width: 298px;
+		}
+
+		.bcp_contenedor_slider_adqui .st_botonbuscar_dni {
+			margin: 0 auto 32px;
+		}
+
+		/*PERSONALIZACION*/
+
+		.bcp_personalizacion_paid {
+			padding: 50px 83px;
+			text-align: center;
+			background-color: #002a8d;
+			border-radius: 0 8px 8px 0;
+			width: 50%;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .bcp_slider_adqui_st {
+			display: flex;
+			padding: 0;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_personalizacion_paid
+			.bcp_titulo_principal {
+			margin-top: 0;
+			color: #fff;
+			font-size: 28px;
+			line-height: 36px;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion img {
+			width: 350px;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .texto_beneficio {
+			color: #fff;
+			text-align: left;
+			font-size: 18px;
+			padding-top: 28px;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .texto_beneficio div {
+			display: flex;
+			gap: 20px;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion
+			.texto_beneficio
+			div
+			#membresia
+			g,
+		.bcp_contenedor_slider_adqui.personalizacion
+			.texto_beneficio
+			div
+			#regalona
+			g,
+		.bcp_contenedor_slider_adqui.personalizacion
+			.texto_beneficio
+			div
+			#millas
+			g,
+		.bcp_contenedor_slider_adqui.personalizacion
+			.texto_beneficio
+			div
+			#envio
+			g,
+		.bcp_contenedor_slider_adqui.personalizacion
+			.texto_beneficio
+			div
+			#pp
+			g {
+			fill: #fff !important;
+		}
+
+		#csi g {
+			stroke: #fff;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .bcp_form_descubre {
+			padding: 132px 0 0;
+		}
+	}
+
+	@media (max-width: 1020px) {
+		.bcp_personalizacion_paid {
+			padding: 50px 36px;
+			width: auto;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_personalizacion_paid
+			.bcp_titulo_principal {
+			font-size: 24px;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion img {
+			width: 250px;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .texto_beneficio {
+			font-size: 16px;
+		}
+
+		.bcp_contenedor_slider_adqui .bcp_form_descubre {
+			padding: 0 0 0 36px;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_slider_adqui_st
+			.bcp_titulo_principal {
+			font-size: 28px;
+			line-height: 36px;
+			margin-bottom: 5px;
+			padding: 0 20px;
+		}
+	}
+
+	@media (max-width: 767px) {
+		.bcp_contenedor_slider_adqui .st_botonbuscar_dni {
+			margin: 0 auto 32px;
+		}
+
+		.bcp_contenedor_slider_adqui {
+			margin-top: 4px;
+		}
+
+		.bcp_slider_adqui_st {
+			padding: 0;
+		}
+
+		.bcp_slider_adqui_st .bcp_slide_tarjetas .slider-tarjetas1 {
+			margin-top: -40px;
+		}
+
+		.bcp_contenedor_slider_adqui .bcp_form_descubre {
+			padding: 0 15px;
+			margin: 0;
+		}
+
+		.bcp_slider_adqui_st .container {
+			padding: 0 24px;
+		}
+
+		.bcp_slider_adqui_st .bcp_titulo_principal {
+			font-size: 24px;
+			line-height: 32px;
+			margin-bottom: 4px;
+		}
+
+		.bcp_slider_adqui_st .st_formDNI_subtitle_bcp {
+			font-size: 16px;
+			line-height: 1.5;
+			margin-bottom: 24px;
+		}
+
+		/*PERSONALIZACIÓN*/
+		.bcp_contenedor_slider_adqui.personalizacion {
+			margin-top: 0;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .bcp_slider_adqui_st {
+			height: auto;
+			padding: 0;
+		}
+
+		.bcp_personalizacion_paid {
+			text-align: center;
+			padding: 16px 20px;
+			color: #002a8d;
+		}
+
+		.bcp_personalizacion_paid .bcp_titulo_principal {
+			color: #002a8d;
+			font-size: 18px !important;
+			line-height: 24px !important;
+			margin-bottom: 16px;
+			font-family: "Flexo-Demi";
+		}
+
+		.bcp_personalizacion_paid img {
+			width: 62% !important;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .bcp_form_descubre {
+			padding: 20px 15px 0;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .bcp_form_descubre h2 {
+			display: none;
+		}
+
+		.bcp_personalizacion_paid .texto_beneficio {
+			text-align: left;
+			padding-top: 16px;
+			font-size: 14px !important;
+		}
+
+		.bcp_personalizacion_paid .texto_beneficio div {
+			display: flex;
+			gap: 10px;
+			align-items: flex-start;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_slider_adqui_st
+			.bcp_titulo_principal {
+			margin-top: 0;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion .bcp_form_descubre {
+			background-color: #002a8d !important;
+			border-radius: 8px 8px 0 0;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_slider_adqui_st
+			.st_formDNI_subtitle_bcp,
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_formulario
+			.bcp-clausula,
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_formulario
+			.bcp_legal_captcha,
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_formulario
+			.bcp_legal_captcha
+			a {
+			color: #fff !important;
+		}
+
+		.bcp_contenedor_slider_adqui.personalizacion
+			.bcp_slider_adqui_st
+			.st_formDNI_subtitle_bcp {
+			margin-bottom: 16px;
+			font-size: 16px;
+		}
+	}
+
+	.bcp_slider_adqui_st .bcp_slide_tarjetas {
+		position: absolute;
+		width: 100%;
+		height: 400px;
+	}
+
+	@media (min-width: 820px) {
+		.bcp_contenedor_slider_adqui {
+			margin-top: 0;
+		}
+	}
+
+	.formregistroincripciongt {
+		display: none;
+	}
+
+	@media (max-width: 464px) {
+		.st_chaptchaLegal {
+			margin: 10px auto 0;
+			width: 81%;
+			text-align: left;
+			color: #868f9e;
+		}
+
+		.st_botonbuscar_dni.exp {
+			margin: 15px auto 20px;
+			width: 200px;
+			display: block;
+		}
+
+		.bcp_contenedor_slider_adqui .st_ingresar_dni {
+			width: 310px;
+		}
+
+		.bcp_boton_solicitalo_inferior .bcp_flex_solicitala.vista_desktop {
+			display: none !important;
+		}
+
+		.tarjeta {
+			width: 100% !important;
+		}
+	}
+</style>
+<style>
+	/* P A N T A L L A   D E   C A R G A */
+	.st_pageLoad {
+		position: fixed;
+		background-color: #002a8d;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		text-align: center;
+		display: flex;
+		margin-top: auto;
+		margin-bottom: auto;
+		justify-items: center;
+		align-items: center;
+		z-index: 99999;
+		color: #fff;
+		font-weight: bold;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.st_process {
+		display: grid;
+		justify-items: center;
+		position: fixed;
+	}
+
+	.st_imageBCP {
+		content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODEiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA4MSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4xNTYxIDE1LjQ3NTRDMjAuMTU2MSAxNS40NzU0IDIwLjAwMjEgMTYuMTU4IDIwLjY3NTggMTYuMjE0NUMyMS4wMTY0IDE2LjIyNDcgMjEuMzc4NiAxNi4yMjQ3IDIxLjc1OTIgMTYuMjI0N0MyNC4xODgxIDE2LjIyNDcgMjYuNDEwMSAxNS4zODk2IDI2LjQ1OTkgMTMuMzM4MkMyNi41MDU3IDExLjUyMDEgMjQuNzc2NSAxMC45NzIyIDIyLjY5MjcgMTAuOTcyMkgyMS4yMjI0TDIwLjE1NjEgMTUuNDc1NFpNMzEuMTc2IDEzLjQzODVDMzEuMTc2IDE2LjE1OTMgMjguNzM0NSAxOS43NDg4IDIwLjI5MDMgMTkuMzA3QzE5LjMwMDcgMTkuMjU0NyAxOC42OTI2IDE5LjE3ODMgMTcuNzk5OSAxOC45NzMxQzE0LjYxOTMgMTguMjQwOCAxNS43MzgxIDE0LjcyOTkgMTUuNzM4MSAxNC43Mjk5TDE4Ljk3NDQgMS4xNDM3N0MyMC43NTUzIDAuODcyMzI2IDIyLjc1MjQgMC43MDc1MDcgMjQuODAzOSAwLjcwNzUwN0MyOS4zMjAyIDAuNzA3NTA3IDMyLjMxMjggMi4yMTUwOSAzMi4zMTI4IDUuMDM2NTVDMzIuMzEyOCA3LjY3ODMzIDI5LjU4NzIgOS4xMTQxMiAyNy41MjQxIDkuNDM5NTFDMjkuMTU5MSA5LjU1Mzc4IDMxLjE3NiAxMC43MzQzIDMxLjE3NiAxMy40Mzg1Wk0yMi45MTk1IDMuODYyNDNMMjIuMTAzMSA3LjM2MjcxQzIyLjEwMzEgNy4zNjI3MSAyMS45MDAzIDguMTEyMDQgMjIuNTkxOSA4LjExMjA0SDIzLjU0NDJDMjUuOTk0MiA4LjExMjA0IDI3LjY5MTIgNy4yMTQwMyAyNy43MzM4IDUuNjMyMTFDMjcuNzY4NCA0LjMyNzE1IDI2LjU2NzQgMy43NjE3NSAyNC44NjE5IDMuNzYxNzVDMjQuMDgyNCAzLjc2MTc1IDIzLjI2MzcgMy44MTE0NSAyMi45MTk1IDMuODYyNDNaTTUxLjgyMzcgMTkuMzU2SDQ5LjE0M0w1My4zOTM2IDEuMjQ0NjFDNTUuMTUxNiAwLjg2MDE3NSA1Ny4wMDIgMC43ODQxMzggNTkuMTQ1IDAuODAxMTI5QzY0LjM3NTggMC44MjA2NyA2Ni43NzM3IDIuNjkyNzIgNjYuNzczNyA1Ljk1NTk3QzY2Ljc3MzcgOC45NDYwNyA2NC4yNTc4IDEzLjM0NTYgNTcuMDIzMSAxMy4zNDU2QzU2LjI4MjEgMTMuMzQ1NiA1NS42NDQ4IDEzLjI2NjIgNTUuMTg0OCAxMy4yMzczQzU1LjE4NDggMTMuMjM3MyA1NC41OTU1IDE1Ljc1NTUgNTQuMjQ1IDE3LjIzOTNDNTMuODAzNCAxOS4xMDIgNTIuNTA5NSAxOS4zNTYgNTEuODIzNyAxOS4zNTZaTTU3LjYzOTIgMy45OTQyOEw1Ni40NTc1IDkuMDQ0MkM1Ni40NTc1IDkuMDQ0MiA1Ni4wNzY1IDEwLjExNzYgNTcuNDM2OCAxMC4xMTc2QzU3LjYwNDcgMTAuMTI0NCA1Ny43ODY5IDEwLjEyOTEgNTcuOTg3NSAxMC4xMjkxQzYxLjAyODYgMTAuMTA3IDYyLjU5MDQgOC4yMjk4OCA2Mi41OTA0IDYuMjg2NDZDNjIuNTkwNCA0LjM3NDQ3IDYxLjE5NDYgMy45MDQyMyA1OS41MTQzIDMuOTA0MjNDNTguNjU2MiAzLjkwNDIzIDU4LjAxMjIgMy45NDI0NiA1Ny42MzkyIDMuOTk0MjhaTTM4LjUzMTggMTEuMzU0M0MzOC41MzE4IDE0LjIxMzIgNDAuMjg2MSAxNi4wNDExIDQzLjI5NTggMTYuMDQxMUM0NC41MzQ5IDE2LjA0MTEgNDUuODg5IDE1Ljg0NDQgNDcuNzE1MSAxNC41NzY4TDQ2Ljk5OTMgMTcuNjIxN0M0Ni45OTkzIDE3LjYyMTcgNDYuODAwNSAxOC42MzE5IDQ1LjYxNDMgMTkuMDI0NEM0NC42NTA3IDE5LjM2NjMgNDMuNjM0MiAxOS41MjE4IDQyLjA5MzUgMTkuNTIxOEMzNy44MDE2IDE5LjUyMTggMzMuNjEzNCAxNy41MjE5IDMzLjYxMzQgMTEuNTk2QzMzLjYxMzQgNi4wNTI5NSAzNy4zNjYyIDAuNDE4OTQ1IDQ0LjYxMDggMC40MTg5NDVDNDYuMDMyMSAwLjQxODk0NSA0Ny4wMzcgMC42MDg0MDIgNDguMzIzNyAxLjAwMTMzQzUwLjMwNzkgMS42MDcwOSA1MC41NDg5IDIuNjI0MDQgNTAuNDE3NCAzLjIzMzYxQzUwLjI4MzIgMy44NTc2MyA0OS44MTUxIDUuMzU3MTQgNDkuODE1MSA1LjM1NzE0QzQ4LjU2NyA0LjMwMTk2IDQ2LjM5MyA0LjAwNTAzIDQ1LjE4NDQgNC4wMDUwM0M0MC41NTM2IDQuMDA1MDMgMzguNTMxOCA4LjQwNjI5IDM4LjUzMTggMTEuMzU0M1pNNy45MzQgOC45ODc5NkM2LjMxNDcyIDcuMzI2MTcgNC42MDY1OSA2LjMyMTU0IDMuMzQ1NDYgNS43NDg5M0MzLjM0NTQ2IDUuNzQ4OTMgMi43MzEwNSA1LjQ2MDQ5IDIuNDEwMTYgNS4yOTQ4MkMyLjg3NzgxIDQuMjk5OTYgMy40OTMxMSAzLjU4OTI5IDMuNDkzMTEgMy41ODkyOUMzLjU4MDE4IDMuNDgxODIgNS40NDQwNSAxLjQwODgzIDcuMDgzNTIgMi4xMzY5M0M4Ljg3NDI0IDIuODk5NDMgOS4wNTY0NSA2LjM5OTI4IDcuOTM0IDguOTg3OTZaTTc0LjQ1ODkgOC45ODc5NkM3Mi44Mzk2IDcuMzI2MTcgNzEuMTMxNSA2LjMyMTU0IDY5Ljg3MDMgNS43NDg5M0M2OS44NzAzIDUuNzQ4OTMgNjkuMjU1OSA1LjQ2MDQ5IDY4LjkzNSA1LjI5NDgyQzY5LjQwMjcgNC4yOTk5NiA3MC4wMTggMy41ODkyOSA3MC4wMTggMy41ODkyOUM3MC4xMDUxIDMuNDgxODIgNzEuOTY4OSAxLjQwODgzIDczLjYwODQgMi4xMzY5M0M3NS4zOTkxIDIuODk5NDMgNzUuNTgxMyA2LjM5OTI4IDc0LjQ1ODkgOC45ODc5NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMuNDg5NCAxMS42MzQ0QzExLjc0MzYgMTQuMjczNyA2Ljk4MDkxIDE3LjI4MiA1LjYzMTM2IDE3LjczMzJDMy4wMDY3NyAxOC43NzI2IDEuMjI5OTcgMTYuODQ0OSAxLjA3ODI4IDE2LjY0MjdDMC41ODg2MzQgMTYuMDQ1OSAwLjQ2OTcwMiAxNS45MTk3IDAuMjMyNzM1IDE1LjQ4NDNDMC4xODY1MDkgMTUuNTU2NSA1LjI3MDk3IDEzLjMxNzkgNy4wOTI2NiAxMC40MjE3QzkuMDY1NTkgNy45MzQwOSA5LjIzNzQ4IDMuMDU0NTEgNy4wODI3OCAyLjEzNjk2QzcuNzM0NDQgMi40NDc0OSA5LjI2OTc5IDMuMjgxNzcgMTAuNjU1MiA0LjQ1MDM4QzEyLjAzNzUgNS41NTk1MSAxMy4yMzIzIDcuMDEzOTkgMTMuMjA2NyA2Ljk5NTNDMTMuMzUyNSA3LjE4MjYzIDE1LjA4NCA5LjIyMjQ4IDEzLjQ4OTQgMTEuNjM0NFpNNzkuNzMwOCA2Ljk5NTNDNzkuODc2NyA3LjE4MjYzIDgxLjYwODEgOS4yMjI0OCA4MC4wMTM2IDExLjYzNDRDNzguMjY4MiAxNC4yNzM3IDczLjUwNSAxNy4yODIgNzIuMTU1NSAxNy43MzMyQzY5LjUzMDkgMTguNzcyNiA2Ny43NTQxIDE2Ljg0NDkgNjcuNjAyNCAxNi42NDI3QzY3LjExMjggMTYuMDQ1OSA2Ni45OTM4IDE1LjkxOTcgNjYuNzU2OSAxNS40ODQzQzY2LjcxMDYgMTUuNTU2NSA3MS43OTU2IDEzLjMxNzkgNzMuNjE2OCAxMC40MjE3Qzc1LjU4OTcgNy45MzQwOSA3NS43NjE2IDMuMDU0NTEgNzMuNjA2OSAyLjEzNjk2Qzc0LjI1ODYgMi40NDc0OSA3NS43OTM5IDMuMjgxNzcgNzcuMTc5NCA0LjQ1MDM4Qzc4LjU2MTcgNS41NTk1MSA3OS43NTY4IDcuMDEzOTkgNzkuNzMwOCA2Ljk5NTNaIiBmaWxsPSIjRkY3ODAwIi8+Cjwvc3ZnPgo=");
+		position: absolute;
+		margin: 42px;
+	}
+
+	.st_barProcess {
+		width: 100px;
+		height: 100px;
+		border: 6px solid #ff7800;
+		border-top: 4px solid rgb(0 36 122 / 38%);
+		border-left: 4px solid rgb(0 36 122 / 38%);
+		border-radius: 50%;
+		animation-name: girar;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		margin: auto;
+	}
+
+	@keyframes girar {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.st_pageLoad p {
+		width: 160px;
+		color: #fff !important;
+		text-align: center !important;
+	}
+</style>
+<!-- estilos de la tarjeta de envío gratis -->
+<style>
+	.tarjeta {
+		display: block;
+		background-color: #ebf4ff;
+		color: #0030b3;
+		font-family: Flexo-Regular, sans-serif;
+		font-weight: 400;
+		font-style: normal;
+		padding: 16px 1.2em;
+		margin: 0 auto 24px;
+		width: 50ch;
+		border-radius: 0.5rem;
+	}
+
+	.tarjeta.verde {
+		background-color: #6ac90f;
+		color: #fff;
+	}
+
+	.tarjeta.azul {
+		background-color: #0030b3;
+		color: #fff;
+	}
+
+	.tarjeta p {
+		color: inherit;
+		font-weight: 400;
+		font-family: Flexo-Demi;
+		text-align: center;
+		font-size: 14px;
+		margin: 0;
+		line-height: 1.4;
+	}
+
+	.tarjeta p svg {
+		margin: 0;
+		display: inline-block;
+		vertical-align: bottom;
+		fill: currentcolor;
+	}
+</style>
+
+<section class="bcp_contenedor_slider_adqui">
+	<div class="bcp_slider_adqui_st">
+		<div class="contenedor_imagenes_st_adqui">
+			<!--
+			<img src="https://www.viabcp.com/wcm/connect/87553a44-635c-40bd-a9be-00c52788e2e3/Banner-Landing-ST-Desktop.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-87553a44-635c-40bd-a9be-00c52788e2e3-p9YxOPL&cache=none" class="d-none-m" alt="Todas las tarjetas bcp" />
+			<img src="https://www.viabcp.com/wcm/connect/df0699fe-c24c-4c43-9adb-c295032f3859/Banner-Landing-ST-Mobile.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-df0699fe-c24c-4c43-9adb-c295032f3859-p9YxWl6&cache=none" class="d-none-d" alt="Todas las tarjetas bcp" />
+			-->
+			<img
+				src="https://www.viabcp.com/wcm/connect/5685c8c5-ad68-4a1b-9a61-f28da9a332b1/Banner-Landing-ST-Desktop.webp?MOD=AJPERES&attachment=false&id=1736283343037"
+				class="d-none-m"
+				alt="Todas las tarjetas bcp"
+			/>
+			<img
+				src="https://www.viabcp.com/wcm/connect/0838b3f9-e3b3-41a2-bca8-27f3dd81a633/Banner-Landing-ST-Mobile.webp?MOD=AJPERES&attachment=false&id=1736283510975"
+				class="d-none-d"
+				alt="Todas las tarjetas bcp"
+			/>
+		</div>
+		<div class="bcp_form_descubre bcp_formulario">
+			<!-- Mensaje de envío gratis -->
+			<div class="tarjeta">
+				<p>
+					<svg
+						width="24"
+						height="24"
+						viewbox="0 0 24 24"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M11.3356 2.25259C11.7145 1.9158 12.2855 1.9158 12.6644 2.25259L21.6644 10.2526C22.0772 10.6195 22.1143 11.2516 21.7474 11.6644C21.3805 12.0771 20.7484 12.1143 20.3356 11.7474L20 11.449L20 21C20 21.5128 19.614 21.9355 19.1166 21.9933L19 22H14C13.4477 22 13 21.5523 13 21V17H11V21C11 21.5523 10.5523 22 10 22H5.00001C4.44773 22 4.00001 21.5523 4.00001 21L4 11.448L3.66437 11.7474C3.28334 12.0861 2.71546 12.0805 2.34176 11.7529L2.2526 11.6644C1.88568 11.2516 1.92286 10.6195 2.33565 10.2526L11.3356 2.25259ZM12 4.33795L6 9.67L6.00001 20H9.00001V16C9.00001 15.4477 9.44773 15 10 15H14C14.5523 15 15 15.4477 15 16V20H18L18 9.671L12 4.33795Z"
+						/>
+					</svg>
+					<span>&nbsp;Ahora con Delivery gratis a donde quieras</span>
+				</p>
+			</div>
+			<h2 class="bcp_titulo_principal">
+				<p>
+					<b
+						>Tu tarjeta de crédito BCP te espera con miles de
+						beneficios</b
+					>
+				</p>
+			</h2>
+
+			<div class="st_formDNI_subtitle_bcp">
+				<br />A continuación, ingresa tu DNI o Carnet de Extranjería
+				para descubrir tu oferta:
+			</div>
+			<input
+				autocomplete="off"
+				class="st_ingresar_dni"
+				maxlength="9"
+				minlength="8"
+				onblur="validarErrorDNI_ST(0)"
+				onkeypress="return escribirDNI_ST(event,0);"
+				onpaste="return false"
+				placeholder="Ingresa tu nro. de DNI/CE"
+				type="tel"
+			/>
+			<span class="st_mensaje_error_dni"
+				>Ingresa Nº documento válido.</span
+			>
+			<div class="st_chaptchaLegal">
+				<input
+					class="st_botonbuscar_dni exp"
+					onclick="ingresarDNI_ST(0)"
+					type="button"
+					value="Descubre tu tarjeta"
+				/>
+				<div class="bcp_modal_legal bcp-clausula">
+					<!-- <div
+						class="bcp_legal_captcha"
+						dir="ltr"
+						style="font-size: 12px"
+					>
+						Al enviarnos esta información, autorizas al BCP al
+						tratamiento de tus datos personales.
+					</div> -->
+					<div
+						class="bcp_legal_captcha"
+						dir="ltr"
+						style="font-size: 12px"
+					>
+						Declaro conocer que esta información será utilizada
+						únicamente para los fines de este proceso, y será
+						tratada según lo indicado en nuestra
+						<a href="/wcm/myconnect/9ee75da8-3482-47a9-90b3-91ad1d57d7c2/Campan%CC%83a+exclusiva+GT2.pdf?MOD=AJPERES&amp;CVID=ptqPmBk&amp;useDefaultText=0&amp;useDefaultDesc=0&amp;attachment=false&amp;id=1749575167463" title="" target="_blank" style="color: #ff7800; font-size: 12px">Política de Privacidad</a>.
+					</div>
+					<div
+						class="bcp_legal_captcha"
+						dir="ltr"
+						style="font-size: 12px"
+					>
+						Este sitio está protegido por reCAPTCHA y se aplican las
+						<a href="https://policies.google.com.mcas.ms/privacy" title="" target="_blank" style="color: #ff7800; font-size: 12px">Políticas de privacidad</a>
+						y
+						<a href="https://policies.google.com.mcas.ms/terms" title="" target="_blank" style="color: #ff7800; font-size: 12px">Términos del servicio de Google</a>.
+					</div>
+				</div>
+
+				<div
+					class="formregistroincripciongt"
+					id="formregistroincripciongt"
+					tipoplantilla="form_sin_resetear"
+				>
+					&nbsp;
+				</div>
+				<!-- <form-captcha
+					datacallback="apiMultiuso"
+					id="recaptchamultiuso"
+				></form-captcha> -->
+			</div>
+			<br />
+		</div>
+	</div>
+</section>
+
+[Component name="plantillas de presentacion
+(ux-frontend)/codigohtml-componentes-presentacionenlista/microcomponentes/microcomp.referenciaformulariowebcomponent"]
+[Component name="resources/referenciasrecursos/externas/microcomp.referencia.swiperjs"]
+
+<script>
+	let initialVal = "";
+	let insinhs = "";
+
+	let JSONPromocionApi = {};
+
+	let versionLanding = "sincookies";
+
+	setTimeout(pageLoad(true), 1);
+	setTimeout(loadPageST(), 1);
+
+	function personalizacionUTM() {
+		let obtenerUrl = window.location.href;
+		if (
+			obtenerUrl.includes("utm_medium=pm&utm_source=fb") &&
+			(obtenerUrl.includes("utm_content=compra_24_csi") ||
+				obtenerUrl.includes("utm_content=categorias_csi") ||
+				obtenerUrl.includes("utm_content=beneficios_csi_visa"))
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"Hasta 24 Cuotas Sin Intereses te esperan en + de 4000 establecimientos ¿Te lo vas a perder?";
+		} else if (
+			obtenerUrl.includes(
+				"?utm_medium=pm&utm_source=g-sem&utm_campaign=bcpperf:g-sem:tc_adq:2023:brand_bbdd"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>¡Felicidades!</b> tu tarjeta <b>preaprobada</b> espera por ti <b>¡Pídela ya!</b>";
+		} else if (
+			obtenerUrl.includes(
+				"?utm_medium=pm&utm_source=g-sem&utm_campaign=bcpperf:g-sem:tc_adq"
+			)
+		) {
+			document
+				.querySelector(".st_botonbuscar_dni")
+				.classList.add("degradado");
+		} else if (
+			obtenerUrl.includes("utm_medium=pm&utm_source=fb") &&
+			obtenerUrl.includes("utm_content=beneficios_cero_membresia")
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>¡Memebresía gratis por S/1 al mes!</b> Pide tu Tarjeta de Crédito Clásica u Oro LATAM Pass y aprovecha esta promoción";
+		} else if (
+			obtenerUrl.includes("utm_medium=pm&utm_source=fb") &&
+			obtenerUrl.includes(
+				"utm_content=utm_content=beneficios_delivery_gratis"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>¡Delivery GRATIS!</b> Recibe donde quieras tu nueva tarjeta de crédito <b>¡Pídela ya!</b>";
+		} else if (
+			obtenerUrl.includes("utm_medium=pm&utm_source=fb") &&
+			obtenerUrl.includes("utm_content=alerta_")
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>¡Últimos días!</b> Pide tu tarjeta <b>preaprobada</b> y disfruta de delivery gratis a donde tu quieras";
+		} else if (
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=fb&utm_campaign=bcpperf:fb:tc_adq:2024:piloto_bbdd_consumo:conv:cpm:bbdd_consumo_b_transaccional&utm_content=transaccional"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>Pide tu Tarjeta de Crédito BCP sin salir de casa</b>";
+		} else if (
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=fb&utm_campaign=bcpperf:fb:tc_adq:2024:piloto_bbdd_consumo:conv:cpm:bbdd_consumo_b_pasiveros&utm_content=pasiveros"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>Pide tu tarjeta de crédito 100% segura, de manera digital y en pocos pasos</b>";
+		} else if (
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=fb&utm_campaign=bcpperf:fb:tc_adq:2024:piloto_bbdd_consumo:conv:cpm:bbdd_consumo_b_yaperos&utm_content=yaperos"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>¿Sabías que puedes ganar beneficios con tus compras? Pide tu Tarjeta de Crédito y disfruta de este beneficio</b>";
+		} else if (obtenerUrl.includes("tc:2024:aon:bbdd_ando")) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>Cumple retos y obtén tu nueva Tarjeta de Crédito BCP con ANDO</b>";
+		} else if (
+			obtenerUrl.includes(
+				"utm_campaign=bcpperf:fb:tc_adq:2024:bbdd_leads_antig"
+			) &&
+			obtenerUrl.includes("edad:conv:cpm:bbdd_leads_nuevos")
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>¡Felicitaciones! Tu tarjeta de crédito PREAPROBADA te está esperando con muchos beneficios</b>";
+		} else if (
+			obtenerUrl.includes(
+				"utm_source=fb&utm_medium=pm&utm_campaign=bcpperf:fb:tc_adq:202:bbdd_tcd:conv:cpm:bbdd_leads_tcd&utm_content=latinpop"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>Pide tu nueva Tarjeta de Crédito BCP versión virtual y aprovecha el 10% de dto para Lima Latin Pop Fest</b>";
+		} else if (
+			obtenerUrl.includes(
+				"https://www.viabcp.com/solicitar-tarjeta?utm_source=fb&utm_medium=pm&utm_campaign=bcpperf:fb:tc_adq:202:bbdd_tcd:conv:cpm:bbdd_leads_tcd&utm_content=cochi"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>Pide tu nueva Tarjeta de Crédito BCP versión virtual y aprovecha el 10% de dto para Cochi</b>";
+		} else if (
+			obtenerUrl.includes(
+				"https://www.viabcp.com/solicitar-tarjeta?utm_source=fb&utm_medium=pm&utm_campaign=bcpperf:fb:tc_adq:202:bbdd_tcd:conv:cpm:bbdd_leads_tcd&utm_content=cochi"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>Pide tu nueva Tarjeta de Crédito BCP versión virtual y aprovecha el 10% de dto para conciertos exclusivos</b>";
+		} else if (obtenerUrl.includes("utm_content=blackdays_noviembre2024")) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"<b>Pide hoy tu Tarjeta de Crédito BCP y disfruta de dtos. exclusivos, comprando en Cuotas Sin Intereses</b>";
+		} else if (
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=fb&utm_campaign=bcpperf:tc_qore:fb:aon:bbdd_leads_bmo:bbdd_leads_qore:cpa:conv"
+			) ||
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=g-display&utm_campaign=bcpbrand:aho:2025_junio:tact:qore:ios_android:cpe:traf&utm_content=campaign:ph"
+			) ||
+			obtenerUrl.includes(
+				"utm_source=YouTube&utm_medium=Paid&utm_campaign=BCP_Tarjetas_Estrategica360_Lanzamiento-Qore_Reproducciones_YouTube_Reproducciones_2025&utm_content=Responsive-Video-Ad_TC_35s_Muro_11Jul-31Ago_FPD_BBDD_TC-Qore"
+			) ||
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=g-sem&utm_campaign=bcpperf:tc_qore:g-sem:aon:qore:cpa:conv&utm_content=qore-bcp:nn"
+			) ||
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=fb&utm_campaign=bcpperf:tc_qore:fb:aon:bbdd_leads_bmo:bbdd_leads_qore:cpa:conv"
+			) ||
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=g-sem&utm_campaign=bcpperf:tc_qore:g-sem:aon:qore:cpa:conv&utm_content=qore-bcp:nn"
+			) ||
+			obtenerUrl.includes(
+				"utm_medium=pm&utm_source=g-pmax&utm_campaign=bcpperf:tc_qore:g-pmax:aon:bbdd_leads_qore:bbdd_leads_qore:cpa:conv"
+			) ||
+			obtenerUrl.includes(
+				"utm_medium=Paid&utm_campaign=BCP_Loyalty_TacticaDigital_Adquisicion-Qore"
+			)
+		) {
+			document.querySelector(
+				".bcp_form_descubre.bcp_formulario .bcp_titulo_principal p"
+			).innerHTML =
+				"Tu <b>Tarjeta de crédito Visa BCP QORE</b> acumula puntos y podrás canjearlos como quieras";
+			document
+				.querySelectorAll(".contenedor_imagenes_st_adqui img")[0]
+				.setAttribute(
+					"src",
+					"https://www.viabcp.com/wcm/connect/7494c94d-9b67-4814-bfd3-e4ad4a08a4b7/Desktop_Banner-Solicitar-TC-%281440x268px%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-7494c94d-9b67-4814-bfd3-e4ad4a08a4b7-pxWq-UI&cache=none"
+				);
+			document
+				.querySelectorAll(".contenedor_imagenes_st_adqui img")[1]
+				.setAttribute(
+					"src",
+					"https://www.viabcp.com/wcm/connect/98f89f8c-3560-4e36-b8bd-e73bfd2fd7d8/Mobile_Banner-Solicitar-TC-%28375x245px%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-98f89f8c-3560-4e36-b8bd-e73bfd2fd7d8-pxWrar8&cache=none"
+				);
+			document
+				.querySelector(".contenedor_imagenes_st_adqui")
+				.setAttribute("style", "margin-bottom: 16px");
+
+			///////////////////
+			sessionStorage.setItem("pqore", "true");
+		}
+	}
+
+	function loadPageST() {
+		let obtenerUrl = window.location.href;
+		document.getElementsByClassName(
+			"bcp_boton_solicitalo_inferior"
+		)[0].style.display = "none";
+		var dregalo = document.querySelector(".bcp_cintillo_campana");
+
+		if (dregalo) {
+			dregalo.setAttribute("style", "display: none");
+		}
+
+		if (!obtenerUrl.includes("preprod")) {
+			// window.open("https://www.mitarjetabcp.viabcp.com", "_self");
+		}
+
+		document
+			.querySelector(".bcp_banner-sin-carousel.producto")
+			.setAttribute("style", "display:none");
+		document
+			.querySelector(".bcp_breadcrum")
+			.setAttribute("style", "display:none");
+
+		let st_pageLoad = document.querySelector(".st_pageLoad");
+		st_pageLoad.style.display = "none";
+
+		/*
+		var interFooter = setInterval(function() {
+			if(document.querySelector('.bcp_footer')) {
+				document.querySelector('.bcp_footer').setAttribute('style', 'display:none')
+				clearInterval(interFooter)
+			}
+		})
+		*/
+
+		var interChatBCP = setInterval(function () {
+			if (document.querySelector(".bcp_footer_ayuda_flotante")) {
+				document
+					.querySelector(".bcp_footer_ayuda_flotante")
+					.setAttribute("style", "display:none");
+				clearInterval(interChatBCP);
+			}
+		});
+
+		personalizacionUTM();
+		taggeoSolicitarTC("Flujo inicial", "Solicitar Tarjeta");
+
+		if (!window.grecaptcha) {
+			//cargarRecursoReCaptcha();
+		}
+	}
+
+	function validarErrorDNI_ST(id) {
+		var st_ingresar_dni =
+			document.getElementsByClassName("st_ingresar_dni")[id];
+		if (st_ingresar_dni.value.length !== 8 && st_ingresar_dni.value.length !== 9) {
+			document.getElementsByClassName("st_mensaje_error_dni")[
+				id
+			].style.opacity = 1;
+			st_ingresar_dni.setAttribute(
+				"style",
+				"border: 1px solid #e30425 !important;"
+			);
+		} else if (st_ingresar_dni.value.length == 8) {
+			document.getElementsByClassName("st_mensaje_error_dni")[
+				id
+			].style.opacity = 0;
+			st_ingresar_dni.setAttribute(
+				"style",
+				"border: solid 1px #868f9e !important"
+			);
+		} else if (st_ingresar_dni.value.length == 9) {
+			document.getElementsByClassName("st_mensaje_error_dni")[
+				id
+			].style.opacity = 0;
+			st_ingresar_dni.setAttribute(
+				"style",
+				"border: solid 1px #868f9e !important"
+			);
+		}
+		
+	}
+	function escribirDNI_ST(evt, id) {
+		var code = evt.which ? evt.which : evt.keyCode;
+		var st_ingresar_dni =
+			document.getElementsByClassName("st_ingresar_dni")[id];
+		if (code == 8) {
+			return true;
+		} else if (code >= 48 && code <= 57) {
+			return true;
+		} else if (code == 13) {
+			ingresarDNI_ST(id);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	function obtenerTipoDocumento(valor) {
+		if (valor.length === 8) return "DNI";
+		if (valor.length === 9) return "CE";
+		return null;
+	}
+	async function ingresarDNI_ST(id) {
+		var st_ingresar_dni =
+			document.getElementsByClassName("st_ingresar_dni")[id];
+		
+		var input_value = st_ingresar_dni.value.trim();
+		var tipoDocumento = obtenerTipoDocumento(input_value);
+
+		if (!tipoDocumento) {
+			validarErrorDNI_ST(id);
+			return;
+		}
+		var documentoLength = st_ingresar_dni.value.length;
+		if (documentoLength !== 8 && documentoLength !== 9) {
+			validarErrorDNI_ST(id);
+			return;
+		} 
+		if (id == 0 || id == 1) {
+			let obtenerUrl = window.location.href;
+
+					if (obtenerUrl.includes("tc:2024:aon:bbdd_ando")) {
+						let st_pageLoad =
+							document.querySelector(".st_pageLoad_ando");
+						st_pageLoad.removeAttribute("style");
+						setTimeout(() => {
+							window.open("https://www.yoando.com.pe/", "_self");
+						}, 3000);
+					} else {
+						// initialVal = fnsha256(st_ingresar_dni.value)
+						// initialVal = await obtenerSha512(st_ingresar_dni.value);
+
+						const { generarIDC } = await import(
+							"/wcm/connect/016f5c19-ac9d-4ace-9447-ddbbc66a9fa4/generador-identificadores.js?MOD=AJPERES"
+						);
+						const idc = generarIDC(
+							tipoDocumento,
+							st_ingresar_dni.value,
+							false
+						);
+						initialVal = await obtenerSha512(idc.toUpperCase());
+
+						// console.log({ initialVal });
+
+						insinhs = st_ingresar_dni.value;
+						let st_pageLoad =
+							document.querySelector(".st_pageLoad");
+						taggeoSolicitarTC(`Clic ingresar ${tipoDocumento}`, tipoDocumento);
+						st_pageLoad.removeAttribute("style");
+						// debugger;
+						apiMultiuso("");
+						return;
+
+						try {
+							var intervalCaptcha = setInterval(function () {
+								try {
+									if (
+										document.querySelector(
+											"#recaptchamultiuso"
+										)
+									) {
+										document
+											.querySelector("body")
+											.removeAttribute("style");
+										grecaptcha.execute(
+											document
+												.querySelector(
+													"#recaptchamultiuso"
+												)
+												.getAttribute("index")
+										);
+										clearInterval(intervalCaptcha);
+									}
+								} catch (error) {
+									console.error(">", error);
+								}
+							}, 256);
+						} catch (error) {
+							console.error(">", error);
+						}
+					}
+				}
+				unsubscribeTopic();
+		}
+
+	/* C O N S U M I R   A P I   MULTIUSO   C O N   C A P T C H A */
+	function apiMultiuso(tokenCaptcha) {
+		let strHeadersApi = new Headers();
+		strHeadersApi.append("Accept", "application/json");
+		strHeadersApi.append("Content-Type", "application/json");
+
+		// [Component name="resources/endpointsapis/endpoint.multiuso"]
+
+		// if(initialVal.trim() == ""){
+		if (typeof initialVal !== "string" || initialVal.trim() === "") {
+			return;
+		}
+
+		let dataJson = {
+			nroDocumentoHash: initialVal,
+			campana: "BASE_PERSONALIZACION_TC",
+			// captchaToken: tokenCaptcha,
+		};
+
+		let requestOptions = {
+			method: "POST",
+			headers: strHeadersApi,
+			body: JSON.stringify(dataJson),
+		};
+
+		// console.debug(requestOptions);
+
+		// fetch(strUrlAPIServicio, strRequestOptions)
+		// fetch('https://www.viabcp.com/apis/public/productocampana/multiuso', requestOptions)
+		fetch("/apis/public/productocampana/multiuso", requestOptions)
+			.then((response) => {
+				if (response.status == "200") {
+					response
+						.text()
+						.then((result) => {
+							// grecaptcha.reset(
+							// 	document
+							// 		.querySelector("#recaptchamultiuso")
+							// 		.getAttribute("index")
+							// );
+
+							// console.debug({ result });
+
+							if (document.querySelector("#recaptchamultiuso")) {
+								// grecaptcha.reset(
+								// 	document
+								// 		.querySelector("#recaptchamultiuso")
+								// 		.getAttribute("index")
+								// );
+							}
+
+							let resultado = JSON.parse(result);
+							let datosArray = [
+									"C6",
+									1,
+									"CON",
+									"-",
+									"N",
+									"CARDS",
+									"GENERI",
+								];
+							// console.debug({resultado})
+
+							if (resultado.length > 0) {
+								datosArray = resultado[0].data.split("/");
+								// console.debug(datosArray);
+								console.debug({resultado, datosArray})
+								sessionStorage.setItem("stidpc", insinhs);
+								sessionStorage.setItem("stidpchs", initialVal);
+								console.log(datosArray[5]);
+								if (datosArray[5].includes("NO_CARDS")) {
+									taggeoSolicitarTC(
+										"Clic ingresar DNI",
+										"DNI - Sin Campaña"
+									);
+									taggeoSolicitarTC(
+										"Redirigir landing",
+										"Formulario"
+									);
+									taggeoSolicitarTC("Formulario", initialVal);
+									taggeoSolicitarTC(
+										"Rechazados - FORMULARIO",
+										initialVal
+									);
+									// REDIRECCIÓN
+									window.open(
+										"https://www.viabcp.com/formulariotarjeta",
+										"_self"
+									);
+								} else if (datosArray[5].includes("ANDO")) {
+									taggeoSolicitarTC(
+										"Flujo - ANDO",
+										initialVal
+									);
+									window.open(
+										"https://www.yoando.com.pe/",
+										"_self"
+									);
+								} else if (datosArray[5].includes("GRAD")) {
+									taggeoSolicitarTC(
+										"Clic ingresar DNI",
+										"DNI - Sin Campaña"
+									);
+									taggeoSolicitarTC(
+										"Redirigir landing",
+										"Ando"
+									);
+									taggeoSolicitarTC(
+										"Rechazados - ANDO",
+										initialVal
+									);
+									sessionStorage.setItem(
+										"stiubt",
+										JSON.stringify(datosArray)
+									);
+									window.open(
+										"https://www.viabcp.com/solicitar-tarjeta/descubre-tu-oferta",
+										"_self"
+									);
+								} else {
+									document
+										.querySelector("html, body")
+										.scrollTo({
+											top: 0,
+											left: 0,
+											behavior: "smooth",
+										});
+									sessionStorage.setItem(
+										"stiubt",
+										JSON.stringify(datosArray)
+									);
+									window.open(
+										"https://www.viabcp.com/solicitar-tarjeta/descubre-tu-oferta",
+										"_self"
+									);
+								}
+							} else {
+								datosArray = [
+									"C6",
+									1,
+									"CON",
+									"-",
+									"N",
+									"CARDS",
+									"GENERI",
+								];
+								sessionStorage.setItem(
+									"stiubt",
+									JSON.stringify(datosArray)
+								);
+
+								window.open(
+									"https://www.viabcp.com/solicitar-tarjeta/descubre-tu-oferta",
+									"_self"
+								);
+							}
+						})
+						.catch((error) => {
+							digitalData.push({
+								error: {
+									code: "error-solicitar-tarjeta",
+									message: error,
+								},
+								event: "trackError",
+							});
+							console.error("Error promesa: ", error);
+						});
+				} else {
+					digitalData.push({
+						error: {
+							code: "error-solicitar-tarjeta",
+							message: response.status,
+						},
+						event: "trackError",
+					});
+					console.error("Error status: ", response.status);
+				}
+			})
+			.catch((error) => {
+				digitalData.push({
+					error: {
+						code: "error-solicitar-tarjeta",
+						message: error,
+					},
+					event: "trackError",
+				});
+				console.error("error", error);
+			});
+	}
+
+	function taggeoSolicitarTC(action, label) {
+		dataLayer.push({
+			event: "virtualEvent",
+			category: "ST - Adquisicion",
+			action: action,
+			label: label,
+		});
+	}
+
+	function retargeting_subscribeTopic() {
+		if (Notification.permission == "granted") {
+			indigitall.topicsSubscribe(["SolicitarTCNoFinaliza"]);
+
+			var event_code = "testTC";
+
+			console.log("Ingresa Retargeting y suscribe grupo de no finaliza");
+
+			indigitall.sendCustomEvent({
+				eventType: event_code,
+				customData: {},
+				async: false,
+			});
+		}
+	}
+
+	function unsubscribeTopic() {
+		if (Notification.permission == "granted") {
+			console.log("Desuscribe de Topic No finaliza compra");
+
+			indigitall.topicsUnsubscribe(["SolicitarTCNoFinaliza"]);
+		}
+	}
+
+	var checkIndigitall = setInterval(function () {
+		if (typeof indigitall !== "undefined") {
+			clearInterval(checkIndigitall);
+			retargeting_subscribeTopic();
+		} else {
+			console.warn("Esperando a que Indigitall esté disponible...");
+		}
+	}, 500);
+
+	// document
+	//     .getElementsByClassName("st_botonbuscar_dni")[0]
+	//     .addEventListener("click", validarDocumentos);
+
+	// function validarDocumentos() {
+	//     // Definir reglas de validación para cada tipo de documento
+	//     const reglas = {
+	//       dni: /^\d{8}$/,
+	//     };
+
+	//     let campos = ["dni"]; // IDs de los inputs
+
+	//     let esValido = false;
+
+	//     campos.forEach((campo) => {
+	//       let input = document.getElementById(campo);
+	//       if (input && reglas[campo].test(input.value)) {
+	//         esValido = true; // Si un campo es válido, se acepta
+	//       }
+	//     });
+
+	//     // Seleccionar el mensaje de error
+	//     //let mensajeError = document.querySelector(".bcp_mensaje_error");
+
+	//     if (esValido) {
+	//       unsubscribeTopic();
+	//     } else {
+	//         console.log("No se ha podido desuscribir");
+	//     }
+	// }
+</script>

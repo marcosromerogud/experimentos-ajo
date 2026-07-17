@@ -1,0 +1,2328 @@
+{
+  "dominio_base": "https://www.viabcp.com",
+  "total_unicos": 244,
+  "total_confiables": 238,
+  "total_en_duda": 6,
+  "resumen_por_extension": {
+    "jpeg": 1,
+    "jpg": 4,
+    "js": 1,
+    "pdf": 15,
+    "png": 171,
+    "svg": 44,
+    "webp": 2,
+    "woff": 6
+  },
+  "por_extension": {
+    "jpeg": [
+      "https://www.viabcp.com/wcm/myconnect/a48220a4-f9ff-429a-80a9-07ad93c75574/WhatsApp+Image+2024-11-15+at+4.28.09+PM.jpeg?MOD=AJPERES&CVID=pOQlAIm"
+    ],
+    "jpg": [
+      "https://www.viabcp.com/wcm/connect/7494c94d-9b67-4814-bfd3-e4ad4a08a4b7/Desktop_Banner-Solicitar-TC-%281440x268px%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-7494c94d-9b67-4814-bfd3-e4ad4a08a4b7-pxWq-UI&cache=none",
+      "https://www.viabcp.com/wcm/connect/98f89f8c-3560-4e36-b8bd-e73bfd2fd7d8/Mobile_Banner-Solicitar-TC-%28375x245px%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-98f89f8c-3560-4e36-b8bd-e73bfd2fd7d8-pxWrar8&cache=none",
+      "https://www.viabcp.com/wcm/connect/e269776b-9def-4dcd-8c4e-d886e71d6d78/lanzamiento_post-login.jpg?MOD=AJPERES&attachment=false&id=1741009324149",
+      "https://www.viabcp.com/wcm/connect/eda07633-3c02-4a06-bc9e-0beb46760359/lanzamiento_post-login_movil.jpg?MOD=AJPERES&attachment=false&id=1741009238298"
+    ],
+    "js": [
+      "https://www.viabcp.com/wcm/connect/016f5c19-ac9d-4ace-9447-ddbbc66a9fa4/generador-identificadores.js?MOD=AJPERES"
+    ],
+    "pdf": [
+      "https://www.viabcp.com/wcm/myconnect/02d3ada6-41a7-4fe7-b0ab-d36d3724f7f7/TyC+-+BCP+LATAM+Milladictos.pdf?MOD=AJPERES&CVID=pR5AkuH&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1775013317251",
+      "https://www.viabcp.com/wcm/myconnect/2b401d1c-8baf-4cdc-bdc3-8a070e70831e/Campan%CC%83a+Cashback.pdf?MOD=AJPERES&CVID=pXMCxi4&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1782153152133",
+      "https://www.viabcp.com/wcm/myconnect/48a1239b-60dd-45cd-a762-4003ad70274e/Campana+Cashback+Whatsapp+v2.pdf?MOD=AJPERES&CVID=pUsMS2x&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1778599046600",
+      "https://www.viabcp.com/wcm/myconnect/6e2acf54-cc1d-488d-9c80-fda9977343c3/Campan%CC%83a+Cards+Julio26-+Legal.pdf?MOD=AJPERES&CVID=pYzc90I&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1783001934193",
+      "https://www.viabcp.com/wcm/myconnect/7ceedb66-c0df-4214-a644-7e5877e0a49e/TERMINOS+Y+CONDICIONES+CAMPANA+SPOTIFY.pdf?MOD=AJPERES&CVID=pVcn2AQ&useDefaultText=0&useDefaultDesc=0&a",
+      "https://www.viabcp.com/wcm/myconnect/7f426c68-9ccd-4053-bf7d-e16dd71032d9/Legal+Campana+Megasocios+Junio26+LATAM.pdf?MOD=AJPERES&CVID=pVRsrJK&useDefaultText=0&useDefaultDesc=0&attachment=tr",
+      "https://www.viabcp.com/wcm/myconnect/80ce0ab1-fc2a-4820-acdc-6ecc9a816790/Legal+Campan%CC%83a+Megasocios+Julio26+LATAM.pdf?MOD=AJPERES&CVID=pYzbP4X&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1783002158369",
+      "https://www.viabcp.com/wcm/myconnect/8bb4b288-9141-473d-b86d-64aeeeed8b03/Campana+CardsMayo26+-+Legal.pdf?MOD=AJPERES&CVID=pVRA7u2&useDefaultText=0&useDefaultDesc=0&a",
+      "https://www.viabcp.com/wcm/myconnect/9ee75da8-3482-47a9-90b3-91ad1d57d7c2/Campan%CC%83a+exclusiva+GT2.pdf?MOD=AJPERES&CVID=ptqPmBk&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1749575167463",
+      "https://www.viabcp.com/wcm/myconnect/af0f0f11-90dc-4983-af9c-935c5d2d3b52/Campana+Cards+Junio26+-+Legal.pdf?MOD=AJPERES&CVID=pVRsxie&useDefaultText=0&useDefaultDesc=0&attachment=tr",
+      "https://www.viabcp.com/wcm/myconnect/b929c1aa-df2f-440f-b463-327b1afdf0ae/Legal+Campan%CC%83a+Cashback+200+Jul-26.pdf?MOD=AJPERES&CVID=pYzb.SL&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1783002047655",
+      "https://www.viabcp.com/wcm/myconnect/bfbd77e7-19dc-4b5a-8f23-41989dca87e6/Campa%C3%B1a+Cards+Abril26+-+Legal+%283%29.pdf?MOD=AJPERES&CVID=pR5A1-e&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1775014192776",
+      "https://www.viabcp.com/wcm/myconnect/cf8ee1cb-33a6-4b51-8d84-5fbc41d68cd6/Legal+Campa%C3%B1a+Megasocios+Abril26+LATAM+%281%29.pdf?MOD=AJPERES&CVID=pR5Abwj&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1775013589306",
+      "https://www.viabcp.com/wcm/myconnect/e86dc13f-3b2e-4ab9-b0be-df906dfa99ae/vf+T%C3%89RMINOS+Y+CONDICIONES+-+LEGAL+Sorteo+1+mill%C3%B3n+de+Millas+LATAM+Pass.pdf?MOD=AJPERES&CVID=pSJt7XY&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1776731599691",
+      "https://www.viabcp.com/wcm/myconnect/ed34d319-45b5-47f7-b8b6-d765620368c4/Legal+Campana+Megasocios+Mayo26+LATAM.pdf?MOD=AJPERES&CVID=pVRAgxc&useDefaultText=0&useDefaultDesc=0&attachment=tr"
+    ],
+    "png": [
+      "https://www.viabcp.com/wcm/connect/003a59c9-1564-4f22-bd9d-ce24fadeb49a/Frame+1000005257.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-003a59c9-1564-4f22-bd9d-ce24fadeb49a-p3bXtpq&cache=none",
+      "https://www.viabcp.com/wcm/connect/008ee017-4e30-492c-83bc-73b7c1e9b339/landingBeneficios_entryPoint2_visa_oro_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965296028",
+      "https://www.viabcp.com/wcm/connect/00944139-4031-4c9e-ab65-732e1054f386/Paso+1.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-00944139-4031-4c9e-ab65-732e1054f386-oPc0Who",
+      "https://www.viabcp.com/wcm/connect/011fe244-9bf9-4738-a759-9c4452c9fe42/landingBeneficios_entryPoint1_visa_sapphire_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968491598",
+      "https://www.viabcp.com/wcm/connect/05a491a5-685a-4644-ad3c-eed87432c5af/Visa+Clasica+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223805174",
+      "https://www.viabcp.com/wcm/connect/05df8810-6556-4887-8a7b-7c1674da8bff/landingBeneficios_entryPoint2_Visa_oroQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965259380",
+      "https://www.viabcp.com/wcm/connect/0a50c335-e488-4dc5-b171-f149c1d9d7cc/landingBeneficios_entryPoint1_Visa_signature_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967661786",
+      "https://www.viabcp.com/wcm/connect/0eeb51f6-e91d-4a4d-83d3-af4c1461a227/Visa+Cl%C3%A1sica+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-0eeb51f6-e91d-4a4d-83d3-af4c1461a227-pnZ4VNH",
+      "https://www.viabcp.com/wcm/connect/0f916de2-79f0-45ef-8acd-a1785d00f98d/landingBeneficios_entryPoint1_visa_platinum_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968358587",
+      "https://www.viabcp.com/wcm/connect/112f00a4-5618-43b2-a5e4-4e1c0defc67a/landingBeneficios_entryPoint1_visa_signature_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968430975",
+      "https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-oYNFXpF",
+      "https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-pnZ4UVB",
+      "https://www.viabcp.com/wcm/connect/1678ebb4-1c91-472c-9704-f452ee1d9f8d/home-cards-pasoapaso-4-200126.png?MOD=AJPERES&attachment=false&id=1768942653328",
+      "https://www.viabcp.com/wcm/connect/18aea0e3-432f-4cdb-ab86-bd3f73179e78/landingBeneficios_entryPoint1_amex_oro_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968594541",
+      "https://www.viabcp.com/wcm/connect/18c4427a-d7a6-455e-9973-2e53b461803f/landingBeneficios_entryPoint-desktop-230226.png?MOD=AJPERES&attachment=false&id=1771887245514",
+      "https://www.viabcp.com/wcm/connect/1a28ffc9-25ba-4dd0-9448-eabfdb2b915b/landingBeneficios_entryPoint2_amex_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965076646",
+      "https://www.viabcp.com/wcm/connect/1d507831-328e-4de8-ba52-7cc4672ab7b4/landingBeneficios_entryPoint1_Amex_platinum_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967367602",
+      "https://www.viabcp.com/wcm/connect/1ebbdeb2-40be-4276-9ce1-653873e0aac2/Redise%C3%B1o-home-de-cards_Card-CSI.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-1ebbdeb2-40be-4276-9ce1-653873e0aac2-oVQ8uYX&cache=none",
+      "https://www.viabcp.com/wcm/connect/1f5dc7bd-21a4-49ef-afd7-a3929742fe48/tc0050-icon-maspedida.png?MOD=AJPERES&attachment=false&id=1778871560427",
+      "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Captura+de+Pantalla+2022-02-10+a+la%28s%29+16.47+1.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-oLZClbS",
+      "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Desktop_142x90+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-oXOGBn4",
+      "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Desktop_142x90+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-pnZ4UkV",
+      "https://www.viabcp.com/wcm/connect/2236dd47-390c-413e-8d4f-d5f94b7055fb/landingBeneficios_entryPoint1_visa_infinite_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968463038",
+      "https://www.viabcp.com/wcm/connect/2282c31f-5c8e-4a51-a7d1-d570ed112f45/Frame+3466080+%281%29.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/24b148fa-3136-4274-84ca-e47d2e1c52ed/imagen+%289%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-24b148fa-3136-4274-84ca-e47d2e1c52ed-pA81u.g",
+      "https://www.viabcp.com/wcm/connect/26a534d2-b3b5-4c14-8d25-f019c2fdd2a2/image+1+%283%29.png?MOD=AJPERES&attachment=false&id=1704399206387",
+      "https://www.viabcp.com/wcm/connect/28e1e511-7b9f-464a-877e-7560be17f02d/Visa+Cl%C3%A1sica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-28e1e511-7b9f-464a-877e-7560be17f02d-pnZ4S4m",
+      "https://www.viabcp.com/wcm/connect/2d4a166a-396e-4343-99cd-1991c151ae8b/oro_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2d4a166a-396e-4343-99cd-1991c151ae8b-pqPwxm-&cache=none",
+      "https://www.viabcp.com/wcm/connect/2f570b94-4385-4e0e-9d6e-ff46705ad2c5/visa-platinum.png?MOD=AJPERES&attachment=false&id=1776285834073",
+      "https://www.viabcp.com/wcm/connect/3441c2dc-ac88-4957-98f1-1cbbc416ee95/visa_light+%281%29.png?MOD=AJPERES&attachment=false&id=1777478400074",
+      "https://www.viabcp.com/wcm/connect/3a3027af-789c-4e28-9e23-e376d0fd6c79/landingBeneficios_entryPoint1_Visa_signatureQore_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967626155",
+      "https://www.viabcp.com/wcm/connect/3dc110c2-46d9-433a-acde-7a333e87ad60/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800084725",
+      "https://www.viabcp.com/wcm/connect/3f3e3687-a083-4854-8415-30161c13c8aa/landingBeneficios_entryPoint1_visa_clasica_latam_pass_mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968214615",
+      "https://www.viabcp.com/wcm/connect/4075d218-f021-4596-95f8-5847b11a5e5d/identificacio.png?MOD=AJPERES&attachment=false&id=1704674377240",
+      "https://www.viabcp.com/wcm/connect/4093e68b-e1a0-4863-91dc-33cc5f0b52ea/landingBeneficios_entryPoint1_visa_oro_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968306680",
+      "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+      "https://www.viabcp.com/wcm/connect/44bce389-3dea-46a1-a762-b157ffc2cdeb/landingBeneficios_entryPoint1_visa_signature_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968391497",
+      "https://www.viabcp.com/wcm/connect/49421074-27e5-40d1-9e99-730b854181ca/visa-clasica-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959011987",
+      "https://www.viabcp.com/wcm/connect/4a537bfc-4d28-4abb-9be7-ffe8261cb38f/Paso+4.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-4a537bfc-4d28-4abb-9be7-ffe8261cb38f-oPc0Who",
+      "https://www.viabcp.com/wcm/connect/4de58cad-dfff-4319-ba32-213c48c8239b/landingAndo_entryPoint1-desktop-250226.png?MOD=AJPERES&attachment=false&id=1772061814908",
+      "https://www.viabcp.com/wcm/connect/51943ea6-63a7-4dd1-bfe6-1aa62d6ee380/Image+%282%29.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/524ddb12-2950-4c87-9d00-6ab0bb9dd291/landingBeneficios_entryPoint1_amex_cl%C3%A1sica_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968553118",
+      "https://www.viabcp.com/wcm/connect/52559507-9057-4e61-8eeb-e035f653273d/landingBeneficios_entryPoint2_Visa_signatureQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965376079",
+      "https://www.viabcp.com/wcm/connect/52bd6525-3053-4c00-b250-3cfb7d2d7f20/landingBeneficios_entryPoint1_Visa_sapphire_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967736023",
+      "https://www.viabcp.com/wcm/connect/5625ce14-09b0-4cf9-b285-540810fcd6c4/logos+billeteras.png?MOD=AJPERES&attachment=false&id=1717599643476",
+      "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+      "https://www.viabcp.com/wcm/connect/5ab01c92-c925-4e49-aac5-d8f201c60a9b/signature_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5ab01c92-c925-4e49-aac5-d8f201c60a9b-pqPwEkH&cache=none",
+      "https://www.viabcp.com/wcm/connect/5b7b8b7a-1111-4597-b9df-bb94c735793f/Card-Puntos-Qore_900x383px.png?MOD=AJPERES&attachment=false&id=1746222832055",
+      "https://www.viabcp.com/wcm/connect/5dd42622-40a0-48d9-b739-b196326ee984/Vitrina-Home-BCP-Mobile-Tablet-500x500px+%281%29.png?MOD=AJPERES&attachment=false&id=1709270164746",
+      "https://www.viabcp.com/wcm/connect/5dd6241e-5775-4611-9e7f-88423542dfe4/Tarjetas-Qore-Horizontal-Infinite-239x154px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5dd6241e-5775-4611-9e7f-88423542dfe4-pE8R-0W",
+      "https://www.viabcp.com/wcm/connect/5dd6241e-5775-4611-9e7f-88423542dfe4/Tarjetas-Qore-Horizontal-Infinite-239x154px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5dd6241e-5775-4611-9e7f-88423542dfe4-pMaxu2P",
+      "https://www.viabcp.com/wcm/connect/600d728b-680d-4321-9087-3b3c5dfb3d83/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800115360",
+      "https://www.viabcp.com/wcm/connect/60b04642-d204-4bc4-a116-4bb11c36aae7/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800028396",
+      "https://www.viabcp.com/wcm/connect/614ca9cb-966f-4312-b3c2-69d624184569/Visa+Light.png?MOD=AJPERES&attachment=false&id=1681223779561",
+      "https://www.viabcp.com/wcm/connect/61a4269b-2aef-4d4b-962c-4ae6ff226a25/6.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-61a4269b-2aef-4d4b-962c-4ae6ff226a25-paxsaLp",
+      "https://www.viabcp.com/wcm/connect/632c7196-05c8-4a4b-9854-ddb37724af4b/spc_benefits.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/65e7b42c-721e-4bb1-a77b-aa29552bc58c/landingBeneficios_entryPoint1_Amex_black_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967397868",
+      "https://www.viabcp.com/wcm/connect/693c4410-8d8a-45f7-8d79-af15a08f6306/landingQore_entryPoint1-2-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771534011938",
+      "https://www.viabcp.com/wcm/connect/6d842b9a-8f1b-4816-a4a3-eed251d80427/Redise%C3%B1o-home-de-cards-Card-Rewards.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-6d842b9a-8f1b-4816-a4a3-eed251d80427-oVQ8GVi&cache=none",
+      "https://www.viabcp.com/wcm/connect/6de16847-84b1-4a2d-b12e-4d8f7b6946fc/home-cards-pasoapaso-7-200126.png?MOD=AJPERES&attachment=false&id=1768942900064",
+      "https://www.viabcp.com/wcm/connect/6ec98ff9-63f6-4e3b-8f78-077da305ad87/landingBeneficios_entryPoint1_visa_oro_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968110619",
+      "https://www.viabcp.com/wcm/connect/70abaf3c-5244-4307-af8f-dccff33bedd0/Frame+3466079+%281%29.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/715299b7-3d97-45ad-b500-d9329e4d554d/Vector.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-715299b7-3d97-45ad-b500-d9329e4d554d-oKQHIpH&cache=none",
+      "https://www.viabcp.com/wcm/connect/717ca95a-cf71-4fb4-8f6e-df29a0b39cca/landingBeneficios_entryPoint1_Amex_clasica_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967292553",
+      "https://www.viabcp.com/wcm/connect/750997fb-c6fe-46f2-ac53-d0d5788f2ebf/visa_infinite_qore_v.png?MOD=AJPERES&attachment=false&id=1777311332152",
+      "https://www.viabcp.com/wcm/connect/7746e333-2dab-41a8-ba3a-b8917b2f65f2/visa-signature-qore-v.png?MOD=AJPERES&attachment=false&id=1776959518867",
+      "https://www.viabcp.com/wcm/connect/774fb78d-f911-44ca-a9fd-fdd97db892d6/tarjeta-dorada.png?MOD=AJPERES&attachment=false&id=1776234727403",
+      "https://www.viabcp.com/wcm/connect/781c179f-0b0d-491c-ae90-bd7ff699fe1e/visa-clasica.png?MOD=AJPERES&attachment=false&id=1776285861293",
+      "https://www.viabcp.com/wcm/connect/78c8b3d8-a71c-4098-912e-8120a53ff870/Tarjetas-Qore-Horizontal-Gold-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-78c8b3d8-a71c-4098-912e-8120a53ff870-pEdoyra",
+      "https://www.viabcp.com/wcm/connect/78c8b3d8-a71c-4098-912e-8120a53ff870/Tarjetas-Qore-Horizontal-Gold-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-78c8b3d8-a71c-4098-912e-8120a53ff870-pMaxtq5",
+      "https://www.viabcp.com/wcm/connect/7a17dc7b-59de-4abc-ae3d-3d8508119154/facial.png?MOD=AJPERES&attachment=false&id=1704674439797",
+      "https://www.viabcp.com/wcm/connect/7a3314cf-6cfa-46d3-8eb1-eb6f6869fe4d/Centrodeayuda_mobile.png?MOD=AJPERES&attachment=false&id=1765486230837",
+      "https://www.viabcp.com/wcm/connect/7ba71ca9-3930-4f41-8209-42b89239c5e5/Frame+1000005261.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-7ba71ca9-3930-4f41-8209-42b89239c5e5-p3c4qc8&cache=none",
+      "https://www.viabcp.com/wcm/connect/7e8b75c1-b63b-48d9-9327-e0e433da5724/Frame+3466082.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/7f05cd9b-1bb7-45cb-b466-f275571d2d01/Dise%C3%B1o+sin+t%C3%ADtulo+%287%29+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-7f05cd9b-1bb7-45cb-b466-f275571d2d01-pHbmfib",
+      "https://www.viabcp.com/wcm/connect/8109fe81-663c-4bb8-93fc-26d70a6b5ebf/sapphire.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8109fe81-663c-4bb8-93fc-26d70a6b5ebf-oYO7zna&cache=none",
+      "https://www.viabcp.com/wcm/connect/8590112d-fbe2-48c0-884e-d1f5877584f3/home-cards-pasoapaso-3-200126.png?MOD=AJPERES&attachment=false&id=1768942553839",
+      "https://www.viabcp.com/wcm/connect/86d1a6f7-f8a9-4244-9cc2-3b9d115a2ecf/landingBeneficios_entryPoint2_Amex_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965154217",
+      "https://www.viabcp.com/wcm/connect/87553a44-635c-40bd-a9be-00c52788e2e3/Banner-Landing-ST-Desktop.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-87553a44-635c-40bd-a9be-00c52788e2e3-p9YxOPL&cache=none",
+      "https://www.viabcp.com/wcm/connect/882ac165-a32f-482a-bff7-1248ebd03c11/landingBeneficios_entryPoint1_Amex_oro_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967333543",
+      "https://www.viabcp.com/wcm/connect/891af71d-5ff6-4be4-93de-a1fa831f23ed/Amex+Clasica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-891af71d-5ff6-4be4-93de-a1fa831f23ed-oLZD5pb",
+      "https://www.viabcp.com/wcm/connect/891af71d-5ff6-4be4-93de-a1fa831f23ed/Amex+Clasica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-891af71d-5ff6-4be4-93de-a1fa831f23ed-pBjUMc1",
+      "https://www.viabcp.com/wcm/connect/89db9aa8-d090-4d75-b085-56da9789f995/Tarjetas.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-89db9aa8-d090-4d75-b085-56da9789f995-oLq552f",
+      "https://www.viabcp.com/wcm/connect/8a1ca119-a869-4ab6-8ff2-1e4dc15d91e5/landingBeneficios_entryPoint1_visa_oro_qore-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967506665",
+      "https://www.viabcp.com/wcm/connect/8c4d314b-2c80-484f-8871-d4b6f79216e1/Tarjetas-Qore-Horizontal-Signature-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8c4d314b-2c80-484f-8871-d4b6f79216e1-pE8RMt3",
+      "https://www.viabcp.com/wcm/connect/8c4d314b-2c80-484f-8871-d4b6f79216e1/Tarjetas-Qore-Horizontal-Signature-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8c4d314b-2c80-484f-8871-d4b6f79216e1-pMaxtMy",
+      "https://www.viabcp.com/wcm/connect/8e23a0d8-0272-49cf-9d10-1795b3c84ab1/landingBeneficios_entryPoint2_Visa_iridium_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965539650",
+      "https://www.viabcp.com/wcm/connect/8f94749d-c3e8-4347-8834-aa49d36384fc/spc_gift_hand_d_l.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-oLZD2Z1",
+      "https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-pBjVUKe",
+      "https://www.viabcp.com/wcm/connect/9131e3a0-0fa7-4a40-828b-96ecee719232/landingBeneficios_entryPoint1_amex_platinum_latam_pass-mobile-200226.png?MOD=AJPERES&attachment=false&id=1771968624221",
+      "https://www.viabcp.com/wcm/connect/95fe5b7d-f098-4ab5-83e2-5ad321c4b838/landingBeneficios_entryPoint2_Visa_sapphire_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965494243",
+      "https://www.viabcp.com/wcm/connect/99937548-5998-422c-9582-09688e3e131a/imagen-tarjetas-mega-menu.png?MOD=AJPERES&attachment=false&id=1777407756296",
+      "https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-oLZCT1g",
+      "https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-pnZ4Wgg",
+      "https://www.viabcp.com/wcm/connect/9c45736b-875f-4bf7-a57b-d5bfa3ab2d40/landingQore-entryPoint2-mobile-190226.png?MOD=AJPERES&attachment=false&id=1771513074805",
+      "https://www.viabcp.com/wcm/connect/9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0/banner-sin-oferta.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0-pPiq5Cm&cache=false",
+      "https://www.viabcp.com/wcm/connect/9e059c2d-078b-4737-81d9-d9ef5b0435f8/landingBeneficios_entryPoint1_Visa_iridium_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967766399",
+      "https://www.viabcp.com/wcm/connect/9e341b72-38f0-4821-88ad-031e595b24cc/visa-iridium-latam-pass-v.png?MOD=AJPERES&attachment=false&id=1776959065599",
+      "https://www.viabcp.com/wcm/connect/9f4b2eeb-5df8-44bc-a69d-d3c930ada475/Infinite_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9f4b2eeb-5df8-44bc-a69d-d3c930ada475-pqPwKYo&cache=none",
+      "https://www.viabcp.com/wcm/connect/a00282ad-5a12-4eae-965f-33a35d44aa36/Frame+3466081.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/a370229f-d894-4d88-8830-4a2ec9518d9f/visa-black.png?MOD=AJPERES&attachment=false&id=1776285765583",
+      "https://www.viabcp.com/wcm/connect/a54c8625-977b-4cf2-8543-09458e3ff1a2/landingBeneficios_entryPoint2_Amex_black_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965200685",
+      "https://www.viabcp.com/wcm/connect/a681d6ab-8d74-4f59-bd0e-ac916b51690f/landingBeneficios_entryPoint2_Amex_oro_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965117643",
+      "https://www.viabcp.com/wcm/connect/a890b81a-1b3a-466b-92c9-422a241bed48/landingBeneficios_entryPoint2_Visa_infiniteQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965455382",
+      "https://www.viabcp.com/wcm/connect/aba0a684-a9f6-4ed0-9cd8-9c9147c459f8/landingBeneficios_entryPoint1_visa_oro_latam_pass-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967559285",
+      "https://www.viabcp.com/wcm/connect/ac75e86c-3c59-4d17-b21e-c61c3016017a/Vitrina-Home-BCP-Mobile-Tablet-500x500px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ac75e86c-3c59-4d17-b21e-c61c3016017a-oYXbPSk&cache=none",
+      "https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-oLZD1tm",
+      "https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-pBjVGxF",
+      "https://www.viabcp.com/wcm/connect/b151184e-dabf-48e2-9255-2446dfa9d2e3/visa-signature-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959428582",
+      "https://www.viabcp.com/wcm/connect/b2ed087c-be17-4508-9867-81a8b272f2f0/tarjeta.png?MOD=AJPERES&attachment=false&id=1704674247161",
+      "https://www.viabcp.com/wcm/connect/b32d96ac-7ade-4157-9ec8-5bbf30910169/image+2.png?MOD=AJPERES&attachment=false&id=1707424180373",
+      "https://www.viabcp.com/wcm/connect/b697ad8f-9e75-4b1f-b9f2-4d090d5b4dd9/Frame+3466084.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/b8bb9a6e-0839-4864-aeae-3971acf393df/img+%282%29.png?MOD=AJPERES&attachment=false&id=1777284923195",
+      "https://www.viabcp.com/wcm/connect/bbc718cc-3b97-41d6-8810-e18d8f3a5751/Banner+%282%29.png?MOD=AJPERES&attachment=false&id=1704400174477",
+      "https://www.viabcp.com/wcm/connect/bd0f959e-b4d2-4317-a6ac-45febb662022/square.png?MOD=AJPERES&attachment=false&id=1704674312128",
+      "https://www.viabcp.com/wcm/connect/be1e1971-834c-42a1-b0b7-4ed078ee3334/landingQore_entryPoint1-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771513282274",
+      "https://www.viabcp.com/wcm/connect/be3c4938-459c-4d0e-ad6b-d2631d43b6b9/Amex+Oro.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-be3c4938-459c-4d0e-ad6b-d2631d43b6b9-oLZD4c9",
+      "https://www.viabcp.com/wcm/connect/be3c4938-459c-4d0e-ad6b-d2631d43b6b9/Amex+Oro.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-be3c4938-459c-4d0e-ad6b-d2631d43b6b9-pBjUVs0",
+      "https://www.viabcp.com/wcm/connect/c2ea67d7-9ac4-43e4-8f0d-b8581637279c/Frame+3466083.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/c4564547-a4ad-4449-912a-c177cfafb144/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689799855936",
+      "https://www.viabcp.com/wcm/connect/c45a192d-4c89-4209-b360-f6541a825448/home-cards-pasoapaso-6-200126.png?MOD=AJPERES&attachment=false&id=1768942755404",
+      "https://www.viabcp.com/wcm/connect/c733f80f-d6c4-4b7b-8dd8-9a700ab8f0ef/c73edd306dffe6d7c9d7cd9dea7c7d26387066b4.png?MOD=AJPERES&attachment=false&id=1777407893628",
+      "https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-oLZCWJ2",
+      "https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-pnZ4T.X",
+      "https://www.viabcp.com/wcm/connect/c87147d3-3534-4a2d-a4bf-f878914acddd/CURVA_VECTOR.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c87147d3-3534-4a2d-a4bf-f878914acddd-pPci1Wg&cache=false",
+      "https://www.viabcp.com/wcm/connect/ce5bafb1-5f45-4ad7-a05f-5705b28afa7a/landingQore_entryPoint1-2-mobile190226.png?MOD=AJPERES&attachment=false&id=1771533963873",
+      "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+      "https://www.viabcp.com/wcm/connect/cfd9dca7-6ee3-42a5-bff8-509b351aac01/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223753754",
+      "https://www.viabcp.com/wcm/connect/cfdcb3f1-8936-4a91-a1f5-6cb917ba0264/Rounded+rectangle.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cfdcb3f1-8936-4a91-a1f5-6cb917ba0264-pnZ4Tbj",
+      "https://www.viabcp.com/wcm/connect/d36f78c6-387e-4733-b099-291c3f5a8a1a/visa-oro-qore-v.png?MOD=AJPERES&attachment=false&id=1776959281621",
+      "https://www.viabcp.com/wcm/connect/d518f56b-35c0-4f6c-bfd6-9e7485893d5c/visa-light.png?MOD=AJPERES&attachment=false&id=1776285884107",
+      "https://www.viabcp.com/wcm/connect/d77ac976-8217-48ad-ad6d-179ce140828a/landingBeneficios_entryPoint1_visa_iridium_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968516450",
+      "https://www.viabcp.com/wcm/connect/d8c68c68-0cd5-470b-a2c9-959dd4ee4db3/visa-platinum-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959353805",
+      "https://www.viabcp.com/wcm/connect/da08c445-2970-4323-9679-1051c44e7a82/home-cards-pasoapaso-2-250226.png?MOD=AJPERES&attachment=false&id=1772054077545",
+      "https://www.viabcp.com/wcm/connect/db7653d8-4820-4ecb-92ef-ad5d76c9b1a2/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-db7653d8-4820-4ecb-92ef-ad5d76c9b1a2-pnZ4TuX",
+      "https://www.viabcp.com/wcm/connect/dde3b724-9eec-42f3-995b-bda19eaff5e4/landingBeneficios_entryPoint2_Visa_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965341548",
+      "https://www.viabcp.com/wcm/connect/deee39d2-aba4-4605-a2a7-d2917de9a0fd/landingAndo_entryPoint-mobile250226.png?MOD=AJPERES&attachment=false&id=1772061829963",
+      "https://www.viabcp.com/wcm/connect/df0699fe-c24c-4c43-9adb-c295032f3859/Banner-Landing-ST-Mobile.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-df0699fe-c24c-4c43-9adb-c295032f3859-p9YxWl6&cache=none",
+      "https://www.viabcp.com/wcm/connect/df6d684b-1ac6-40a6-a4b4-e3c2bf29a699/landingBeneficios_entryPoint1_visa_platinum_latam_pass-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967591451",
+      "https://www.viabcp.com/wcm/connect/df7dce98-ceba-4044-bcd7-674a22c03ced/Centrodeayuda_desktop.png?MOD=AJPERES&attachment=false&id=1765486286415",
+      "https://www.viabcp.com/wcm/connect/e00463fe-ab0b-4b54-a76e-d391433dbdfb/Paso+3.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-e00463fe-ab0b-4b54-a76e-d391433dbdfb-oPc0Who",
+      "https://www.viabcp.com/wcm/connect/e0374866-636f-4642-80bc-c9cfed6d88da/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223723314",
+      "https://www.viabcp.com/wcm/connect/e0a20833-4eb7-4d5b-a427-3f5f7c5c74b7/landingBeneficios_entryPoint2_Visa_signature_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965417147",
+      "https://www.viabcp.com/wcm/connect/e1ce82f3-3fa4-486a-b2bd-673860072d27/landingBeneficios_entryPoint1_amex_black_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968650975",
+      "https://www.viabcp.com/wcm/connect/e5306ca0-80d4-46b8-bc98-c535c58a1941/home-cards-pasoapaso-5-200126.png?MOD=AJPERES&attachment=false&id=1768942695793",
+      "https://www.viabcp.com/wcm/connect/e5944b2c-42d5-4a58-b798-74cd6aadb14b/img+%283%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-e5944b2c-42d5-4a58-b798-74cd6aadb14b-pTesJAN&cache=none",
+      "https://www.viabcp.com/wcm/connect/e7b69f00-deb1-4512-abfd-a73c379dabe2/landingBeneficios_entryPoint1_Visa_infiniteQore_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967704718",
+      "https://www.viabcp.com/wcm/connect/e9bebb3d-888e-49c6-a229-d8aa07447ca5/home-cards-pasoapaso-1-200126.png?MOD=AJPERES&attachment=false&id=1768938948070",
+      "https://www.viabcp.com/wcm/connect/ea543626-fe34-4fa4-97a5-9ddb1e1498d9/spot-circle-s-spc-smartphone-hand-d-l%403x.png?MOD=AJPERES&attachment=false&id=1709074510817",
+      "https://www.viabcp.com/wcm/connect/ebc3a3a4-9999-4723-9fdc-73b67b04524f/landingBeneficios_entryPoint2_visa_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771961255766",
+      "https://www.viabcp.com/wcm/connect/ebe5cb13-5121-4a87-afdd-aee64d9bd62a/landingAndo_entryPoint-desktop-250226.png?MOD=AJPERES&attachment=false&id=1772061719796",
+      "https://www.viabcp.com/wcm/connect/efc56b84-af8e-46a3-9a3e-68d606a160eb/landingBeneficios_entryPoint1_Visa_clasicaL_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967473911",
+      "https://www.viabcp.com/wcm/connect/f18cdc5d-7727-4862-ab9a-b0f4dc41876c/color%F0%9F%8E%A8%3F%3F%3F.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f18cdc5d-7727-4862-ab9a-b0f4dc41876c-onwynD6",
+      "https://www.viabcp.com/wcm/connect/f1906061-2743-42e5-8cc7-f26d60cdd7d7/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223766357",
+      "https://www.viabcp.com/wcm/connect/f560a5f4-35c5-4c91-ab8b-84d9b3995420/visa-sapphire-latam-pass-v.png?MOD=AJPERES&attachment=false&id=1776959139708",
+      "https://www.viabcp.com/wcm/connect/f7d339ec-1fc3-4cf7-864f-117b68fb2222/galletas-removebg-preview.png?MOD=AJPERES&attachment=false&id=1713474076189",
+      "https://www.viabcp.com/wcm/connect/fab6ac58-5744-421e-918d-8d6121b9be70/spc_deposit.png?MOD=AJPERES",
+      "https://www.viabcp.com/wcm/connect/fb3fc282-74ad-410a-bf18-454b0596e0ab/visa-oro-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959217769",
+      "https://www.viabcp.com/wcm/connect/fc0532a5-4780-429f-b4b6-d0ab6b537c42/Paso+2.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-fc0532a5-4780-429f-b4b6-d0ab6b537c42-oPc0Who",
+      "https://www.viabcp.com/wcm/myconnect/00944139-4031-4c9e-ab65-732e1054f386/Paso+1.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/01215dae-98c3-4851-a241-e4e89f721215/Banner+Desk-Clave+Pin+3.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/241abefc-443a-4f18-9484-f70509bf0098/Vector+%282%29.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/4a537bfc-4d28-4abb-9be7-ffe8261cb38f/Paso+4.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/57f3b7c2-7b31-4ed5-becb-efaf462ccd29/image+31.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/89db9aa8-d090-4d75-b085-56da9789f995/Tarjetas.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/b82f40bb-3720-438e-9c48-62baf92f4664/04.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/e00463fe-ab0b-4b54-a76e-d391433dbdfb/Paso+3.png?MOD=AJPERES&CVID=pOQlAIm",
+      "https://www.viabcp.com/wcm/myconnect/f24344e0-10f7-4c41-9344-ca0366af72f8/Image+%283%29.png?MOD=AJPERES&CVID=pOQlAIm"
+    ],
+    "svg": [
+      "https://www.viabcp.com/wcm/connect/0ce049ff-e436-408a-b7e3-765e0d98d259/icono-cerrar.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-0ce049ff-e436-408a-b7e3-765e0d98d259-pOQ.Dvc&cache=false",
+      "https://www.viabcp.com/wcm/connect/0db490e7-592a-469a-9761-aff8cef424fd/acumula-millas.svg?MOD=AJPERES&attachment=false&id=1776921789713",
+      "https://www.viabcp.com/wcm/connect/19564963-ec0f-47e6-ac0a-eb0a384a60d7/beneficio-3.svg?MOD=AJPERES&attachment=false&id=1774966437999",
+      "https://www.viabcp.com/wcm/connect/209f9866-0ff9-4854-810d-4a95de34908c/spc_priorityPass_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-209f9866-0ff9-4854-810d-4a95de34908c-oTSj7kk&cache=none",
+      "https://www.viabcp.com/wcm/connect/21a73e5c-b3a6-4a1d-89fd-09b7c79e2429/visa_infinite_qore_v.svg?MOD=AJPERES&attachment=false&id=1777279578383",
+      "https://www.viabcp.com/wcm/connect/40036cb4-ec05-4475-b932-927f8f9c4157/priority-pass.svg?MOD=AJPERES&attachment=false&id=1776922726035",
+      "https://www.viabcp.com/wcm/connect/45f286cd-16ee-4d9f-909f-f121a95ae62e/visa_oro_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278860638",
+      "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+      "https://www.viabcp.com/wcm/connect/50ceee85-2064-4da5-a6db-c0c5945c96bc/menbresia-gratis.svg?MOD=AJPERES&attachment=false&id=1776920676320",
+      "https://www.viabcp.com/wcm/connect/57490399-7803-48de-8648-28b44b287cc3/paga-qore.svg?MOD=AJPERES&attachment=false&id=1776922989794",
+      "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+      "https://www.viabcp.com/wcm/connect/5a066001-99ac-4987-85c5-f36473aba515/beneficio-5.svg?MOD=AJPERES&attachment=false&id=1774966607939",
+      "https://www.viabcp.com/wcm/connect/5af2b358-a5f7-4fb9-a9fd-9bc5a51238d8/spc_upgrade_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5af2b358-a5f7-4fb9-a9fd-9bc5a51238d8-oTSjSU6&cache=none",
+      "https://www.viabcp.com/wcm/connect/5afa65a8-8c28-4ba0-9e17-3aeaac9eaf64/amex_oro_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279140564",
+      "https://www.viabcp.com/wcm/connect/5b7f4c66-9156-4f34-b259-2782b958037d/tarjetas.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5b7f4c66-9156-4f34-b259-2782b958037d-oxYL9Cm",
+      "https://www.viabcp.com/wcm/connect/5d1474e6-fd11-49ff-9fc3-fe1246371f34/visa_sapphire_latam_pass_v.svg?MOD=AJPERES&attachment=false&id=1777278985989",
+      "https://www.viabcp.com/wcm/connect/6ce28c93-1fba-41ff-88de-6d91c347d9df/amex-platinum-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777272116544",
+      "https://www.viabcp.com/wcm/connect/6f3a89da-a302-4fc6-a2b5-78327ba04ea8/envio-gratis.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-6f3a89da-a302-4fc6-a2b5-78327ba04ea8-pSUMXme&cache=none",
+      "https://www.viabcp.com/wcm/connect/7ac4e6bd-b8d2-4f6c-908c-716a1c6970c2/amex-clasica-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777271781936",
+      "https://www.viabcp.com/wcm/connect/7b2dc580-3b0d-442a-bbe2-0a19f1aa55bb/dscto-150.svg?MOD=AJPERES&attachment=false&id=1776923553479",
+      "https://www.viabcp.com/wcm/connect/7e78ecf5-cb55-4079-af6d-552581467c40/beneficio-2.svg?MOD=AJPERES&attachment=false&id=1774966648469",
+      "https://www.viabcp.com/wcm/connect/7f94a7b1-d463-44da-9dea-30a8db5044b3/amex-black-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777272256841",
+      "https://www.viabcp.com/wcm/connect/82db546c-173c-4227-a8dc-30d8812b4b89/amex_platinum_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279185471",
+      "https://www.viabcp.com/wcm/connect/8317974f-7fef-4e95-b1f5-1f626c7ab757/ilustacion-tarjeta.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8317974f-7fef-4e95-b1f5-1f626c7ab757-pORbVYh&cache=false",
+      "https://www.viabcp.com/wcm/connect/8bf5f35d-c58d-45d7-a38a-5357c373a753/amex_cla%CC%81sica_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279086230",
+      "https://www.viabcp.com/wcm/connect/9789be2b-3c5e-478c-bc66-b521e4a77ba5/visa_signature_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278949385",
+      "https://www.viabcp.com/wcm/connect/ac95fbeb-8ae0-4285-8644-d732732fa78b/beneficio-4.svg?MOD=AJPERES&attachment=false&id=1774966509849",
+      "https://www.viabcp.com/wcm/connect/ae0d9943-6132-4499-bd7e-7093b9cc1dbf/acumula-qore.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae0d9943-6132-4499-bd7e-7093b9cc1dbf-pSUTMks&cache=none",
+      "https://www.viabcp.com/wcm/connect/b1a843b0-3321-4987-a7f6-0ac7ef629bfd/ame-oro-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777271855980",
+      "https://www.viabcp.com/wcm/connect/b21bf437-d743-41cc-bd93-72811409996d/visa_cla%CC%81sica_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278801392",
+      "https://www.viabcp.com/wcm/connect/b40e135c-5913-4897-ba9b-23b52ce5a080/visa_iridium_latam_pass_v.svg?MOD=AJPERES&attachment=false&id=1777279044766",
+      "https://www.viabcp.com/wcm/connect/c5bc2380-e5f3-4b6b-b2ee-723fe5df627d/spc_check_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c5bc2380-e5f3-4b6b-b2ee-723fe5df627d-oTSjxAA&cache=none",
+      "https://www.viabcp.com/wcm/connect/c73d6c4d-0631-478a-9b75-30582912ad25/Frame.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c73d6c4d-0631-478a-9b75-30582912ad25-oEzCTbH&cache=none",
+      "https://www.viabcp.com/wcm/connect/c829d759-fc87-4491-9e57-f091648e86db/visa_signature_qore_v.svg?MOD=AJPERES&attachment=false&id=1777279478664",
+      "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+      "https://www.viabcp.com/wcm/connect/cad09c9f-2de4-4b89-94cf-386074e96b87/amex_black_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279291274",
+      "https://www.viabcp.com/wcm/connect/cf7341d7-631e-4d76-ad54-6d9341dd4b1b/campanas-publi.svg?MOD=AJPERES&attachment=false&id=1776922409663",
+      "https://www.viabcp.com/wcm/connect/eb7c8640-b68e-4874-b27c-0216ad95d2ab/spc_priorityPassB_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-eb7c8640-b68e-4874-b27c-0216ad95d2ab-oTSjfI-&cache=none",
+      "https://www.viabcp.com/wcm/connect/f5e8963d-bedd-40a8-a0da-30a95d5fbd8d/visa_platinum_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278903860",
+      "https://www.viabcp.com/wcm/connect/f6f3d577-d20b-46cc-bb78-7bce2a2c274b/arrow.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f6f3d577-d20b-46cc-bb78-7bce2a2c274b-pL40QUi&cache=none",
+      "https://www.viabcp.com/wcm/connect/f8138af8-2627-4b7a-bd2e-d61f9d7794b7/logo.svg?MOD=AJPERES&attachment=false&id=1774542095830",
+      "https://www.viabcp.com/wcm/connect/ff8c3c12-df3a-4793-b24d-550c3a9b7722/visa_oro_qore_v.svg?MOD=AJPERES&attachment=false&id=1777279432947",
+      "https://www.viabcp.com/wcm/connect/ffb87acf-2aa3-48b5-ab78-2020aa9ba909/visa_light.svg?MOD=AJPERES&attachment=false&id=1777280080101",
+      "https://www.viabcp.com/wcm/myconnect/e1a4836d-df3d-4aac-8143-bc757790e532/logo-bcp.svg?MOD=AJPERES&CVID=pYEtkBa"
+    ],
+    "webp": [
+      "https://www.viabcp.com/wcm/connect/0838b3f9-e3b3-41a2-bca8-27f3dd81a633/Banner-Landing-ST-Mobile.webp?MOD=AJPERES&attachment=false&id=1736283510975",
+      "https://www.viabcp.com/wcm/connect/5685c8c5-ad68-4a1b-9a61-f28da9a332b1/Banner-Landing-ST-Desktop.webp?MOD=AJPERES&attachment=false&id=1736283343037"
+    ],
+    "woff": [
+      "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoBold-FlexoBlack/Flexo-Bold-webfont.woff",
+      "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoDemi-FlexoHeavy/Flexo-Demi-webfont.woff",
+      "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-It-webfont.woff",
+      "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-Regular-webfont.woff",
+      "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoMedium/Flexo-Medium-webfont.woff",
+      "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoMedium/Flexo-MediumIt-webfont.woff"
+    ]
+  },
+  "en_duda": [
+    "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoBold-FlexoBlack/Flexo-Bold-webfont.woff",
+    "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoDemi-FlexoHeavy/Flexo-Demi-webfont.woff",
+    "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-It-webfont.woff",
+    "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-Regular-webfont.woff",
+    "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoMedium/Flexo-Medium-webfont.woff",
+    "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoMedium/Flexo-MediumIt-webfont.woff"
+  ],
+  "recursos": [
+    {
+      "url": "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoBold-FlexoBlack/Flexo-Bold-webfont.woff",
+      "extension": "woff",
+      "en_duda": true,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoDemi-FlexoHeavy/Flexo-Demi-webfont.woff",
+      "extension": "woff",
+      "en_duda": true,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-It-webfont.woff",
+      "extension": "woff",
+      "en_duda": true,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-Regular-webfont.woff",
+      "extension": "woff",
+      "en_duda": true,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoMedium/Flexo-Medium-webfont.woff",
+      "extension": "woff",
+      "en_duda": true,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/ViaBCPThemeLight/fonts/webfontkit-FlexoMedium/Flexo-MediumIt-webfont.woff",
+      "extension": "woff",
+      "en_duda": true,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/003a59c9-1564-4f22-bd9d-ce24fadeb49a/Frame+1000005257.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-003a59c9-1564-4f22-bd9d-ce24fadeb49a-p3bXtpq&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/carga-solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/008ee017-4e30-492c-83bc-73b7c1e9b339/landingBeneficios_entryPoint2_visa_oro_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965296028",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/00944139-4031-4c9e-ab65-732e1054f386/Paso+1.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-00944139-4031-4c9e-ab65-732e1054f386-oPc0Who",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/011fe244-9bf9-4738-a759-9c4452c9fe42/landingBeneficios_entryPoint1_visa_sapphire_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968491598",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/016f5c19-ac9d-4ace-9447-ddbbc66a9fa4/generador-identificadores.js?MOD=AJPERES",
+      "extension": "js",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html",
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/05a491a5-685a-4644-ad3c-eed87432c5af/Visa+Clasica+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223805174",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/05df8810-6556-4887-8a7b-7c1674da8bff/landingBeneficios_entryPoint2_Visa_oroQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965259380",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/0838b3f9-e3b3-41a2-bca8-27f3dd81a633/Banner-Landing-ST-Mobile.webp?MOD=AJPERES&attachment=false&id=1736283510975",
+      "extension": "webp",
+      "en_duda": false,
+      "archivos": [
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/0a50c335-e488-4dc5-b171-f149c1d9d7cc/landingBeneficios_entryPoint1_Visa_signature_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967661786",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/0ce049ff-e436-408a-b7e3-765e0d98d259/icono-cerrar.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-0ce049ff-e436-408a-b7e3-765e0d98d259-pOQ.Dvc&cache=false",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/0db490e7-592a-469a-9761-aff8cef424fd/acumula-millas.svg?MOD=AJPERES&attachment=false&id=1776921789713",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/0eeb51f6-e91d-4a4d-83d3-af4c1461a227/Visa+Cl%C3%A1sica+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-0eeb51f6-e91d-4a4d-83d3-af4c1461a227-pnZ4VNH",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/0f916de2-79f0-45ef-8acd-a1785d00f98d/landingBeneficios_entryPoint1_visa_platinum_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968358587",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/112f00a4-5618-43b2-a5e4-4e1c0defc67a/landingBeneficios_entryPoint1_visa_signature_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968430975",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-oYNFXpF",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-pnZ4UVB",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/1678ebb4-1c91-472c-9704-f452ee1d9f8d/home-cards-pasoapaso-4-200126.png?MOD=AJPERES&attachment=false&id=1768942653328",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0032/xt.html",
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/18aea0e3-432f-4cdb-ab86-bd3f73179e78/landingBeneficios_entryPoint1_amex_oro_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968594541",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/18c4427a-d7a6-455e-9973-2e53b461803f/landingBeneficios_entryPoint-desktop-230226.png?MOD=AJPERES&attachment=false&id=1771887245514",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/19564963-ec0f-47e6-ac0a-eb0a384a60d7/beneficio-3.svg?MOD=AJPERES&attachment=false&id=1774966437999",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/1a28ffc9-25ba-4dd0-9448-eabfdb2b915b/landingBeneficios_entryPoint2_amex_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771965076646",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/1d507831-328e-4de8-ba52-7cc4672ab7b4/landingBeneficios_entryPoint1_Amex_platinum_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967367602",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/1ebbdeb2-40be-4276-9ce1-653873e0aac2/Redise%C3%B1o-home-de-cards_Card-CSI.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-1ebbdeb2-40be-4276-9ce1-653873e0aac2-oVQ8uYX&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/1f5dc7bd-21a4-49ef-afd7-a3929742fe48/tc0050-icon-maspedida.png?MOD=AJPERES&attachment=false&id=1778871560427",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0050/version-b.html",
+        "tc0050/version-c.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/209f9866-0ff9-4854-810d-4a95de34908c/spc_priorityPass_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-209f9866-0ff9-4854-810d-4a95de34908c-oTSj7kk&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Captura+de+Pantalla+2022-02-10+a+la%28s%29+16.47+1.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-oLZClbS",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Desktop_142x90+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-oXOGBn4",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Desktop_142x90+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-pnZ4UkV",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/21a73e5c-b3a6-4a1d-89fd-09b7c79e2429/visa_infinite_qore_v.svg?MOD=AJPERES&attachment=false&id=1777279578383",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/2236dd47-390c-413e-8d4f-d5f94b7055fb/landingBeneficios_entryPoint1_visa_infinite_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968463038",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/2282c31f-5c8e-4a51-a7d1-d570ed112f45/Frame+3466080+%281%29.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/24b148fa-3136-4274-84ca-e47d2e1c52ed/imagen+%289%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-24b148fa-3136-4274-84ca-e47d2e1c52ed-pA81u.g",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0051/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/26a534d2-b3b5-4c14-8d25-f019c2fdd2a2/image+1+%283%29.png?MOD=AJPERES&attachment=false&id=1704399206387",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/28e1e511-7b9f-464a-877e-7560be17f02d/Visa+Cl%C3%A1sica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-28e1e511-7b9f-464a-877e-7560be17f02d-pnZ4S4m",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc005/xt.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/2d4a166a-396e-4343-99cd-1991c151ae8b/oro_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2d4a166a-396e-4343-99cd-1991c151ae8b-pqPwxm-&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/2f570b94-4385-4e0e-9d6e-ff46705ad2c5/visa-platinum.png?MOD=AJPERES&attachment=false&id=1776285834073",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/3441c2dc-ac88-4957-98f1-1cbbc416ee95/visa_light+%281%29.png?MOD=AJPERES&attachment=false&id=1777478400074",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/3a3027af-789c-4e28-9e23-e376d0fd6c79/landingBeneficios_entryPoint1_Visa_signatureQore_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967626155",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/3dc110c2-46d9-433a-acde-7a333e87ad60/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800084725",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html",
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/3f3e3687-a083-4854-8415-30161c13c8aa/landingBeneficios_entryPoint1_visa_clasica_latam_pass_mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968214615",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/40036cb4-ec05-4475-b932-927f8f9c4157/priority-pass.svg?MOD=AJPERES&attachment=false&id=1776922726035",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/4075d218-f021-4596-95f8-5847b11a5e5d/identificacio.png?MOD=AJPERES&attachment=false&id=1704674377240",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/4093e68b-e1a0-4863-91dc-33cc5f0b52ea/landingBeneficios_entryPoint1_visa_oro_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968306680",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/44bce389-3dea-46a1-a762-b157ffc2cdeb/landingBeneficios_entryPoint1_visa_signature_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968391497",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/45f286cd-16ee-4d9f-909f-f121a95ae62e/visa_oro_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278860638",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/49421074-27e5-40d1-9e99-730b854181ca/visa-clasica-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959011987",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/4a537bfc-4d28-4abb-9be7-ffe8261cb38f/Paso+4.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-4a537bfc-4d28-4abb-9be7-ffe8261cb38f-oPc0Who",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/4de58cad-dfff-4319-ba32-213c48c8239b/landingAndo_entryPoint1-desktop-250226.png?MOD=AJPERES&attachment=false&id=1772061814908",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0030/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/50ceee85-2064-4da5-a6db-c0c5945c96bc/menbresia-gratis.svg?MOD=AJPERES&attachment=false&id=1776920676320",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/51943ea6-63a7-4dd1-bfe6-1aa62d6ee380/Image+%282%29.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/524ddb12-2950-4c87-9d00-6ab0bb9dd291/landingBeneficios_entryPoint1_amex_cl%C3%A1sica_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968553118",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/52559507-9057-4e61-8eeb-e035f653273d/landingBeneficios_entryPoint2_Visa_signatureQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965376079",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/52bd6525-3053-4c00-b250-3cfb7d2d7f20/landingBeneficios_entryPoint1_Visa_sapphire_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967736023",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5625ce14-09b0-4cf9-b285-540810fcd6c4/logos+billeteras.png?MOD=AJPERES&attachment=false&id=1717599643476",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html",
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5685c8c5-ad68-4a1b-9a61-f28da9a332b1/Banner-Landing-ST-Desktop.webp?MOD=AJPERES&attachment=false&id=1736283343037",
+      "extension": "webp",
+      "en_duda": false,
+      "archivos": [
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/57490399-7803-48de-8648-28b44b287cc3/paga-qore.svg?MOD=AJPERES&attachment=false&id=1776922989794",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5a066001-99ac-4987-85c5-f36473aba515/beneficio-5.svg?MOD=AJPERES&attachment=false&id=1774966607939",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5ab01c92-c925-4e49-aac5-d8f201c60a9b/signature_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5ab01c92-c925-4e49-aac5-d8f201c60a9b-pqPwEkH&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5af2b358-a5f7-4fb9-a9fd-9bc5a51238d8/spc_upgrade_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5af2b358-a5f7-4fb9-a9fd-9bc5a51238d8-oTSjSU6&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5afa65a8-8c28-4ba0-9e17-3aeaac9eaf64/amex_oro_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279140564",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5b7b8b7a-1111-4597-b9df-bb94c735793f/Card-Puntos-Qore_900x383px.png?MOD=AJPERES&attachment=false&id=1746222832055",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5b7f4c66-9156-4f34-b259-2782b958037d/tarjetas.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5b7f4c66-9156-4f34-b259-2782b958037d-oxYL9Cm",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5d1474e6-fd11-49ff-9fc3-fe1246371f34/visa_sapphire_latam_pass_v.svg?MOD=AJPERES&attachment=false&id=1777278985989",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5dd42622-40a0-48d9-b739-b196326ee984/Vitrina-Home-BCP-Mobile-Tablet-500x500px+%281%29.png?MOD=AJPERES&attachment=false&id=1709270164746",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5dd6241e-5775-4611-9e7f-88423542dfe4/Tarjetas-Qore-Horizontal-Infinite-239x154px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5dd6241e-5775-4611-9e7f-88423542dfe4-pE8R-0W",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc005/xt.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/5dd6241e-5775-4611-9e7f-88423542dfe4/Tarjetas-Qore-Horizontal-Infinite-239x154px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5dd6241e-5775-4611-9e7f-88423542dfe4-pMaxu2P",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/600d728b-680d-4321-9087-3b3c5dfb3d83/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800115360",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html",
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/60b04642-d204-4bc4-a116-4bb11c36aae7/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800028396",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/614ca9cb-966f-4312-b3c2-69d624184569/Visa+Light.png?MOD=AJPERES&attachment=false&id=1681223779561",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/61a4269b-2aef-4d4b-962c-4ae6ff226a25/6.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-61a4269b-2aef-4d4b-962c-4ae6ff226a25-paxsaLp",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/632c7196-05c8-4a4b-9854-ddb37724af4b/spc_benefits.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/65e7b42c-721e-4bb1-a77b-aa29552bc58c/landingBeneficios_entryPoint1_Amex_black_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967397868",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/693c4410-8d8a-45f7-8d79-af15a08f6306/landingQore_entryPoint1-2-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771534011938",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0028/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/6ce28c93-1fba-41ff-88de-6d91c347d9df/amex-platinum-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777272116544",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/6d842b9a-8f1b-4816-a4a3-eed251d80427/Redise%C3%B1o-home-de-cards-Card-Rewards.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-6d842b9a-8f1b-4816-a4a3-eed251d80427-oVQ8GVi&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/6de16847-84b1-4a2d-b12e-4d8f7b6946fc/home-cards-pasoapaso-7-200126.png?MOD=AJPERES&attachment=false&id=1768942900064",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0032/xt.html",
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/6ec98ff9-63f6-4e3b-8f78-077da305ad87/landingBeneficios_entryPoint1_visa_oro_qore-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968110619",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/6f3a89da-a302-4fc6-a2b5-78327ba04ea8/envio-gratis.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-6f3a89da-a302-4fc6-a2b5-78327ba04ea8-pSUMXme&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/70abaf3c-5244-4307-af8f-dccff33bedd0/Frame+3466079+%281%29.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/715299b7-3d97-45ad-b500-d9329e4d554d/Vector.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-715299b7-3d97-45ad-b500-d9329e4d554d-oKQHIpH&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/717ca95a-cf71-4fb4-8f6e-df29a0b39cca/landingBeneficios_entryPoint1_Amex_clasica_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967292553",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7494c94d-9b67-4814-bfd3-e4ad4a08a4b7/Desktop_Banner-Solicitar-TC-%281440x268px%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-7494c94d-9b67-4814-bfd3-e4ad4a08a4b7-pxWq-UI&cache=none",
+      "extension": "jpg",
+      "en_duda": false,
+      "archivos": [
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/750997fb-c6fe-46f2-ac53-d0d5788f2ebf/visa_infinite_qore_v.png?MOD=AJPERES&attachment=false&id=1777311332152",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7746e333-2dab-41a8-ba3a-b8917b2f65f2/visa-signature-qore-v.png?MOD=AJPERES&attachment=false&id=1776959518867",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/774fb78d-f911-44ca-a9fd-fdd97db892d6/tarjeta-dorada.png?MOD=AJPERES&attachment=false&id=1776234727403",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/781c179f-0b0d-491c-ae90-bd7ff699fe1e/visa-clasica.png?MOD=AJPERES&attachment=false&id=1776285861293",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/78c8b3d8-a71c-4098-912e-8120a53ff870/Tarjetas-Qore-Horizontal-Gold-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-78c8b3d8-a71c-4098-912e-8120a53ff870-pEdoyra",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc005/xt.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/78c8b3d8-a71c-4098-912e-8120a53ff870/Tarjetas-Qore-Horizontal-Gold-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-78c8b3d8-a71c-4098-912e-8120a53ff870-pMaxtq5",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7a17dc7b-59de-4abc-ae3d-3d8508119154/facial.png?MOD=AJPERES&attachment=false&id=1704674439797",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7a3314cf-6cfa-46d3-8eb1-eb6f6869fe4d/Centrodeayuda_mobile.png?MOD=AJPERES&attachment=false&id=1765486230837",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc006/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7ac4e6bd-b8d2-4f6c-908c-716a1c6970c2/amex-clasica-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777271781936",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7b2dc580-3b0d-442a-bbe2-0a19f1aa55bb/dscto-150.svg?MOD=AJPERES&attachment=false&id=1776923553479",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7ba71ca9-3930-4f41-8209-42b89239c5e5/Frame+1000005261.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-7ba71ca9-3930-4f41-8209-42b89239c5e5-p3c4qc8&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/carga-solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7e78ecf5-cb55-4079-af6d-552581467c40/beneficio-2.svg?MOD=AJPERES&attachment=false&id=1774966648469",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7e8b75c1-b63b-48d9-9327-e0e433da5724/Frame+3466082.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7f05cd9b-1bb7-45cb-b466-f275571d2d01/Dise%C3%B1o+sin+t%C3%ADtulo+%287%29+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-7f05cd9b-1bb7-45cb-b466-f275571d2d01-pHbmfib",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/7f94a7b1-d463-44da-9dea-30a8db5044b3/amex-black-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777272256841",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8109fe81-663c-4bb8-93fc-26d70a6b5ebf/sapphire.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8109fe81-663c-4bb8-93fc-26d70a6b5ebf-oYO7zna&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/82db546c-173c-4227-a8dc-30d8812b4b89/amex_platinum_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279185471",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8317974f-7fef-4e95-b1f5-1f626c7ab757/ilustacion-tarjeta.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8317974f-7fef-4e95-b1f5-1f626c7ab757-pORbVYh&cache=false",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8590112d-fbe2-48c0-884e-d1f5877584f3/home-cards-pasoapaso-3-200126.png?MOD=AJPERES&attachment=false&id=1768942553839",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0032/xt.html",
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/86d1a6f7-f8a9-4244-9cc2-3b9d115a2ecf/landingBeneficios_entryPoint2_Amex_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965154217",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/87553a44-635c-40bd-a9be-00c52788e2e3/Banner-Landing-ST-Desktop.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-87553a44-635c-40bd-a9be-00c52788e2e3-p9YxOPL&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/882ac165-a32f-482a-bff7-1248ebd03c11/landingBeneficios_entryPoint1_Amex_oro_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967333543",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/891af71d-5ff6-4be4-93de-a1fa831f23ed/Amex+Clasica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-891af71d-5ff6-4be4-93de-a1fa831f23ed-oLZD5pb",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/891af71d-5ff6-4be4-93de-a1fa831f23ed/Amex+Clasica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-891af71d-5ff6-4be4-93de-a1fa831f23ed-pBjUMc1",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/89db9aa8-d090-4d75-b085-56da9789f995/Tarjetas.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-89db9aa8-d090-4d75-b085-56da9789f995-oLq552f",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html",
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8a1ca119-a869-4ab6-8ff2-1e4dc15d91e5/landingBeneficios_entryPoint1_visa_oro_qore-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967506665",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8bf5f35d-c58d-45d7-a38a-5357c373a753/amex_cla%CC%81sica_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279086230",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8c4d314b-2c80-484f-8871-d4b6f79216e1/Tarjetas-Qore-Horizontal-Signature-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8c4d314b-2c80-484f-8871-d4b6f79216e1-pE8RMt3",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc005/xt.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8c4d314b-2c80-484f-8871-d4b6f79216e1/Tarjetas-Qore-Horizontal-Signature-239x154px+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8c4d314b-2c80-484f-8871-d4b6f79216e1-pMaxtMy",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8e23a0d8-0272-49cf-9d10-1795b3c84ab1/landingBeneficios_entryPoint2_Visa_iridium_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965539650",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/8f94749d-c3e8-4347-8834-aa49d36384fc/spc_gift_hand_d_l.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-oLZD2Z1",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html",
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-pBjVUKe",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9131e3a0-0fa7-4a40-828b-96ecee719232/landingBeneficios_entryPoint1_amex_platinum_latam_pass-mobile-200226.png?MOD=AJPERES&attachment=false&id=1771968624221",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/95fe5b7d-f098-4ab5-83e2-5ad321c4b838/landingBeneficios_entryPoint2_Visa_sapphire_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965494243",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9789be2b-3c5e-478c-bc66-b521e4a77ba5/visa_signature_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278949385",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/98f89f8c-3560-4e36-b8bd-e73bfd2fd7d8/Mobile_Banner-Solicitar-TC-%28375x245px%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-98f89f8c-3560-4e36-b8bd-e73bfd2fd7d8-pxWrar8&cache=none",
+      "extension": "jpg",
+      "en_duda": false,
+      "archivos": [
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/99937548-5998-422c-9582-09688e3e131a/imagen-tarjetas-mega-menu.png?MOD=AJPERES&attachment=false&id=1777407756296",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0047/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-oLZCT1g",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-pnZ4Wgg",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9c45736b-875f-4bf7-a57b-d5bfa3ab2d40/landingQore-entryPoint2-mobile-190226.png?MOD=AJPERES&attachment=false&id=1771513074805",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0028/piloto.html",
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0/banner-sin-oferta.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9ca8fbdb-5aa2-4c00-ad9d-a1e55001eef0-pPiq5Cm&cache=false",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9e059c2d-078b-4737-81d9-d9ef5b0435f8/landingBeneficios_entryPoint1_Visa_iridium_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967766399",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9e341b72-38f0-4821-88ad-031e595b24cc/visa-iridium-latam-pass-v.png?MOD=AJPERES&attachment=false&id=1776959065599",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/9f4b2eeb-5df8-44bc-a69d-d3c930ada475/Infinite_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9f4b2eeb-5df8-44bc-a69d-d3c930ada475-pqPwKYo&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/a00282ad-5a12-4eae-965f-33a35d44aa36/Frame+3466081.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/a370229f-d894-4d88-8830-4a2ec9518d9f/visa-black.png?MOD=AJPERES&attachment=false&id=1776285765583",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/a54c8625-977b-4cf2-8543-09458e3ff1a2/landingBeneficios_entryPoint2_Amex_black_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965200685",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/a681d6ab-8d74-4f59-bd0e-ac916b51690f/landingBeneficios_entryPoint2_Amex_oro_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965117643",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/a890b81a-1b3a-466b-92c9-422a241bed48/landingBeneficios_entryPoint2_Visa_infiniteQore_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965455382",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/aba0a684-a9f6-4ed0-9cd8-9c9147c459f8/landingBeneficios_entryPoint1_visa_oro_latam_pass-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967559285",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ac75e86c-3c59-4d17-b21e-c61c3016017a/Vitrina-Home-BCP-Mobile-Tablet-500x500px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ac75e86c-3c59-4d17-b21e-c61c3016017a-oYXbPSk&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ac95fbeb-8ae0-4285-8644-d732732fa78b/beneficio-4.svg?MOD=AJPERES&attachment=false&id=1774966509849",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ae0d9943-6132-4499-bd7e-7093b9cc1dbf/acumula-qore.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae0d9943-6132-4499-bd7e-7093b9cc1dbf-pSUTMks&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-oLZD1tm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html",
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-pBjVGxF",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b151184e-dabf-48e2-9255-2446dfa9d2e3/visa-signature-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959428582",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b1a843b0-3321-4987-a7f6-0ac7ef629bfd/ame-oro-latam-pass.svg?MOD=AJPERES&attachment=false&id=1777271855980",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b21bf437-d743-41cc-bd93-72811409996d/visa_cla%CC%81sica_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278801392",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b2ed087c-be17-4508-9867-81a8b272f2f0/tarjeta.png?MOD=AJPERES&attachment=false&id=1704674247161",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b32d96ac-7ade-4157-9ec8-5bbf30910169/image+2.png?MOD=AJPERES&attachment=false&id=1707424180373",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b40e135c-5913-4897-ba9b-23b52ce5a080/visa_iridium_latam_pass_v.svg?MOD=AJPERES&attachment=false&id=1777279044766",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b697ad8f-9e75-4b1f-b9f2-4d090d5b4dd9/Frame+3466084.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/b8bb9a6e-0839-4864-aeae-3971acf393df/img+%282%29.png?MOD=AJPERES&attachment=false&id=1777284923195",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/bbc718cc-3b97-41d6-8810-e18d8f3a5751/Banner+%282%29.png?MOD=AJPERES&attachment=false&id=1704400174477",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/bd0f959e-b4d2-4317-a6ac-45febb662022/square.png?MOD=AJPERES&attachment=false&id=1704674312128",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/be1e1971-834c-42a1-b0b7-4ed078ee3334/landingQore_entryPoint1-desktop-190226.png?MOD=AJPERES&attachment=false&id=1771513282274",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0028/piloto.html",
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/be3c4938-459c-4d0e-ad6b-d2631d43b6b9/Amex+Oro.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-be3c4938-459c-4d0e-ad6b-d2631d43b6b9-oLZD4c9",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/be3c4938-459c-4d0e-ad6b-d2631d43b6b9/Amex+Oro.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-be3c4938-459c-4d0e-ad6b-d2631d43b6b9-pBjUVs0",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c2ea67d7-9ac4-43e4-8f0d-b8581637279c/Frame+3466083.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c4564547-a4ad-4449-912a-c177cfafb144/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689799855936",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html",
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c45a192d-4c89-4209-b360-f6541a825448/home-cards-pasoapaso-6-200126.png?MOD=AJPERES&attachment=false&id=1768942755404",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0032/xt.html",
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c5bc2380-e5f3-4b6b-b2ee-723fe5df627d/spc_check_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c5bc2380-e5f3-4b6b-b2ee-723fe5df627d-oTSjxAA&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c733f80f-d6c4-4b7b-8dd8-9a700ab8f0ef/c73edd306dffe6d7c9d7cd9dea7c7d26387066b4.png?MOD=AJPERES&attachment=false&id=1777407893628",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0047/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c73d6c4d-0631-478a-9b75-30582912ad25/Frame.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c73d6c4d-0631-478a-9b75-30582912ad25-oEzCTbH&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-oLZCWJ2",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-pnZ4T.X",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c829d759-fc87-4491-9e57-f091648e86db/visa_signature_qore_v.svg?MOD=AJPERES&attachment=false&id=1777279478664",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c87147d3-3534-4a2d-a4bf-f878914acddd/CURVA_VECTOR.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c87147d3-3534-4a2d-a4bf-f878914acddd-pPci1Wg&cache=false",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html",
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/cad09c9f-2de4-4b89-94cf-386074e96b87/amex_black_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777279291274",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ce5bafb1-5f45-4ad7-a05f-5705b28afa7a/landingQore_entryPoint1-2-mobile190226.png?MOD=AJPERES&attachment=false&id=1771533963873",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0028/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/cf7341d7-631e-4d76-ad54-6d9341dd4b1b/campanas-publi.svg?MOD=AJPERES&attachment=false&id=1776922409663",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/cfd9dca7-6ee3-42a5-bff8-509b351aac01/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223753754",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/cfdcb3f1-8936-4a91-a1f5-6cb917ba0264/Rounded+rectangle.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cfdcb3f1-8936-4a91-a1f5-6cb917ba0264-pnZ4Tbj",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/d36f78c6-387e-4733-b099-291c3f5a8a1a/visa-oro-qore-v.png?MOD=AJPERES&attachment=false&id=1776959281621",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/d518f56b-35c0-4f6c-bfd6-9e7485893d5c/visa-light.png?MOD=AJPERES&attachment=false&id=1776285884107",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/d77ac976-8217-48ad-ad6d-179ce140828a/landingBeneficios_entryPoint1_visa_iridium_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968516450",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/d8c68c68-0cd5-470b-a2c9-959dd4ee4db3/visa-platinum-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959353805",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/da08c445-2970-4323-9679-1051c44e7a82/home-cards-pasoapaso-2-250226.png?MOD=AJPERES&attachment=false&id=1772054077545",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0032/xt.html",
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/db7653d8-4820-4ecb-92ef-ad5d76c9b1a2/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-db7653d8-4820-4ecb-92ef-ad5d76c9b1a2-pnZ4TuX",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0035/index.html",
+        "tc005/xt.html",
+        "tc0054/index.html",
+        "tc0055/index.html",
+        "tc0056/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/dde3b724-9eec-42f3-995b-bda19eaff5e4/landingBeneficios_entryPoint2_Visa_platinum_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965341548",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/deee39d2-aba4-4605-a2a7-d2917de9a0fd/landingAndo_entryPoint-mobile250226.png?MOD=AJPERES&attachment=false&id=1772061829963",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0030/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/df0699fe-c24c-4c43-9adb-c295032f3859/Banner-Landing-ST-Mobile.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-df0699fe-c24c-4c43-9adb-c295032f3859-p9YxWl6&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/df6d684b-1ac6-40a6-a4b4-e3c2bf29a699/landingBeneficios_entryPoint1_visa_platinum_latam_pass-desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967591451",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/df7dce98-ceba-4044-bcd7-674a22c03ced/Centrodeayuda_desktop.png?MOD=AJPERES&attachment=false&id=1765486286415",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc006/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e00463fe-ab0b-4b54-a76e-d391433dbdfb/Paso+3.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-e00463fe-ab0b-4b54-a76e-d391433dbdfb-oPc0Who",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e0374866-636f-4642-80bc-c9cfed6d88da/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223723314",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e0a20833-4eb7-4d5b-a427-3f5f7c5c74b7/landingBeneficios_entryPoint2_Visa_signature_banner-240226.png?MOD=AJPERES&attachment=false&id=1771965417147",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e1ce82f3-3fa4-486a-b2bd-673860072d27/landingBeneficios_entryPoint1_amex_black_latam_pass-mobile-240226.png?MOD=AJPERES&attachment=false&id=1771968650975",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e269776b-9def-4dcd-8c4e-d886e71d6d78/lanzamiento_post-login.jpg?MOD=AJPERES&attachment=false&id=1741009324149",
+      "extension": "jpg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e5306ca0-80d4-46b8-bc98-c535c58a1941/home-cards-pasoapaso-5-200126.png?MOD=AJPERES&attachment=false&id=1768942695793",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0032/xt.html",
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e5944b2c-42d5-4a58-b798-74cd6aadb14b/img+%283%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-e5944b2c-42d5-4a58-b798-74cd6aadb14b-pTesJAN&cache=none",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e7b69f00-deb1-4512-abfd-a73c379dabe2/landingBeneficios_entryPoint1_Visa_infiniteQore_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967704718",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/e9bebb3d-888e-49c6-a229-d8aa07447ca5/home-cards-pasoapaso-1-200126.png?MOD=AJPERES&attachment=false&id=1768938948070",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0032/xt.html",
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ea543626-fe34-4fa4-97a5-9ddb1e1498d9/spot-circle-s-spc-smartphone-hand-d-l%403x.png?MOD=AJPERES&attachment=false&id=1709074510817",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/eb7c8640-b68e-4874-b27c-0216ad95d2ab/spc_priorityPassB_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-eb7c8640-b68e-4874-b27c-0216ad95d2ab-oTSjfI-&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ebc3a3a4-9999-4723-9fdc-73b67b04524f/landingBeneficios_entryPoint2_visa_clasica_latam_pass-240226.png?MOD=AJPERES&attachment=false&id=1771961255766",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ebe5cb13-5121-4a87-afdd-aee64d9bd62a/landingAndo_entryPoint-desktop-250226.png?MOD=AJPERES&attachment=false&id=1772061719796",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0030/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/eda07633-3c02-4a06-bc9e-0beb46760359/lanzamiento_post-login_movil.jpg?MOD=AJPERES&attachment=false&id=1741009238298",
+      "extension": "jpg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/efc56b84-af8e-46a3-9a3e-68d606a160eb/landingBeneficios_entryPoint1_Visa_clasicaL_desktop-240226.png?MOD=AJPERES&attachment=false&id=1771967473911",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0029/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/f18cdc5d-7727-4862-ab9a-b0f4dc41876c/color%F0%9F%8E%A8%3F%3F%3F.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f18cdc5d-7727-4862-ab9a-b0f4dc41876c-onwynD6",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/f1906061-2743-42e5-8cc7-f26d60cdd7d7/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223766357",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/f560a5f4-35c5-4c91-ab8b-84d9b3995420/visa-sapphire-latam-pass-v.png?MOD=AJPERES&attachment=false&id=1776959139708",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/f5e8963d-bedd-40a8-a0da-30a95d5fbd8d/visa_platinum_latam_pass.svg?MOD=AJPERES&attachment=false&id=1777278903860",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/f6f3d577-d20b-46cc-bb78-7bce2a2c274b/arrow.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f6f3d577-d20b-46cc-bb78-7bce2a2c274b-pL40QUi&cache=none",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0010/piloto.html",
+        "tc0037/index.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/f7d339ec-1fc3-4cf7-864f-117b68fb2222/galletas-removebg-preview.png?MOD=AJPERES&attachment=false&id=1713474076189",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/f8138af8-2627-4b7a-bd2e-d61f9d7794b7/logo.svg?MOD=AJPERES&attachment=false&id=1774542095830",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/fab6ac58-5744-421e-918d-8d6121b9be70/spc_deposit.png?MOD=AJPERES",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/fb3fc282-74ad-410a-bf18-454b0596e0ab/visa-oro-latam-pass.png?MOD=AJPERES&attachment=false&id=1776959217769",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/fc0532a5-4780-429f-b4b6-d0ab6b537c42/Paso+2.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-fc0532a5-4780-429f-b4b6-d0ab6b537c42-oPc0Who",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ff8c3c12-df3a-4793-b24d-550c3a9b7722/visa_oro_qore_v.svg?MOD=AJPERES&attachment=false&id=1777279432947",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/connect/ffb87acf-2aa3-48b5-ab78-2020aa9ba909/visa_light.svg?MOD=AJPERES&attachment=false&id=1777280080101",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "tc0042/piloto.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/00944139-4031-4c9e-ab65-732e1054f386/Paso+1.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/01215dae-98c3-4851-a241-e4e89f721215/Banner+Desk-Clave+Pin+3.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/02d3ada6-41a7-4fe7-b0ab-d36d3724f7f7/TyC+-+BCP+LATAM+Milladictos.pdf?MOD=AJPERES&CVID=pR5AkuH&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1775013317251",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/241abefc-443a-4f18-9484-f70509bf0098/Vector+%282%29.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/2b401d1c-8baf-4cdc-bdc3-8a070e70831e/Campan%CC%83a+Cashback.pdf?MOD=AJPERES&CVID=pXMCxi4&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1782153152133",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/48a1239b-60dd-45cd-a762-4003ad70274e/Campana+Cashback+Whatsapp+v2.pdf?MOD=AJPERES&CVID=pUsMS2x&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1778599046600",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/4a537bfc-4d28-4abb-9be7-ffe8261cb38f/Paso+4.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/57f3b7c2-7b31-4ed5-becb-efaf462ccd29/image+31.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/6e2acf54-cc1d-488d-9c80-fda9977343c3/Campan%CC%83a+Cards+Julio26-+Legal.pdf?MOD=AJPERES&CVID=pYzc90I&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1783001934193",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/7ceedb66-c0df-4214-a644-7e5877e0a49e/TERMINOS+Y+CONDICIONES+CAMPANA+SPOTIFY.pdf?MOD=AJPERES&CVID=pVcn2AQ&useDefaultText=0&useDefaultDesc=0&a",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/7f426c68-9ccd-4053-bf7d-e16dd71032d9/Legal+Campana+Megasocios+Junio26+LATAM.pdf?MOD=AJPERES&CVID=pVRsrJK&useDefaultText=0&useDefaultDesc=0&attachment=tr",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/80ce0ab1-fc2a-4820-acdc-6ecc9a816790/Legal+Campan%CC%83a+Megasocios+Julio26+LATAM.pdf?MOD=AJPERES&CVID=pYzbP4X&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1783002158369",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/89db9aa8-d090-4d75-b085-56da9789f995/Tarjetas.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/8bb4b288-9141-473d-b86d-64aeeeed8b03/Campana+CardsMayo26+-+Legal.pdf?MOD=AJPERES&CVID=pVRA7u2&useDefaultText=0&useDefaultDesc=0&a",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/9ee75da8-3482-47a9-90b3-91ad1d57d7c2/Campan%CC%83a+exclusiva+GT2.pdf?MOD=AJPERES&CVID=ptqPmBk&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1749575167463",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/solicitar-tarjeta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/a48220a4-f9ff-429a-80a9-07ad93c75574/WhatsApp+Image+2024-11-15+at+4.28.09+PM.jpeg?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "jpeg",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/af0f0f11-90dc-4983-af9c-935c5d2d3b52/Campana+Cards+Junio26+-+Legal.pdf?MOD=AJPERES&CVID=pVRsxie&useDefaultText=0&useDefaultDesc=0&attachment=tr",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/b82f40bb-3720-438e-9c48-62baf92f4664/04.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/b929c1aa-df2f-440f-b463-327b1afdf0ae/Legal+Campan%CC%83a+Cashback+200+Jul-26.pdf?MOD=AJPERES&CVID=pYzb.SL&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1783002047655",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/bfbd77e7-19dc-4b5a-8f23-41989dca87e6/Campa%C3%B1a+Cards+Abril26+-+Legal+%283%29.pdf?MOD=AJPERES&CVID=pR5A1-e&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1775014192776",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/cf8ee1cb-33a6-4b51-8d84-5fbc41d68cd6/Legal+Campa%C3%B1a+Megasocios+Abril26+LATAM+%281%29.pdf?MOD=AJPERES&CVID=pR5Abwj&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1775013589306",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/e00463fe-ab0b-4b54-a76e-d391433dbdfb/Paso+3.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/e1a4836d-df3d-4aac-8143-bc757790e532/logo-bcp.svg?MOD=AJPERES&CVID=pYEtkBa",
+      "extension": "svg",
+      "en_duda": false,
+      "archivos": [
+        "web/campana-latam.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/e86dc13f-3b2e-4ab9-b0be-df906dfa99ae/vf+T%C3%89RMINOS+Y+CONDICIONES+-+LEGAL+Sorteo+1+mill%C3%B3n+de+Millas+LATAM+Pass.pdf?MOD=AJPERES&CVID=pSJt7XY&useDefaultText=0&useDefaultDesc=0&attachment=false&id=1776731599691",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/ed34d319-45b5-47f7-b8b6-d765620368c4/Legal+Campana+Megasocios+Mayo26+LATAM.pdf?MOD=AJPERES&CVID=pVRAgxc&useDefaultText=0&useDefaultDesc=0&attachment=tr",
+      "extension": "pdf",
+      "en_duda": false,
+      "archivos": [
+        "web/legales-pdf.html"
+      ]
+    },
+    {
+      "url": "https://www.viabcp.com/wcm/myconnect/f24344e0-10f7-4c41-9344-ca0366af72f8/Image+%283%29.png?MOD=AJPERES&CVID=pOQlAIm",
+      "extension": "png",
+      "en_duda": false,
+      "archivos": [
+        "web/descubre-tu-oferta.html"
+      ]
+    }
+  ]
+}
