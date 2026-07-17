@@ -1,0 +1,1712 @@
+<style type="text/css">.bcp_header .bcp_nivel2 {
+        display: none;
+    }
+
+    .header_sin_acceso header {
+        position: fixed;
+        width: 100%;
+        background: #FFFFFF;
+        top: 0;
+        top: 0px;
+        z-index: 9999;
+        box-shadow: 0px 4px 8px rgb(0 33 102 / 5%);
+    }
+
+    .header_sin_acceso .bcp_opciones {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .buttonConseguirTarjeta a {
+        padding: 10px 16px;
+        background: #FF7800;
+        border-radius: 20px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    @media(max-width:767px) {
+        .header_sin_acceso {
+            /* margin-bottom: 58px; */
+            height: 56px;
+        }
+
+        .header_sin_acceso .bcp_opciones {
+            padding: 16px 24px;
+        }
+
+        .header_sin_acceso .bcp_logo {
+            width: 90px;
+            height: 24px;
+        }
+
+        .header_sin_acceso .bcp_logo img {
+            width: 100%;
+        }
+    }
+
+    @media(min-width:768px) {
+        .header_sin_acceso {
+            /* margin-bottom: 72px; */
+            height: 72px;
+        }
+
+        .header_sin_acceso .bcp_opciones {
+            height: 72px;
+        }
+
+        .header_sin_acceso .bcp_logo {
+            width: 107px;
+            height: 28px;
+        }
+
+        .header_sin_acceso .bcp_logo img {
+            width: 100%;
+        }
+    }
+
+    .header_sin_acceso header.preprod {
+        position: relative;
+        z-index: 1;
+    }
+
+    .bcp-section-over-banner {
+        padding-top: 0px !important;
+    }
+</style>
+<style type="text/css">.bcp_banner-sin-carousel .container-fluid.Fondo-Imagen .banner_title.color_texto_claro {
+        font-size: 24px;
+        font-weight: 400;
+        color: #002A8D !important;
+        margin-bottom: 24px;
+        margin-top: 24px;
+    }
+
+    .bcp_breadcrum {
+        display: none;
+    }
+
+    .bcp_banner-sin-carousel .container-fluid.Fondo-Imagen {
+        background-image: url(https://www.viabcp.com/wcm/connect/26a534d2-b3b5-4c14-8d25-f019c2fdd2a2/image+1+%283%29.png?MOD=AJPERES&attachment=false&id=1704399206387);
+        height: 304px !important;
+    }
+
+    .beneficios_millas,
+    .conetenedor_millas_totales,
+    .contenedor_tyc_tarjetas {
+        text-align: center;
+        padding: 24px;
+    }
+
+    .beneficios_millas h2,
+    .conetenedor_millas_totales h2,
+    .contenedor_pasos_tarjetas h2,
+    .contenedor_tyc_tarjetas h2 {
+        font-size: 24px;
+        color: #002A8D;
+        margin: auto;
+        margin-bottom: 8px;
+        width: 80%;
+        font-weight: 100;
+        text-align: center;
+    }
+
+    .contenedor_tyc_tarjetas h2 {
+        margin-bottom: 16px !important;
+        line-height: 32px;
+    }
+
+    .contenedor_pasos_tarjetas h2 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .beneficios_millas p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .beneficios_millas p.titulo_beneficio {
+        font-size: 20px;
+        color: #002A8D;
+        font-weight: 600;
+        line-height: 24px;
+        margin-bottom: 16px;
+        margin-top: 24px;
+        text-align: center;
+    }
+
+    .beneficios_millas img {
+        margin-top: 24px;
+    }
+
+    .beneficios_millas a {
+        color: #FF7800;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .contenedor_pasos_tarjetas a {
+        color: #FF7800;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .nameCardTYC {
+        display: flex;
+        margin: 40px 0 20px;
+        justify-content: center;
+    }
+
+    .efectName {
+        border-bottom: 3px solid #ff7800 !important;
+        color: #202e44 !important;
+    }
+
+    .nameCardTYC p {
+        border-bottom: 3px solid #e5e7eb;
+        color: #99a1ad;
+        padding: 10px 24px;
+        font-weight: bold;
+        display: inline-block;
+        width: auto;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 0;
+    }
+
+    .slider_tarjeta_beneficios {
+        display: grid;
+        grid-template-columns: 100% 100% 100% 100%;
+        scroll-snap-type: x mandatory;
+        overflow: auto;
+    }
+
+    .milla_por_tarjeta.amex .slider_tarjeta_beneficios {
+        grid-template-columns: 100% 100%;
+    }
+
+    .slider_tarjeta_beneficios::-webkit-scrollbar {
+        display: none;
+    }
+
+    .slider_tarjeta_beneficios h3 {
+        color: #002A8D;
+        font-size: 20px;
+        line-height: 28px;
+        margin: 0;
+        font-family: 'Flexo-Demi';
+        margin-top: 24px;
+        text-align: center;
+    }
+
+    .slider_tarjeta_beneficios img {
+        width: 162px;
+    }
+
+    .slider_tarjeta_beneficios .meta_consumo {
+        color: #868F9E;
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .contenedor_total_millas_tarjeta {
+        padding: 24px 16px 17px;
+    }
+
+    .contenedor_millas_beneficio {
+        display: flex;
+        font-size: 14px;
+        justify-content: space-between;
+        border-bottom: 1px solid #E5E7EB;
+        padding: 8px 0px;
+    }
+
+    .contenedor_millas_beneficio p {
+        margin: 0;
+    }
+
+    .contenedor_millas_beneficio.total {
+        font-size: 16px;
+        border-bottom: none;
+        padding: 16px 0px;
+    }
+
+    .contenedor_millas_beneficio .monto_millas {
+        font-family: 'Flexo-Demi';
+        color: #37A500;
+    }
+
+    .contenedor_millas_beneficio .monto_millas.total {
+        color: #202E44;
+    }
+
+    .botones_slide label span {
+        width: 8px;
+        height: 8px;
+        margin: 0 6px;
+        border-radius: 57px;
+        background-color: #d2d5dc;
+        box-sizing: border-box;
+        display: inline-block;
+        transition: all 300ms;
+        cursor: pointer;
+    }
+
+    .botones_slide label span.active {
+        background-color: #3d77ff;
+    }
+
+    .slide_tarjeta {
+        scroll-snap-align: center;
+        padding: 15px;
+    }
+
+    .milla_por_tarjeta {
+        display: none;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .milla_por_tarjeta.active {
+        display: block;
+    }
+
+    .flechas_slide {
+        position: absolute;
+        width: calc(100vw - 48px);
+        display: flex;
+        justify-content: space-between;
+        top: 67px;
+    }
+
+    .flechas_slide .arrow_right {
+        transform: rotate(180deg);
+    }
+
+    .arrow_right,
+    .arrow_left {
+        cursor: pointer;
+    }
+
+    .boton_banner_latam {
+        background-color: #FF7800;
+        color: #fff !important;
+        padding: 10px 32px;
+        border-radius: 50px;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: 'Flexo-Demi';
+        margin-top: 32px;
+        width: 250px;
+        margin-bottom: 64px;
+    }
+
+    .boton_banner_latam:hover {
+        box-shadow: 0 2px 2px rgba(82, 112, 148, .14), 0 3px 1px rgba(82, 112, 148, .12), 0 1px 5px rgba(82, 112, 148, .2);
+        background-color: #ff961f;
+        color: #fff;
+    }
+
+    .info_dolares {
+        background-color: #F5F8FF;
+        border-radius: 4px;
+        color: #002A8D;
+        font-size: 12px;
+        display: flex;
+        text-align: left;
+        padding: 16px;
+        gap: 8px;
+        align-items: baseline;
+    }
+
+    .info_dolares p {
+        font-size: 12px;
+        color: #002A8D;
+    }
+
+    .st_contenedor_pasos_stepper {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+        flex-direction: column;
+    }
+
+    .cards_pasos_imagenes {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin: 0 20px;
+        justify-content: center;
+        padding: 12px 0 28px;
+    }
+
+    .cards_pasos_flecha_derecha,
+    .cards_pasos_flecha_izquierda {
+        cursor: pointer
+    }
+
+    .cards_pasos_manual img {
+        border-radius: 32px;
+    }
+
+    .cards_pasos_manual_activo {
+        display: block;
+    }
+
+    .cards_pasos_manual_desactivo {
+        display: none;
+    }
+
+    .pasos_desktop_st {
+        display: none;
+    }
+
+    .st_pasos_stepper span {
+        width: 28px;
+        height: 28px;
+        display: inline-block;
+        color: #002A8D;
+        border: 2px solid #002A8D;
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        padding: 3px 0;
+        box-sizing: border-box;
+        font-family: 'Flexo-Demi';
+    }
+
+    .titulo_step {
+        color: #000000;
+        margin: 0;
+        font-size: 12px !important;
+        font-family: 'Flexo-Demi' !important;
+        line-height: 18px !important;
+        font-weight: 600;
+        text-align: center !important;
+    }
+
+    .contenedor_pasos_titulos {
+        display: flex;
+        gap: 16px;
+        text-align: center;
+        margin-top: 32px;
+        justify-content: center;
+    }
+
+    .bajada_step {
+        margin: 8px 0;
+    }
+
+    .st_contenedor_pasos {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .contenedor_pasos_tarjetas {
+        padding: 24px;
+    }
+
+    .bajada_step {
+        display: none;
+    }
+
+    .cards_pasos_titulo p {
+        margin: 28px 0 10px;
+        text-align: center;
+    }
+
+    .bcp_footer.footer_migrado .container {
+        display: none;
+    }
+
+    .bcp_footer.footer_migrado .bcp_derecho_reservado_fluid .container {
+        display: block;
+    }
+
+    @media (min-width: 320px) {
+        .text_bcp_publi {
+            padding: 0;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .flechas_slide {
+            width: 684px;
+            padding: 0;
+        }
+
+        .bcp_banner-sin-carousel .container-fluid.Fondo-Imagen {
+            background-image: url(https://www.viabcp.com/wcm/connect/bbc718cc-3b97-41d6-8810-e18d8f3a5751/Banner+%282%29.png?MOD=AJPERES&attachment=false&id=1704400174477) !important;
+            height: 400px !important;
+        }
+
+        .bcp_banner_sin_carousel .Fondo-Imagen .banner_title {
+            font-size: 32px;
+        }
+
+        .info_dolares {
+            margin: auto;
+            width: 580px;
+        }
+
+        .pasos_mobile_st {
+            display: none;
+        }
+
+        .st_contenedor_pasos {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            padding-top: 52px;
+        }
+
+        .pasos_desktop_st {
+            display: block;
+        }
+
+        .pasos_desktop_st img {
+            height: 206px;
+        }
+
+        .titulo_step {
+            font-size: 16px !important;
+            text-align: left !important;
+            font-weight: 600;
+        }
+
+        .cards_pasos_titulo {
+            display: none;
+        }
+
+        .contenedor_pasos_titulos {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .st_contenedor_pasos_stepper {
+            flex-direction: row;
+            text-align: left;
+        }
+
+        .bajada_step {
+            display: block;
+            font-size: 12px;
+        }
+
+        .st_contenedor_pasos_stepper {
+            margin-bottom: 0;
+        }
+
+        .cards_pasos_manual {
+            background-color: #F5F8FF;
+            padding: 76px 12px;
+            border-radius: 8px;
+        }
+
+        .contenedor_tyc_tarjetas h2 {
+            margin-bottom: 40px !important;
+        }
+
+    }
+
+    @media (min-width: 992px) {
+        .bcp_banner_sin_carousel .container-fluid.Fondo-Imagen {
+            height: 400px;
+        }
+
+        .bcp_banner_sin_carousel .Fondo-Imagen .banner_title {
+            font-size: 48px;
+        }
+
+        .contenedor_beneficio {
+            display: flex;
+            gap: 40px;
+        }
+
+        .beneficios_millas h2,
+        .conetenedor_millas_totales h2,
+        .contenedor_pasos_tarjetas h2,
+        .contenedor_tyc_tarjetas h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .botones_slide,
+        .flechas_slide {
+            display: none;
+        }
+
+        .milla_por_tarjeta .slider_tarjeta_beneficios {
+            grid-template-columns: 25% 25% 25% 25%;
+        }
+
+        .milla_por_tarjeta.amex .slider_tarjeta_beneficios {
+            grid-template-columns: 33.33% 33.33%;
+            justify-content: center;
+        }
+
+        .pasos_desktop_st img {
+            height: 220px;
+        }
+
+        .bajada_step {
+            font-size: 16px;
+            margin-bottom: 34px;
+        }
+
+        .titulo_step {
+            font-size: 18px !important;
+            text-align: left !important;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .pasos_desktop_st img {
+            height: 331px;
+        }
+
+        .titulo_step {
+            font-size: 20px !important;
+        }
+
+        .cards_pasos_manual {
+            padding: 76px 58px;
+        }
+    }
+</style>
+<style type="text/css">.contenedor_tyc_tarjetas {
+        padding-top: 45px;
+        padding-bottom: 84px;
+    }
+
+    .contenedor_tyc_tarjetas h1,
+    .contenedor_tyc_tarjetas h2,
+    .contenedor_tyc_tarjetas h3 {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .contenedor_tyc_tarjetas .accordion-header {
+        transition: ease-in-out 100ms;
+    }
+
+    .contenedor_tyc_tarjetas .acordeon-header-pregunta {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: left;
+        color: #012D74;
+    }
+
+    .contenedor_tyc_tarjetas .accordion-header.accordion-item {
+        align-items: center;
+        border: unset;
+    }
+
+    .contenedor_tyc_tarjetas .accordion-header.accordion-item h3 {
+        flex: 1;
+        margin: 0;
+    }
+
+    .contenedor_tyc_tarjetas .bcp-angle-down-f {
+        float: right;
+    }
+
+    .contenedor_tyc_tarjetas .icon.bcp-angle-up-f {
+        transform: rotate(180deg);
+    }
+
+    .contenedor_tyc_tarjetas .latam-accordion-wrap {
+        margin-bottom: 8px;
+    }
+
+    .contenedor_tyc_tarjetas .latam-accordion-trigger {
+        align-items: center;
+        background: #F2F4F8;
+        border-radius: 8px;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+        min-height: 72px;
+        padding: 18px 24px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .contenedor_tyc_tarjetas .latam-accordion-trigger:focus-visible {
+        outline: 2px solid #3d77ff;
+        outline-offset: 2px;
+    }
+
+    .contenedor_tyc_tarjetas .latam-accordion-title {
+        color: #202E44;
+        flex: 1;
+        font-family: 'Flexo-Demi';
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 24px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .contenedor_tyc_tarjetas .latam-accordion-icon {
+        align-items: center;
+        display: flex;
+        flex: 0 0 auto;
+    }
+
+    .contenedor_tyc_tarjetas .latam-accordion-text {
+        max-height: 0;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        transition: all .5s ease-in;
+    }
+
+    .bcp_st_contactenos_wsp {
+        background-color: #6AC90F;
+        display: flex;
+        padding: 4px 12px;
+        border-radius: 20px;
+        gap: 4px;
+        cursor: pointer;
+        color: #ffff;
+        font-size: 14px;
+    }
+
+    .bcp_st_contactenos_wsp:hover {
+        box-shadow: 0px 2px 2px rgba(82, 112, 148, 0.2);
+    }
+
+    .container_info_latam {
+        padding-top: 40px;
+    }
+
+    .bcp_nivel1 {
+        display: none;
+    }
+
+    .bcp_cintillo {
+        display: none;
+    }
+
+    .latam_rewards_contenedor {
+        padding: 16px;
+        background-color: #EBF4FF;
+        border-radius: 16px;
+        margin: 24px;
+    }
+
+    .latam_rewards_contenedor p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .latam_rewards_contenedor img {
+        width: 64px;
+    }
+
+    .latam_rewards_contenedor {
+        display: flex;
+        gap: 24px;
+    }
+
+    .latam_rewards_contenedor .logos_rewards {
+        text-align: center;
+    }
+
+    .latam_rewards_contenedor h3 {
+        color: #002A8D;
+        font-weight: bold;
+        line-height: 24px;
+        padding: 0;
+        font-size: 16px;
+    }
+
+    .btn_pidela_aqui {
+        background-color: #FF7800;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+    }
+
+    .btn_conoce_mas {
+        border: 1px solid #ACB2BD;
+        background-color: #fff;
+        padding: 8px 16px;
+        border-radius: 20px;
+    }
+
+    .logos_rewards {
+        display: none;
+    }
+
+    .logos_rewards_mobile {
+        padding: 12px 0 20px;
+    }
+
+    .logos_rewards_mobile img {
+        padding-right: 4px;
+    }
+
+    @media (min-width: 1px) {
+        .contenedor_tyc_tarjetas .bcp_titulo_principal {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 32px;
+            text-align: center;
+            margin-bottom: 28px;
+            color: #002A8D;
+        }
+
+        .contenedor_tyc_tarjetas .icon {
+            margin: auto 0px auto auto;
+        }
+
+        .contenedor_tyc_tarjetas .accordion-header {
+            width: 100%;
+            display: flex;
+        }
+
+        .contenedor_tyc_tarjetas .accordion-item {
+            cursor: pointer;
+            padding-top: 18px;
+            padding-bottom: 18px;
+            padding-left: 16px;
+            padding-right: 16px;
+            background: #F2F4F8;
+            border-radius: 8px;
+        }
+
+        .contenedor_tyc_tarjetas .accordion-wrap {
+            margin-bottom: 8px;
+        }
+
+        .contenedor_tyc_tarjetas .bcp_contenedor_acordeon {
+            width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .contenedor_tyc_tarjetas .accordion-header h3 {
+            font-family: 'Flexo-Demi';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 20px;
+            color: #202E44;
+            margin-right: auto;
+            padding-right: 10px;
+            padding-bottom: 0;
+        }
+
+        .contenedor_tyc_tarjetas .accordion-text {
+            max-height: 0;
+            overflow: hidden;
+            padding-left: 16px;
+            padding-right: 16px;
+            transition: all .5s ease-in;
+        }
+
+        .contenedor_tyc_tarjetas .acordeon-header-respuesta {
+            font-size: 14px;
+            line-height: 20px;
+            text-align: left;
+            color: #202E44;
+            padding-left: 0px;
+        }
+
+        .contenedor_tyc_tarjetas a {
+            color: #ff7800;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .contenedor_tyc_tarjetas p {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+            font-family: 'Flexo';
+        }
+
+        .contenedor_tyc_tarjetas ol li:before {
+            content: counter(li);
+            counter-increment: li;
+            position: absolute;
+            left: 0;
+            margin-top: 0;
+            background: #002a8d;
+            height: 20px;
+            width: 20px;
+            color: #fff;
+            text-align: center;
+            font-weight: 500;
+            font-style: normal;
+            border-radius: 50%;
+            font-size: 14px;
+            line-height: 15px;
+            padding-top: 2px;
+        }
+
+        .contenedor_tyc_tarjetas ol li {
+            position: relative;
+            display: block;
+            padding-top: 16px;
+            padding-left: 40px;
+            text-decoration: none;
+            text-align: left;
+        }
+
+        .contenedor_tyc_tarjetas ol {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 24px;
+            text-align: left;
+            counter-reset: li;
+            list-style: none;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+    }
+
+    @media (min-width: 768px) {
+        .bcp_st_contactenos_wsp {
+            padding: 8px 16px;
+            font-size: 16px;
+        }
+
+        .contenedor_tyc_tarjetas .bcp_titulo_principal {
+            font-size: 32px;
+            margin-bottom: 52px;
+        }
+
+        .contenedor_tyc_tarjetas .accordion-header {
+            padding-left: 0px;
+            padding-right: 0px;
+            display: flex;
+        }
+
+        .contenedor_tyc_tarjetas .bcp_contenedor_acordeon {
+            margin: auto;
+        }
+
+        .contenedor_tyc_tarjetas .accordion-header h3 {
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .logos_rewards {
+            display: block;
+        }
+
+        .logos_rewards_mobile {
+            display: none;
+        }
+
+        .latam_rewards_contenedor img {
+            width: 57px;
+        }
+
+        .latam_rewards_contenedor {
+            padding: 24px 65px;
+            margin: 0;
+        }
+
+    }
+
+    @media (min-width: 992px) {
+        .latam_rewards_contenedor img {
+            width: 57px;
+        }
+
+        .latam_rewards_contenedor {
+            padding: 24px 241px;
+        }
+    }
+</style>
+<div class="container_info_latam" dir="ltr">
+<div class="container latam_rewards">
+<div class="latam_rewards_contenedor">
+<div>
+<h3>¡Disfruta de Rewards LATAM!</h3>
+
+<p>Pide tu Tarjeta de Crédito y <b>canjea tus millas por productos</b> en estas tiendas</p>
+
+<div class="logos_rewards_mobile"><img alt="" src="https://www.viabcp.com/wcm/connect/70abaf3c-5244-4307-af8f-dccff33bedd0/Frame+3466079+%281%29.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/2282c31f-5c8e-4a51-a7d1-d570ed112f45/Frame+3466080+%281%29.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/a00282ad-5a12-4eae-965f-33a35d44aa36/Frame+3466081.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/7e8b75c1-b63b-48d9-9327-e0e433da5724/Frame+3466082.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/c2ea67d7-9ac4-43e4-8f0d-b8581637279c/Frame+3466083.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/b697ad8f-9e75-4b1f-b9f2-4d090d5b4dd9/Frame+3466084.png?MOD=AJPERES" /></div>
+
+<div><button class="btn_pidela_aqui" onclick="redireccion('reward')">Pídela aquí</button><button class="btn_conoce_mas" onclick="redireccionRewards()">Conoce más</button></div>
+</div>
+
+<div class="logos_rewards"><img alt="" src="https://www.viabcp.com/wcm/connect/70abaf3c-5244-4307-af8f-dccff33bedd0/Frame+3466079+%281%29.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/2282c31f-5c8e-4a51-a7d1-d570ed112f45/Frame+3466080+%281%29.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/a00282ad-5a12-4eae-965f-33a35d44aa36/Frame+3466081.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/7e8b75c1-b63b-48d9-9327-e0e433da5724/Frame+3466082.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/c2ea67d7-9ac4-43e4-8f0d-b8581637279c/Frame+3466083.png?MOD=AJPERES" /> <img alt="" src="https://www.viabcp.com/wcm/connect/b697ad8f-9e75-4b1f-b9f2-4d090d5b4dd9/Frame+3466084.png?MOD=AJPERES" /></div>
+</div>
+</div>
+
+<div class="container beneficios_millas">
+<h2>Campañas Millas <b>LATAM Pass</b></h2>
+
+<div class="contenedor_beneficio">
+<div><img alt="" src="https://www.viabcp.com/wcm/connect/632c7196-05c8-4a4b-9854-ddb37724af4b/spc_benefits.png?MOD=AJPERES" />
+<p class="titulo_beneficio">Bono Digital</p>
+
+<p>Gana hasta 2,000 millas LATAM PASS, por obtener tu Tarjeta de Crédito por la web. Si no tienes una, ábrela <a onclick="redireccion('beneficios')">aquí.</a></p>
+</div>
+
+<div><img alt="" src="https://www.viabcp.com/wcm/connect/fab6ac58-5744-421e-918d-8d6121b9be70/spc_deposit.png?MOD=AJPERES" />
+<p class="titulo_beneficio">Bono Adicional</p>
+
+<p>Gana un bono extra de <b>millas LATAM PASS</b> por alcanzar la meta de consumo de tu tarjeta.</p>
+</div>
+
+<div><img alt="" src="https://www.viabcp.com/wcm/connect/8f94749d-c3e8-4347-8834-aa49d36384fc/spc_gift_hand_d_l.png?MOD=AJPERES" />
+<p class="titulo_beneficio">Promo exclusiva para ti</p>
+
+<p>Esta campaña solo es válida desde el 01/07/2026 al 31/07/2026. ¡No dejes pasar esta oportunidad!</p>
+</div>
+</div>
+</div>
+
+<div class="container conetenedor_millas_totales">
+<h2><b>La tarjeta ideal</b> para ti</h2>
+
+<div class="nameCardTYC">
+<p class="efectName visa" onclick="changeTarjetas('visa')">Visa</p>
+
+<p class="amex" onclick="changeTarjetas('amex')">American Express</p>
+</div>
+
+<div class="milla_por_tarjeta active visa" data="visa">
+<div class="flechas_slide">
+<div class="arrow_right" onclick="moverFlechasRight('visa')"><svg fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path clip-rule="evenodd" d="M4.00362 12.9977L17.5876 12.9977L14.2926 16.2927C13.9016 16.6837 13.9016 17.3157 14.2926 17.7067C14.6836 18.0977 15.3166 18.0977 15.7066 17.7067L20.7066 12.7067C21.0976 12.3158 21.0976 11.6837 20.7076 11.2927L15.7116 6.29275C15.5156 6.09775 15.2596 5.99975 15.0036 5.99975C14.7476 5.99975 14.4916 6.09775 14.2966 6.29275C13.9056 6.68275 13.9056 7.31575 14.2956 7.70675L17.5846 10.9977L4.00362 10.9977C3.45063 10.9977 3.00362 11.4447 3.00362 11.9977C3.00362 12.5507 3.45062 12.9977 4.00362 12.9977Z" fill="#FF7800" fill-rule="evenodd"></path> </svg></div>
+
+<div class="arrow_left" onclick="moverFlechasLeft('visa')"><svg fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path clip-rule="evenodd" d="M4.00362 12.9977L17.5876 12.9977L14.2926 16.2927C13.9016 16.6837 13.9016 17.3157 14.2926 17.7067C14.6836 18.0977 15.3166 18.0977 15.7066 17.7067L20.7066 12.7067C21.0976 12.3158 21.0976 11.6837 20.7076 11.2927L15.7116 6.29275C15.5156 6.09775 15.2596 5.99975 15.0036 5.99975C14.7476 5.99975 14.4916 6.09775 14.2966 6.29275C13.9056 6.68275 13.9056 7.31575 14.2956 7.70675L17.5846 10.9977L4.00362 10.9977C3.45063 10.9977 3.00362 11.4447 3.00362 11.9977C3.00362 12.5507 3.45062 12.9977 4.00362 12.9977Z" fill="#FF7800" fill-rule="evenodd"></path> </svg></div>
+</div>
+
+<div class="slider_tarjeta_beneficios">
+<div class="slide_tarjeta"><img alt="Platinum LATAM Pass" src="https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-oLZCT1g" />
+<h3>Visa Platinum LATAM Pass</h3>
+
+<p class="meta_consumo">Meta de consumo S/ 1,000</p>
+
+<div class="contenedor_total_millas_tarjeta">
+<div class="contenedor_millas_beneficio">
+<p>Bono Digital:</p>
+
+<p class="monto_millas">+2,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Regular:</p>
+
+<p class="monto_millas">+3,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Adicional:</p>
+
+<p class="monto_millas">+3,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio total">
+<p>Recibirás en total</p>
+
+<p class="monto_millas total">8,000 millas</p>
+</div>
+</div>
+</div>
+
+<div class="slide_tarjeta"><img alt="" src="https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-oLZCWJ2" />
+<h3>Visa Signature LATAM Pass</h3>
+
+<p class="meta_consumo">Meta de consumo S/ 5,000</p>
+
+<div class="contenedor_total_millas_tarjeta">
+<div class="contenedor_millas_beneficio">
+<p>Bono Digital:</p>
+
+<p class="monto_millas">+2,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Regular:</p>
+
+<p class="monto_millas">+6,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Adicional:</p>
+
+<p class="monto_millas">+5,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio total">
+<p>Recibirás en total</p>
+
+<p class="monto_millas total">13,000 millas</p>
+</div>
+</div>
+</div>
+
+<div class="slide_tarjeta"><img alt="" src="https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-oYNFXpF" />
+<h3>Visa Infinite Sapphire LATAM Pass</h3>
+
+<p class="meta_consumo">Meta de consumo S/ 8,000</p>
+
+<div class="contenedor_total_millas_tarjeta">
+<div class="contenedor_millas_beneficio">
+<p>Bono Digital:</p>
+
+<p class="monto_millas">+2,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Regular:</p>
+
+<p class="monto_millas">+10,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Adicional:</p>
+
+<p class="monto_millas">+8,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio total">
+<p>Recibirás en total</p>
+
+<p class="monto_millas total">20,000 millas</p>
+</div>
+</div>
+</div>
+
+<div class="slide_tarjeta"><img alt="" src="https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Captura+de+Pantalla+2022-02-10+a+la%28s%29+16.47+1.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-oLZClbS" />
+<h3>Visa Infinite Iridium LATAM Pass</h3>
+
+<p class="meta_consumo">Meta de consumo S/ 10,000</p>
+
+<div class="contenedor_total_millas_tarjeta">
+<div class="contenedor_millas_beneficio">
+<p>Bono Digital:</p>
+
+<p class="monto_millas">+2,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Regular:</p>
+
+<p class="monto_millas">+15,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Adicional:</p>
+
+<p class="monto_millas">+8,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio total">
+<p>Recibirás en total</p>
+
+<p class="monto_millas total">25,000 millas</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="botones_slide">&nbsp;</div>
+</div>
+
+<div class="milla_por_tarjeta amex" data="amex">
+<div class="flechas_slide">
+<div class="arrow_right" onclick="moverFlechasRight('amex')"><svg fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path clip-rule="evenodd" d="M4.00362 12.9977L17.5876 12.9977L14.2926 16.2927C13.9016 16.6837 13.9016 17.3157 14.2926 17.7067C14.6836 18.0977 15.3166 18.0977 15.7066 17.7067L20.7066 12.7067C21.0976 12.3158 21.0976 11.6837 20.7076 11.2927L15.7116 6.29275C15.5156 6.09775 15.2596 5.99975 15.0036 5.99975C14.7476 5.99975 14.4916 6.09775 14.2966 6.29275C13.9056 6.68275 13.9056 7.31575 14.2956 7.70675L17.5846 10.9977L4.00362 10.9977C3.45063 10.9977 3.00362 11.4447 3.00362 11.9977C3.00362 12.5507 3.45062 12.9977 4.00362 12.9977Z" fill="#FF7800" fill-rule="evenodd"></path> </svg></div>
+
+<div class="arrow_left" onclick="moverFlechasLeft('amex')"><svg fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path clip-rule="evenodd" d="M4.00362 12.9977L17.5876 12.9977L14.2926 16.2927C13.9016 16.6837 13.9016 17.3157 14.2926 17.7067C14.6836 18.0977 15.3166 18.0977 15.7066 17.7067L20.7066 12.7067C21.0976 12.3158 21.0976 11.6837 20.7076 11.2927L15.7116 6.29275C15.5156 6.09775 15.2596 5.99975 15.0036 5.99975C14.7476 5.99975 14.4916 6.09775 14.2966 6.29275C13.9056 6.68275 13.9056 7.31575 14.2956 7.70675L17.5846 10.9977L4.00362 10.9977C3.45063 10.9977 3.00362 11.4447 3.00362 11.9977C3.00362 12.5507 3.45062 12.9977 4.00362 12.9977Z" fill="#FF7800" fill-rule="evenodd"></path> </svg></div>
+</div>
+
+<div class="slider_tarjeta_beneficios">
+<div class="slide_tarjeta"><img alt="Platinum LATAM Pass" src="https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-oLZD1tm" />
+<h3>AMEX Platinum LATAM Pass</h3>
+
+<p class="meta_consumo">Meta de consumo S/ 1,000</p>
+
+<div class="contenedor_total_millas_tarjeta">
+<div class="contenedor_millas_beneficio">
+<p>Bono Digital:</p>
+
+<p class="monto_millas">+2,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Regular:</p>
+
+<p class="monto_millas">+3,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Adicional:</p>
+
+<p class="monto_millas">+3,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio total">
+<p>Recibirás en total</p>
+
+<p class="monto_millas total">8,000 millas</p>
+</div>
+</div>
+</div>
+
+<div class="slide_tarjeta"><img alt="" src="https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-oLZD2Z1" />
+<h3>AMEX Black LATAM Pass</h3>
+
+<p class="meta_consumo">Meta de consumo S/ 5,000</p>
+
+<div class="contenedor_total_millas_tarjeta">
+<div class="contenedor_millas_beneficio">
+<p>Bono Digital:</p>
+
+<p class="monto_millas">+2,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Regular:</p>
+
+<p class="monto_millas">+6,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio">
+<p>Bono Adicional:</p>
+
+<p class="monto_millas">+5,000 millas</p>
+</div>
+
+<div class="contenedor_millas_beneficio total">
+<p>Recibirás en total</p>
+
+<p class="monto_millas total">13,000 millas</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="botones_slide">&nbsp;</div>
+</div>
+
+<div>
+<div><a class="boton_banner_latam" onclick="redireccion('millas')">Pídela aquí</a></div>
+
+<div class="info_dolares">
+<div><img alt="" src="https://www.viabcp.com/wcm/connect/f18cdc5d-7727-4862-ab9a-b0f4dc41876c/color%F0%9F%8E%A8%3F%3F%3F.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-f18cdc5d-7727-4862-ab9a-b0f4dc41876c-onwynD6" /></div>
+
+<p>Si tu Tarjeta de Crédito está en dólares, la meta de consumo dependerá de la divisa actual.</p>
+</div>
+</div>
+</div>
+
+<div class="container contenedor_pasos_tarjetas pasos_latam_contenedor_principal">
+<h2>Como <b>solicitar tu Tarjeta de Crédito</b> a cualquier hora</h2>
+
+<div class="st_contenedor_pasos">
+<div class="pasos_mobile_st">
+<div class="cards_pasos_imagenes">
+<div class="cards_pasos_flecha_izquierda" onclick="pasoIzquierda(0)" style="opacity: 0"><svg fill="none" height="30" viewbox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg"> <circle fill="#FFFFFF" r="23.5" stroke="#95a7bf" transform="matrix(-1.19249e-08 -1 -1 1.19249e-08 24 24)"></circle> <path clip-rule="evenodd" d="M31.998 24.9979L18.414 24.9979L21.709 28.2929C22.1 28.6839 22.1 29.3159 21.709 29.7069C21.318 30.0979 20.685 30.0979 20.295 29.7069L15.295 24.7069C14.904 24.3159 14.904 23.6839 15.295 23.2929L20.291 18.2929C20.486 18.0979 20.742 17.9999 20.998 17.9999C21.254 17.9999 21.51 18.0979 21.705 18.2929C22.096 18.6829 22.096 19.3159 21.706 19.7069L18.417 22.9979L31.998 22.9979C32.551 22.9979 32.998 23.4449 32.998 23.9979C32.998 24.5509 32.551 24.9979 31.998 24.9979Z" fill="#ff7800" fill-rule="evenodd"></path> </svg></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_activo"><img class="lazy_loading" height="392" src="https://www.viabcp.com/wcm/connect/c4564547-a4ad-4449-912a-c177cfafb144/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&amp;attachment=false&amp;id=1689799855936" width="auto" /></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_desactivo"><img class="lazy_loading" height="392" src="https://www.viabcp.com/wcm/connect/60b04642-d204-4bc4-a116-4bb11c36aae7/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&amp;attachment=false&amp;id=1689800028396" width="auto" /></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_desactivo"><img class="lazy_loading" height="392" src="https://www.viabcp.com/wcm/connect/3dc110c2-46d9-433a-acde-7a333e87ad60/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&amp;attachment=false&amp;id=1689800084725" width="auto" /></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_desactivo"><img class="lazy_loading" height="392" src="https://www.viabcp.com/wcm/connect/600d728b-680d-4321-9087-3b3c5dfb3d83/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&amp;attachment=false&amp;id=1689800115360" width="auto" /></div>
+
+<div class="cards_pasos_flecha_derecha" onclick="pasoDerecho(0)"><svg fill="none" height="30" viewbox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg"> <circle cx="24" cy="24" fill="#FFFFFF" r="23.5" stroke="#95a7bf" transform="rotate(-90 24 24)"></circle> <path clip-rule="evenodd" d="M16.0024 24.9979L29.5864 24.9979L26.2914 28.2929C25.9004 28.6839 25.9004 29.3159 26.2914 29.7069C26.6824 30.0979 27.3154 30.0979 27.7054 29.7069L32.7054 24.7069C33.0964 24.3159 33.0964 23.6839 32.7054 23.2929L27.7094 18.2929C27.5144 18.0979 27.2584 17.9999 27.0024 17.9999C26.7464 17.9999 26.4904 18.0979 26.2954 18.2929C25.9044 18.6829 25.9044 19.3159 26.2944 19.7069L29.5834 22.9979L16.0024 22.9979C15.4494 22.9979 15.0024 23.4449 15.0024 23.9979C15.0024 24.5509 15.4494 24.9979 16.0024 24.9979Z" fill="#ff7800" fill-rule="evenodd"></path> </svg></div>
+</div>
+</div>
+
+<div class="pasos_desktop_st">
+<div class="cards_pasos_imagenes">
+<div class="cards_pasos_flecha_izquierda" onclick="pasoIzquierda(1)" style="opacity: 0"><svg fill="none" height="30" viewbox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg"> <circle fill="#FFFFFF" r="23.5" stroke="#95a7bf" transform="matrix(-1.19249e-08 -1 -1 1.19249e-08 24 24)"></circle> <path clip-rule="evenodd" d="M31.998 24.9979L18.414 24.9979L21.709 28.2929C22.1 28.6839 22.1 29.3159 21.709 29.7069C21.318 30.0979 20.685 30.0979 20.295 29.7069L15.295 24.7069C14.904 24.3159 14.904 23.6839 15.295 23.2929L20.291 18.2929C20.486 18.0979 20.742 17.9999 20.998 17.9999C21.254 17.9999 21.51 18.0979 21.705 18.2929C22.096 18.6829 22.096 19.3159 21.706 19.7069L18.417 22.9979L31.998 22.9979C32.551 22.9979 32.998 23.4449 32.998 23.9979C32.998 24.5509 32.551 24.9979 31.998 24.9979Z" fill="#ff7800" fill-rule="evenodd"></path> </svg></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_activo"><img class="lazy_loading" src="https://www.viabcp.com/wcm/connect/00944139-4031-4c9e-ab65-732e1054f386/Paso+1.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-00944139-4031-4c9e-ab65-732e1054f386-oPc0Who" width="auto" /></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_desactivo"><img class="lazy_loading" src="https://www.viabcp.com/wcm/connect/fc0532a5-4780-429f-b4b6-d0ab6b537c42/Paso+2.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-fc0532a5-4780-429f-b4b6-d0ab6b537c42-oPc0Who" width="auto" /></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_desactivo"><img class="lazy_loading" src="https://www.viabcp.com/wcm/connect/e00463fe-ab0b-4b54-a76e-d391433dbdfb/Paso+3.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-e00463fe-ab0b-4b54-a76e-d391433dbdfb-oPc0Who" width="auto" /></div>
+
+<div class="cards_pasos_manual cards_pasos_manual_desactivo"><img class="lazy_loading" src="https://www.viabcp.com/wcm/connect/4a537bfc-4d28-4abb-9be7-ffe8261cb38f/Paso+4.png?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-4a537bfc-4d28-4abb-9be7-ffe8261cb38f-oPc0Who" width="auto" /></div>
+
+<div class="cards_pasos_flecha_derecha" onclick="pasoDerecho(1)"><svg fill="none" height="30" viewbox="0 0 48 48" width="30" xmlns="http://www.w3.org/2000/svg"> <circle cx="24" cy="24" fill="#FFFFFF" r="23.5" stroke="#95a7bf" transform="rotate(-90 24 24)"></circle> <path clip-rule="evenodd" d="M16.0024 24.9979L29.5864 24.9979L26.2914 28.2929C25.9004 28.6839 25.9004 29.3159 26.2914 29.7069C26.6824 30.0979 27.3154 30.0979 27.7054 29.7069L32.7054 24.7069C33.0964 24.3159 33.0964 23.6839 32.7054 23.2929L27.7094 18.2929C27.5144 18.0979 27.2584 17.9999 27.0024 17.9999C26.7464 17.9999 26.4904 18.0979 26.2954 18.2929C25.9044 18.6829 25.9044 19.3159 26.2944 19.7069L29.5834 22.9979L16.0024 22.9979C15.4494 22.9979 15.0024 23.4449 15.0024 23.9979C15.0024 24.5509 15.4494 24.9979 16.0024 24.9979Z" fill="#ff7800" fill-rule="evenodd"></path> </svg></div>
+</div>
+</div>
+
+<div class="cards_pasos_titulo">
+<p>Ingresa con tu DNI o Carnet de extranjería.</p>
+</div>
+
+<div>
+<div class="contenedor_pasos_titulos">
+<div class="st_contenedor_pasos_stepper">
+<div class="st_pasos_stepper"><img alt="" src="https://www.viabcp.com/wcm/connect/4075d218-f021-4596-95f8-5847b11a5e5d/identificacio.png?MOD=AJPERES&amp;attachment=false&amp;id=1704674377240" /></div>
+
+<div>
+<p class="titulo_step">Registro de identidad</p>
+
+<p class="bajada_step">Ingresa con tu DNI o Carnet de extranjería.</p>
+</div>
+</div>
+
+<div class="st_contenedor_pasos_stepper">
+<div class="st_pasos_stepper"><img alt="" src="https://www.viabcp.com/wcm/connect/7a17dc7b-59de-4abc-ae3d-3d8508119154/facial.png?MOD=AJPERES&amp;attachment=false&amp;id=1704674439797" /></div>
+
+<div>
+<p class="titulo_step">Validación de datos</p>
+
+<p class="bajada_step">Ingresa tu número de celular para recibir un código de verificación para autenticarte.</p>
+</div>
+</div>
+
+<div class="st_contenedor_pasos_stepper">
+<div class="st_pasos_stepper"><img alt="" src="https://www.viabcp.com/wcm/connect/bd0f959e-b4d2-4317-a6ac-45febb662022/square.png?MOD=AJPERES&amp;attachment=false&amp;id=1704674312128" /></div>
+
+<div>
+<p class="titulo_step">Revisa y escoge</p>
+
+<p class="bajada_step">Elige la mejor tarjeta de crédito preaprobada para ti.</p>
+</div>
+</div>
+
+<div class="st_contenedor_pasos_stepper">
+<div class="st_pasos_stepper"><img alt="" src="https://www.viabcp.com/wcm/connect/b2ed087c-be17-4508-9867-81a8b272f2f0/tarjeta.png?MOD=AJPERES&amp;attachment=false&amp;id=1704674247161" /></div>
+
+<div>
+<p class="titulo_step">Recibe tu tarjeta</p>
+
+<p class="bajada_step">Selecciona el lugar de recojo y/o envío de tu tarjeta de crédito. <a onclick="redireccion('pasos')">Pídela aquí</a></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container contenedor_tyc_tarjetas">
+<h2><b><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Términos y condiciones</span></span></span></span></b></h2>
+
+<div class="bcp_preguntas_respuestas">
+<div class="bcp_component_preguntas">
+<div class="latam-accordion-wrap">
+<div aria-expanded="true" aria-label="Bono millas LATAM Pass" class="latam-accordion-trigger" onclick="clicFQ(0)" onkeydown="if(event.key === 'Enter' || event.key === ' '){ event.preventDefault(); clicFQ(0); }" role="button" tabindex="0">
+<h3 class="latam-accordion-title" data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Bono millas LATAM Pass </span></span></span></span></span></h3>
+
+<div class="latam-accordion-icon"><svg class="icon bcp-angle-down-f bcp-angle-up-f" fill="none" height="24" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"> <path d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z" fill="#606C7F"></path> </svg></div>
+</div>
+
+<div class="latam-accordion-text bcp_texto_enriquecido_formateado" style="max-height: 150220px; padding-top: 20px; padding-bottom: 20px" tabindex="0">
+<div class="acordeon-header-respuesta">
+<p dir="ltr" style="margin-bottom:0cm; text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Promoción válida del 1 al 31 de julio de 2026. Esta campaña es desarrollada por el Banco de Crédito del Perú (BCP) y por LATAM Airlines.</span></span></span></span></span></span></span></span></p>
+
+<p dir="ltr" style="margin-bottom:0cm; text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Premio: bonos de millas LATAM Pass, según el siguiente detalle: </span></span></span></span></span></span></span></span></p>
+
+<ol dir="ltr">
+	<li style="margin-bottom:0cm; text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Bono Regular:</span></span></span></span></span></span></span></strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"> por cada tarjeta de crédito que el participante solicite y obtenga por cualquier canal (presencial o virtual) y siempre que el participante llegue a la meta de consumo detallada en: </span></span></span></span><a href="https://www.viabcp.com/tarjetas/tarjetas-credito" target="" title=""><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Tarjetas de crédito | BCP (viabcp.com)</span></span></span></span></a></span></span></span></span></li>
+	<li style="margin-bottom:0cm; text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Un (1) Bono Adicional:</span></span></span></span></span></span></span></strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Se otorgará un (1) Bono Adicional a cada participante, como máximo, independientemente de la cantidad de tarjetas de crédito que obtenga, conforme al siguiente detalle:</span></span></span></span></span></span></span></span>
+	<ol dir="ltr">
+		<li style="text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">VISA Platinum LATAM Pass y AMEX Platinum LATAM Pass: &nbsp;</span></span></span></span></span></span></span></strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">el participante será acreedor de tres mil (3,000) millas por Bono Adicional por alcanzar la meta de consumo de su bono Regular (Bono Bienvenida) es decir consumir mil (1,000) soles en los primeros 45 días desde la aprobación de tu tarjeta de crédito.</span></span></span></span></span></span></span></span></li>
+		<li style="text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">VISA Signature LATAM Pass y AMEX Black LATAM Pass:&nbsp;</span></span></span></span></span></span></span></strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">el participante será acreedor de cinco mil (5,000) millas por Bono Adicional por alcanzar la meta de consumo de su bono Regular (Bono Bienvenida) es decir consumir cinco mil (5,000) soles en los primeros 90 días desde la aprobación de tu tarjeta de crédito.</span></span></span></span></span></span></span></span></li>
+		<li style="text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">VISA Infinite Sapphire LATAM Pass:&nbsp;</span></span></span></span></span></span></span></strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">el participante será acreedor de ocho mil (8,000) millas por Bono Adicional por alcanzar la meta de consumo de su bono Regular (Bono Bienvenida) es decir consumir ocho mil (8,000) soles en los primeros 90 días desde la aprobación de tu tarjeta de crédito.</span></span></span></span></span></span></span></span></li>
+		<li style="text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">VISA Infinite Iridium LATAM Pass:&nbsp;</span></span></span></span></span></span></span></strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">el participante será acreedor de ocho mil (8,000) millas por Bono Adicional por alcanzar la meta de consumo de su bono Regular (Bono Bienvenida) en los primeros 90 días desde la aprobación de tu tarjeta de crédito.</span></span></span></span></span></span></span></span></li>
+	</ol>
+	</li>
+	<li style="margin-bottom:0cm; text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Un (1) Bono Digital:&nbsp;</span></span></span></span></span></span></span></strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">en caso el participante solicite y obtenga su tarjeta de crédito únicamente a través de la web </span></span></span></span><a href="https://www.mitarjetabcp.viabcp.com" target="" title=""><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">www.mitarjetabcp.viabcp.com</span></span></span></span></a><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">. Se otorgará un (1) Bono Digital a cada participante, como máximo, independientemente de la cantidad de tarjetas de crédito que obtenga. El Bono Digital será, en todos los casos, de dos mil (2,000) millas, independientemente de si el participante obtuvo el Bono Regular o Bono Adicional (o no). Solo aplicable para las siguientes tarjetas: VISA Platinum LATAM Pass, AMEX Platinum LATAM Pass, VISA Signature LATAM Pass, AMEX Black LATAM Pass, VISA Infinite Sapphire LATAM Pass y VISA Infinite Iridium LATAM Pass.</span></span></span></span></span></span></span></span></li>
+</ol>
+
+<p dir="ltr" style="margin-bottom:0cm; text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Participan todos los clientes del BCP que tengan, al menos, una (1) oferta pre aprobada para obtener una tarjeta de crédito, y que reciban una comunicación con los detalles de la presente campaña. Todos los clientes deberán registrar sus datos personales en el siguiente </span></span></span></span></span></span></span><strong><a href="https://www.viabcp.com/bcp-latam-pass/solicitar-tarjeta-de-credito-bcp" rel="noopener noreferrer" target="_blank" title=""><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">formulario</span></span></span></span></span></a> <font face="Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">.</span></span></span></span></span> </font> </strong></span></p>
+
+<p dir="ltr" style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Todos los bonos serán abonados a la cuenta LATAM Pass, como máximo, el 30/11/2026.</span></span></span></span></span></span></span></span></p>
+
+<p dir="ltr" style="margin-bottom:0cm; text-align:justify"><em><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">En caso el cliente solicite más de una tarjeta de crédito con distintas metas de consumo, se le entregará un Bono Regular por cada una y únicamente un Bono Adicional por la tarjeta de crédito que tenga el mayor número de millas como premio.</span></span></span></span></span></span></span></span></em></p>
+
+<p dir="ltr" style="margin-bottom:0cm; text-align:justify"><em><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">El participante deberá contar previamente con una cuenta LATAM Pass para abonar las millas. En caso el cliente realice compras en dólares americanos se utilizará un tipo de cambio fijo de S/ 3.80 (Tres y 80/100 Soles) por dólar americano. </span></span></span></span></span></span></span></span></em></p>
+
+<p dir="ltr" style="margin-bottom:0cm; text-align:justify"><span style="font-size:14px;"><strong><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Restricciones Adicionales:</span></span></span></span></span></span></span></strong></span></p>
+
+<ol dir="ltr">
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Tarjetas sujetas a evaluación crediticia. </span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Para solicitar una tarjeta, el participante deberá tener, al momento de la solicitud, un ingreso bruto mensual mínimo de S/ 1,800.00 (Mil Ochocientos y 00/100 Soles) o su equivalente en dólares americanos. </span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">No aplica para clientes que hayan cancelado su tarjeta de crédito dentro de los últimos seis (6) meses. </span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">No acumulable con otras promociones de millas adicionales. </span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Las tarjetas adicionales, upgrades, renovaciones o reposiciones no aplican ni al bono de bienvenida ni al bono adicional.</span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">No suman a la meta de consumo para el bono adicional: (i) las disposiciones de efectivo, (ii) traslados de deuda, (iii) efectivo preferente, (iv) consumos en casinos, (v) pagos de servicios realizados en viabcp.com o App Banca Móvil del BCP, (vi) débitos automáticos, (vii) pago de tributos ni (viii) servicios legales. </span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">La acumulación de millas aplica sobre compras con la tarjeta de crédito en&nbsp;</span></span></span></span></span></span></span><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">POS&nbsp;</span></span></span></span></span></span></span><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">físico o virtual. </span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Los beneficios de las Tarjetas de crédito BCP LATAM Pass no son acumulables a los entregados por las categorías Elite LATAM Pass y otras Tarjetas de crédito BCP LATAM Pass. </span></span></span></span></span></span></span></span></li>
+	<li style="text-align:justify"><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Las millas no incluyen cargos por tasas aeroportuarias. Estas se rigen bajo los términos y condiciones del programa LATAM Pass. Para mayor información de los destinos aplicables ingresa </span></span></span></span></span></span></span><strong><a href="https://www.latamairlines.com/pe/es" rel="noopener noreferrer" target="_blank" title=""><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">aquí.</span></span></span></span></span></a></strong></span></li>
+</ol>
+
+<p dir="ltr" style="text-align:justify"><em><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">El servicio de transporte de LATAM y la operatividad del programa LATAM Pass son de responsabilidad de LATAM. La acumulación, canje, uso y demás condiciones aplicables a las Millas LATAM Pass se rigen bajo el reglamento de LATAM Pass publicado </span></span></span></span></span></span></span><strong><a href="https://www.latam.com/es_pe/latam-pass/" rel="noopener noreferrer" target="_blank" title=""><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">aquí.</span></span></span></span></span></a></strong></span></em></p>
+
+<p dir="ltr" style="text-align:justify"><em><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">En caso el cliente acreedor del premio cancele o bloquee su tarjeta de crédito en virtud de la cual participó en la presente campaña previo al abono de millas, o si por algún otro hecho imputable a este no pueda realizarse la entrega del premio, este perderá su derecho al mismo.</span></span></span></span></span></span></span></span></em></p>
+
+<p dir="ltr" style="text-align:justify"><em><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">El BCP y LATAM podrán, previa comunicación a los clientes, modificar alguno de los términos establecidos en el presente texto, únicamente cuando dicho cambio no afecte la naturaleza de la promoción.</span></span></span></span></span></span></span></span></em></p>
+
+<p dir="ltr" style="text-align:justify"><em><span style="font-size:14px;"><span style="line-height:107%"><span style="font-family:Flexo"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">Para más información sobre la promoción y/o restricciones llama a nuestra Banca por Teléfono al </span></span></span></span></span><strong><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">(01) 311-9898.</span></span></span></span></span></strong></span></span></span></em></p>
+
+<p dir="ltr" style="text-align:justify"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true"><span data-translate="true">&nbsp;</span></span></span></span></span></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+        var headernew = document.createElement('main');
+        headernew.className = 'header_sin_acceso';
+        headernew.innerHTML = `<header>
+<div class="container">
+<div class="bcp_opciones">
+<div class="bcp_logo">
+    <a href="/">
+        <img src="/wcm/myconnect/e1a4836d-df3d-4aac-8143-bc757790e532/logo-bcp.svg?MOD=AJPERES&amp;CVID=pYEtkBa" alt="Logo de ViaBCP" />
+    </a>
+</div><div class="buttonConseguirTarjeta"><a onclick="redirect('header')" target="_self">Conseguir tarjeta</a></div>
+</div>
+</div>
+</header>`
+
+        //document.querySelector('.bcp_header.bcp_header_principal').insertAdjacentElement('afterbegin', headernew)
+
+
+        //document.querySelector('.banner_subtitle.color_texto_claro').setAttribute('style', 'display:none')
+        document.querySelector('.bcp_btn_solicita.bcp_boton_naranja.large').innerHTML = 'Pídela aquí'
+        document.querySelector('.bcp_boton_solicitalo_inferior .bcp_flex_solicitala .bcp_btn_solicita span').innerHTML = 'Pídela aquí'
+
+        document.querySelector('.bcp_btn_solicita.bcp_boton_naranja.large').addEventListener('click', function () {
+            dataLayer.push({
+                'event': 'virtualEvent',
+                'category': 'LATAM - TC',
+                'action': 'Clic redirección - piloto',
+                'label': 'banner'
+            });
+        })
+
+        document.querySelector('.bcp_boton_solicitalo_inferior .bcp_flex_solicitala .bcp_btn_solicita').addEventListener('click', function () {
+            dataLayer.push({
+                'event': 'virtualEvent',
+                'category': 'LATAM - TC',
+                'action': 'Clic redirección - piloto',
+                'label': 'fixed'
+            });
+        })
+
+        dataLayer.push({
+            'event': 'virtualEvent',
+            'category': 'LATAM - TC',
+            'action': 'Carga experimento - 080124',
+            'label': 'piloto'
+        });
+
+        var dots = document.querySelectorAll('.milla_por_tarjeta.visa .botones_slide label span');
+        console.log(dots)
+        var idSlideContenedorVisa = 0;
+        var dotsAmex = document.querySelectorAll('.milla_por_tarjeta.amex .botones_slide label span');
+        var idSlideContenedorAmex = 0;
+        var cuerpoCarousel = document.querySelectorAll('.slider_tarjeta_beneficios');
+        var arrow_left = document.querySelectorAll('.arrow_left');
+        var arrow_right = document.querySelectorAll('.arrow_right');
+        var idAmex = 0;
+        var idVisa = 0;
+
+        dots.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+                dots.forEach(function (d) {
+                    d.classList.remove('active');
+                })
+                dot.classList.add('active')
+                var padreContenedor = this.parentNode.getAttribute('for');
+                movimientoScrollCSI(padreContenedor, 'visa')
+            })
+        });
+
+        dotsAmex.forEach(function (dot) {
+            dot.addEventListener('click', function () {
+                dotsAmex.forEach(function (dot) {
+                    dot.classList.remove('active');
+                })
+                this.classList.add('active')
+                var padreContenedor = this.parentNode.getAttribute('for');
+                movimientoScrollCSI(padreContenedor, 'amex')
+            })
+        });
+
+        document.querySelector('html, body').scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+
+        function movimientoScrollCSI(padreContenedor, tarjeta) {
+            var cuerpo = document.querySelector('.milla_por_tarjeta.' + tarjeta + ' .slider_tarjeta_beneficios')
+
+            if (tarjeta == 'amex') {
+                var medidaScroll = cuerpo.scrollWidth / 3;
+                cuerpo.scroll({
+                    left: medidaScroll * padreContenedor,
+                    behavior: 'smooth'
+                });
+                idAmex = padreContenedor;
+            } else {
+                var medidaScroll = cuerpo.scrollWidth / 4;
+                cuerpo.scroll({
+                    left: medidaScroll * padreContenedor,
+                    behavior: 'smooth'
+                });
+                idVisa = padreContenedor;
+            }
+        }
+
+        cuerpoCarousel.forEach(c => {
+            c.addEventListener('scroll', function () {
+                var medidaScroll = document.querySelector('.milla_por_tarjeta.active .slider_tarjeta_beneficios').scrollWidth / 4;
+                var medidaActual = document.querySelector('.milla_por_tarjeta.active .slider_tarjeta_beneficios').scrollLeft / medidaScroll;
+                document.querySelectorAll('.milla_por_tarjeta.active .botones_slide label span').forEach(function (dot) {
+                    dot.classList.remove('active');
+                });
+                document.querySelectorAll('.milla_por_tarjeta.active .botones_slide label span')[Math.round(medidaActual)].classList.add('active');
+                if (document.querySelector('.milla_por_tarjeta.active').className.includes('amex')) {
+                    idAmex = Math.round(medidaActual);
+                } else {
+                    idVisa = Math.round(medidaActual);
+                }
+            })
+
+        })
+
+        function moverFlechasLeft(tarjeta) {
+            if (tarjeta == 'amex') {
+                idAmex++;
+                if (idAmex > 1) {
+                    idAmex = 1
+                }
+                movimientoScrollCSI(idAmex, tarjeta)
+            } else {
+                idVisa++;
+                if (idVisa > 3) {
+                    idVisa = 3
+                }
+                movimientoScrollCSI(idVisa, tarjeta)
+            }
+        }
+
+        function moverFlechasRight(tarjeta) {
+            if (tarjeta == 'amex') {
+                idAmex--;
+                if (idAmex < 0) {
+                    idAmex = 0
+                }
+                movimientoScrollCSI(idAmex, tarjeta)
+            } else {
+                idVisa--;
+                if (idVisa < 0) {
+                    idVisa = 0
+                }
+                movimientoScrollCSI(idVisa, tarjeta)
+            }
+        }
+
+        function changeTarjetas(tipo) {
+            document.querySelectorAll('.nameCardTYC p').forEach(function (tab) {
+                tab.classList.remove('efectName')
+                if (tab.className.includes(tipo)) {
+                    tab.classList.add('efectName')
+                }
+            })
+
+            document.querySelectorAll('.milla_por_tarjeta').forEach(function (contenedor) {
+                contenedor.classList.remove('active')
+                if (contenedor.className.includes(tipo)) {
+                    contenedor.classList.add('active')
+                }
+            })
+        }
+        let contadorDePasos = 0;
+
+        function pasoIzquierda(index) {
+            contadorDePasos -= 1;
+            const cards_pasos_flecha_derecha = document.querySelectorAll('.pasos_latam_contenedor_principal .cards_pasos_flecha_derecha')
+            const cards_pasos_flecha_izquierda = document.querySelectorAll('.pasos_latam_contenedor_principal .cards_pasos_flecha_izquierda')
+            const cards_pasos_desktop_manual = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual')
+            const cards_pasos_mobile_manual = document.querySelectorAll('.pasos_mobile_st .cards_pasos_manual')
+            const cards_pasos_titulo = document.querySelector('.cards_pasos_titulo')
+            if (contadorDePasos < 0) {
+                contadorDePasos = 0;
+                cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 0')
+                cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 0')
+                cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 1')
+            } else {
+                cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 1')
+                if (contadorDePasos == 0) {
+                    cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 0')
+                    cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 0')
+                }
+                cambioDePasosLatam(contadorDePasos, cards_pasos_desktop_manual, cards_pasos_titulo)
+                cambioDePasosLatam(contadorDePasos, cards_pasos_mobile_manual, cards_pasos_titulo)
+            }
+        }
+
+        function pasoDerecho(index) {
+            contadorDePasos += 1;
+            const cards_pasos_flecha_derecha = document.querySelectorAll('.pasos_latam_contenedor_principal .cards_pasos_flecha_derecha')
+            const cards_pasos_flecha_izquierda = document.querySelectorAll('.pasos_latam_contenedor_principal .cards_pasos_flecha_izquierda')
+            const cards_pasos_desktop_manual = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual')
+            const cards_pasos_mobile_manual = document.querySelectorAll('.pasos_mobile_st .cards_pasos_manual')
+            const cards_pasos_titulo = document.querySelector('.cards_pasos_titulo')
+            if (contadorDePasos > 3) {
+                contadorDePasos = 3
+                cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 0')
+                cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 0')
+                cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 1')
+            } else {
+                cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 1')
+                cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 1')
+                if (contadorDePasos == 3) {
+                    cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 0')
+                    cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 0')
+                }
+                cambioDePasosLatam(contadorDePasos, cards_pasos_desktop_manual, cards_pasos_titulo)
+                cambioDePasosLatam(contadorDePasos, cards_pasos_mobile_manual, cards_pasos_titulo)
+            }
+        }
+
+        function pasos_latam_tc() {
+            const cards_pasos_flecha_izquierda = document.querySelectorAll('.pasos_latam_contenedor_principal .cards_pasos_flecha_izquierda')
+            const cards_pasos_flecha_derecha = document.querySelectorAll('.pasos_latam_contenedor_principal .cards_pasos_flecha_derecha')
+            const cards_pasos_desktop_manual = document.querySelectorAll('.pasos_desktop_st .cards_pasos_manual')
+            const cards_pasos_mobile_manual = document.querySelectorAll('.pasos_mobile_st .cards_pasos_manual')
+            const cards_pasos_titulo = document.querySelector('.cards_pasos_titulo')
+            let contadorDePasos = 0;
+            console.log(cards_pasos_flecha_izquierda, cards_pasos_flecha_derecha)
+
+            cards_pasos_flecha_derecha.forEach(function (flecha) {
+                flecha.addEventListener('click', () => {
+                    console.log('entré')
+                    contadorDePasos += 1;
+                    if (contadorDePasos > 3) {
+                        contadorDePasos = 3
+                        cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 0')
+                        cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 0')
+                        cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 1')
+                    } else {
+                        cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 1')
+                        if (contadorDePasos == 3) {
+                            cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 0')
+                            cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 0')
+                        }
+                        cambioDePasosLatam(contadorDePasos, cards_pasos_desktop_manual, cards_pasos_titulo)
+                        cambioDePasosLatam(contadorDePasos, cards_pasos_mobile_manual, cards_pasos_titulo)
+                    }
+                })
+            })
+
+            cards_pasos_flecha_izquierda.forEach(function (flecha) {
+                flecha.addEventListener('click', () => {
+                    contadorDePasos -= 1;
+                    if (contadorDePasos < 0) {
+                        contadorDePasos = 0;
+                        cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 0')
+                        cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 0')
+                        cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 1')
+                    } else {
+                        cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_derecha[0].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 1')
+                        cards_pasos_flecha_derecha[1].setAttribute('style', 'opacity: 1')
+                        if (contadorDePasos == 0) {
+                            cards_pasos_flecha_izquierda[0].setAttribute('style', 'opacity: 0')
+                            cards_pasos_flecha_izquierda[1].setAttribute('style', 'opacity: 0')
+                        }
+                        cambioDePasosLatam(contadorDePasos, cards_pasos_desktop_manual, cards_pasos_titulo)
+                        cambioDePasosLatam(contadorDePasos, cards_pasos_mobile_manual, cards_pasos_titulo)
+                    }
+                })
+            })
+        }
+
+        function cambioDePasosLatam(contadorDePasos, cards_pasos_manual, cards_pasos_titulo) {
+
+            cards_pasos_manual.forEach((textStep, index) => {
+                if (index == contadorDePasos) {
+                    cards_pasos_manual[index].classList.replace('cards_pasos_manual_desactivo', 'cards_pasos_manual_activo')
+                } else {
+                    cards_pasos_manual[index].classList.replace('cards_pasos_manual_activo', 'cards_pasos_manual_desactivo')
+                }
+            })
+
+            switch (contadorDePasos) {
+                case 0:
+                    cards_pasos_titulo.querySelector('p').innerHTML = 'Ingresa con tu DNI o Carnet de extranjería.'
+                    break;
+                case 1:
+                    cards_pasos_titulo.querySelector('p').innerHTML = 'Ingresa tu número de celular para recibir un código de verificación para autenticarte.'
+                    break;
+                case 2:
+                    cards_pasos_titulo.querySelector('p').innerHTML = 'Elige la mejor Tarjeta de Crédito preaprobada para ti.'
+                    break;
+                case 3:
+                    cards_pasos_titulo.querySelector('p').innerHTML = `Selecciona el lugar de recojo y/o envío de tu Tarjeta de Crédito. <a  onclick="redireccion('pasos')">Pídela aquí</a>`
+                    break;
+            }
+        }
+
+        //pasos_latam_tc()
+
+        function redireccion(seccion) {
+
+            dataLayer.push({
+                'event': 'virtualEvent',
+                'category': 'LATAM - TC',
+                'action': 'Clic redirección',
+                'label': seccion
+            });
+            window.open("https://www.mitarjetabcp.viabcp.com/login", "_self");
+        }
+
+        function clicFQ(id, tyc) {
+            const item = document.querySelectorAll('.bcp_component_preguntas')[id];
+            if (!item) return;
+
+            const trigger = item.querySelector('.latam-accordion-trigger');
+            const icon = item.querySelector('.latam-accordion-icon svg');
+            const text = item.querySelector('.latam-accordion-text');
+            if (!trigger || !icon || !text) return;
+
+            const isOpen = text.style.maxHeight && text.style.maxHeight !== '0px';
+            trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+
+            if (isOpen) {
+                icon.classList.remove('bcp-angle-up-f');
+                text.setAttribute('style', 'max-height: 0px; padding-top: 0px; padding-bottom: 0px')
+            } else {
+                icon.classList.add('bcp-angle-up-f');
+                text.setAttribute('style', 'max-height: ' + (text.scrollHeight + 20) + 'px; padding-top: 20px; padding-bottom: 20px')
+            }
+        }
+    </script></div>

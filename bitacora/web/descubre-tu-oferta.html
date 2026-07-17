@@ -1,0 +1,4684 @@
+<style>
+	.contenedor_info_banner .contenedor_flex_banner {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	.contenedor_info_banner .contenedor_img {
+		text-align: center;
+		position: relative;
+	}
+
+	.contenedor_info_banner .contenedor_img img {
+		width: 274px;
+	}
+
+	.st_banner_descubre_tu_oferta .vector_banner {
+		text-align: end;
+		position: absolute;
+		top: 0;
+		right: 0;
+		background-color: #002a8d;
+		height: 220px;
+		width: 100%;
+		padding-top: 24px;
+		box-sizing: border-box;
+	}
+
+	.st_banner_descubre_tu_oferta.celeste .vector_banner {
+		background-color: #d0e8ff;
+	}
+
+	.st_banner_descubre_tu_oferta.azul_claro .vector_banner {
+		background-color: #d2eefc;
+	}
+
+	.st_banner_descubre_tu_oferta.lila .vector_banner {
+		background-color: #ece4fc;
+	}
+
+	.st_banner_descubre_tu_oferta.black .vector_banner {
+		background-color: #000;
+	}
+
+	.st_banner_descubre_tu_oferta.gris .vector_banner {
+		background-color: #f2f4f8;
+	}
+
+	.st_banner_descubre_tu_oferta .vector_banner img {
+		width: 182px;
+	}
+
+	.st_banner_descubre_tu_oferta .vector_banner img.vector_desktop {
+		display: none;
+	}
+
+	.st_banner_descubre_tu_oferta h2 {
+		font-size: 32px;
+		color: #fff;
+		margin: 0;
+		font-weight: 600;
+		font-family: "Flexo-Demi";
+	}
+
+	.st_banner_descubre_tu_oferta.celeste h2,
+	.st_banner_descubre_tu_oferta.azul_claro h2,
+	.st_banner_descubre_tu_oferta.lila h2,
+	.st_banner_descubre_tu_oferta.gris h2 {
+		color: #002a8d;
+	}
+
+	.st_banner_descubre_tu_oferta.azul_oscuro .vector_banner {
+		background-color: #001f5a;
+	}
+
+	.st_banner_descubre_tu_oferta.azul_claro .vector_banner {
+		background-color: #d2eefc;
+	}
+
+	.st_banner_descubre_tu_oferta.lila .vector_banner {
+		background-color: #ece4fc;
+	}
+
+	.st_banner_descubre_tu_oferta.black .vector_banner {
+		background-color: #000;
+	}
+
+	.st_banner_descubre_tu_oferta.gris .vector_banner {
+		background-color: #f2f4f8;
+	}
+
+	.text_info_tc {
+		padding: 24px;
+		position: relative;
+	}
+
+	.text_info_tc p {
+		display: none;
+	}
+
+	.contenedor_boton_banner {
+		text-align: center;
+		margin: 16px 0 28px;
+	}
+
+	.boton_banner_st {
+		background-color: #ff7800;
+		color: #fff;
+		padding: 10px 32px;
+		border-radius: 50px;
+		display: inline-block;
+		font-size: 16px;
+		font-weight: 600;
+		cursor: pointer;
+		font-family: "Flexo-Demi";
+	}
+
+	.boton_banner_st:hover {
+		background: #ff961f;
+		color: #fff;
+	}
+
+	.titulo_seccion_st {
+		font-size: 24px;
+		margin: 8px 0 12px;
+		text-align: center;
+		color: #002da0;
+	}
+
+	.contenedor_beneficios_descubre_oferta {
+		padding: 1px 0;
+	}
+
+	.st_beneficios_descubre_tu_oferta {
+		padding: 0 24px 24px;
+	}
+
+	.contenedor_beneficios_descubre_oferta .titulo_beneficio {
+		color: #002a8d;
+		font-weight: 600;
+		margin: 0;
+		line-height: 24px;
+		margin-bottom: 8px;
+		font-family: "Flexo-Demi";
+	}
+
+	.contenedor_beneficios_descubre_oferta .titulo_beneficio.p {
+		font-size: 18px;
+	}
+
+	.contenedor_beneficios_descubre_oferta .bajada_beneficio {
+		font-size: 14px;
+		line-height: 20px;
+		margin: 0;
+	}
+
+	.contenedor_beneficios_descubre_oferta .bajada_beneficio a {
+		color: #ff7800;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.contenedor_beneficio_tc_st {
+		padding: 16px 0;
+		display: flex;
+		gap: 8px;
+	}
+
+	.contenedor_beneficios_descubre_oferta
+		.contenedor_beneficio_tc_st
+		.titulo_beneficio.desktop {
+		display: none;
+	}
+
+	.logo_beneficio_st {
+		width: 78px;
+		height: 64px;
+		border-radius: 50%;
+	}
+
+	.logo_beneficio_st img {
+		width: 64px;
+	}
+
+	.logo_beneficio_st.p img {
+		width: 70px;
+	}
+
+	.contenedor_beneficio_tc_nolead {
+		background-color: #002a8d;
+		border-radius: 16px;
+		padding: 24px 24px 0;
+		color: #fff;
+		height: 260px;
+		margin: 24px 0;
+		position: relative;
+	}
+
+	.contenedor_img_beneficio_nolead {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		z-index: 0;
+	}
+
+	.contenedor_beneficio_tc_nolead .titulo_beneficio {
+		font-size: 20px;
+		color: #fff;
+	}
+
+	.contenedor_beneficio_tc_nolead .bajada_beneficio {
+		font-size: 12px;
+		margin-bottom: 16px;
+	}
+
+	.contenedor_beneficio_tc_nolead .enlace_beneficio {
+		font-size: 14px;
+		color: #fff;
+		cursor: pointer;
+	}
+
+	.contenedor_beneficio_tc_nolead.beneficio_dos {
+		background-color: #d0e5ff;
+		color: #000;
+	}
+
+	.contenedor_beneficio_tc_nolead.beneficio_tres {
+		background-color: #fff;
+		color: #000;
+		box-shadow: 0px 0px 28px 0px rgba(175, 193, 223, 0.3);
+		-webkit-box-shadow: 0px 0px 28px 0px rgba(175, 193, 223, 0.3);
+		-moz-box-shadow: 0px 0px 28px 0px rgba(175, 193, 223, 0.3);
+	}
+
+	.contenedor_beneficio_tc_nolead.beneficio_dos .titulo_beneficio,
+	.contenedor_beneficio_tc_nolead.beneficio_tres .titulo_beneficio {
+		font-size: 20px;
+		color: #002a8d;
+	}
+
+	.contenedor_beneficio_tc_nolead.beneficio_dos .enlace_beneficio,
+	.contenedor_beneficio_tc_nolead.beneficio_tres .enlace_beneficio {
+		color: #ff7800;
+	}
+
+	.st_pasos_tutorial_descubre_tu_oferta {
+		padding: 0 24px 24px;
+	}
+
+	.st_pasos_stepper span {
+		width: 28px;
+		height: 28px;
+		display: inline-block;
+		color: #002a8d;
+		border: 2px solid #002a8d;
+		border-radius: 50%;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		padding: 3px 0;
+		box-sizing: border-box;
+		font-family: "Flexo-Demi";
+	}
+
+	.st_contenedor_pasos_stepper {
+		display: flex;
+		gap: 16px;
+		margin-bottom: 16px;
+	}
+
+	.titulo_step {
+		color: #002a8d;
+		margin: 0;
+		font-size: 16px;
+		font-family: "Flexo-Demi";
+		font-weight: 600;
+	}
+
+	.bajada_step {
+		margin: 8px 0;
+	}
+
+	.cards_pasos {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 40px;
+	}
+
+	.cards_pasos_imagenes {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+		margin: 0 20px;
+		justify-content: center;
+		padding: 12px 0 28px;
+	}
+
+	.cards_pasos_manual img {
+		border-radius: 32px;
+	}
+
+	.cards_pasos_manual_activo {
+		display: block;
+	}
+
+	.cards_pasos_manual_desactivo {
+		display: none;
+	}
+
+	.st_banner_descubre_tu_oferta {
+		position: relative;
+	}
+
+	.contenedor_descubrir {
+		padding: 24px;
+		text-align: center;
+	}
+
+	.text_info_tc .boton_banner_st {
+		display: none;
+	}
+
+	.contenedor_img_beneficio_nolead .beneficio_desktop {
+		display: none;
+	}
+
+	.contenedor_informacion_beneficio {
+		position: relative;
+	}
+
+	.contenedor_img_beneficio_nolead.campana_mensual img {
+		height: 156px;
+	}
+
+	.pasos_desktop_st {
+		display: none;
+	}
+
+	.st_contenedor_boton_pasos {
+		padding-top: 16px;
+		text-align: center;
+	}
+
+	.cards_pasos_flecha_derecha,
+	.cards_pasos_flecha_izquierda {
+		cursor: pointer;
+	}
+
+	.contenedor_descubrir_desktop {
+		display: none;
+	}
+
+	.contenedor_descubrir_mobile {
+		text-align: center;
+		padding-top: 23px;
+		padding-bottom: 24px;
+	}
+
+	.contenedor_titulo_seccion_st {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.bcp_boton_fixed_st {
+		position: fixed;
+		width: 100%;
+		z-index: 11;
+		bottom: 0;
+	}
+
+	.bcp_boton_fixed_st
+		.bcp_flex_solicitala.vista_mobile
+		.bcp_boton_azul_fixed_mobile {
+		height: 48px;
+		padding: 12px 24px;
+		font-family: "Flexo-Demi";
+		font-size: 16px;
+		line-height: 24px;
+		color: #fff;
+		box-shadow: 0 12px 17px rgb(82 112 148/14%),
+			0 5px 22px rgb(82 112 148/12%), 0 0 8px rgb(82 112 148/20%);
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		background: #ff7800;
+		border-radius: 23px;
+		width: 95% !important;
+		margin: 10px auto !important;
+	}
+
+	.bcp_boton_fixed_st .bcp_flex_solicitala_st.vista_desktop {
+		height: 0;
+	}
+
+	.beneficios_millas {
+		text-align: center;
+		padding: 24px;
+	}
+
+	.beneficios_millas h2 {
+		font-size: 24px;
+		color: #002a8d;
+		margin: auto;
+		margin-bottom: 8px;
+		width: 80%;
+	}
+
+	.beneficios_millas p {
+		font-size: 16px;
+	}
+
+	.beneficios_millas p.titulo_beneficio {
+		font-size: 20px;
+		color: #002a8d;
+		font-weight: 600;
+		line-height: 24px;
+		margin-bottom: 16px;
+		margin-top: 24px;
+	}
+
+	.beneficios_millas img {
+		margin-top: 24px;
+		width: 88px;
+	}
+
+	.beneficios_millas a {
+		color: #ff7800;
+		font-weight: 700;
+		cursor: pointer;
+	}
+
+	@media (min-width: 768px) {
+		.logo_beneficio_st img {
+			width: 64px;
+		}
+
+		.beneficios_millas h2 {
+			font-size: 24px;
+		}
+
+		.pasos_desktop_st img {
+			height: 206px;
+		}
+
+		.st_banner_descubre_tu_oferta.gris .vector_banner {
+			padding-right: 6%;
+		}
+
+		.contenedor_info_banner .contenedor_img {
+			padding-right: 15%;
+		}
+
+		.contenedor_beneficio_tc_nolead {
+			margin: 40px 0 24px;
+		}
+
+		.contenedor_descubrir_desktop {
+			display: block;
+			padding-bottom: 32px;
+		}
+
+		.contenedor_descubrir_mobile {
+			display: none;
+		}
+
+		.text_info_tc p {
+			color: #fff;
+			margin: 16px 0 0;
+			font-size: 20px;
+		}
+
+		.st_banner_descubre_tu_oferta.black .text_info_tc p,
+		.st_banner_descubre_tu_oferta.azul_oscuro .text_info_tc p {
+			display: block;
+		}
+
+		.st_banner_descubre_tu_oferta.celeste .text_info_tc p,
+		.st_banner_descubre_tu_oferta.azul_claro .text_info_tc p,
+		.st_banner_descubre_tu_oferta.lila .text_info_tc p,
+		.st_banner_descubre_tu_oferta.gris .text_info_tc p {
+			color: #002a8d;
+			display: block;
+		}
+
+		.st_banner_descubre_tu_oferta .vector_banner img {
+			width: 182px;
+		}
+
+		.st_banner_descubre_tu_oferta .vector_banner img.vector_mobile {
+			display: none;
+		}
+
+		.st_banner_descubre_tu_oferta .vector_banner img.vector_desktop {
+			display: inline-block;
+			width: 599px;
+		}
+
+		.contenedor_info_banner .contenedor_flex_banner {
+			flex-direction: row;
+			justify-content: space-between;
+			height: 400px;
+			align-items: center;
+		}
+
+		.contenedor_boton_banner {
+			display: none;
+		}
+
+		.contenedor_info_banner .contenedor_img img {
+			width: 260px;
+		}
+
+		.st_banner_descubre_tu_oferta h2 {
+			font-size: 36px;
+			margin: 0;
+		}
+
+		.st_banner_descubre_tu_oferta .vector_banner {
+			height: 400px;
+			padding: 0;
+			padding-right: 15%;
+		}
+
+		.contenedor_beneficio_tc_nolead {
+			max-width: 384px;
+			height: 384px;
+			max-height: 416px;
+		}
+
+		.contenedor_beneficios_descubre_oferta {
+			display: flex;
+			gap: 16px;
+		}
+
+		.contenedor_beneficio_tc_nolead .titulo_beneficio,
+		.contenedor_beneficio_tc_nolead.beneficio_dos .titulo_beneficio,
+		.contenedor_beneficio_tc_nolead.beneficio_tres .titulo_beneficio {
+			font-size: 24px;
+		}
+
+		.contenedor_beneficios_descubre_oferta .titulo_beneficio {
+			margin-bottom: 12px;
+		}
+
+		.contenedor_beneficios_duo {
+			width: 50%;
+		}
+
+		.contenedor_beneficio_tc_nolead .bajada_beneficio {
+			font-size: 14px;
+		}
+
+		.titulo_seccion_st {
+			font-size: 32px;
+		}
+
+		.st_beneficios_descubre_tu_oferta {
+			padding: 48px 24px 36px;
+		}
+
+		.titulo_step {
+			font-size: 20px;
+			font-weight: 600;
+		}
+
+		.st_contenedor_pasos {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			padding-top: 52px;
+		}
+
+		.text_info_tc .boton_banner_st {
+			display: inline-block;
+			margin-top: 24px;
+		}
+
+		.pasos_desktop_st {
+			display: block;
+		}
+
+		.pasos_mobile_st {
+			display: none;
+		}
+
+		.st_contenedor_boton_pasos {
+			text-align: left;
+		}
+
+		.st_contenedor_flex_beneficios {
+			display: flex;
+			gap: 28px;
+		}
+
+		.st_contenedor_flex_beneficios .titulo_seccion_st {
+			text-align: left;
+		}
+
+		.contenedor_beneficios_descubre_oferta
+			.contenedor_beneficio_tc_st
+			.titulo_beneficio {
+			display: none;
+		}
+
+		.contenedor_beneficios_descubre_oferta
+			.contenedor_beneficio_tc_st
+			.titulo_beneficio.desktop {
+			display: block;
+			font-size: 14px;
+		}
+
+		.contenedor_beneficio_tc_st {
+			border-bottom: none;
+		}
+
+		.contenedor_beneficio_tc_st {
+			padding: 16px 0 28px;
+		}
+
+		.bcp_boton_fixed_st .bcp_flex_solicitala_st.vista_desktop {
+			width: unset;
+			background: #002a8d;
+			box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.1);
+			border-radius: 8px 8px 0px 0px;
+			padding-left: 52px;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-right: 16px;
+			height: max-content;
+			display: flex;
+			align-items: center;
+			margin-top: -5px;
+			text-align: center;
+			justify-content: center;
+		}
+
+		.bcp_boton_fixed_st
+			.bcp_flex_solicitala_st.vista_desktop
+			.bcp_grupo_img_texto {
+			display: flex;
+		}
+
+		.bcp_boton_fixed_st .bcp_flex_solicitala_st.vista_desktop .bcp_imagen,
+		.bcp_boton_fixed_st .bcp_flex_solicitala_st.vista_desktop .bcp_boton,
+		.bcp_boton_fixed_st
+			.bcp_flex_solicitala_st.vista_desktop
+			.bcp_descripcion {
+			display: flex;
+			align-items: center;
+			justify-content: left;
+		}
+
+		.bcp_boton_fixed_st .bcp_flex_solicitala_st.vista_desktop .bcp_imagen {
+			margin-right: 18px;
+		}
+
+		.bcp_boton_fixed_st
+			.bcp_flex_solicitala_st.vista_desktop
+			.bcp_imagen
+			img {
+			width: 63px;
+			height: auto;
+			margin-top: -23px;
+		}
+
+		.bcp_boton_fixed_st .bcp_flex_solicitala_st.vista_desktop p {
+			font-size: 16px;
+			line-height: 20px;
+			color: #ffffff;
+			text-align: left;
+			margin: 0px;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.contenedor_beneficio {
+			display: flex;
+			gap: 40px;
+			justify-content: center;
+		}
+
+		.contenedor_beneficio_latam {
+			width: 25%;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.pasos_desktop_st img {
+			height: 331px;
+		}
+
+		.boton_banner_st {
+			padding: 16px 36px;
+		}
+
+		.contenedor_beneficio_tc_nolead {
+			max-width: 384px;
+			height: 360px;
+		}
+
+		.contenedor_beneficios_descubre_oferta .titulo_beneficio {
+			margin-bottom: 12px;
+		}
+
+		.contenedor_beneficio_tc_nolead .bajada_beneficio {
+			font-size: 16px;
+		}
+
+		.st_banner_descubre_tu_oferta h2 {
+			font-size: 48px;
+		}
+
+		.contenedor_beneficios_descubre_oferta
+			.contenedor_beneficio_tc_st
+			.titulo_beneficio.desktop {
+			font-size: 20px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.boton_banner_st {
+			font-size: 18px;
+		}
+
+		.contenedor_info_banner .contenedor_img img {
+			width: 349px;
+		}
+
+		.st_beneficios_descubre_tu_oferta.nolead {
+			padding: 85px 24px 36px;
+		}
+
+		.contenedor_info_banner .contenedor_img.nolead img {
+			width: 415px;
+		}
+
+		.contenedor_info_banner .contenedor_img.nolead {
+			padding-right: 8%;
+			padding-top: 100px;
+		}
+
+		.contenedor_beneficios_descubre_oferta {
+			gap: 60px;
+		}
+
+		.contenedor_beneficio_tc_nolead {
+			max-width: 384px;
+			height: 416px;
+		}
+
+		.contenedor_beneficio_tc_nolead .bajada_beneficio {
+			font-size: 16px;
+		}
+
+		.contenedor_img_beneficio_nolead .beneficio_mobile {
+			display: none;
+		}
+
+		.contenedor_img_beneficio_nolead .beneficio_desktop {
+			display: inline-block;
+		}
+
+		.contenedor_img_beneficio_nolead.campana_mensual img {
+			height: 256px;
+		}
+
+		.contenedor_beneficio_tc_nolead .titulo_beneficio,
+		.contenedor_beneficio_tc_nolead.beneficio_dos .titulo_beneficio,
+		.contenedor_beneficio_tc_nolead.beneficio_tres .titulo_beneficio {
+			font-size: 26px;
+			line-height: 32px;
+		}
+
+		.contenedor_beneficio_tc_st {
+			width: 344px;
+		}
+
+		.bcp_boton_fixed_st .bcp_flex_solicitala_st.vista_desktop {
+			padding-left: 52px;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			padding-right: 16px;
+			height: max-content;
+			display: flex;
+			align-items: center;
+			margin-left: 130px;
+			margin-right: 117px;
+		}
+	}
+</style>
+<style>
+	.modal_inscripcion {
+		background-color: rgb(32 46 68 / 85%);
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 9999999;
+	}
+
+	.modal_inscripcion_content {
+		width: 300px;
+		height: auto;
+		padding: 30px;
+		position: relative;
+		background-color: #fff;
+		border-radius: 8px;
+		animation: fadeInUp 1s ease-out;
+	}
+
+	.modal_inscripcion_content span {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		cursor: pointer;
+	}
+
+	.modal_inscripcion_text {
+		text-align: center;
+	}
+
+	.modal_inscripcion_text img {
+		width: 100px;
+	}
+
+	.modal_inscripcion_text h2 {
+		color: #002da0;
+		font-weight: bold;
+	}
+
+	.modal_inscripcion_text h4 {
+		color: #002da0;
+		font-weight: 200;
+	}
+
+	.modal_inscripcion_text p {
+		color: #202e44;
+	}
+
+	.modal_inscripcion_text button {
+		width: 140px;
+		height: 40px;
+		background-color: #f78000;
+		border-radius: 20px;
+		border: unset;
+		color: #fff;
+		cursor: pointer;
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
+<style>
+	.bcp_preguntas_frecuentes {
+		padding-top: 45px;
+		padding-bottom: 84px;
+	}
+
+	.bcp_preguntas_frecuentes h1,
+	.bcp_preguntas_frecuentes h2,
+	.bcp_preguntas_frecuentes h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+
+	.bcp_preguntas_frecuentes .accordion-header {
+		transition: ease-in-out 100ms;
+	}
+
+	.bcp_preguntas_frecuentes .acordeon-header-pregunta {
+		font-weight: bold;
+		font-size: 16px;
+		line-height: 24px;
+		text-align: left;
+		color: #012d74;
+	}
+
+	.bcp_preguntas_frecuentes .bcp-angle-down-f {
+		float: right;
+	}
+
+	.bcp_preguntas_frecuentes .icon.bcp-angle-up-f {
+		transform: rotate(180deg);
+	}
+
+	.bcp_st_contactenos_wsp {
+		background-color: #6ac90f;
+		display: flex;
+		padding: 4px 12px;
+		border-radius: 20px;
+		gap: 4px;
+		cursor: pointer;
+		color: #ffff;
+		font-size: 14px;
+	}
+
+	.bcp_st_contactenos_wsp:hover {
+		box-shadow: 0px 2px 2px rgba(82, 112, 148, 0.2);
+	}
+
+	.d-none-m {
+		display: none;
+	}
+
+	.bcp_clave_pin {
+		padding-top: 16px;
+	}
+
+	.bcp_clave_pin img {
+		width: 100%;
+	}
+
+	.bcp_clave_pin .d-none-m {
+		width: 82%;
+		border-radius: 16px;
+		margin: auto;
+	}
+
+	@media (min-width: 1px) {
+		.bcp_preguntas_frecuentes .bcp_titulo_principal {
+			font-style: normal;
+			font-weight: 500;
+			font-size: 24px;
+			line-height: 32px;
+			text-align: center;
+			margin-bottom: 28px;
+			color: #002a8d;
+		}
+
+		.bcp_preguntas_frecuentes .icon {
+			margin: auto 0px auto auto;
+		}
+
+		.bcp_preguntas_frecuentes .accordion-header {
+			width: 100%;
+			display: flex;
+		}
+
+		.bcp_preguntas_frecuentes .accordion-item {
+			cursor: pointer;
+			padding-top: 18px;
+			padding-bottom: 18px;
+			padding-left: 16px;
+			padding-right: 16px;
+			background: #f2f4f8;
+			border-radius: 8px;
+		}
+
+		.bcp_preguntas_frecuentes .accordion-wrap {
+			margin-bottom: 8px;
+		}
+
+		.bcp_preguntas_frecuentes .bcp_contenedor_acordeon {
+			width: 100%;
+			padding-left: 1rem;
+			padding-right: 1rem;
+		}
+
+		.bcp_preguntas_frecuentes .accordion-header h3 {
+			font-family: "Flexo-Demi";
+			font-style: normal;
+			font-weight: 500;
+			font-size: 14px;
+			line-height: 20px;
+			color: #202e44;
+			margin-right: auto;
+			padding-right: 10px;
+		}
+
+		.bcp_preguntas_frecuentes .accordion-text {
+			max-height: 0;
+			overflow: hidden;
+			padding-left: 16px;
+			padding-right: 16px;
+			transition: all 0.5s ease-in;
+		}
+
+		.bcp_preguntas_frecuentes .acordeon-header-respuesta {
+			font-size: 14px;
+			line-height: 20px;
+			text-align: left;
+			color: #202e44;
+			padding-left: 0px;
+		}
+
+		.bcp_preguntas_frecuentes a {
+			color: #ff7800;
+			font-weight: 700;
+			text-decoration: none;
+		}
+
+		.bcp_preguntas_frecuentes p {
+			font-size: 12px;
+			font-weight: 400;
+			line-height: 24px;
+			text-align: left;
+			font-family: "Flexo";
+		}
+
+		.bcp_preguntas_frecuentes ol li:before {
+			content: counter(li);
+			counter-increment: li;
+			position: absolute;
+			left: 0;
+			margin-top: 0;
+			background: #002a8d;
+			height: 20px;
+			width: 20px;
+			color: #fff;
+			text-align: center;
+			font-weight: 500;
+			font-style: normal;
+			border-radius: 50%;
+			font-size: 14px;
+			line-height: 15px;
+			padding-top: 2px;
+		}
+
+		.bcp_preguntas_frecuentes ol li {
+			position: relative;
+			display: block;
+			padding-top: 16px;
+			padding-left: 40px;
+			text-decoration: none;
+			text-align: left;
+		}
+
+		.bcp_preguntas_frecuentes ol {
+			font-size: 12px;
+			font-weight: 400;
+			line-height: 24px;
+			text-align: left;
+			counter-reset: li;
+			list-style: none;
+			text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+		}
+	}
+
+	@media (min-width: 768px) {
+		.bcp_st_contactenos_wsp {
+			padding: 8px 16px;
+			font-size: 16px;
+		}
+
+		.bcp_preguntas_frecuentes .bcp_titulo_principal {
+			font-size: 32px;
+			margin-bottom: 52px;
+		}
+
+		.bcp_preguntas_frecuentes .accordion-header {
+			padding-left: 0px;
+			padding-right: 0px;
+			display: flex;
+		}
+
+		.bcp_preguntas_frecuentes .bcp_contenedor_acordeon {
+			margin: auto;
+		}
+
+		.bcp_preguntas_frecuentes .accordion-header h3 {
+			font-size: 14px;
+			line-height: 20px;
+		}
+
+		.d-none-d {
+			display: none;
+		}
+
+		.d-none-m {
+			display: block;
+		}
+	}
+</style>
+
+<style>
+	.cintillo_contenedor_text {
+		padding: 10px;
+		display: flex;
+		background: #ebf4ff;
+		color: #002a8d;
+		margin: 0 auto 16px;
+		gap: 11px;
+		justify-content: center;
+		align-items: center;
+		border-radius: 8px;
+	}
+
+	.cintillo_contenedor_text svg {
+		width: 24px;
+		height: 24px;
+	}
+
+	.cintillo_contenedor_text p {
+		font-weight: bold;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.cintillo_contenedor_text svg {
+			width: 44px;
+			height: 44px;
+		}
+
+		.cintillo_contenedor_text p {
+			font-weight: normal;
+		}
+	}
+</style>
+<style>
+	.contentPosicionamiento {
+		background: linear-gradient(
+			153deg,
+			rgba(0, 48, 179, 1) 33%,
+			rgba(211, 1, 127, 1) 73%,
+			rgba(252, 68, 57, 1) 100%
+		);
+		height: 48px;
+		text-align: center;
+	}
+
+	.titleContentPosicionamiento {
+		font-family: "Flexo-Demi";
+		color: #fff;
+		padding-top: 10px;
+		font-size: 20px;
+	}
+
+	.titlePosicionamientoMobile {
+		transition: all 0.5s ease-in-out;
+		font-style: italic;
+		font-family: "Flexo";
+		text-align: center;
+	}
+
+	@media (max-width: 767px) {
+		.titleContentPosicionamiento {
+			font-size: 14px;
+			display: flex;
+			margin-top: 0px;
+			padding-top: 0;
+			margin-bottom: 0;
+		}
+
+		.titlePosicionamientoMobile {
+			text-align: left;
+			margin-left: 10px;
+			margin-right: 20px;
+			margin-top: 7px;
+		}
+
+		.contentPosicionamiento {
+			height: 55px;
+		}
+
+		.header_sin_acceso {
+			height: 56px;
+		}
+	}
+</style>
+
+<style type="text/css">
+	/* P A N T A L L A   D E   C A R G A */
+	.st_pageLoad {
+		position: fixed;
+		background-color: #002a8d;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		text-align: center;
+		display: flex;
+		margin-top: auto;
+		margin-bottom: auto;
+		justify-items: center;
+		align-items: center;
+		z-index: 99999;
+		color: #fff;
+		font-weight: bold;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.st_process {
+		display: grid;
+		justify-items: center;
+		position: fixed;
+	}
+
+	.st_imageBCP {
+		content: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODEiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCA4MSAyMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yMC4xNTYxIDE1LjQ3NTRDMjAuMTU2MSAxNS40NzU0IDIwLjAwMjEgMTYuMTU4IDIwLjY3NTggMTYuMjE0NUMyMS4wMTY0IDE2LjIyNDcgMjEuMzc4NiAxNi4yMjQ3IDIxLjc1OTIgMTYuMjI0N0MyNC4xODgxIDE2LjIyNDcgMjYuNDEwMSAxNS4zODk2IDI2LjQ1OTkgMTMuMzM4MkMyNi41MDU3IDExLjUyMDEgMjQuNzc2NSAxMC45NzIyIDIyLjY5MjcgMTAuOTcyMkgyMS4yMjI0TDIwLjE1NjEgMTUuNDc1NFpNMzEuMTc2IDEzLjQzODVDMzEuMTc2IDE2LjE1OTMgMjguNzM0NSAxOS43NDg4IDIwLjI5MDMgMTkuMzA3QzE5LjMwMDcgMTkuMjU0NyAxOC42OTI2IDE5LjE3ODMgMTcuNzk5OSAxOC45NzMxQzE0LjYxOTMgMTguMjQwOCAxNS43MzgxIDE0LjcyOTkgMTUuNzM4MSAxNC43Mjk5TDE4Ljk3NDQgMS4xNDM3N0MyMC43NTUzIDAuODcyMzI2IDIyLjc1MjQgMC43MDc1MDcgMjQuODAzOSAwLjcwNzUwN0MyOS4zMjAyIDAuNzA3NTA3IDMyLjMxMjggMi4yMTUwOSAzMi4zMTI4IDUuMDM2NTVDMzIuMzEyOCA3LjY3ODMzIDI5LjU4NzIgOS4xMTQxMiAyNy41MjQxIDkuNDM5NTFDMjkuMTU5MSA5LjU1Mzc4IDMxLjE3NiAxMC43MzQzIDMxLjE3NiAxMy40Mzg1Wk0yMi45MTk1IDMuODYyNDNMMjIuMTAzMSA3LjM2MjcxQzIyLjEwMzEgNy4zNjI3MSAyMS45MDAzIDguMTEyMDQgMjIuNTkxOSA4LjExMjA0SDIzLjU0NDJDMjUuOTk0MiA4LjExMjA0IDI3LjY5MTIgNy4yMTQwMyAyNy43MzM4IDUuNjMyMTFDMjcuNzY4NCA0LjMyNzE1IDI2LjU2NzQgMy43NjE3NSAyNC44NjE5IDMuNzYxNzVDMjQuMDgyNCAzLjc2MTc1IDIzLjI2MzcgMy44MTE0NSAyMi45MTk1IDMuODYyNDNaTTUxLjgyMzcgMTkuMzU2SDQ5LjE0M0w1My4zOTM2IDEuMjQ0NjFDNTUuMTUxNiAwLjg2MDE3NSA1Ny4wMDIgMC43ODQxMzggNTkuMTQ1IDAuODAxMTI5QzY0LjM3NTggMC44MjA2NyA2Ni43NzM3IDIuNjkyNzIgNjYuNzczNyA1Ljk1NTk3QzY2Ljc3MzcgOC45NDYwNyA2NC4yNTc4IDEzLjM0NTYgNTcuMDIzMSAxMy4zNDU2QzU2LjI4MjEgMTMuMzQ1NiA1NS42NDQ4IDEzLjI2NjIgNTUuMTg0OCAxMy4yMzczQzU1LjE4NDggMTMuMjM3MyA1NC41OTU1IDE1Ljc1NTUgNTQuMjQ1IDE3LjIzOTNDNTMuODAzNCAxOS4xMDIgNTIuNTA5NSAxOS4zNTYgNTEuODIzNyAxOS4zNTZaTTU3LjYzOTIgMy45OTQyOEw1Ni40NTc1IDkuMDQ0MkM1Ni40NTc1IDkuMDQ0MiA1Ni4wNzY1IDEwLjExNzYgNTcuNDM2OCAxMC4xMTc2QzU3LjYwNDcgMTAuMTI0NCA1Ny43ODY5IDEwLjEyOTEgNTcuOTg3NSAxMC4xMjkxQzYxLjAyODYgMTAuMTA3IDYyLjU5MDQgOC4yMjk4OCA2Mi41OTA0IDYuMjg2NDZDNjIuNTkwNCA0LjM3NDQ3IDYxLjE5NDYgMy45MDQyMyA1OS41MTQzIDMuOTA0MjNDNTguNjU2MiAzLjkwNDIzIDU4LjAxMjIgMy45NDI0NiA1Ny42MzkyIDMuOTk0MjhaTTM4LjUzMTggMTEuMzU0M0MzOC41MzE4IDE0LjIxMzIgNDAuMjg2MSAxNi4wNDExIDQzLjI5NTggMTYuMDQxMUM0NC41MzQ5IDE2LjA0MTEgNDUuODg5IDE1Ljg0NDQgNDcuNzE1MSAxNC41NzY4TDQ2Ljk5OTMgMTcuNjIxN0M0Ni45OTkzIDE3LjYyMTcgNDYuODAwNSAxOC42MzE5IDQ1LjYxNDMgMTkuMDI0NEM0NC42NTA3IDE5LjM2NjMgNDMuNjM0MiAxOS41MjE4IDQyLjA5MzUgMTkuNTIxOEMzNy44MDE2IDE5LjUyMTggMzMuNjEzNCAxNy41MjE5IDMzLjYxMzQgMTEuNTk2QzMzLjYxMzQgNi4wNTI5NSAzNy4zNjYyIDAuNDE4OTQ1IDQ0LjYxMDggMC40MTg5NDVDNDYuMDMyMSAwLjQxODk0NSA0Ny4wMzcgMC42MDg0MDIgNDguMzIzNyAxLjAwMTMzQzUwLjMwNzkgMS42MDcwOSA1MC41NDg5IDIuNjI0MDQgNTAuNDE3NCAzLjIzMzYxQzUwLjI4MzIgMy44NTc2MyA0OS44MTUxIDUuMzU3MTQgNDkuODE1MSA1LjM1NzE0QzQ4LjU2NyA0LjMwMTk2IDQ2LjM5MyA0LjAwNTAzIDQ1LjE4NDQgNC4wMDUwM0M0MC41NTM2IDQuMDA1MDMgMzguNTMxOCA4LjQwNjI5IDM4LjUzMTggMTEuMzU0M1pNNy45MzQgOC45ODc5NkM2LjMxNDcyIDcuMzI2MTcgNC42MDY1OSA2LjMyMTU0IDMuMzQ1NDYgNS43NDg5M0MzLjM0NTQ2IDUuNzQ4OTMgMi43MzEwNSA1LjQ2MDQ5IDIuNDEwMTYgNS4yOTQ4MkMyLjg3NzgxIDQuMjk5OTYgMy40OTMxMSAzLjU4OTI5IDMuNDkzMTEgMy41ODkyOUMzLjU4MDE4IDMuNDgxODIgNS40NDQwNSAxLjQwODgzIDcuMDgzNTIgMi4xMzY5M0M4Ljg3NDI0IDIuODk5NDMgOS4wNTY0NSA2LjM5OTI4IDcuOTM0IDguOTg3OTZaTTc0LjQ1ODkgOC45ODc5NkM3Mi44Mzk2IDcuMzI2MTcgNzEuMTMxNSA2LjMyMTU0IDY5Ljg3MDMgNS43NDg5M0M2OS44NzAzIDUuNzQ4OTMgNjkuMjU1OSA1LjQ2MDQ5IDY4LjkzNSA1LjI5NDgyQzY5LjQwMjcgNC4yOTk5NiA3MC4wMTggMy41ODkyOSA3MC4wMTggMy41ODkyOUM3MC4xMDUxIDMuNDgxODIgNzEuOTY4OSAxLjQwODgzIDczLjYwODQgMi4xMzY5M0M3NS4zOTkxIDIuODk5NDMgNzUuNTgxMyA2LjM5OTI4IDc0LjQ1ODkgOC45ODc5NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTMuNDg5NCAxMS42MzQ0QzExLjc0MzYgMTQuMjczNyA2Ljk4MDkxIDE3LjI4MiA1LjYzMTM2IDE3LjczMzJDMy4wMDY3NyAxOC43NzI2IDEuMjI5OTcgMTYuODQ0OSAxLjA3ODI4IDE2LjY0MjdDMC41ODg2MzQgMTYuMDQ1OSAwLjQ2OTcwMiAxNS45MTk3IDAuMjMyNzM1IDE1LjQ4NDNDMC4xODY1MDkgMTUuNTU2NSA1LjI3MDk3IDEzLjMxNzkgNy4wOTI2NiAxMC40MjE3QzkuMDY1NTkgNy45MzQwOSA5LjIzNzQ4IDMuMDU0NTEgNy4wODI3OCAyLjEzNjk2QzcuNzM0NDQgMi40NDc0OSA5LjI2OTc5IDMuMjgxNzcgMTAuNjU1MiA0LjQ1MDM4QzEyLjAzNzUgNS41NTk1MSAxMy4yMzIzIDcuMDEzOTkgMTMuMjA2NyA2Ljk5NTNDMTMuMzUyNSA3LjE4MjYzIDE1LjA4NCA5LjIyMjQ4IDEzLjQ4OTQgMTEuNjM0NFpNNzkuNzMwOCA2Ljk5NTNDNzkuODc2NyA3LjE4MjYzIDgxLjYwODEgOS4yMjI0OCA4MC4wMTM2IDExLjYzNDRDNzguMjY4MiAxNC4yNzM3IDczLjUwNSAxNy4yODIgNzIuMTU1NSAxNy43MzMyQzY5LjUzMDkgMTguNzcyNiA2Ny43NTQxIDE2Ljg0NDkgNjcuNjAyNCAxNi42NDI3QzY3LjExMjggMTYuMDQ1OSA2Ni45OTM4IDE1LjkxOTcgNjYuNzU2OSAxNS40ODQzQzY2LjcxMDYgMTUuNTU2NSA3MS43OTU2IDEzLjMxNzkgNzMuNjE2OCAxMC40MjE3Qzc1LjU4OTcgNy45MzQwOSA3NS43NjE2IDMuMDU0NTEgNzMuNjA2OSAyLjEzNjk2Qzc0LjI1ODYgMi40NDc0OSA3NS43OTM5IDMuMjgxNzcgNzcuMTc5NCA0LjQ1MDM4Qzc4LjU2MTcgNS41NTk1MSA3OS43NTY4IDcuMDEzOTkgNzkuNzMwOCA2Ljk5NTNaIiBmaWxsPSIjRkY3ODAwIi8+Cjwvc3ZnPgo=");
+		position: absolute;
+		margin: 42px;
+	}
+
+	.st_barProcess {
+		width: 100px;
+		height: 100px;
+		border: 6px solid #ff7800;
+		border-top: 4px solid rgb(0 36 122 / 38%);
+		border-left: 4px solid rgb(0 36 122 / 38%);
+		border-radius: 50%;
+		animation-name: girar;
+		animation-duration: 2s;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		margin: auto;
+	}
+
+	@keyframes girar {
+		from {
+			transform: rotate(0deg);
+		}
+
+		to {
+			transform: rotate(360deg);
+		}
+	}
+
+	.st_pageLoad p {
+		width: 160px;
+		color: #fff !important;
+		text-align: center !important;
+	}
+
+	.p_banca_exclusiva {
+		font-size: 18px;
+	}
+
+	.p_banca_exclusiva::before {
+		content: "";
+		border-left: 1px solid #fff;
+		margin-left: 20px;
+		margin-right: 14px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		line-height: 1.5;
+	}
+</style>
+<style>
+	.cintillo_tcd .cintillo_contenedor_text {
+		padding: 0;
+		gap: 20px;
+		margin-top: 20px;
+	}
+
+	.cintillo_tcd .cintillo_contenedor_text img {
+		width: 100px;
+	}
+
+	.cintillo_tcd .titulo_cintillo_tcd {
+		color: #002a8d;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 28px;
+		word-wrap: break-word;
+	}
+
+	.cintillo_tcd .contenedor_cintillo_text {
+		width: 560px;
+	}
+
+	.cintillo_tcd .bajada_cintillo_tcd {
+		color: #202e44;
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 18px;
+		word-wrap: break-word;
+	}
+
+	@media (max-width: 420px) {
+		.cintillo_tcd .cintillo_contenedor_text {
+			gap: 6px;
+		}
+
+		.cintillo_tcd .cintillo_contenedor_text img {
+			width: 86px;
+		}
+
+		.cintillo_tcd .contenedor_cintillo_text {
+			width: 300px;
+		}
+
+		.cintillo_tcd .bajada_cintillo_tcd {
+			font-size: 11px;
+			line-height: 16px;
+		}
+
+		.cintillo_tcd .titulo_cintillo_tcd {
+			font-size: 18px;
+		}
+	}
+</style>
+<style>
+	.cintillo_cookies img {
+		width: 100px;
+	}
+
+	.cintillo_cookies .titulo_cintillo_tcd {
+		color: #002a8d;
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 28px;
+		word-wrap: break-word;
+	}
+
+	.contenedor_cintillo_text .bajada_cintillo_tcd {
+		color: #202e44;
+		font-size: 12px;
+		font-weight: 400;
+		line-height: 18px;
+		word-wrap: break-word;
+	}
+</style>
+
+<!-- modificación billeteras -->
+
+<style>
+	.st_section_descubre_tu_oferta .container {
+		flex-direction: column;
+		position: relative;
+	}
+
+	@media screen and (min-width: 992px) {
+		.contenedor_modificado {
+			flex-direction: row;
+		}
+	}
+
+	.tooltip {
+		position: relative;
+		margin: 2rem;
+		width: auto;
+	}
+
+	@media screen and (min-width: 992px) {
+		.tooltip {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: -webkit-min-content;
+			width: -moz-min-content;
+			width: min-content;
+			margin-left: auto;
+		}
+	}
+
+	.tooltip .contenido {
+		display: flex;
+		justify-content: center;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 16px;
+		padding-bottom: 0;
+		border-radius: 8px 8px 0 0;
+	}
+
+	@media screen and (min-width: 992px) {
+		.tooltip .contenido {
+			padding: 8px;
+			border-radius: 4px;
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+	}
+
+	.tooltip .contenido img {
+		display: block;
+	}
+
+	.tooltip:hover .popup .contenedor {
+		top: 16px;
+		transform: translateX(0) scale(1);
+	}
+
+	@media screen and (min-width: 992px) {
+		.tooltip .popup {
+			position: absolute;
+			top: 100%;
+			right: 0;
+			transform: translateX(0);
+		}
+	}
+
+	.tooltip .popup .contenedor {
+		border-radius: 0 0 8px 8px;
+		padding: 16px;
+		background-color: rgba(0, 0, 0, 0.5);
+		color: #fff;
+	}
+
+	@media screen and (min-width: 992px) {
+		.tooltip .popup .contenedor {
+			border-radius: 8px;
+			width: -webkit-max-content;
+			width: -moz-max-content;
+			width: max-content;
+			background-color: #0030b3;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translateX(0) scale(0);
+			transform-origin: calc(100% - 16px) 0;
+			transition: all 250ms ease-in-out;
+			transition-delay: 150ms;
+		}
+
+		.tooltip .popup .contenedor::before {
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			border-bottom: 16px solid #0030b3;
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;
+			position: absolute;
+			top: 0;
+			right: 0;
+			transform: translate(-16px, -100%);
+		}
+	}
+
+	.tooltip .popup .contenedor p {
+		margin: 0;
+		width: -webkit-max-content;
+		width: -moz-max-content;
+		width: max-content;
+		font-size: 14px;
+		text-align: center;
+		width: 100%;
+	}
+
+	@media screen and (min-width: 992px) {
+		.tooltip .popup .contenedor p {
+			max-width: 30ch;
+		}
+	}
+</style>
+
+<div class="st_pageLoad" dir="ltr">
+	<div class="st_process">
+		<img class="st_imageBCP" />
+		<div class="st_barProcess">&nbsp;</div>
+		<p>Espere un momento por favor</p>
+	</div>
+</div>
+<div class="modal_inscripcion" style="display: none">
+	<div class="modal_inscripcion_content">
+		<span onclick="closeModal()">
+			<svg
+				width="25"
+				height="24"
+				viewBox="0 0 25 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					fill-rule="evenodd"
+					clip-rule="evenodd"
+					d="M5.21166 5.38698L5.29485 5.29277C5.65533 4.93229 6.22256 4.90456 6.61485 5.20958L6.70906 5.29277L12.002 10.5849L17.2948 5.29277C17.6854 4.90225 18.3185 4.90225 18.7091 5.29277C19.0996 5.6833 19.0996 6.31646 18.7091 6.70698L13.417 11.9999L18.7091 17.2928C19.0695 17.6533 19.0973 18.2205 18.7922 18.6128L18.7091 18.707C18.3486 19.0675 17.7813 19.0952 17.3891 18.7902L17.2948 18.707L12.002 13.4149L6.70906 18.707C6.31854 19.0975 5.68537 19.0975 5.29485 18.707C4.90432 18.3165 4.90432 17.6833 5.29485 17.2928L10.587 11.9999L5.29485 6.70698C4.93436 6.3465 4.90663 5.77927 5.21166 5.38698L5.29485 5.29277L5.21166 5.38698Z"
+					fill="#F78000"
+				></path>
+			</svg>
+		</span>
+		<div class="modal_inscripcion_text">
+			<img
+				alt=""
+				src="https://www.viabcp.com/wcm/connect/ea543626-fe34-4fa4-97a5-9ddb1e1498d9/spot-circle-s-spc-smartphone-hand-d-l%403x.png?MOD=AJPERES&amp;attachment=false&amp;id=1709074510817"
+			/>
+			<h2>!Listo!</h2>
+			<h4>Tus datos fueron enviados</h4>
+			<p>Ya estás inscrito a la campaña.</p>
+			<button onclick="closeModal()">Cerrar</button>
+		</div>
+	</div>
+</div>
+<section class="st_section_descubre_tu_oferta">
+	<div class="st_banner_descubre_tu_oferta">
+		<div class="vector_banner">
+			<img src="/wcm/myconnect/241abefc-443a-4f18-9484-f70509bf0098/Vector+%282%29.png?MOD=AJPERES&amp;CVID=pOQlAIm" alt="vector desktop" class="vector_desktop lazy_loading" />
+			<img
+				src="https://www.viabcp.com/wcm/connect/715299b7-3d97-45ad-b500-d9329e4d554d/Vector.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-715299b7-3d97-45ad-b500-d9329e4d554d-oKQHIpH&cache=none"
+				class="vector_mobile lazy_loading"
+				alt="vector mobile"
+			/>
+		</div>
+		<div class="contenedor_info_banner container">
+			<div class="contenedor_flex_banner">
+				<div class="text_info_tc">
+					<h2>
+						<b
+							>¡Evalúate y descubre la oferta que tenemos para
+							ti!</b
+						>
+					</h2>
+					<p></p>
+					<a class="boton_banner_st" onclick="redireccion('banner')"
+						>Descubrir mi oferta</a
+					>
+				</div>
+				<div class="contenedor_img nolead">
+					<img src="/wcm/myconnect/89db9aa8-d090-4d75-b085-56da9789f995/Tarjetas.png?MOD=AJPERES&amp;CVID=pOQlAIm" alt="" class="lazy_loading" />
+				</div>
+				<div class="contenedor_boton_banner">
+					<a class="boton_banner_st" onclick="redireccion('banner')"
+						>Descubrir mi oferta</a
+					>
+				</div>
+			</div>
+
+			<div class="tooltip" id="infoBilletera">
+				<div class="contenido">
+					<img
+						src="https://www.viabcp.com/wcm/connect/5625ce14-09b0-4cf9-b285-540810fcd6c4/logos+billeteras.png?MOD=AJPERES&amp;attachment=false&amp;id=1717599643476"
+						width="96px"
+					/>
+				</div>
+				<div class="popup">
+					<div class="contenedor">
+						<p>
+							La manera mas fácil y segura de pagar con tus
+							tarjetas
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="cintillo_tcd container">
+		<div>
+			<div class="cintillo_contenedor_text">
+				<img
+					src="https://www.viabcp.com/wcm/connect/ac75e86c-3c59-4d17-b21e-c61c3016017a/Vitrina-Home-BCP-Mobile-Tablet-500x500px.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ac75e86c-3c59-4d17-b21e-c61c3016017a-oYXbPSk&cache=none"
+					alt=""
+				/>
+				<div class="contenedor_cintillo_text">
+					<p class="titulo_cintillo_tcd">¡Obtenla hoy y úsala hoy!</p>
+					<p class="bajada_cintillo_tcd">
+						Con tu nueva Tarjeta de Crédito versión virtual accede
+						de inmediato a los beneficios que tenemos para ti.
+						*Sujeta a previa evaluación.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div
+		class="st_beneficios_descubre_tu_oferta container"
+		style="display: none"
+	>
+		<div class="st_contenedor_flex_beneficios">
+			<div class="contenedor_titulo_seccion_st">
+				<h2 class="titulo_seccion_st">
+					¿Qué beneficios <b>te ofrece?</b>
+				</h2>
+				<div class="contenedor_descubrir_desktop">
+					<a
+						class="boton_banner_st"
+						onclick="redireccion('beneficios')"
+						>Pídela aquí</a
+					>
+				</div>
+			</div>
+			<div class="contenedor_beneficios_descubre_oferta">
+				<div class="contenedor_beneficios_duo">
+					<div class="contenedor_beneficio_tc_st">
+						<div class="logo_beneficio_st">
+							<img src="" alt="" class="lazy_loading" />
+						</div>
+						<div>
+							<p class="titulo_beneficio">
+								8,000 millas LATAM PASS
+							</p>
+							<p class="titulo_beneficio desktop">
+								8,000 millas LATAM PASS
+							</p>
+							<p class="bajada_beneficio">
+								Al consumir S/ 3,000 durante los primeros 45
+								días.
+							</p>
+						</div>
+					</div>
+					<div class="contenedor_beneficio_tc_st">
+						<div class="logo_beneficio_st">
+							<img src="" alt="" class="lazy_loading" />
+						</div>
+						<div>
+							<p class="titulo_beneficio">
+								8,000 millas LATAM PASS
+							</p>
+							<p class="titulo_beneficio desktop">
+								8,000 millas LATAM PASS
+							</p>
+							<p class="bajada_beneficio">
+								Al consumir S/ 3,000 durante los primeros 45
+								días.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="contenedor_beneficios_duo">
+					<div
+						class="contenedor_beneficio_tc_st"
+						style="border-bottom: none"
+					>
+						<div class="logo_beneficio_st">
+							<img src="" alt="" class="lazy_loading" />
+						</div>
+						<div>
+							<p class="titulo_beneficio">
+								8,000 millas LATAM PASS
+							</p>
+							<p class="titulo_beneficio desktop">
+								8,000 millas LATAM PASS
+							</p>
+							<p class="bajada_beneficio">
+								Al consumir S/ 3,000 durante los primeros 45
+								días.
+							</p>
+						</div>
+					</div>
+					<div class="contenedor_beneficio_tc_st">
+						<div class="logo_beneficio_st">
+							<img src="" alt="" class="lazy_loading" />
+						</div>
+						<div>
+							<p class="titulo_beneficio"></p>
+							<p class="titulo_beneficio desktop"></p>
+							<p class="bajada_beneficio"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contenedor_descubrir_mobile">
+			<a class="boton_banner_st" onclick="redireccion('beneficios')"
+				>Pídela aquí</a
+			>
+		</div>
+	</div>
+
+	<div class="container banner-secundario">
+		<picture>
+			<!-- Para dispositivos móviles (hasta 768px) -->
+			<source
+				media="(max-width: 768px)"
+				srcset="
+					https://www.viabcp.com/wcm/connect/eda07633-3c02-4a06-bc9e-0beb46760359/lanzamiento_post-login_movil.jpg?MOD=AJPERES&attachment=false&id=1741009238298
+				"
+			/>
+
+			<!-- Para escritorio (mayor que 768px) -->
+			<source
+				media="(min-width: 769px)"
+				srcset="
+					https://www.viabcp.com/wcm/connect/e269776b-9def-4dcd-8c4e-d886e71d6d78/lanzamiento_post-login.jpg?MOD=AJPERES&attachment=false&id=1741009324149
+				"
+			/>
+
+			<!-- Imagen por defecto si no se cumple ninguna condición -->
+			<img
+				src="https://www.viabcp.com/wcm/connect/eda07633-3c02-4a06-bc9e-0beb46760359/lanzamiento_post-login_movil.jpg?MOD=AJPERES&attachment=false&id=1741009238298"
+				alt="Conoce las nuevas Tarjetas de Crédito Visa BCP Qore"
+			/>
+		</picture>
+	</div>
+	<style>
+		.banner-secundario {
+			padding: 32px 16px;
+		}
+
+		@media (min-width: 768px) {
+			.banner-secundario {
+				padding-inline: 0;
+			}
+		}
+
+		.banner-secundario img {
+			display: block;
+			max-width: 100%;
+			border-radius: 16px;
+		}
+	</style>
+
+	<div
+		class="container beneficios_millas"
+		id="beneficios_latam"
+		style="display: none"
+	>
+		<h2>Beneficios <b>LATAM Pass</b></h2>
+		<div class="contenedor_beneficio">
+			<div class="contenedor_beneficio_latam">
+				<img
+					src="https://www.viabcp.com/wcm/connect/eb7c8640-b68e-4874-b27c-0216ad95d2ab/spc_priorityPassB_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-eb7c8640-b68e-4874-b27c-0216ad95d2ab-oTSjfI-&cache=none"
+					alt=""
+				/>
+				<p class="titulo_beneficio">Priority Pass</p>
+				<p>Acceso salas vip + 2 invitados</p>
+			</div>
+			<div class="contenedor_beneficio_latam">
+				<img
+					src="https://www.viabcp.com/wcm/connect/5af2b358-a5f7-4fb9-a9fd-9bc5a51238d8/spc_upgrade_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5af2b358-a5f7-4fb9-a9fd-9bc5a51238d8-oTSjSU6&cache=none"
+					alt=""
+				/>
+				<p class="titulo_beneficio">Upgrade de cabina</p>
+				<p>
+					Le otorgamos 2 tramos de cortesía para postular a un upgrade
+					en vuelos dentro de Sudamérica.
+				</p>
+			</div>
+			<div class="contenedor_beneficio_latam">
+				<img
+					src="https://www.viabcp.com/wcm/connect/209f9866-0ff9-4854-810d-4a95de34908c/spc_priorityPass_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-209f9866-0ff9-4854-810d-4a95de34908c-oTSj7kk&cache=none"
+					alt=""
+				/>
+				<p class="titulo_beneficio">Checkin preferente</p>
+				<p>En vuelos nacionales e internacionales en LATAM.</p>
+			</div>
+			<div class="contenedor_beneficio_latam" style="display: none">
+				<img
+					src="https://www.viabcp.com/wcm/connect/c5bc2380-e5f3-4b6b-b2ee-723fe5df627d/spc_check_hand_a_d_l.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c5bc2380-e5f3-4b6b-b2ee-723fe5df627d-oTSjxAA&cache=none"
+					alt=""
+				/>
+				<p class="titulo_beneficio">Equipaje gratis</p>
+				<p>
+					Con tu tarjeta VISA Infinite BCP LATAM Pass, puedes
+					despachar sin costo la primera maleta de hasta 23kg
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="st_beneficios_descubre_tu_oferta nolead container">
+		<h2 class="titulo_seccion_st">
+			Beneficios de obtener tu <b>tarjeta por la web</b>
+		</h2>
+		<div>
+			<div class="contenedor_beneficios_descubre_oferta">
+				<div>
+					<div class="contenedor_beneficio_tc_nolead">
+						<div class="contenedor_informacion_beneficio">
+							<p class="titulo_beneficio">
+								Descuentos exclusivos
+							</p>
+							<p class="bajada_beneficio">
+								Todas tus tarjetas VISA tienen descuentos
+								exclusivos en restaurantes y conciertos.
+							</p>
+						</div>
+						<div
+							class="contenedor_img_beneficio_nolead campana_mensual"
+						>
+							<img
+								src="https://www.viabcp.com/wcm/connect/5dd42622-40a0-48d9-b739-b196326ee984/Vitrina-Home-BCP-Mobile-Tablet-500x500px+%281%29.png?MOD=AJPERES&attachment=false&id=1709270164746"
+								alt=""
+								class="lazy_loading"
+							/>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="contenedor_beneficio_tc_nolead beneficio_dos">
+						<div class="contenedor_informacion_beneficio">
+							<p class="titulo_beneficio">
+								Compra hasta en 24 <br />Cuotas Sin Intereses
+							</p>
+							<p class="bajada_beneficio">
+								Con tu Tarjeta de Crédtio Visa Compra en más de
+								4,000 establecimientos.
+							</p>
+						</div>
+						<div class="contenedor_img_beneficio_nolead">
+							<img src="/wcm/myconnect/f24344e0-10f7-4c41-9344-ca0366af72f8/Image+%283%29.png?MOD=AJPERES&amp;CVID=pOQlAIm" alt="" class="beneficio_desktop lazy_loading" />
+							<img
+								src="https://www.viabcp.com/wcm/connect/51943ea6-63a7-4dd1-bfe6-1aa62d6ee380/Image+%282%29.png?MOD=AJPERES"
+								class="beneficio_mobile lazy_loading"
+								alt=""
+							/>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="contenedor_beneficio_tc_nolead beneficio_tres">
+						<div class="contenedor_informacion_beneficio">
+							<p class="titulo_beneficio">
+								Descuentos exclusivos en Cineplanet
+							</p>
+							<p class="bajada_beneficio">
+								50% de descuento en entradas 2D, 3D y XTREME.
+								25% en salas PRIME.
+							</p>
+						</div>
+						<div class="contenedor_img_beneficio_nolead">
+							<img src="/wcm/myconnect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&amp;CVID=pOQlAIm" alt="" class="beneficio_desktop lazy_loading" />
+							<img src="/wcm/myconnect/57f3b7c2-7b31-4ed5-becb-efaf462ccd29/image+31.png?MOD=AJPERES&amp;CVID=pOQlAIm" alt="" class="beneficio_mobile lazy_loading" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="contenedor_descubrir">
+			<a class="boton_banner_st" onclick="redireccion('beneficios')"
+				>Descubrir mi oferta</a
+			>
+		</div>
+	</div>
+	<div class="st_pasos_tutorial_descubre_tu_oferta container">
+		<h2 class="titulo_seccion_st">
+			Conoce <b>cómo solicitar tu tarjeta</b> a cualquier hora 24/7
+		</h2>
+		<div class="cintillo_cookies container" style="display: none">
+			<div>
+				<div class="cintillo_contenedor_text">
+					<img
+						src="https://www.viabcp.com/wcm/connect/f7d339ec-1fc3-4cf7-864f-117b68fb2222/galletas-removebg-preview.png?MOD=AJPERES&attachment=false&id=1713474076189"
+						alt=""
+					/>
+					<div class="contenedor_cintillo_text">
+						<p class="titulo_cintillo_tcd">¡Recuerda!</p>
+						<p class="bajada_cintillo_tcd">
+							Para una mejorar tu experiencia, no te olvides de
+							aceptar las cookies
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="st_contenedor_pasos">
+			<div class="pasos_mobile_st">
+				<div class="cards_pasos_imagenes">
+					<div
+						class="cards_pasos_flecha_izquierda"
+						style="opacity: 0"
+					>
+						<svg
+							width="30"
+							height="30"
+							viewBox="0 0 48 48"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<circle
+								r="23.5"
+								transform="matrix(-1.19249e-08 -1 -1 1.19249e-08 24 24)"
+								fill="#FFFFFF"
+								stroke="#95a7bf"
+							></circle>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M31.998 24.9979L18.414 24.9979L21.709 28.2929C22.1 28.6839 22.1 29.3159 21.709 29.7069C21.318 30.0979 20.685 30.0979 20.295 29.7069L15.295 24.7069C14.904 24.3159 14.904 23.6839 15.295 23.2929L20.291 18.2929C20.486 18.0979 20.742 17.9999 20.998 17.9999C21.254 17.9999 21.51 18.0979 21.705 18.2929C22.096 18.6829 22.096 19.3159 21.706 19.7069L18.417 22.9979L31.998 22.9979C32.551 22.9979 32.998 23.4449 32.998 23.9979C32.998 24.5509 32.551 24.9979 31.998 24.9979Z"
+								fill="#ff7800"
+							></path>
+						</svg>
+					</div>
+					<div class="cards_pasos_manual cards_pasos_manual_activo">
+						<img
+							width="auto"
+							height="500"
+							class="lazy_loading"
+							src="https://www.viabcp.com/wcm/connect/c4564547-a4ad-4449-912a-c177cfafb144/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689799855936"
+						/>
+					</div>
+					<div
+						class="cards_pasos_manual cards_pasos_manual_desactivo"
+					>
+						<img
+							width="auto"
+							height="500"
+							class="lazy_loading"
+							src="https://www.viabcp.com/wcm/connect/3dc110c2-46d9-433a-acde-7a333e87ad60/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800084725"
+						/>
+					</div>
+					<div
+						class="cards_pasos_manual cards_pasos_manual_desactivo"
+					>
+						<img
+							width="auto"
+							height="500"
+							class="lazy_loading"
+							src="https://www.viabcp.com/wcm/connect/600d728b-680d-4321-9087-3b3c5dfb3d83/illustrations-view-evaluacion-01-copy%403x.png?MOD=AJPERES&attachment=false&id=1689800115360"
+						/>
+					</div>
+					<div
+						class="cards_pasos_manual cards_pasos_manual_desactivo"
+					>
+						<img
+							width="auto"
+							height="500"
+							class="lazy_loading"
+							src="https://www.viabcp.com/wcm/connect/61a4269b-2aef-4d4b-962c-4ae6ff226a25/6.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-61a4269b-2aef-4d4b-962c-4ae6ff226a25-paxsaLp"
+						/>
+					</div>
+					<div class="cards_pasos_flecha_derecha">
+						<svg
+							width="30"
+							height="30"
+							viewBox="0 0 48 48"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<circle
+								cx="24"
+								cy="24"
+								r="23.5"
+								transform="rotate(-90 24 24)"
+								fill="#FFFFFF"
+								stroke="#95a7bf"
+							></circle>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M16.0024 24.9979L29.5864 24.9979L26.2914 28.2929C25.9004 28.6839 25.9004 29.3159 26.2914 29.7069C26.6824 30.0979 27.3154 30.0979 27.7054 29.7069L32.7054 24.7069C33.0964 24.3159 33.0964 23.6839 32.7054 23.2929L27.7094 18.2929C27.5144 18.0979 27.2584 17.9999 27.0024 17.9999C26.7464 17.9999 26.4904 18.0979 26.2954 18.2929C25.9044 18.6829 25.9044 19.3159 26.2944 19.7069L29.5834 22.9979L16.0024 22.9979C15.4494 22.9979 15.0024 23.4449 15.0024 23.9979C15.0024 24.5509 15.4494 24.9979 16.0024 24.9979Z"
+								fill="#ff7800"
+							></path>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<div class="pasos_desktop_st">
+				<div class="cards_pasos_imagenes">
+					<div
+						class="cards_pasos_flecha_izquierda"
+						style="opacity: 0"
+					>
+						<svg
+							width="30"
+							height="30"
+							viewBox="0 0 48 48"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<circle
+								r="23.5"
+								transform="matrix(-1.19249e-08 -1 -1 1.19249e-08 24 24)"
+								fill="#FFFFFF"
+								stroke="#95a7bf"
+							></circle>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M31.998 24.9979L18.414 24.9979L21.709 28.2929C22.1 28.6839 22.1 29.3159 21.709 29.7069C21.318 30.0979 20.685 30.0979 20.295 29.7069L15.295 24.7069C14.904 24.3159 14.904 23.6839 15.295 23.2929L20.291 18.2929C20.486 18.0979 20.742 17.9999 20.998 17.9999C21.254 17.9999 21.51 18.0979 21.705 18.2929C22.096 18.6829 22.096 19.3159 21.706 19.7069L18.417 22.9979L31.998 22.9979C32.551 22.9979 32.998 23.4449 32.998 23.9979C32.998 24.5509 32.551 24.9979 31.998 24.9979Z"
+								fill="#ff7800"
+							></path>
+						</svg>
+					</div>
+					<div class="cards_pasos_manual cards_pasos_manual_activo">
+						<img width="auto" src="/wcm/myconnect/00944139-4031-4c9e-ab65-732e1054f386/Paso+1.png?MOD=AJPERES&amp;CVID=pOQlAIm" class="lazy_loading" />
+					</div>
+					<div
+						class="cards_pasos_manual cards_pasos_manual_desactivo"
+					>
+						<img width="auto" src="/wcm/myconnect/e00463fe-ab0b-4b54-a76e-d391433dbdfb/Paso+3.png?MOD=AJPERES&amp;CVID=pOQlAIm" class="lazy_loading" />
+					</div>
+					<div
+						class="cards_pasos_manual cards_pasos_manual_desactivo"
+					>
+						<img width="auto" src="/wcm/myconnect/4a537bfc-4d28-4abb-9be7-ffe8261cb38f/Paso+4.png?MOD=AJPERES&amp;CVID=pOQlAIm" class="lazy_loading" />
+					</div>
+					<div
+						class="cards_pasos_manual cards_pasos_manual_desactivo"
+					>
+						<img width="auto" src="/wcm/myconnect/b82f40bb-3720-438e-9c48-62baf92f4664/04.png?MOD=AJPERES&amp;CVID=pOQlAIm" class="lazy_loading" />
+					</div>
+					<div class="cards_pasos_flecha_derecha">
+						<svg
+							width="30"
+							height="30"
+							viewBox="0 0 48 48"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<circle
+								cx="24"
+								cy="24"
+								r="23.5"
+								transform="rotate(-90 24 24)"
+								fill="#FFFFFF"
+								stroke="#95a7bf"
+							></circle>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M16.0024 24.9979L29.5864 24.9979L26.2914 28.2929C25.9004 28.6839 25.9004 29.3159 26.2914 29.7069C26.6824 30.0979 27.3154 30.0979 27.7054 29.7069L32.7054 24.7069C33.0964 24.3159 33.0964 23.6839 32.7054 23.2929L27.7094 18.2929C27.5144 18.0979 27.2584 17.9999 27.0024 17.9999C26.7464 17.9999 26.4904 18.0979 26.2954 18.2929C25.9044 18.6829 25.9044 19.3159 26.2944 19.7069L29.5834 22.9979L16.0024 22.9979C15.4494 22.9979 15.0024 23.4449 15.0024 23.9979C15.0024 24.5509 15.4494 24.9979 16.0024 24.9979Z"
+								fill="#ff7800"
+							></path>
+						</svg>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div>
+					<div class="st_contenedor_pasos_stepper">
+						<div class="st_pasos_stepper">
+							<span>1</span>
+						</div>
+						<div>
+							<p class="titulo_step">Ingresa tus datos</p>
+							<p class="bajada_step">
+								Bríndanos tu DNI o Carnet de extranjería.
+							</p>
+						</div>
+					</div>
+					<div class="st_contenedor_pasos_stepper">
+						<div class="st_pasos_stepper">
+							<span>2</span>
+						</div>
+						<div>
+							<p class="titulo_step">Revisa y escoge</p>
+							<p class="bajada_step">
+								Elige la mejor tarjeta de crédito preaprobada
+								para ti.
+							</p>
+						</div>
+					</div>
+					<div class="st_contenedor_pasos_stepper">
+						<div class="st_pasos_stepper">
+							<span>3</span>
+						</div>
+						<div>
+							<p class="titulo_step">Recibe tu tarjeta</p>
+							<p class="bajada_step">
+								Selecciona el lugar de recojo y/o envío de tu
+								tarjeta de crédito
+							</p>
+						</div>
+					</div>
+					<div class="st_contenedor_pasos_stepper">
+						<div class="st_pasos_stepper">
+							<span>4</span>
+						</div>
+						<div>
+							<p class="titulo_step">Validaciones</p>
+							<p class="bajada_step">
+								Ingresa el código de validación que llegará en
+								una notificación en tu Banca Móvil.
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="st_contenedor_boton_pasos">
+					<a class="boton_banner_st" onclick="redireccion('pasos')"
+						>Descubrir mi oferta</a
+					>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bcp_clave_pin container">
+		<img src="/wcm/myconnect/a48220a4-f9ff-429a-80a9-07ad93c75574/WhatsApp+Image+2024-11-15+at+4.28.09+PM.jpeg?MOD=AJPERES&amp;CVID=pOQlAIm" alt="" class="d-none-m" />
+		<img src="/wcm/myconnect/01215dae-98c3-4851-a241-e4e89f721215/Banner+Desk-Clave+Pin+3.png?MOD=AJPERES&amp;CVID=pOQlAIm" alt="" class="d-none-d" />
+	</div>
+	<div class="bcp_preguntas_frecuentes container">
+		<div class="bcp_contenedor_acordeon">
+			<div class="bcp_content_titulo">
+				<h2 class="bcp_titulo_principal" data-translate="true">
+					<b>Consultas</b> más frecuentes de nuestros clientes
+				</h2>
+			</div>
+			<div class="bcp_preguntas_respuestas">
+				<div class="bcp_component_preguntas">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(0)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="¿Qué es una Tarjeta de Crédito? "
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">
+									¿Qué es una Tarjeta de Crédito?
+								</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p dir="ltr">
+									<span data-translate="true"
+										>Es un medio de pago que te permite
+										realizar compras o acceder a servicios
+										de manera diferida, es decir, sin tener
+										que pagar de inmediato. Al utilizar una
+										tarjeta de crédito, el BCP te otorga un
+										límite de crédito, que es el monto
+										máximo que puedes gastar. </span
+									><a href="https://www.mitarjetabcp.viabcp.com/login" title="" target=""><span data-translate="true"
+											>Solicita tu Tarjeta de Crédito
+											aquí.</span
+										></a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(1)"
+							role="button"
+							aria-expanded="true"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="¿Cómo acceder a una mejor Tarjeta de Crédito?"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">
+									¿Por qué obtener mi Tarjeta de Crédito por
+									la web?
+								</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p dir="ltr">
+									<span data-translate="true"
+										>Aquí te presentamos algunas razones por
+										las que deberías obtener tu Tarjeta de
+										Crédito por la web:</span
+									>
+								</p>
+								<ol dir="ltr">
+									<li>
+										<span data-translate="true"
+											><b>Rapidez:</b> El proceso toma
+											minutos, no horas.&nbsp;</span
+										>
+									</li>
+									<li>
+										<span data-translate="true"
+											><b>Comodidad:</b> Desde la
+											comodidad de tu hogar, sin visitas a
+											sucursales.</span
+										>
+									</li>
+									<li>
+										<span data-translate="true"
+											><b>Beneficios extra:</b> Acceso a
+											sorteos emocionantes y devolución de
+											dinero en tus compras.&nbsp;</span
+										>
+									</li>
+								</ol>
+								<p dir="ltr">
+									<span data-translate="true"
+										>¡Aprovecha estas ventajas y mejora tu
+										experiencia financiera en línea!</span
+									>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas" style="display: none">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(2)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="50% dto. en entradas Cineplanet"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">
+									50% dto. en entradas Cineplanet
+								</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p dir="ltr">
+									<span data-translate="true"
+										>Promoción válida pagando con Tarjetas
+										American Express del 01/08/2023 al
+										31/12/2023 o hasta agotar stock de
+										códigos, lo que ocurra primero. <br />
+										La promoción consiste en 50% de
+										descuento en entradas 2D, 3D y XTREME y
+										25% de descuento en salas PRIME. <br />
+										Válida a nivel nacional en todos los
+										locales de Cineplanet, para películas
+										exhibidas en salas 2D, 3D, Xtreme y
+										Prime, de lunes a domingo incluyendo
+										feriados. Válida pagando solo con
+										Tarjetas American Express emitidas en el
+										Perú por los bancos autorizados. <br />
+										Válida solo para compras online a través
+										de la página web y aplicación móvil de
+										Cineplanet
+										https://www.cineplanet.com.pe. <br />
+										El precio de las entradas estará en base
+										a tarifas del día y de los
+										establecimientos. Cantidad máxima de
+										entradas permitidas por día que aplican
+										a la promoción: 2 entradas por tarjeta,
+										por día, con 50% de descuento en formato
+										de películas 2D, 3D y Xtreme; y 25% de
+										descuento en formato de películas Prime.
+										<br />
+										Este beneficio no incluye entradas para
+										películas en semana de estreno, en
+										pre-estreno, pre-ventas, contenido
+										alternativo emitido por Cineplanet o el
+										tiempo que indique el distribuidor.
+										<br />
+										No acumulable con otras promociones.
+										<br />
+										No válida para compras presenciales ni
+										boleterías express de Cineplanet. No
+										aplicable a fechas especiales como días
+										del cine (Festiplanet), películas de
+										corte independiente mostradas en el
+										festival de cine y / u otra fecha
+										promocional que implemente como
+										estrategia comercial Cineplanet. <br />
+										American Express no se responsabiliza
+										por los productos y/o servicios
+										ofrecidos por los establecimientos.
+										American Express es una marca de
+										American Express. Se reserva el derecho
+										a modificar esta oferta en cualquier
+										momento. Las tarjetas son emitidas por
+										el Banco Interbank y el Banco de Crédito
+										BCP bajo licencia de American Express.
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas" style="display: none">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(3)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="50% dto. en entradas Cineplanet"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">
+									Bono Millas + Beneficios LATAM Pass
+								</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<div class="beneficios_TCRINF">
+									<h3 dir="ltr">
+										<span data-translate="true"
+											>Beneficios LATAM Pass exclusivos
+											para clientes Infinite:</span
+										>
+									</h3>
+									<p dir="ltr">
+										<span data-translate="true">
+											-
+											<b
+												>Upgrade de cabina con tramos de
+												cortesía:</b
+											>
+											Le otorgamos 4 tramos de
+											cortesía para postular a un upgrade
+											en vuelos dentro de Sudamérica.
+											<br />
+											-
+											<b
+												>Upgrade de cabina con
+												cupones:</b
+											>
+											Le otorgamos 2 tramos de
+											cortesía para postular a un upgrade
+											en vuelos fuera de Sudamérica.
+											<br />
+											-
+											<b
+												>Check-in preferente para el
+												titular de la categoría:</b
+											>
+											En vuelos nacionales e
+											internacionales en LATAM. Incluye
+											viajes en clase Economy en rutas
+											donde esté disponible, mostrando la
+											tarjeta de socio Gold. <br />
+											-
+											<b
+												>Check-in preferente para un
+												acompañante de viaje:</b
+											>
+											Su acompañante podrá hacer check-in
+											preferente en vuelos nacionales e
+											internacionales LATAM. Incluye
+											viajes en clase Economy en rutas
+											donde esté disponible. <br />
+											- <b>Equipaje adicional:</b> Podrá
+											llevar hasta una maleta adicional de
+											hasta 23 kg permitido en bodega por
+											ruta de viaje en vuelos nacionales e
+											internacionales operados por LATAM.
+											<br />
+											- <b>Priority Pass:</b> Accede a más
+											de 1300 Salas VIP* en más de 600
+											ciudades de 148 países.
+										</span>
+									</p>
+								</div>
+								<div class="beneficios_TCRPL1">
+									<h3 dir="ltr">
+										<span data-translate="true"
+											>Beneficios LATAM Pass exclusivos
+											para clientes Signature:</span
+										>
+									</h3>
+									<p dir="ltr">
+										<span data-translate="true">
+											- <b>Check-in preferente:</b> Para
+											el titular de la tarjeta en vuelos
+											internacionales vendidos y operados
+											por LATAM Airlines en el counter de
+											clase ejecutiva de LATAM del
+											aeropuerto de Lima mostrando su
+											Tarjeta de Crédito Visa Signature
+											LATAM Pass BCP<br />
+											-
+											<b
+												>Upgrade de cabina con
+												cupones:</b
+											>
+											Se le otorga una cantidad de tramos
+											de cortesía por única vez para
+											postular a un upgrade en vuelos
+											dentro de Sudamérica y otra cantidad
+											de tramos de cortesía distinta para
+											postular a un upgrade en vuelos
+											fuera de Sudamérica.(Dentro de
+											Sudamérica: 2 tramos de cortesía.
+											Fuera de Sudamérica: 1 tramo de
+											cortesía.)<br />
+											- <b>Priority Pass:</b> Accede a más
+											de 1300 Salas VIP* en más de 600
+											ciudades de 148 países.
+										</span>
+									</p>
+								</div>
+								<div class="beneficios_AMXGRE">
+									<h3 dir="ltr">
+										<span data-translate="true"
+											>Beneficios LATAM Pass exclusivos
+											para clientes Black:</span
+										>
+									</h3>
+									<p dir="ltr">
+										<span data-translate="true">
+											- <b>Check-in preferente:</b> Para
+											el titular de la tarjeta en vuelos
+											internacionales vendidos y operados
+											por LATAM Airlines en el counter de
+											clase ejecutiva de LATAM del
+											aeropuerto de Lima mostrando su
+											Tarjeta de Crédito Amex Black LATAM
+											Pass BCP.<br />
+											-
+											<b
+												>2 cupones para Upgrade de
+												cabina:</b
+											>
+											Viaja en Premium Business o Premium
+											Economy durante el primer año de
+											obtenida la tarjeta.<br />
+											- <b>Priority Pass:</b> Accede a más
+											de 1300 Salas VIP* en más de 600
+											ciudades de 148 países.
+										</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas" style="display: none">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(4)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="50% dto. en entradas Cineplanet"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">Megasocios</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p dir="ltr">
+									<span data-translate="true">
+										Promoción válida del 01/01/2025 al
+										31/01/2025. Aplica para cliente
+										invitados a esta campaña. Tarjetas
+										sujetas a evaluación crediticia. El
+										cliente debe estar laborando al momento
+										de solicitar la tarjeta. No aplica para
+										clientes que hayan cancelado su tarjeta
+										de crédito dentro de los últimos 6
+										meses. No se acumula con otras
+										promociones de millas adicionales.
+										<br />
+										El bono de bienvenida regular aplica si
+										cumples los consumos meta hasta dentro
+										de los 90 días posteriores a la
+										aprobación de tu tarjeta y el bono
+										adicional aplican si cumples los
+										consumos meta hasta dentro de los 60
+										días posteriores a la aprobación de tu
+										tarjeta y serán abonados a la cuenta
+										LATAM Pass como máximo el 31/05/2025.
+										Las tarjetas adicionales, upgrades,
+										renovaciones o reposiciones no aplican
+										al bono de bienvenida ni adicional.
+										<br />
+										El Bono Regular de Millas de Bienvenida
+										asciende a: VISA Platinum LATAM Pass o
+										AMEX Platinum LATAM Pass: 3,000 millas,
+										VISA Signature LATAM Pass o AMEX Black
+										LATAM Pass: 6,000 millas, VISA Sapphire
+										LATAM Pass: 10,000 millas y VISA Iridium
+										LATAM Pass: 15,000 millas. <br />
+										El consumo mínimo para acceder al Bono
+										Regular de Millas de Bienvenida será de:
+										VISA Platinum LATAM Pass o AMEX Platinum
+										LATAM Pass: S/ 1,000, donde el consumo
+										deberá ser realizado dentro de los
+										primeros 45 días posteriores a la
+										aprobación de la tarjeta. Para la VISA
+										Signature LATAM Pass o AMEX Black LATAM
+										Pass: S/ 5,0000. Para la VISA Sapphire
+										LATAM Pass: S/ 8,000 y VISA Iridium
+										LATAM Pass: S/ 10,000. El consumo deberá
+										ser realizado dentro de los primeros 90
+										días posteriores a la aprobación de la
+										tarjeta. <br />
+										Bono Adicional: El Bono Regular de
+										Millas de Bienvenida puede incrementar
+										en: VISA Clásica LATAM Pass o AMEX
+										Clásica LATAM Pass: 1,000 millas
+										adicionales, VISA Oro LATAM Pass 0 AMEX
+										Oro LATAM Pass: 2,000 millas
+										adicionales, VISA Platinum LATAM Pass o
+										AMEX Platinum LATAM Pass: 5,000 millas
+										adicionales, VISA Signature LATAM Pass o
+										AMEX Black LATAM Pass: 8,000 millas
+										adicionales, VISA Sapphire LATAM Pass:
+										10,000 millas adicionales y VISA lridium
+										LATAM Pass: 12,000 millas adicionales.
+										Este bono adicional aplica al realizar
+										un consumo adicional dentro de los
+										primeros 60 días posteriores a la
+										aprobación de la tarjeta de: VISA
+										Clásica LATAM Pass o AMEX Clásica: S/
+										900, VISA Oro LATAM Pass O AMEX Oro
+										LATAN Pass: S/ 1,500, VISA Platinum
+										LATAM Pass O AMEX Platinum LATAM Pass:
+										S/ 2,500, VISA Signature LATAM Pass o
+										AMEX Black LATAM Pass: S/ 5,000, VISA
+										Sapphire LATAM Pass: S/ 7,000 y VISA
+										Iridium LATAM Pass: S/9,000<br />
+										No suman a la meta de consumo para el
+										bono de bienvenida regular ni para el
+										bono adicional, las disposiciones de
+										efectivo, traslados de deuda, préstamo
+										tarjetero, consumos en casinos, pagos de
+										servicios realizados en viabcp .com o
+										App Banca Móvil del BCP, débitos
+										automáticos, pago de tributos ni
+										servicios legales. <br />
+										La acumulación de Millas LATAM Pass
+										aplica sobre cualquier uso de la tarjeta
+										de crédito en POS físico o virtual. No
+										Aplica: disposiciones en efectivo,
+										traslado de deuda, préstamo tarjetero,
+										consumos en casinos, pagos de servicios
+										realizados en viabcp.com o App Banca
+										Móvil del BCP, débitos automáticos,
+										pagos de tributos y servicios
+										legales.<br />
+										Los beneficios de las Tarjetas de
+										crédito BCP LATAM Pass no son
+										acumulables a los entregados por las
+										categorías Elite LATAM Pass y otras
+										Tarjetas de crédito BCP LATAM Pass.
+										<br />
+										Los temas relacionados con el servicio
+										de transporte de LATAM, así como la
+										operatividad del programa LATAM Pass,
+										son de responsabilidad de LATAM. La
+										acumulación, canje, uso y demás
+										condiciones aplicables a las Millas
+										LATAM Pass se rigen bajo el reglamento
+										de LATAM Pass publicado
+										en www.latam.com/es_pe/latam-pass/.
+										<br />
+										Para la fecha de la acreditación de las
+										millas, la Tarjeta de Crédito debe
+										mantenerse activa, caso contrario se
+										perderá el beneficio y por tanto no se
+										abonarán las millas. Para más
+										información sobre la promoción y/o
+										restricciones llama a nuestra Banca por
+										Teléfono al 311- 9898.
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas" style="display: none">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(5)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="50% dto. en entradas Cineplanet"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">
+									Visa Digital Concierge
+								</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p dir="ltr">
+									<span data-translate="true">
+										¿Necesitas reservar una mesa en el
+										restaurante favorito de tu ciudad de
+										domicilio o en el destino donde estés
+										viajando? ¿Quieres realizar el viaje de
+										tus sueños? ¿Necesitas boletos para ese
+										evento especial? Visa Concierge te ayuda
+										con todo esto y más. <br /><br />
+										<b>Viajes</b> <br />
+										Recomendaciones y reservaciones de
+										vuelos<br />
+										Recomendaciones y reservaciones de
+										hoteles<br />
+										Recomendaciones y reservaciones de
+										cruceros y excusiones, paseos y tours<br />
+										Reservas y arreglos para alquilar
+										vehículos (incluyendo automóviles de
+										lujo), helicópteros y yates<br /><br />
+										<b>Entretenimiento y experiencias</b>
+										<br />
+										Recomendaciones y reservaciones para
+										teatros, ópera, ballet, conciertos,
+										museos y otras actividades y eventos
+										culturales y deportivos<br />
+										Recomendaciones y reservaciones en
+										restaurantes<br />
+										Información y reservas para disfrutar de
+										la vida nocturna<br />
+										Excursiones y visitas a lugares de
+										interés<br />
+										Recomendaciones, horarios y reservas de
+										canchas de tenis, campos de golf,
+										gimnasios y clubes deportivos<br />
+										Información sobre los deportes
+										especiales que se pueden practicar en el
+										destino donde te encuentres disfrutando
+										el viaje de tus sueños<br /><br />
+										<b>Servicios especiales</b> <br />
+										Recomendación y reserva de salones de
+										conferencias en hoteles o centros
+										ejecutivos<br />
+										Recomendación de intérpretes y
+										traductores<br />
+										Alquiler de equipos (computadores,
+										teléfonos celulares, etc.)<br />
+										Información sobre reglas de etiqueta y
+										protocolo<br />
+										Referencias para obtener servicios de
+										apoyo y seguridad<br />
+										Referencias para obtener asesoría
+										jurídica<br /><br />
+										<b>Regalos y compras</b> <br />
+										Sugerencias e ideas para regalos<br />
+										Envío de arreglos florales, globos,
+										canastas y paquetes de regalo<br />
+										Localización de artículos difíciles de
+										encontrar (dentro de lo posible)<br />
+										Información sobre los mejores lugares
+										para comprar<br />
+										Asistencia con compras personales<br />
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas" style="display: none">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(6)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="50% dto. en entradas Cineplanet"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">
+									Maleta gratis - Visa Infinite Iridium
+								</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p dir="ltr">
+									<span data-translate="true">
+										Se otorga únicamente 2 traslados gratis
+										por año calendario desde o hacia el
+										aeropuerto internacional Jorge
+										Chávez(Lima)<br />
+										El beneficio se renueva todos los años,
+										sin embargo, no es acumulable, es decir,
+										si el cliente no utiliza el beneficio en
+										el transcurso del año, los pierde <br />
+										Válido únicamente para el titular de la
+										Tarjeta de Crédito Visa Infinite
+										Iridium.<br />
+										No aplica para TCs adicionales<br />
+										Servicio ofrecido a través de Taxi
+										Directo considerando las siguientes
+										condiciones:<br /><br />
+										- Tarifa Lite / Modelos de autos: sedan
+										<br />
+										- Capacidad de pasajeros: 4 personas
+										Capacidad de equipaje: 2 Maletas + 1
+										carry on <br />
+										<br />
+										- Cobertura máxima de S/70. Cualquier
+										costo adicional debe ser asumido por el
+										cliente<br />
+										Beneficio sujeto a stock y/o
+										disponibilidad
+									</span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas" style="display: none">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(7)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="50% dto. en entradas Cineplanet"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">¿Qué es Qore?</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p dir="ltr">
+									<span data-translate="true"
+										>Es el programa de beneficios del BCP,
+										donde accedes a experiencias, beneficios
+										y descuentos exclusivos. Además, puedes
+										acumular puntos para canjearlos en
+										comercios aliados, que te ofrecen las
+										mejores experiencias. Para acumular
+										puntos, es indispensable contar con una
+										Tarjeta de Crédito Visa BCP Qore.​</span
+									>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bcp_component_preguntas">
+					<div class="accordion-wrap">
+						<button
+							tabindex="0"
+							onclick="clicFQ(8)"
+							role="button"
+							aria-expanded="false"
+							class="accordion-item acordeon-header-pregunta"
+							aria-label="50% dto. en entradas Cineplanet"
+							style="width: 100%; border: unset"
+						>
+							<div class="accordion-header">
+								<h3 data-translate="true">
+									Entradas al Concierto de los Hermanos Yaipén
+									- Agosto 2025
+								</h3>
+								<div class="content_icon">
+									<svg
+										class="icon bcp-angle-down-f"
+										width="24"
+										height="24"
+										viewBox="0 0 24 24"
+										fill="none"
+										xmlns="http://www.w3.org/2000/svg"
+									>
+										<path
+											d="M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z"
+											fill="#606C7F"
+										></path>
+									</svg>
+								</div>
+							</div>
+						</button>
+
+						<div
+							class="accordion-text bcp_texto_enriquecido_formateado"
+							tabindex="0"
+							style="box-sizing: border-box"
+						>
+							<div class="acordeon-header-respuesta">
+								<p><b>1. Vigencia y ambito</b></p>
+								<p>
+									La presente promoción es válida a nivel
+									nacional desde el 295 de agosto de 2025
+									hasta el 07 de setiembre de 2025, inclusive.
+									Es organizada por el Banco de Crédito del
+									Perú (BCP) y se dirige a personas naturales
+									que cumplan con las condiciones establecidas
+									en los presentes términos y condiciones
+								</p>
+								<p><b> 2. Requisitos de participación</b></p>
+								<p>
+									Podrán participar automáticamente en el
+									sorteo todas las personas naturales mayores
+									de edad que, durante la vigencia de la
+									promoción:
+								</p>
+								<ol>
+									<li>
+										Adquieran una Tarjeta de Crédito Visa
+										BCP a través de la web ViaBCP en
+										cualquiera de sus modalidades señaladas
+										en el numeral 4 de los Términos y
+										Condiciones.
+									</li>
+									<li>
+										Hayan recibido una comunicación
+										informando sobre la promoción a través
+										de los canales oficiales del BCP de
+										medios pagados (Google Ads y Meta Ads
+										(redes sociales)).
+									</li>
+								</ol>
+								<p><b>3. Datos del concierto:</b></p>
+								<ol>
+									<li>
+										Evento: Concierto por los 25 años de los
+										Hermanos Yaipén
+									</li>
+									<li>Fecha: 20 de setiembre de 2025</li>
+									<li>Lugar: Explanada Plaza Norte</li>
+								</ol>
+								<p><b>4. Premios</b></p>
+								<p>
+									Se sortearán un total de 25 entradas dobles,
+									distribuidas de la siguiente manera:
+								</p>
+								<p>Entradas VIP y Entradas Regulares</p>
+								<ol>
+									<li>
+										Cantidad: 5 entradas dobles en Zona VIP
+										y 20 entradas dobles en Zona Regular
+									</li>
+									<li>
+										Participantes: Clientes que adquieran
+										una Tarjeta de Crédito Visa BCP (Visa
+										Light, Visa Clásica LATAM Pass, Visa Oro
+										LATAM Pass, Visa Platinum LATAM Pass,
+										Visa Signature LATAM Pass, Visa Infinite
+										LATAM Pass, Visa Infinite Sapphire LATAM
+										Pass o Visa Infinite Iridium LATAM
+										Pass), o una Tarjeta de Crédito Visa
+										Qore, Visa Signature Qore o Visa
+										Infinity Qore dentro de la vigencia de
+										la campaña.
+									</li>
+								</ol>
+								<p><b>5. Exclusiones</b></p>
+								<p>
+									Quedan expresamente excluidas de la
+									promoción:
+								</p>
+								<ol>
+									<li>Las tarjetas de débito BCP.</li>
+									<li>
+										Las tarjetas de crédito empresariales.
+									</li>
+									<li>
+										Las tarjetas de crédito de la marca Izi.
+									</li>
+									<li>
+										Las tarjetas de crédito de la marca IO.
+									</li>
+									<li>
+										Las tarjetas de crédito de la marca Visa
+										BCP distintas a las señaladas en el
+										numeral 4.
+									</li>
+								</ol>
+								<p><b>6. Fecha y modalidad del sorteo:</b></p>
+								<p>
+									El sorteo se realizará el 16 de setiembre de
+									2025, ante notario público o fedatario
+									designado por el BCP.
+								</p>
+								<p><b>7. Entrega de premios:</b></p>
+								<ol>
+									<li>
+										Las entradas serán entregadas entre el
+										17 y el 18 de setiembre de 2025.
+									</li>
+									<li>
+										Los ganadores recibirán sus entradas vía
+										correo electrónico en la dirección
+										registrada en el BCP.
+									</li>
+								</ol>
+								<p><b> 8. Otras condiciones</b></p>
+								<p>
+									El BCP podrá, previa comunicación a los
+									clientes y sin asumir responsabilidad
+									alguna, modificar los términos de la
+									presente promoción en la medida que ello no
+									afecte su naturaleza esencial. Cualquier
+									modificación que derive de un mandato legal,
+									disposición de autoridad competente o
+									normativa aplicable se entenderá
+									automáticamente incorporada. Los
+									participantes autorizan al BCP a publicar,
+									en caso resulten ganadores, sus datos
+									personales a través de su página web y demás
+									canales oficiales, con el propósito de hacer
+									públicos los resultados. Los datos
+									personales que serán publicados son aquellos
+									proporcionados por el Participante para
+									participar en la Promoción. Para mayor
+									información sobre la promoción y
+									restricciones, los participantes pueden
+									comunicarse gratuitamente con Banca por
+									Teléfono al (01) 311-9898 o ingresar a
+									www.viabcp.com.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bcp_boton_fixed_st">
+		<div class="container">
+			<div class="row hidden-xs bcp_flex_solicitala_st vista_desktop">
+				<div class="col-sm-12 bcp_grupo_img_texto">
+					<div class="bcp_imagen">
+						<img
+							class=""
+							data-src="/wcm/connect/5b7f4c66-9156-4f34-b259-2782b958037d/tarjetas.svg?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-5b7f4c66-9156-4f34-b259-2782b958037d-oxYL9Cm"
+							alt="Adquiere hoy tu Tarjeta de Crédito BCP"
+							src="/wcm/connect/5b7f4c66-9156-4f34-b259-2782b958037d/tarjetas.svg?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-5b7f4c66-9156-4f34-b259-2782b958037d-oxYL9Cm"
+						/>
+					</div>
+					<div class="bcp_descripcion">
+						<p dir="ltr" data-translate="true">
+							Obtén tu tarjeta de crédito BCP por nuestra web y
+							recíbela en tu casa.
+						</p>
+					</div>
+				</div>
+				<div class="col-sm-4 bcp_boton">
+					<a role="link" onclick="redireccion('fixed')">
+						<div
+							class="bcp_btn_solicita bcp_boton_naranja medium"
+							data-translate="true"
+						>
+							Descubrir mi oferta
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="row visible-xs bcp_flex_solicitala vista_mobile">
+				<div class="col-xs-17">
+					<a onclick="redireccion('fixed')" role="link">
+						<div
+							class="bcp_btn_solicita bcp_boton_azul_fixed_mobile"
+							tipo_enlace="Pagina_Interna"
+							enlace="https://www.mitarjetabcp.viabcp.com/login"
+							style="
+								background: #ff7800;
+								border-radius: 23px;
+								width: 95% !important;
+								margin: 10px auto !important;
+							"
+						>
+							Pídela aquí
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	[Component name="plantillas de presentacion
+	(ux-frontend)/codigohtml-componentes-presentacionenlista/microcomponentes/microcomp.referenciaformulariowebcomponent"]
+	<form-captcha
+		datacallback="fnRegistrarLatamPass"
+		id="recaptchalatam"
+		style="display: none"
+	></form-captcha>
+</section>
+<script
+	type="text/javascript"
+	async=""
+	src="https://www.gstatic.com/recaptcha/releases/1kRDYC3bfA-o6-tsWzIBvp7k/recaptcha__es_419.js"
+	crossorigin="anonymous"
+	integrity="sha384-c9XowJ1lb1g1NPrQ7UrLzKtjjRNRlpSWpOU7fWXUzfaqCWZWRPcR+K5pvV7tUiOs"
+></script>
+<script>
+	let tipoUsuario = "nolead";
+	let obtenerUrl = window.location.href;
+	var montoRegalona = "50";
+	var randomRecojo = Math.random();
+	let tipoConsumo = "";
+	let tipotarjeta = "";
+	let expbene = "control";
+	if (obtenerUrl.includes("preprod") && !sessionStorage.getItem("stiubt")) {
+		sessionStorage.setItem(
+			"stiubt",
+			'["C6",1, "CON", "-", "N", "CARDS", "TCRORL", "1era", "D", "0"]'
+		);
+		sessionStorage.setItem("stidpc", "10738496");
+		sessionStorage.setItem("stidpchs", "8e9be06d576d4484bb01c098233d8498");
+	}
+	if (
+		obtenerUrl.includes("mboxEdit") ||
+		sessionStorage.getItem("adobeMetrics.instanceId")
+	) {
+		sessionStorage.setItem(
+			"stiubt",
+			'["C6",1, "CON", "-", "N", "CARDS", "TCRORL", "1era", "D", "0"]'
+		);
+	}
+	function loadPageDescubreTuOferta(info) {
+		const elementoPadre = document.querySelector(
+			".header_sin_acceso header .container"
+		);
+		tipotarjeta = info[6];
+		tipoConsumo = info[2];
+
+		if (!getCookie("politica_privacidad_escenciales")) {
+			document
+				.querySelector(".cintillo_cookies")
+				.removeAttribute("style");
+			document
+				.querySelector(".bcp_modal_dialog_politica .bcp_boton_naranja")
+				.addEventListener("click", function () {
+					document
+						.querySelector(".cintillo_cookies")
+						.setAttribute("style", "display: none");
+				});
+		}
+
+		var tarjetaSelect = arrTCChange(info[6]);
+
+		/*if(sessionStorage.getItem("ebmpx") == 'p' && info[2].includes('BEX') && !tipotarjeta.includes('TCRINF')) {
+            //taggeoSolicitarTC('Exp BMO - 180324', 'piloto')
+            var header = document.querySelector('.header_sin_acceso header');
+            header.setAttribute('style', 'background-color: #001F5A')
+            header.querySelector('.bcp_opciones').setAttribute('style', 'justify-content: flex-start; color: #fff;')
+            header.querySelector('img').src = 'https://www.viabcp.com/wcm/connect/c73d6c4d-0631-478a-9b75-30582912ad25/Frame.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c73d6c4d-0631-478a-9b75-30582912ad25-oEzCTbH&cache=none'
+            var p_banca_exclusiva = document.createElement('p')
+            p_banca_exclusiva.innerHTML = 'Banca Exclusiva'
+            p_banca_exclusiva.className = 'p_banca_exclusiva'
+            document.querySelector('.bcp_opciones').append(p_banca_exclusiva)
+        } */
+		if (sessionStorage.getItem("expbene") == "p") {
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[0]
+				.querySelector(".titulo_beneficio")
+				.classList.add("p");
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[1]
+				.querySelector(".titulo_beneficio")
+				.classList.add("p");
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[2]
+				.querySelector(".titulo_beneficio")
+				.classList.add("p");
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[3]
+				.querySelector(".titulo_beneficio")
+				.classList.add("p");
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[0]
+				.querySelector(".logo_beneficio_st")
+				.classList.add("p");
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[1]
+				.querySelector(".logo_beneficio_st")
+				.classList.add("p");
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[2]
+				.querySelector(".logo_beneficio_st")
+				.classList.add("p");
+			document
+				.querySelectorAll(
+					".contenedor_beneficios_descubre_oferta .contenedor_beneficio_tc_st"
+				)[3]
+				.querySelector(".logo_beneficio_st")
+				.classList.add("p");
+			taggeoSolicitarTC("Exp Beneficios - 220324", "piloto");
+			expbene = "piloto";
+		} else if (sessionStorage.getItem("expbene") == "c") {
+			taggeoSolicitarTC("Exp Beneficios - 220324", "control");
+		}
+
+		if (info[6] !== "GENERI") {
+			tipoUsuario = "lead";
+			document.querySelector(".text_info_tc h2").innerHTML =
+				arrayTC(tarjetaSelect).name;
+			document.querySelector(".text_info_tc p").innerHTML =
+				arrayTC(tarjetaSelect).bajada;
+			document
+				.querySelector(".contenedor_flex_banner .contenedor_img")
+				.classList.remove("nolead");
+			document.querySelector(
+				".contenedor_flex_banner .contenedor_img img"
+			).src = arrayTC(tarjetaSelect).img;
+			document
+				.querySelector(".st_banner_descubre_tu_oferta")
+				.classList.add(arrayTC(tarjetaSelect).clase);
+			document.querySelector(".text_info_tc .boton_banner_st").innerHTML =
+				"Pídela aquí";
+			document.querySelector(
+				".st_pasos_tutorial_descubre_tu_oferta .boton_banner_st"
+			).innerHTML = "Pídela aquí";
+			document.querySelector(
+				".vista_desktop .bcp_btn_solicita.bcp_boton_naranja "
+			).innerText = "Pídela aquí";
+			document.querySelector(
+				".bcp_btn_solicita.bcp_boton_azul_fixed_mobile"
+			).innerText = "Pídela aquí";
+			document.querySelector(
+				".contenedor_boton_banner .boton_banner_st"
+			).innerText = "Pídela aquí";
+
+			document
+				.querySelectorAll(".st_beneficios_descubre_tu_oferta")[0]
+				.removeAttribute("style");
+			document
+				.querySelectorAll(".st_beneficios_descubre_tu_oferta")[1]
+				.setAttribute("style", "display: none");
+			var tipBeneficio = "N";
+			if (info[3] != "-") {
+				//tipBeneficio = info[3]
+			}
+			if (info[3] == "MEG") {
+				tipBeneficio = info[3];
+				document
+					.querySelectorAll(".bcp_component_preguntas")[4]
+					.removeAttribute("style");
+			}
+			document
+				.querySelectorAll(".contenedor_beneficio_tc_st")
+				.forEach(function (contenedor, i) {
+					if (
+						arrayTC(tarjetaSelect).beneficios[tipBeneficio].length >
+						i
+					) {
+						contenedor.querySelector(
+							".titulo_beneficio"
+						).innerHTML =
+							arrayTC(tarjetaSelect).beneficios[tipBeneficio][
+								i
+							].tituloM;
+						contenedor.querySelector(
+							".titulo_beneficio.desktop"
+						).innerHTML =
+							arrayTC(tarjetaSelect).beneficios[tipBeneficio][
+								i
+							].tituloD;
+						contenedor.querySelector(
+							".contenedor_beneficio_tc_st .bajada_beneficio"
+						).innerHTML =
+							arrayTC(tarjetaSelect).beneficios[tipBeneficio][
+								i
+							].bajada;
+						contenedor.querySelector("img").src =
+							arrayTC(tarjetaSelect).beneficios[tipBeneficio][
+								i
+							].img;
+					} else {
+						document
+							.querySelectorAll(".contenedor_beneficio_tc_st")[3]
+							.setAttribute("style", "display:none");
+					}
+				});
+			if (
+				tarjetaSelect.includes("TCRPL1") ||
+				tarjetaSelect.includes("TCRBA7") ||
+				tarjetaSelect.includes("TCRINF") ||
+				tarjetaSelect.includes("AMXGRE")
+			) {
+				//document.querySelector('.cintillo_delivery').removeAttribute('style');
+				document
+					.querySelector("#beneficios_latam")
+					.removeAttribute("style");
+				var tarjetaTOP = "Visa Signature LATAM Pass";
+				if (tarjetaSelect.includes("TCRINF")) {
+					tarjetaTOP = "Visa Infinite Iridium LATAM Pass";
+					document
+						.querySelectorAll(".bcp_component_preguntas")[6]
+						.removeAttribute("style");
+					document
+						.querySelectorAll(
+							"#beneficios_latam .contenedor_beneficio_latam"
+						)[3]
+						.removeAttribute("style");
+				} else if (tarjetaSelect.includes("AMXGRE")) {
+					tarjetaTOP = "American Express Black LATAM Pass";
+				} else if (tarjetaSelect.includes("TCRBA7")) {
+					document
+						.querySelector(
+							".contenedor_info_banner .contenedor_img img"
+						)
+						.setAttribute("style", "height:349px; width:auto");
+					tarjetaTOP = "Visa Infinite Sapphire LATAM Pass";
+					document
+						.querySelectorAll(".bcp_component_preguntas")[7]
+						.removeAttribute("style");
+				}
+				//document.querySelector('.cintillo_delivery p').innerHTML = '¡Pide hoy tu Tarjeta de Crédito ' + tarjetaTOP + ' y recíbela mañana!'
+			} else {
+				//document.querySelector('.cintillo_delivery').removeAttribute('style');
+				//document.querySelector('.cintillo_delivery p').innerHTML = 'Ahora recibe tu tarjeta de crédito a partir de 2 días hábiles a tu casa u oficina (Exclusivo Lima y Callao)'
+			}
+			if (
+				tarjetaSelect == "TCRPLL" ||
+				tarjetaSelect == "TCRPL1" ||
+				tarjetaSelect == "TCRINF" ||
+				tarjetaSelect == "AMXPLL" ||
+				tarjetaSelect == "AMXGRE"
+			) {
+				document
+					.querySelectorAll(".bcp_component_preguntas")[3]
+					.removeAttribute("style");
+			}
+			if (info[9] === "1") {
+				document
+					.querySelector(".cintillo_tcd")
+					.removeAttribute("style");
+				//document.querySelector('.cintillo_delivery').setAttribute('style', 'display:none')
+				document.querySelector(".text_info_tc p").innerHTML =
+					arrayTC(tarjetaSelect).bajadaTCD;
+			}
+			taggeoSolicitarTC(
+				"Carga landing",
+				"lead - " + tipBeneficio + " - " + info[6]
+			);
+		} else {
+			taggeoSolicitarTC("Carga landing", "sinlead");
+		}
+		pasos_adquisicion_tc();
+		if (document.querySelector("#inscripcionLatam")) {
+			if (sessionStorage.getItem("stidpc")) {
+				document
+					.querySelector("#inscripcionLatam")
+					.removeAttribute("style");
+			} else {
+				document
+					.querySelector("#inscripcionLatam")
+					.setAttribute("style", "display:none");
+			}
+		}
+	}
+
+	function pasos_adquisicion_tc() {
+		const cards_pasos_flecha_izquierda = document.querySelectorAll(
+			".cards_pasos_flecha_izquierda"
+		);
+		const cards_pasos_flecha_derecha = document.querySelectorAll(
+			".cards_pasos_flecha_derecha"
+		);
+		const cards_pasos_desktop_manual = document.querySelectorAll(
+			".pasos_desktop_st .cards_pasos_manual"
+		);
+		const cards_pasos_mobile_manual = document.querySelectorAll(
+			".pasos_mobile_st .cards_pasos_manual"
+		);
+
+		let contadorDePasos = 0;
+
+		cards_pasos_flecha_derecha.forEach(function (flecha) {
+			flecha.addEventListener("click", () => {
+				contadorDePasos += 1;
+				if (contadorDePasos > 3) {
+					contadorDePasos = 3;
+					cards_pasos_flecha_derecha[0].setAttribute(
+						"style",
+						"opacity: 0"
+					);
+					cards_pasos_flecha_izquierda[0].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_derecha[1].setAttribute(
+						"style",
+						"opacity: 0"
+					);
+					cards_pasos_flecha_izquierda[1].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+				} else {
+					cards_pasos_flecha_izquierda[0].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_derecha[0].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_izquierda[1].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_derecha[1].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					if (contadorDePasos == 3) {
+						cards_pasos_flecha_derecha[0].setAttribute(
+							"style",
+							"opacity: 0"
+						);
+						cards_pasos_flecha_derecha[1].setAttribute(
+							"style",
+							"opacity: 0"
+						);
+					}
+					cambioDePasos(contadorDePasos, cards_pasos_desktop_manual);
+					cambioDePasos(contadorDePasos, cards_pasos_mobile_manual);
+				}
+			});
+		});
+
+		cards_pasos_flecha_izquierda.forEach(function (flecha) {
+			flecha.addEventListener("click", () => {
+				contadorDePasos -= 1;
+				if (contadorDePasos < 0) {
+					contadorDePasos = 0;
+					cards_pasos_flecha_izquierda[0].setAttribute(
+						"style",
+						"opacity: 0"
+					);
+					cards_pasos_flecha_derecha[0].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_izquierda[1].setAttribute(
+						"style",
+						"opacity: 0"
+					);
+					cards_pasos_flecha_derecha[1].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+				} else {
+					cards_pasos_flecha_izquierda[0].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_derecha[0].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_izquierda[1].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					cards_pasos_flecha_derecha[1].setAttribute(
+						"style",
+						"opacity: 1"
+					);
+					if (contadorDePasos == 0) {
+						cards_pasos_flecha_izquierda[0].setAttribute(
+							"style",
+							"opacity: 0"
+						);
+						cards_pasos_flecha_izquierda[1].setAttribute(
+							"style",
+							"opacity: 0"
+						);
+					}
+					cambioDePasos(contadorDePasos, cards_pasos_desktop_manual);
+					cambioDePasos(contadorDePasos, cards_pasos_mobile_manual);
+				}
+			});
+		});
+	}
+
+	function cambioDePasos(contadorDePasos, cards_pasos_manual) {
+		cards_pasos_manual.forEach((textStep, index) => {
+			if (index == contadorDePasos) {
+				cards_pasos_manual[index].classList.replace(
+					"cards_pasos_manual_desactivo",
+					"cards_pasos_manual_activo"
+				);
+			} else {
+				cards_pasos_manual[index].classList.replace(
+					"cards_pasos_manual_activo",
+					"cards_pasos_manual_desactivo"
+				);
+			}
+		});
+	}
+
+	function clicFQ(id, tyc) {
+		document
+			.querySelectorAll(".bcp_component_preguntas")
+			[id].querySelector(".accordion-wrap")
+			.querySelector("svg")
+			.classList.toggle("bcp-angle-up-f");
+		if (
+			document
+				.querySelectorAll(".bcp_component_preguntas")
+				[id].querySelector(".accordion-text").style.maxHeight
+		) {
+			document
+				.querySelectorAll(".bcp_component_preguntas")
+				[id].querySelector(".accordion-text")
+				.setAttribute(
+					"style",
+					"max-height: null; padding-top: 0px; padding-bottom: 0px"
+				);
+		} else {
+			document
+				.querySelectorAll(".bcp_component_preguntas")
+				[id].querySelector(".accordion-text")
+				.setAttribute(
+					"style",
+					"max-height: " +
+						document
+							.querySelectorAll(".bcp_component_preguntas")
+							[id].querySelector(".accordion-text").scrollHeight +
+						20 +
+						"px; padding-top: 20px; padding-bottom: 20px"
+				);
+		}
+	}
+
+	function scrollBottom() {
+		var altura = document
+			.querySelectorAll(".bcp_preguntas_frecuentes")[0]
+			.getBoundingClientRect();
+		var topCashback = altura.top + scrollY - 120;
+		document
+			.querySelector("html, body")
+			.scrollTo({ top: topCashback, left: 0, behavior: "smooth" });
+
+		taggeoSolicitarTC(
+			"Clic términos y condiciones scroll",
+			"Términos y condiones scoll"
+		);
+	}
+
+	function taggeoSolicitarTC(action, label) {
+		dataLayer.push({
+			event: "virtualEvent",
+			category: "ST - Adquisicion",
+			action: action,
+			label: label,
+		});
+	}
+
+	function inscripcionMillas() {
+		let st_pageLoad = document.querySelector(".st_pageLoad");
+		st_pageLoad.removeAttribute("style");
+		grecaptcha.execute(
+			document.querySelector("#recaptchalatam").getAttribute("index")
+		);
+	}
+
+	function closeModal() {
+		document
+			.querySelector(".modal_inscripcion")
+			.setAttribute("style", "display: none");
+	}
+
+	function fnRegistrarLatamPass(strTokenCaptcha) {
+		let strHeadersApi = new Headers();
+		strHeadersApi.append("Accept", "application/json");
+		strHeadersApi.append("Content-Type", "application/json");
+
+		let strTipoDoc = "DNI";
+		let nroDoc = sessionStorage.getItem("stidpc");
+		//let leadID = sessionStorage.getItem("stidpchs");
+		if (nroDoc.length < 8) {
+			return;
+		}
+
+		let strCoordenadas = "0,0";
+
+		var jsonRequest_v2 = {
+			leadId: getLeadID(),
+			producto: "BCP LATAM PASS",
+			tipoFormulario: "SOLICITUDWEBLATAM",
+			tipoProducto: "BCP LATAM PASS",
+			captchaToken: strTokenCaptcha,
+			data: {
+				tipodocumento: strTipoDoc,
+				documento: nroDoc,
+				coordenadas: strCoordenadas,
+			},
+		};
+
+		let requestOptions = {
+			method: "POST",
+			headers: strHeadersApi,
+			body: JSON.stringify(jsonRequest_v2),
+		};
+
+		fetch("https://www.viabcp.com/apis/form/send/message", requestOptions)
+			.then((response) => {
+				if (response.status == "200") {
+					document
+						.querySelector(".modal_inscripcion")
+						.removeAttribute("style");
+					sessionStorage.removeItem("stidpc");
+					sessionStorage.removeItem("stidpchs");
+					document
+						.querySelector("#inscripcionLatam")
+						.setAttribute("style", "display:none");
+				} else {
+					console.error("Error status: ", response.status);
+				}
+				let st_pageLoad = document.querySelector(".st_pageLoad");
+				st_pageLoad.setAttribute("style", "display:none");
+			})
+			.catch((error) => {
+				console.log("error", error);
+			});
+	}
+
+	function redirectTYC(index) {
+		scrollBottom();
+		clicFQ(index);
+	}
+
+	function redirectInfoLATAM() {
+		var altura = document
+			.querySelectorAll("#beneficios_latam")[0]
+			.getBoundingClientRect();
+		var topCashback = altura.top + scrollY - 120;
+		document
+			.querySelector("html, body")
+			.scrollTo({ top: topCashback, left: 0, behavior: "smooth" });
+	}
+
+	function arrayTC(key) {
+		var arrTc = {
+			TCRMIN: {
+				name: "Visa Light",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				img: "https://www.viabcp.com/wcm/connect/614ca9cb-966f-4312-b3c2-69d624184569/Visa+Light.png?MOD=AJPERES&attachment=false&id=1681223779561",
+				clase: "azul_oscuro",
+				beneficios: {
+					N: [
+						{
+							tituloM: "¡Felicitaciones por tu nueva tarjeta!",
+							tituloD: "¡Felicitaciones por tu nueva tarjeta!",
+							bajada: "¡Lo lograste! Ahora disfruta de los beneficios de tu nueva Tarjeta de Crédito",
+							img: "https://www.viabcp.com/wcm/connect/b32d96ac-7ade-4157-9ec8-5bbf30910169/image+2.png?MOD=AJPERES&attachment=false&id=1707424180373",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Libérate de la membresía sin ningun monto mínimo",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Descuentos exclusivos",
+							tituloD: "Descuentos exclusivos",
+							bajada: "Todas tus tarjetas VISA tienen descuentos exclusivos en restaurantes y conciertos.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+				},
+			},
+			TCRCLL: {
+				name: "Visa Clásica <br> LATAM Pass",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito versión Virtual",
+				img: "https://www.viabcp.com/wcm/connect/05a491a5-685a-4644-ad3c-eed87432c5af/Visa+Clasica+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223805174",
+				clase: "azul_claro",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "1,000 millas LATAM Pass",
+							tituloD: "Bono de 1,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+					],
+					N: [
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Descuentos exclusivos",
+							tituloD: "Descuentos exclusivos",
+							bajada: "Todas tus tarjetas VISA tienen descuentos exclusivos en restaurantes y conciertos.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+				},
+			},
+			TCRORL: {
+				name: "Visa Oro <br> LATAM Pass",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito versión Virtual",
+				img: "https://www.viabcp.com/wcm/connect/f1906061-2743-42e5-8cc7-f26d60cdd7d7/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223766357",
+				clase: "lila",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "2,000 millas LATAM Pass",
+							tituloD: "Bono de 1,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+					],
+					N: [
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Descuentos exclusivos",
+							tituloD: "Descuentos exclusivos",
+							bajada: "Todas tus tarjetas VISA tienen descuentos exclusivos en restaurantes y conciertos.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+				},
+			},
+			TCRLY3: {
+				name: "Visa Oro <br> Qore",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				img: "https://www.viabcp.com/wcm/connect/2d4a166a-396e-4343-99cd-1991c151ae8b/oro_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2d4a166a-396e-4343-99cd-1991c151ae8b-pqPwxm-&cache=none",
+				clase: "lila",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "2,000 millas LATAM Pass",
+							tituloD: "Bono de 1,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Canjea puntos en las mejores tiendas",
+							tituloD: "Canjea puntos en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+					],
+					N: [
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Canjea puntos en las mejores tiendas",
+							tituloD: "Canjea puntos en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Descuentos exclusivos",
+							tituloD: "Descuentos exclusivos",
+							bajada: "Todas tus tarjetas VISA tienen descuentos exclusivos en restaurantes y conciertos.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+				},
+			},
+			TCRPLL: {
+				name: "Visa Platinum <br> LATAM Pass",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito versión Virtual",
+				img: "https://www.viabcp.com/wcm/connect/cfd9dca7-6ee3-42a5-bff8-509b351aac01/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223753754",
+				clase: "black",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "5,000 millas LATAM Pass",
+							tituloD: "Bono de 5,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a>',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Hasta 3,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 3,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Visa Concierge",
+							tituloD: "Acompañamiento con Visa Concierge",
+							bajada: "Recibe asistencia las 24 horas contactando a tu agente personal.",
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "Para que realices esa compra que quieres",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+					],
+					N: [
+						{
+							tituloM: "Hasta 8,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 8,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Visa Concierge",
+							tituloD: "Acompañamiento con Visa Concierge",
+							bajada: "Recibe asistencia las 24 horas contactando a tu agente personal.",
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "Para que realices esa compra que quieres",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Acumulación de millas",
+							tituloD:
+								"Acumula millas LATAM Pass por tus compras",
+							bajada: "Además acumula 1 milla por cada $1 en compras por POS o por internet",
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+					],
+				},
+			},
+			TCRPL1: {
+				name: "Visa Signature <br> LATAM Pass",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito versión Virtual",
+				img: "/wcm/connect/e0374866-636f-4642-80bc-c9cfed6d88da/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&attachment=false&id=1681223723314",
+				clase: "gris",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "8,000 millas LATAM Pass",
+							tituloD: "Bono de 8,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a> ',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Hasta 6,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 6,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+					],
+					N: [
+						{
+							tituloM: "Hasta 13,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 13,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+				},
+			},
+			TCRLY2: {
+				name: "Visa Signature <br> Qore",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				img: "https://www.viabcp.com/wcm/connect/5ab01c92-c925-4e49-aac5-d8f201c60a9b/signature_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-5ab01c92-c925-4e49-aac5-d8f201c60a9b-pqPwEkH&cache=none",
+				clase: "gris",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "8,000 millas LATAM Pass",
+							tituloD: "Bono de 8,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a> ',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Hasta 6,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 6,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+					],
+					N: [
+						{
+							tituloM: "Bono 6,000 puntos Qore",
+							tituloD: "Bono 6,000 puntos Qore",
+							bajada: "Te regalamos puntos de bienvenida, por un consumo de S/ 5,000 en los primeros 90 días",
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Canjea puntos en las mejores tiendas",
+							tituloD: "Canjea puntos en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+				},
+			},
+			TCRBA7: {
+				name: "Visa Infinite Sapphire <br> LATAM Pass",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito BCP",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito versión Virtual",
+				img: "https://www.viabcp.com/wcm/connect/8109fe81-663c-4bb8-93fc-26d70a6b5ebf/sapphire.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8109fe81-663c-4bb8-93fc-26d70a6b5ebf-oYO7zna&cache=none",
+				clase: "celeste",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "10,000 millas LATAM Pass",
+							tituloD: "Bono de 10,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a> ',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Hasta 10,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 10,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+					N: [
+						{
+							tituloM: "Hasta 20,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 20,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una maleta gratis, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Canjea millas en las mejores tiendas",
+							tituloD: "Canjea millas en las mejores tiendas",
+							bajada: "Como en Amazon, Plaza Vea, Mercado Libre, eBay y Ripley",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+				},
+			},
+			TCRINF: {
+				name: "Visa Infinite Iridium <br> LATAM Pass",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito BCP",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito versión Virtual",
+				img: "https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Desktop_142x90+%281%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-oXOGBn4",
+				clase: "celeste",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "12,000 millas LATAM Pass",
+							tituloD: "Bono de 12,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a> ',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Hasta 15,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 15,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Taxi gratis al aeropuerto",
+							tituloD: "Taxi gratis al aeropuerto",
+							bajada: "Obtén 2 viajes gratis al año desde o hacia al aeropuerto internacional Jorge Chavez.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+					N: [
+						{
+							tituloM: "Hasta 25,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 25,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una maleta gratis, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Taxi gratis al aeropuerto",
+							tituloD: "Taxi gratis al aeropuerto",
+							bajada: "Obtén 2 viajes gratis al año desde o hacia al aeropuerto internacional Jorge Chavez.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+				},
+			},
+			TCRLY1: {
+				name: "Visa Infinite Iridium <br> Qore",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito BCP",
+				bajadaTCD:
+					"¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				img: "https://www.viabcp.com/wcm/connect/9f4b2eeb-5df8-44bc-a69d-d3c930ada475/Infinite_qore.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9f4b2eeb-5df8-44bc-a69d-d3c930ada475-pqPwKYo&cache=none",
+				clase: "celeste",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "12,000 millas LATAM Pass",
+							tituloD: "Bono de 12,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a> ',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Hasta 15,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 15,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Taxi gratis al aeropuerto",
+							tituloD: "Taxi gratis al aeropuerto",
+							bajada: "Obtén 2 viajes gratis al año desde o hacia al aeropuerto internacional Jorge Chavez.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+					N: [
+						{
+							tituloM: "Bono 15,000 puntos Qore",
+							tituloD: "Bono 15,000 puntos Qore",
+							bajada: "Te regalamos puntos de bienvenida, por un consumo de S/ 10,000 en los primeros 90 días",
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una maleta gratis, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Cuotas Sin Intereses",
+							tituloD: "Hasta 24 Cuotas Sin Intereses",
+							bajada: "En más de 4,000 establecimientos para que realices la compra de tus sueños",
+							img: "https://www.viabcp.com/wcm/connect/42a606d1-8470-4fa4-851f-803ef84ecafb/Spot.png?MOD=AJPERES&attachment=false&id=1699134869218",
+						},
+						{
+							tituloM: "Taxi gratis al aeropuerto",
+							tituloD: "Taxi gratis al aeropuerto",
+							bajada: "Obtén 2 viajes gratis al año desde o hacia al aeropuerto internacional Jorge Chavez.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+					],
+				},
+			},
+			AMXCLL: {
+				name: "American Express Clásica <br> LATAM Pass",
+				bajada: "¡Felicitaciones! Estás a un paso de obtener la mejor Tarjeta de Crédito",
+				img: "https://www.viabcp.com/wcm/connect/891af71d-5ff6-4be4-93de-a1fa831f23ed/Amex+Clasica.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-891af71d-5ff6-4be4-93de-a1fa831f23ed-oLZD5pb",
+				clase: "azul_claro",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "1,000 millas LATAM Pass",
+							tituloD: "Bono de 1,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "50% de descuento en entradas 2D, 3D y XTREME. 25% en salas PRIME.",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+					],
+					N: [
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "50% de descuento en entradas 2D, 3D y XTREME. 25% en salas PRIME.",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+						{
+							tituloM: "Descuentos exclusivos",
+							tituloD: "Descuentos exclusivos",
+							bajada: "Todas tus tarjetas AMEX tienen descuentos exclusivos en restaurantes y conciertos.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+				},
+			},
+			AMXORL: {
+				name: "American Express Oro <br> LATAM Pass",
+				bajada: "Un mundo de beneficios en una Tarjeta de Crédito",
+				img: "https://www.viabcp.com/wcm/connect/be3c4938-459c-4d0e-ad6b-d2631d43b6b9/Amex+Oro.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-be3c4938-459c-4d0e-ad6b-d2631d43b6b9-oLZD4c9",
+				clase: "lila",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "2,000 millas LATAM Pass",
+							tituloD: "Bono de 1,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "50% de descuento en entradas 2D, 3D y XTREME. 25% en salas PRIME.",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+					],
+					N: [
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "50% de descuento en entradas 2D, 3D y XTREME. 25% en salas PRIME.",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+						{
+							tituloM: "Descuentos exclusivos",
+							tituloD: "Descuentos exclusivos",
+							bajada: "Todas tus tarjetas AMEX tienen descuentos exclusivos en restaurantes y conciertos.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+					CPDH: [
+						{
+							tituloM: "S/100 de regalo para ti",
+							tituloD: "Te devolvemos S/100 por tus compras",
+							bajada: '¡Solo para ti! Tus consumos te traen recompensas <a onclick="redirectTYC(8)">(ver tyc)</a> ',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "50% de descuento en entradas 2D, 3D y XTREME. 25% en salas PRIME.",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+					],
+					CHU: [
+						{
+							tituloM: "Exoneración de membresía",
+							tituloD: "Costo S/ 0 en tu membresía anual",
+							bajada: "Líbrate de la membresía consumiendo S/1 al mes.",
+							img: "https://www.viabcp.com/wcm/connect/491efd4a-fdaf-4526-8f09-ec2fd8d5b6a5/sin+membresia.svg?MOD=AJPERES&attachment=false&id=1700071075894",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "50% de descuento en entradas 2D, 3D y XTREME. 25% en salas PRIME.",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+						{
+							tituloM: "Descuentos exclusivos",
+							tituloD: "Descuentos exclusivos",
+							bajada: "Todas tus tarjetas VISA tienen descuentos exclusivos en restaurantes y conciertos.",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+				},
+			},
+			AMXPLL: {
+				name: "American Express Platinum <br> LATAM Pass",
+				bajada: "Un mundo de beneficios en una Tarjeta de Crédito",
+				img: "https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-oLZD1tm",
+				clase: "black",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "5,000 millas LATAM Pass",
+							tituloD: "Bono de 5,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a>',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES&attachment=false&id=1699134844233",
+						},
+						{
+							tituloM: "Hasta 8,000 millas LATAM Pass",
+							tituloD: "Bono de hasta ,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Acceso a salones VIP del aeropuerto",
+							tituloD: "Acceso a salones VIP del aeropuerto",
+							bajada: "Toma un descanso en más de 500 aeropuertos a nivel munial con esa persona especial.",
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "Para que realices esa compra que quieres",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+					],
+					N: [
+						{
+							tituloM: "Hasta 8,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 8,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloM: "Acceso a salones VIP del aeropuerto",
+							tituloD: "Acceso a salones VIP del aeropuerto",
+							bajada: "Toma un descanso en más de 500 aeropuertos a nivel munial con esa persona especial.",
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Descuentos exclusivos en Cineplanet",
+							tituloD: "Descuentos exclusivos en Cineplanet",
+							bajada: "Para que realices esa compra que quieres",
+							img: "https://www.viabcp.com/wcm/connect/cf58d2c5-e45b-4126-8443-15aecc1ded34/Image+%284%29.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cf58d2c5-e45b-4126-8443-15aecc1ded34-oUZT87h",
+						},
+						{
+							tituloM: "Acumulación de millas",
+							tituloD:
+								"Acumula millas LATAM Pass por tus compras",
+							bajada: "Además acumula 1 milla por cada $1 en compras por POS o por internet",
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+					],
+				},
+			},
+			AMXGRE: {
+				name: "American Express Black <br> LATAM Pass",
+				bajada: "El poder de una tarjeta a un mundo de beneficios",
+				img: "https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-oLZD2Z1",
+				clase: "gris",
+				beneficios: {
+					MEG: [
+						{
+							tituloM: "8,000 millas LATAM Pass",
+							tituloD: "Bono de 8,000 millas LATAM Pass",
+							bajada: 'Un bono adicional de millas esperan por ti <a onclick="redirectTYC(5)">(ver tyc)</a> ',
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Hasta 12,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 12,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+					],
+					N: [
+						{
+							tituloM: "Hasta 12,000 millas LATAM Pass",
+							tituloD: "Bono de hasta 12,000 millas LATAM Pass",
+							bajada: 'Te regalamos millas de bienvenida, solo <a id="inscripcionLatam" onclick="inscripcionMillas()">inscríbete aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/c9d632d7-e5ac-4d40-93a4-5d682080b595/Spot+acumula+millas+en+comporas+por+POS.svg?MOD=AJPERES&attachment=false&id=1700071239",
+						},
+						{
+							tituloD: "Exclusividad en tus viajes",
+							tituloM: "Exclusividad en tus viajes",
+							bajada: 'Disfruta de una Priority Pass, upgrade de cabina, checkin preferente y más. <a onclick="redirectInfoLATAM()">Conoce más aquí</a>',
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+						{
+							tituloM: "Disfruta de dtos. en el Cyber",
+							tituloD: "Disfruta de dtos. en el Cyber",
+							bajada: "Contamos con dtos. exclusivos en este Cyber, ¿Te la vas a perder?",
+							img: "https://www.viabcp.com/wcm/connect/5644d6ee-30df-4b99-a17f-8aec39e62987/spc_gift_hand_d_l.png?MOD=AJPERES",
+						},
+						{
+							tituloM: "Acceso a salones VIP del aeropuerto",
+							tituloD: "Acceso a salones VIP del aeropuerto",
+							bajada: "Toma un descanso en más de 500 aeropuertos a nivel munial con esa persona especial.",
+							img: "https://www.viabcp.com/wcm/connect/594ab7c4-d33d-4c7e-a3bc-7990a7267c86/Spot+Recibe+una+priority+Pass.svg?MOD=AJPERES&attachment=false&id=1700066582685",
+						},
+					],
+				},
+			},
+		};
+
+		if (key === "TCRPLL" || key === "AMXPLL") {
+			if (tipoConsumo === "BEX") {
+				arrTc[key].beneficios.N.splice(4, 1);
+				arrTc[key].beneficios.MEG.splice(3, 1);
+			} else {
+				arrTc[key].beneficios.N.splice(1, 1);
+				arrTc[key].beneficios.MEG.splice(2, 1);
+			}
+		}
+		return arrTc[key];
+	}
+
+	function arrTCChange(key) {
+		let listTC = {
+			TCRMIN: "TCRMIN",
+			TCRCLL: "TCRCLL",
+			TCRORL: "TCRORL",
+			TCRPLL: "TCRPLL",
+			TCRPL1: "TCRPL1",
+			TCRBA7: "TCRBA7",
+			TCRINF: "TCRINF",
+			AMXCLL: "TCRCLL",
+			AMXGLL: "TCRORL",
+			AMXPLL: "TCRPLL",
+			AMXGRE: "TCRPL1",
+			TCRLY1: "TCRLY1",
+			TCRLY2: "TCRLY2",
+			TCRLY3: "TCRLY3",
+		};
+
+		return listTC[key];
+	}
+    
+	function redireccion(seccion) {
+        
+        
+        if (typeof globalThis.fbq === "function" && (
+                globalThis.fbq.loaded === true || typeof globalThis.fbq.callMethod === "function"
+            )) {
+            try {
+            globalThis.fbq("track", "CompleteRegistration", { content_name: "Boton_obtener_tarjeta" });
+            console.debug('[fbq] CompleteRegistration enviado');
+            } catch (e) {}
+        } else {
+            console.debug('[fbq] no disponible; no se envía por privacidad');
+        }
+
+		// fbq("track", "CompleteRegistration", {
+		// 	content_name: "Boton_obtener_tarjeta",
+		// });
+
+		taggeoSolicitarTC(
+			"Clic boton",
+			seccion + " - " + tipoUsuario + " - " + tipotarjeta
+		);
+		if (sessionStorage.getItem("ebxmpo") == "piloto") {
+			taggeoSolicitarTC(
+				"Clic boton - 180324",
+				"piloto - " +
+					seccion +
+					" - " +
+					tipoUsuario +
+					" - " +
+					tipotarjeta
+			);
+		} else if (sessionStorage.getItem("ebxmpo") == "control") {
+			taggeoSolicitarTC(
+				"Clic boton - 180324",
+				"control - " +
+					seccion +
+					" - " +
+					tipoUsuario +
+					" - " +
+					tipotarjeta
+			);
+		}
+		taggeoSolicitarTC(
+			"Clic boton - 220324 - bene",
+			expbene + "-" + seccion + " - " + tipoUsuario + " - " + tipotarjeta
+		);
+
+		redirectRecojo(false);
+	}
+
+	function redirectRecojo(cookie) {
+		window.open("https://www.mitarjetabcp.viabcp.com/login", "_self");
+	}
+
+	window.addEventListener("DOMContentLoaded", function (ev) {
+		let st_pageLoad = document.querySelector(".st_pageLoad");
+		st_pageLoad.setAttribute("style", "display:none");
+	});
+
+	if (sessionStorage.getItem("stiubt")) {
+		loadPageDescubreTuOferta(JSON.parse(sessionStorage.getItem("stiubt")));
+	} else {
+		window.open("https://www.viabcp.com/solicitar-tarjeta", "_self");
+	}
+</script>
+		
