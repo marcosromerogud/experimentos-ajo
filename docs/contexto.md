@@ -3,15 +3,25 @@
 ## Proyecto
 Mailings HTML para Adobe Campaign (BCP - Crédito Hipotecario).
 
+## Estructura de carpetas
+- `mailings/` — fragmentos de email para Adobe Campaign (estilos inline, layout con tablas).
+- `assets/` — iconos SVG usados en mailings.
+- `landing/ajo/` — landing page completa de Crédito Hipotecario y script de experimento.
+- `experimentos/csi/`, `experimentos/exp/` — experimentos A/B (control/piloto) para ViaBCP.
+- `referencias/` — copias de páginas reales del sitio (campañas LATAM, legales TC) usadas como referencia.
+- `herramientas/` — utilidades no relacionadas con BCP: extensión `target-qa-helper` y scripts de automatización de Mentimeter.
+- `bitacora/` — histórico/archivo de experimentos y páginas capturadas (tc00xx, web/).
+- `docs/` — este archivo de contexto.
+
 ## Archivos principales
 
-### `ejemplo-vinetas.html`
+### `mailings/ejemplo-vinetas.html`
 Fragmento de email funcional con sección de 3 viñetas (ícono + texto).
 - Contenido: Fondo MiVivienda, financiamiento hasta S/ 355,100, Bono de Buen Pagador
 - Estilo: texto con negrita parcial (`font-weight:700`) + texto normal
 - Íconos: círculo gris relleno
 
-### `ejemplo-vinetas-me.html`
+### `mailings/ejemplo-vinetas-me.html`
 Nueva versión creada a partir de `ejemplo-vinetas.html` con diferente contenido.
 - Contenido: 90% de financiamiento, alternativas de crédito, acompañamiento hipotecario
 - Sin negritas
