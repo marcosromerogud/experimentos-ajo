@@ -1,0 +1,80 @@
+<script>
+(function () {
+    const selectorBoton = '.bcp_btn_enviar_form';
+    const nombrePromocionControl = 'Millas Latam - ViaBCP - TC0060 - C';
+    let vistaEnviada = false;
+    let botonObservado = null;
+
+    function enviarTageoPromocion(evento) {
+        if (!window.digitalData || typeof window.digitalData.push !== 'function') {
+            window.digitalData = [];
+        }
+
+        window.digitalData.push({
+            promotion: {
+                name: nombrePromocionControl,
+                creative: 'Button',
+                position: 'Obtener Tarjeta'
+            },
+            event: evento
+        });
+    }
+
+    function registrarVista(boton) {
+        if (!boton || vistaEnviada || botonObservado === boton) {
+            return;
+        }
+
+        botonObservado = boton;
+        const enviarVista = function () {
+            if (vistaEnviada) {
+                return;
+            }
+            vistaEnviada = true;
+            enviarTageoPromocion('trackPromotionView');
+        };
+
+        if (!('IntersectionObserver' in window)) {
+            enviarVista();
+            return;
+        }
+
+        const observer = new IntersectionObserver(function (entradas) {
+            const visible = entradas.some(function (entrada) {
+                return entrada.isIntersecting && entrada.intersectionRatio >= 0.5;
+            });
+            if (visible) {
+                observer.disconnect();
+                enviarVista();
+            }
+        }, { threshold: [0.5] });
+        observer.observe(boton);
+    }
+
+    function buscarBoton() {
+        const boton = document.querySelector(selectorBoton);
+        if (!boton) {
+            return false;
+        }
+        registrarVista(boton);
+        return true;
+    }
+
+    if (!buscarBoton()) {
+        const observerBoton = new MutationObserver(function () {
+            if (buscarBoton()) {
+                observerBoton.disconnect();
+            }
+        });
+        observerBoton.observe(document.body, { childList: true, subtree: true });
+    }
+
+    document.addEventListener('click', function (event) {
+        const objetivo = event.target instanceof Element ? event.target : event.target.parentElement;
+        if (objetivo && objetivo.closest(selectorBoton)) {
+            enviarTageoPromocion('trackPromotionClick');
+        }
+    }, true);
+
+})();
+</script>
