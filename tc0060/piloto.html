@@ -1,0 +1,2383 @@
+<script>
+
+(function () {
+    // Piloto del experimento TC0060.
+    // Para actualizar el copy de campaña, busca el bloque "CONTENIDO EDITABLE" en este archivo.
+
+    const BOTON_SELECTOR = '.bcp_btn_enviar_form';
+    const TIPO_DOC_SELECTOR = 'bcp-form-cbodocumento';
+    const strNombreProducto = 'BCP LATAM PASS';
+    const intencionVenta = 'SI';
+    const nombrePromocionMillasPiloto = 'Millas Latam - ViaBCP - TC0060 - P';
+    const nombrePromocionHomePiloto = 'Home - ViaBCP - TC0060 - P';
+    const promocionesVistas = new Set();
+    const promocionesObservadas = new Set();
+    let registroCompletado = false;
+
+    function enviarTageoPromocion(evento, nombre, posicion) {
+        if (!window.digitalData || typeof window.digitalData.push !== 'function') {
+            window.digitalData = [];
+        }
+
+        window.digitalData.push({
+            promotion: {
+                name: nombre,
+                creative: 'Button',
+                position: posicion
+            },
+            event: evento
+        });
+    }
+
+    function registrarVistaPromocion(elemento, nombre, posicion) {
+        const clave = nombre + '|' + posicion;
+        if (!elemento || promocionesVistas.has(clave) || promocionesObservadas.has(clave)) {
+            return;
+        }
+
+        promocionesObservadas.add(clave);
+        const enviarVista = () => {
+            if (promocionesVistas.has(clave)) {
+                return;
+            }
+            promocionesVistas.add(clave);
+            promocionesObservadas.delete(clave);
+            enviarTageoPromocion('trackPromotionView', nombre, posicion);
+        };
+
+        if (!('IntersectionObserver' in window)) {
+            enviarVista();
+            return;
+        }
+
+        const observer = new IntersectionObserver((entradas) => {
+            if (entradas.some((entrada) => entrada.isIntersecting && entrada.intersectionRatio >= 0.5)) {
+                observer.disconnect();
+                enviarVista();
+            }
+        }, { threshold: [0.5] });
+        observer.observe(elemento);
+    }
+
+    document.addEventListener('click', (event) => {
+        const objetivo = event.target instanceof Element ? event.target : event.target.parentElement;
+        if (!objetivo) {
+            return;
+        }
+
+        if (objetivo.closest('.bcp_boton_adquirir_header')) {
+            enviarTageoPromocion('trackPromotionClick', nombrePromocionMillasPiloto,
+                'Adquirir Tarjeta');
+            return;
+        }
+
+        if (objetivo.closest('#formulario-latam-pass ' + BOTON_SELECTOR)) {
+            enviarTageoPromocion('trackPromotionClick', nombrePromocionHomePiloto,
+                'Inscribirme Ahora - Inicio');
+            return;
+        }
+
+        if (objetivo.closest('.bcp_boton_inscribirse_millas')) {
+            enviarTageoPromocion('trackPromotionClick', nombrePromocionHomePiloto,
+                'Inscribirme Ahora - Carrusel');
+            return;
+        }
+
+        if (objetivo.closest('.bcp_boton_ancla_formulario')) {
+            enviarTageoPromocion('trackPromotionClick', nombrePromocionHomePiloto,
+                'Inscribirme Ahora - Final');
+        }
+    }, true);
+
+    const colorConoceMas = '#FF7800';
+    const iconoConoceMasBase64 = 'PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik05IDMuNzVDMTEuODcxMyAzLjc1IDE0LjMyODIgNS4zNTIyMyAxNi4zNzA3IDguNTU2NjhDMTYuNTQzMSA4LjgyNzEzIDE2LjU0MzEgOS4xNzI5MyAxNi4zNzA3IDkuNDQzMzdDMTQuMzI4MiAxMi42NDc4IDExLjg3MTMgMTQuMjUgOSAxNC4yNUM2LjEyODY4IDE0LjI1IDMuNjcxNzcgMTIuNjQ3OCAxLjYyOTI2IDkuNDQzMzJDMS40NTY5MSA5LjE3Mjg3IDEuNDU2OTEgOC44MjcwNyAxLjYyOTI5IDguNTU2NjNDMy42NzE3OSA1LjM1MjIxIDYuMTI4NyAzLjc1IDkgMy43NVpNOSA1LjI1QzYuNzkyMDEgNS4yNSA0Ljg1OTE1IDYuNDQ2ODUgMy4xMzI3MSA4Ljk5OTk3QzQuODU5MTMgMTEuNTUzMSA2Ljc5MiAxMi43NSA5IDEyLjc1QzExLjIwOCAxMi43NSAxMy4xNDA4IDExLjU1MzEgMTQuODY3MyA5LjAwMDAzQzEzLjE0MDkgNi40NDY4NyAxMS4yMDggNS4yNSA5IDUuMjVaTTkgNkMxMC42NTY5IDYgMTIgNy4zNDMxNSAxMiA5QzEyIDEwLjY1NjkgMTAuNjU2OSAxMiA5IDEyQzcuMzQzMTUgMTIgNiAxMC42NTY5IDYgOUM2IDcuMzQzMTUgNy4zNDMxNSA2IDkgNlpNOSA3LjVDOC4xNzE1NyA3LjUgNy41IDguMTcxNTcgNy41IDlDNy41IDkuODI4NDMgOC4xNzE1NyAxMC41IDkgMTAuNUM5LjgyODQzIDEwLjUgMTAuNSA5LjgyODQzIDEwLjUgOUMxMC41IDguMTcxNTcgOS44Mjg0MyA3LjUgOSA3LjVaIiBmaWxsPSIjRkY3ODAwIi8+Cjwvc3ZnPgo=';
+    // Desktop = min-width: 1280px, el mismo breakpoint que ya usa referencia.html para este bloque.
+    function inyectarEstilos() {
+        const estilos = document.createElement('style');
+        estilos.textContent =
+            '@media (min-width: 1280px) {' +
+            '.bcp_formulario_latam_cards .bcp_descripcion {' +
+            'padding-bottom: 16px;' +
+            '}' +
+            '}' +
+            '.bcp_formulario_latam_cards .form_promocion {' +
+            'position: relative;' +
+            'isolation: isolate;' +
+            'background-image: none !important;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_imagen_formulario {' +
+            'position: absolute;' +
+            'z-index: 1;' +
+            'top: 0;' +
+            'right: 0;' +
+            'left: 0;' +
+            'display: block;' +
+            'width: 100%;' +
+            'height: 212px;' +
+            'overflow: hidden;' +
+            'pointer-events: none;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_imagen_formulario img {' +
+            'display: block;' +
+            'width: 100%;' +
+            'height: 100%;' +
+            'object-fit: cover;' +
+            'object-position: center top;' +
+            '}' +
+            '.bcp_formulario_latam_cards .form_promocion > .container {' +
+            'position: relative;' +
+            'z-index: 2;' +
+            '}' +
+            '.header_sin_acceso .bcp_boton_adquirir_header {' +
+            'display: inline-flex;' +
+            'align-items: center;' +
+            'justify-content: center;' +
+            'min-height: 40px;' +
+            'padding: 8px 16px;' +
+            'border: 0;' +
+            'border-radius: 999px;' +
+            'background-color: #FF7800;' +
+            'color: #FFFFFF;' +
+            'font-family: Flexo-Demi;' +
+            'font-size: 14px;' +
+            'font-weight: 500;' +
+            'line-height: 20px;' +
+            'box-sizing: border-box;' +
+            'text-decoration: none;' +
+            'white-space: nowrap;' +
+            '}' +
+            '.header_sin_acceso .bcp_boton_adquirir_header:focus-visible {' +
+            'outline: 2px solid #0A47F0;' +
+            'outline-offset: 3px;' +
+            '}' +
+            '#bcp-titulo-seccion-millas {' +
+            'scroll-margin-top: 96px;' +
+            '}' +
+            '#formulario-latam-pass {' +
+            'scroll-margin-top: 72px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_registro_latam {' +
+            'display: flex;' +
+            'flex-direction: column;' +
+            'align-items: center;' +
+            'padding: 32px 0;' +
+            'text-align: center;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_confirmacion {' +
+            'display: flex;' +
+            'flex-direction: column;' +
+            'align-items: center;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_icono {' +
+            'display: block;' +
+            'width: 48px;' +
+            'height: 48px;' +
+            'margin-bottom: 24px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_titulo {' +
+            'margin: 0 0 16px;' +
+            'color: #002A8D;' +
+            'font-family: Flexo-Demi;' +
+            'font-size: 24px;' +
+            'font-weight: 500;' +
+            'line-height: 32px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_descripcion {' +
+            'margin: 0;' +
+            'color: #202E44;' +
+            'font-size: 16px;' +
+            'line-height: 24px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_solicitud {' +
+            'width: 100%;' +
+            'margin-top: 32px;' +
+            'padding: 32px 24px;' +
+            'border-radius: 16px;' +
+            'background: #E6F1FF;' +
+            'box-sizing: border-box;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_solicitud_titulo {' +
+            'margin: 0 0 16px;' +
+            'color: #002A8D;' +
+            'font-family: Flexo-Demi;' +
+            'font-size: 20px;' +
+            'font-weight: 500;' +
+            'line-height: 28px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_solicitud_descripcion {' +
+            'margin: 0;' +
+            'color: #202E44;' +
+            'font-size: 16px;' +
+            'line-height: 24px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_solicitud_boton {' +
+            'display: flex;' +
+            'align-items: center;' +
+            'justify-content: center;' +
+            'width: 100%;' +
+            'max-width: 320px;' +
+            'margin: 24px auto 0;' +
+            'padding: 16px 40px;' +
+            'border: 0;' +
+            'border-radius: 999px;' +
+            'background-color: #FF7800;' +
+            'color: #FFFFFF;' +
+            'font-family: Flexo-Demi;' +
+            'font-weight: 700;' +
+            'line-height: 24px;' +
+            'box-sizing: border-box;' +
+            'text-decoration: none;' +
+            '}' +
+            '@media (max-width: 767px) {' +
+            '.bcp_formulario_latam_cards .form_promocion {' +
+            'padding-top: 212px !important;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_contenedor_formulario {' +
+            'margin-top: 0 !important;' +
+            '}' +
+            '.bcp_seccion_millas {' +
+            'box-sizing: border-box;' +
+            'padding-left: 32px !important;' +
+            'padding-right: 32px !important;' +
+            '}' +
+            '.bcp_boton_inscribirse_millas {' +
+            'display: none !important;' +
+            '}' +
+            '}' +
+            // referencia.html trae "padding: 80px 0px 200px 0px" acá; se sobreescribe el
+            // padding-bottom a 0 porque 200px de espacio abajo es demasiado.
+            '@media (min-width: 768px) {' +
+            '.bcp_formulario_latam_cards .form_promocion {' +
+            'padding: 80px 0px 0px 0px !important;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_imagen_formulario {' +
+            'height: 440px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_registro_latam {' +
+            'padding: 48px 0;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_icono {' +
+            'width: 56px;' +
+            'height: 56px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_titulo {' +
+            'font-size: 32px;' +
+            'line-height: 40px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_solicitud {' +
+            'margin-top: 40px;' +
+            'padding: 40px 32px;' +
+            '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_solicitud_titulo {' +
+            'font-size: 24px;' +
+            'line-height: 32px;' +
+            '}' +
+            '}' +
+            // Mobile-first: 24px/32px es la base, 32px/40px entra a partir de tablet (768px),
+            // mismo breakpoint que ya usa referencia.html para este bloque.
+            '.bcp_seccion_beneficios_titulo {' +
+            'font-size: 24px;' +
+            'line-height: 32px;' +
+            '}' +
+            '@media (min-width: 768px) {' +
+            '.bcp_seccion_beneficios_titulo {' +
+            'font-size: 32px;' +
+            'line-height: 40px;' +
+            '}' +
+            '}' +
+            // Mobile: la card ocupa todo el ancho disponible del contenedor; a partir de
+            // 640px vuelve al ancho fijo de 260px usado en el diseño desktop (para que entren
+            // dos columnas antes de llegar al breakpoint de tablet).
+            '.bcp_tarjeta_millas {' +
+            'width: 100%;' +
+            'flex: 0 0 100%;' +
+            '}' +
+            '.bcp_flecha_millas {' +
+            'width: 40px;' +
+            'height: 40px;' +
+            '}' +
+            '.bcp_contenedor_tarjetas_millas {' +
+            'scrollbar-width: none;' +
+            '}' +
+            '.bcp_contenedor_tarjetas_millas::-webkit-scrollbar {' +
+            'display: none;' +
+            '}' +
+            '.bcp_contenedor_tarjetas_millas:focus-visible {' +
+            'outline: 2px solid #0A47F0;' +
+            'outline-offset: 4px;' +
+            '}' +
+            '.bcp_flecha_millas:focus-visible,' +
+            '.bcp_tab_millas:focus-visible,' +
+            '.bcp_boton_inscribirse_millas:focus-visible,' +
+            '.bcp_panel_millas:focus-visible {' +
+            'outline: 2px solid #0A47F0;' +
+            'outline-offset: 4px;' +
+            '}' +
+            '.bcp_solo_lectores {' +
+            'position: absolute;' +
+            'width: 1px;' +
+            'height: 1px;' +
+            'padding: 0;' +
+            'margin: -1px;' +
+            'overflow: hidden;' +
+            'clip: rect(0, 0, 0, 0);' +
+            'white-space: nowrap;' +
+            'border: 0;' +
+            '}' +
+            '.bcp_conteo_tab_millas {' +
+            'display: none;' +
+            '}' +
+            '.bcp_formulario_latam_cards,' +
+            '.bcp_seccion_beneficios,' +
+            '.bcp_seccion_millas,' +
+            '.bcp_seccion_terminos {' +
+            'padding-bottom: 48px !important;' +
+            '}' +
+            '@media (min-width: 640px) {' +
+            '.bcp_tarjeta_millas {' +
+            'width: 260px;' +
+            'flex-basis: 260px;' +
+            '}' +
+            '.bcp_tarjeta_millas_nombre {' +
+            'min-height: 48px;' +
+            'display: flex;' +
+            'align-items: center;' +
+            'justify-content: center;' +
+            '}' +
+            '}' +
+            '@media (min-width: 768px) {' +
+            '.bcp_conteo_tab_millas {' +
+            'display: inline;' +
+            '}' +
+            '}' +
+            '@media (min-width: 1280px) {' +
+            '.bcp_formulario_latam_cards,' +
+            '.bcp_seccion_beneficios,' +
+            '.bcp_seccion_millas,' +
+            '.bcp_seccion_terminos {' +
+            'padding-bottom: 100px !important;' +
+            '}' +
+            '}';
+        document.head.appendChild(estilos);
+    }
+    inyectarEstilos();
+
+    function inyectarEstilosPreguntasFrecuentes() {
+        const estilos = document.createElement('style');
+        estilos.textContent =
+            '.bcp_preguntas_frecuentes_sin_categorias {' +
+            'box-sizing: border-box;' +
+            'font-family: Flexo;' +
+            'padding: 0 16px 48px;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .bcp_contenedor_acordeon {' +
+            'width: 100%;' +
+            'margin: 0 auto;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .bcp_titulo_principal {' +
+            'font-family: Flexo-Demi;' +
+            'font-size: 24px;' +
+            'font-weight: 500;' +
+            'line-height: 32px;' +
+            'text-align: center;' +
+            'color: #002A8D;' +
+            'margin: 0 0 32px;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-wrap {' +
+            'margin-bottom: 8px;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-item {' +
+            'display: block;' +
+            'width: 100%;' +
+            'padding: 18px 16px;' +
+            'border: 0;' +
+            'border-radius: 8px;' +
+            'background: #F2F4F8;' +
+            'color: #202E44;' +
+            'cursor: pointer;' +
+            'font: inherit;' +
+            'text-align: left;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-item:focus-visible {' +
+            'outline: 2px solid #0A47F0;' +
+            'outline-offset: 2px;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-header {' +
+            'display: flex;' +
+            'align-items: center;' +
+            'width: 100%;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .acordeon-header-pregunta-texto {' +
+            'flex: 1;' +
+            'padding-right: 10px;' +
+            'font-family: Flexo-Demi;' +
+            'font-size: 16px;' +
+            'font-weight: 500;' +
+            'line-height: 20px;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .content_icon {' +
+            'flex: 0 0 24px;' +
+            'transition: transform 300ms ease;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-wrap.activo .content_icon {' +
+            'transform: rotate(180deg);' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-text {' +
+            'max-height: 0;' +
+            'overflow: hidden;' +
+            'padding: 0 16px;' +
+            'position: relative;' +
+            'transition: max-height 300ms ease;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .acordeon-header-respuesta {' +
+            'padding: 16px 20px;' +
+            'color: #202E44;' +
+            'font-size: 14px;' +
+            'line-height: 20px;' +
+            'text-align: left;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .acordeon-header-respuesta > :first-child {' +
+            'margin-top: 0;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .acordeon-header-respuesta > :last-child {' +
+            'margin-bottom: 0;' +
+            '}' +
+            '@media (prefers-reduced-motion: reduce) {' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-text,' +
+            '.bcp_preguntas_frecuentes_sin_categorias .content_icon {' +
+            'transition: none;' +
+            '}' +
+            '}' +
+            '@media (min-width: 768px) {' +
+            '.bcp_preguntas_frecuentes_sin_categorias {' +
+            'padding-left: 0;' +
+            'padding-right: 0;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .bcp_contenedor_acordeon {' +
+            'width: 70%;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .bcp_titulo_principal {' +
+            'font-size: 32px;' +
+            'line-height: 40px;' +
+            '}' +
+            '}' +
+            '@media (min-width: 1280px) {' +
+            '.bcp_preguntas_frecuentes_sin_categorias {' +
+            'padding-bottom: 100px;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .accordion-item {' +
+            'padding: 22px 24px;' +
+            '}' +
+            '.bcp_preguntas_frecuentes_sin_categorias .acordeon-header-respuesta {' +
+            'padding: 40px 24px;' +
+            'font-size: 16px;' +
+            'line-height: 24px;' +
+            '}' +
+            '}';
+        document.head.appendChild(estilos);
+    }
+    inyectarEstilosPreguntasFrecuentes();
+
+    function inyectarEstilosBannerSeguro() {
+        const estilos = document.createElement('style');
+        estilos.textContent =
+            '.bcp_banner_secundario_columnas {' +
+            'font-family: Flexo;' +
+            'padding: 0 24px 48px;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_fondo_celeste_claro {' +
+            'background: #E6F1FF;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_color_texto_oscuro .banner_titulo {' +
+            'color: #002A8D;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_color_texto_oscuro .banner_descripcion {' +
+            'color: #202E44;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_contenedor_banner {' +
+            'display: flex;' +
+            'flex-direction: column;' +
+            'align-items: center;' +
+            'justify-content: center;' +
+            'gap: 8px;' +
+            'min-height: 224px;' +
+            'padding: 40px 24px;' +
+            'border-radius: 16px;' +
+            'box-sizing: border-box;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_imagen_sobrepuesta {' +
+            'margin: 0 auto;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_imagen_sobrepuesta img {' +
+            'display: block;' +
+            'width: 240px;' +
+            'height: 224px;' +
+            'object-fit: contain;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_grupo_textos {' +
+            'display: flex;' +
+            'flex-direction: column;' +
+            'align-items: center;' +
+            'justify-content: center;' +
+            'width: 100%;' +
+            'gap: 24px;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_textos {' +
+            'display: flex;' +
+            'flex-direction: column;' +
+            'align-items: center;' +
+            'justify-content: center;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_titulo {' +
+            'margin: 0;' +
+            'padding-bottom: 16px;' +
+            'font-family: Flexo-Demi;' +
+            'font-size: 20px;' +
+            'font-weight: 500;' +
+            'line-height: 24px;' +
+            'text-align: center;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_descripcion {' +
+            'padding-bottom: 0;' +
+            'font-size: 16px;' +
+            'font-style: normal;' +
+            'font-weight: 400;' +
+            'line-height: 24px;' +
+            'text-align: center;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_boton_ancla_formulario {' +
+            'margin-top: 24px;' +
+            '}' +
+            '@media (min-width: 992px) {' +
+            '.bcp_banner_secundario_columnas {' +
+            'padding: 0 0 48px;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_contenedor_banner {' +
+            'flex-direction: row;' +
+            'gap: 40px;' +
+            'height: 224px;' +
+            'min-height: 224px;' +
+            'padding: 0 64px;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_grupo_textos {' +
+            'flex-direction: row;' +
+            'align-items: center;' +
+            'justify-content: space-between;' +
+            'max-width: 640px;' +
+            'gap: 80px;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_textos {' +
+            'align-items: flex-start;' +
+            'max-width: 400px;' +
+            'padding-right: 0;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_titulo {' +
+            'font-size: 32px;' +
+            'line-height: 40px;' +
+            'text-align: left;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .banner_descripcion {' +
+            'text-align: left;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_contenedor_boton {' +
+            'display: flex;' +
+            'flex-direction: column;' +
+            'justify-content: center;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_boton_ancla_formulario {' +
+            'margin-top: 0;' +
+            '}' +
+            '}' +
+            '@media (min-width: 1280px) {' +
+            '.bcp_banner_secundario_columnas {' +
+            'padding-bottom: 100px;' +
+            '}' +
+            '.bcp_banner_secundario_columnas .bcp_contenedor_banner {' +
+            'gap: 80px;' +
+            'padding: 0 64px;' +
+            '}' +
+            '}';
+        document.head.appendChild(estilos);
+    }
+    inyectarEstilosBannerSeguro();
+
+    function inyectarEstilosTerminosCondiciones() {
+        const estilos = document.createElement('style');
+        estilos.textContent =
+            '.bcp_seccion_terminos .bcp_terminos_contenedor {' +
+            'width: 100%;' +
+            'margin: 0 auto;' +
+            'text-align: left;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_detalle {' +
+            'border: 0;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_resumen {' +
+            'display: flex;' +
+            'align-items: center;' +
+            'justify-content: space-between;' +
+            'gap: 16px;' +
+            'padding: 18px 16px;' +
+            'background: #F2F4F8;' +
+            'color: #202E44;' +
+            'cursor: pointer;' +
+            'font-family: Flexo-Demi;' +
+            'font-size: 16px;' +
+            'font-weight: 500;' +
+            'line-height: 20px;' +
+            'list-style: none;' +
+            'border-radius: 8px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_resumen::-webkit-details-marker {' +
+            'display: none;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_resumen:focus-visible {' +
+            'outline: 2px solid #0A47F0;' +
+            'outline-offset: -4px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_icono {' +
+            'flex: 0 0 24px;' +
+            'transition: transform 300ms ease;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_detalle[open] .bcp_terminos_icono {' +
+            'transform: rotate(180deg);' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido {' +
+            'padding: 20px 16px 0;' +
+            'color: #202E44;' +
+            'font-size: 14px;' +
+            'line-height: 20px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_grupo + .bcp_terminos_grupo {' +
+            'margin-top: 16px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido p {' +
+            'margin: 0 0 16px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido p:last-child {' +
+            'margin-bottom: 0;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido ol,' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido ul {' +
+            'margin: 0;' +
+            'padding-left: 24px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido li + li {' +
+            'margin-top: 12px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido li > ol,' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido li > ul {' +
+            'margin-top: 16px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_tarjetas {' +
+            'display: block;' +
+            'padding-left: 24px !important;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_tarjetas li {' +
+            'padding: 0;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_nota {' +
+            'margin-top: 0;' +
+            'font-style: italic;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_nota p {' +
+            'margin-bottom: 12px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido a {' +
+            'font-weight: 700;' +
+            '}' +
+            '@media (prefers-reduced-motion: reduce) {' +
+            '.bcp_seccion_terminos .bcp_terminos_icono {' +
+            'transition: none;' +
+            '}' +
+            '}' +
+            '@media (min-width: 768px) {' +
+            '.bcp_seccion_terminos .bcp_terminos_contenedor {' +
+            'width: 70%;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_resumen {' +
+            'padding: 22px 24px;' +
+            '}' +
+            '.bcp_seccion_terminos .bcp_terminos_contenido {' +
+            'padding: 40px 24px 0;' +
+            'font-size: 16px;' +
+            'line-height: 24px;' +
+            '}' +
+            '}';
+        document.head.appendChild(estilos);
+    }
+    inyectarEstilosTerminosCondiciones();
+
+    function crearBloqueConoceMas() {
+        const contenedor = document.createElement('a');
+        contenedor.className = 'bcp_conoce_mas';
+        contenedor.href = contenidoPagina.conoceMas.url;
+        contenedor.style.display = 'inline-flex';
+        contenedor.style.alignItems = 'center';
+        contenedor.style.gap = '8px';
+        contenedor.style.marginBottom = '32px';
+        contenedor.style.color = colorConoceMas;
+        contenedor.style.fontWeight = '600';
+        contenedor.style.textDecoration = 'none';
+        contenedor.style.cursor = 'pointer';
+
+        const texto = document.createElement('span');
+        texto.textContent = contenidoPagina.conoceMas.texto;
+        texto.style.fontSize = '16px';
+        texto.style.lineHeight = '24px';
+
+        const icono = document.createElement('img');
+        icono.src = 'data:image/svg+xml;base64,' + iconoConoceMasBase64;
+        icono.alt = '';
+        icono.width = 18;
+        icono.height = 18;
+
+        contenedor.appendChild(texto);
+        contenedor.appendChild(icono);
+        return contenedor;
+    }
+
+
+    const colorBeneficiosTitulo = '#002A8D';
+    const colorBeneficiosTexto = '#202E44';
+
+    const iconoBonoAdicionalBase64 = 'PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHZpZXdCb3g9IjAgMCA4OCA4OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjI4MDAzIDQ0QzUuMjgwMDMgNjUuMzg0NSAyMi42MTU1IDgyLjcyIDQ0IDgyLjcyQzY1LjM4NDUgODIuNzIgODIuNzIgNjUuMzg0NSA4Mi43MiA0NEM4Mi43MiAyMi42MTU4IDY1LjM4NDUgNS4yODAwMyA0NCA1LjI4MDAzQzIyLjYxNTUgNS4yODAwMyA1LjI4MDAzIDIyLjYxNTggNS4yODAwMyA0NCIgZmlsbD0iI0RDRURGRiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTY3Ljc3NTYgMjUuMjk5NEM2OC45Nzk3IDI3LjY3NTkgNjguMTI1MyAzMC41ODYxIDY1Ljg3MzMgMzEuOTAyNEw2NS42OTI3IDMyLjAwM0M2My43NTk1IDMzLjAyNjMgNjIuMjA0NiAzOC4zODE5IDYzLjg4MDYgNDMuNjIzNUM2Ni44OTAzIDUxLjMzNjUgNjkuMjI3NCA1NC45ODM1IDY5LjIyNzQgNTQuOTgzNUw2OS41NDI1IDU1LjUwNjdDNjkuODEyOSA1NS45NDU2IDcwLjEwMjkgNTYuMzkxOSA3MC40MTU1IDU2Ljg0NTZMNzAuODAxNyA1Ny4zOTM2QzcyLjUyNCA1OS43ODQyIDczLjY3MjEgNjEuMjQ1NCA3Ny4xMDUzIDY0LjA2ODFDNzEuOTE3NiA3Mi43MDk1IDYzLjU3MjkgNzguNTM0MiA1NS4yOTA0IDgxLjAyMTlDNDkuNTA3NiA3My40NjcxIDQwLjk1NTUgNjYuNTM3OCAzMi4xOTQ3IDYzLjU4NDVDMjYuNDQyNCA2Mi4xNDU3IDIwLjAxNDUgNjEuODk4NyAxNC44MDIzIDYyLjI5MzRMMTMuOTIxMSA2Mi4zNjcyQzExLjg5NDIgNjIuNTUzNyAxMC4wNzkyIDYyLjgzNzkgOC41OTcwNiA2My4xODQ1QzYuMzYyNzYgNjMuNzA3NSA0LjEzNjY3IDYyLjI3OTMgMy42MjUyOSA1OS45OTU5QzMuMTMwMDUgNTcuNzg0MyA0LjQyNDUgNTUuNTgwOCA2LjUzNjI3IDU0Ljk2OTVDNS4xMjc3MyA1NC41NjA4IDMuOTc1MTcgNTMuMzk5IDMuNjI1MjkgNTEuODM2NUMzLjExMzkxIDQ5LjU1MzEgNC41MTA4IDQ3LjI3ODEgNi43NDUzOCA0Ni43NTU1QzcuMzYyMzEgNDYuNjExMiA4LjA2NDYgNDYuNDc3NSA4Ljg0MDQxIDQ2LjM1NzNMOC44MjkwNyA0Ni4zMDgyQzguMzE3NjggNDQuMDI0NSA5LjcxNDU4IDQxLjc0OTQgMTEuOTQ5MiA0MS4yMjcxQzEyLjYwNTkgNDEuMDczNSAxMy4zNiA0MC45Mjc5IDE0LjE5NzMgNDAuNzk0OUMxNC4xMzAyIDM4LjgwNDkgMTUuNDQ5MSAzNi45ODIgMTcuNDE5MSAzNi41MjE1TDE4LjAyNDcgMzYuMzg2N0wxOC40NzU0IDM2LjI5MzhMMTguOTYyMyAzNi4xOTkyTDE5Ljc1NzQgMzYuMDU1M0wyMC4zMjg4IDM1Ljk1OTFMMjAuOTMxOCAzNS44NjMzTDIxLjU2NTEgMzUuNzY4NkwyMi4yMjc1IDM1LjY3NTZMMjIuOTE3NSAzNS41ODQ5TDIzLjYzNCAzNS40OTcyTDI0Ljc1NTQgMzUuMzcyNEwyNS41MzIzIDM1LjI5NDhMMjYuMzMxMiAzNS4yMjIyTDI3LjE1MDYgMzUuMTU1NEwyNy45ODk1IDM1LjA5NUwyOC44NDYzIDM1LjA0MTVMMjkuNzIgMzQuOTk1N0wzMC42MDkxIDM0Ljk1ODFDMzAuOTA4IDM0Ljk0NyAzMS4yMDkxIDM0LjkzNzMgMzEuNTEyNSAzNC45MjkzTDMyLjQyODcgMzQuOTFDMzIuNTgyNCAzNC45MDc2IDMyLjczNjYgMzQuOTA1NyAzMi44OTEzIDM0LjkwNDFMMzMuODI0NSAzNC45MDAyQzQ0IDM0LjkyOTMgNTMuNDg0IDM3LjI0NTcgNTMuNDg0IDM3LjI0NTdDNTMuNTYzOCAzNi4wOTg5IDUzLjcyNDUgMzQuOTY0NiA1My45NjY1IDMzLjg1NkM1NS4wNTYzIDI4Ljg2MzUgNTcuNjMxMSAyNS4wNjg5IDYxLjIxNjIgMjMuMTcxQzYzLjYwMzMgMjEuOTA3NCA2Ni41Mzk0IDIyLjg2MDQgNjcuNzc1NiAyNS4yOTk0WiIgZmlsbD0iI0ZGQzhFOSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTU3LjU3MDMgNTMuMDYxNkM1OC44Mjk2IDUzLjcyNDUgNTkuODE0NyA1NC42OTExIDYwLjIwNTYgNTUuNjQ3NUM2MC4yNjYxIDU1Ljc5NjUgNjAuMTk3NCA1NS45Njc3IDYwLjA1MTYgNTYuMDMwMkM2MC4wMTU3IDU2LjA0NTUgNTkuOTc4IDU2LjA1MjcgNTkuOTQxMiA1Ni4wNTI3QzU5LjgyOTIgNTYuMDUyNyA1OS43MjMgNTUuOTg1IDU5LjY3NjkgNTUuODcyOEM1OS4wMzQ1IDU0LjMgNTYuMjg3MSA1Mi4zNTA0IDUyLjc5ODggNTIuNzcxNUM1Mi42NDQgNTIuNzkxNyA1Mi40OTk0IDUyLjY3NjMgNTIuNDgxIDUyLjUxNThDNTIuNDYyMSA1Mi4zNTUzIDUyLjU3NDQgNTIuMjA5OCA1Mi43MzEyIDUyLjE5MDdDNTQuODY4MiA1MS45Mjk5IDU2LjU0MjQgNTIuNTIxIDU3LjU3MDMgNTMuMDYxNlpNMzAuODMyMSA1My40NjNDMzAuOTg4MyA1My40ODc5IDMxLjA5NTMgNTMuNjM3NCAzMS4wNzA3IDUzLjc5N0MzMS4wNDYxIDUzLjk1NjcgMzAuODk5NSA1NC4wNjYgMzAuNzQzOCA1NC4wNDA5QzI5LjM3MzUgNTMuODIxOSAyOC4wMzQgNTMuNjU4OCAyNi43MzE4IDUzLjU0MjdMMjUuNzYyMiA1My40NjQ0QzIzLjY3NzIgNTMuMzEzMyAyMS42OTUgNTMuMjgwOSAxOS44NDM5IDUzLjMzMDNMMTguOTk4OSA1My4zNTg4QzE4LjcyMDUgNTMuMzcwMSAxOC40NDUyIDUzLjM4MzIgMTguMTczMiA1My4zOThMMTcuMzY3MyA1My40NDczVjUzLjQ0NzNMMTYuNTgxOSA1My41MDU3VjUzLjUwNTdMMTUuODE3NSA1My41NzI1VjUzLjU3MjVMMTUuMDc0OCA1My42NDY5VjUzLjY0NjlMMTQuMzU0NCA1My43MjhWNTMuNzI4TDEzLjY1NjkgNTMuODE1MVY1My44MTUxTDEyLjk4MjkgNTMuOTA3M0MxMi44NzI2IDUzLjkyMzEgMTIuNzYzMyA1My45MzkgMTIuNjU1IDUzLjk1NTFMMTIuMDE3NCA1NC4wNTM1VjU0LjA1MzVMMTEuNDA1IDU0LjE1NVY1NC4xNTVMMTAuODE4MiA1NC4yNTg5VjU0LjI1ODlMMTAuMjU3NyA1NC4zNjQyVjU0LjM2NDJMOS43MjQwNCA1NC40NzAyVjU0LjQ3MDJMOC45NzU0MiA1NC42Mjg3VjU0LjYyODdMOC4yOTA3OCA1NC43ODQzVjU0Ljc4NDNMNy40ODEwNSA1NC45ODIzVjU0Ljk4MjNMNi43OTM2NyA1NS4xNjM2VjU1LjE2MzZDNi43Njg3NyA1NS4xNzAzIDYuNzQzODYgNTUuMTczNSA2LjcxOTI0IDU1LjE3MzVDNi41OTMwMiA1NS4xNzM1IDYuNDc3MjggNTUuMDg3MyA2LjQ0Mjc1IDU0Ljk1NjVDNi40MDIyOCA1NC44MDA0IDYuNDkyODQgNTQuNjM5OCA2LjY0NTM4IDU0LjU5ODJMNy4zMTQyIDU0LjQyMDlWNTQuNDIwOUw4LjA0NzUxIDU0LjIzODdWNTQuMjM4N0w4Ljg0MzU2IDU0LjA1NDVWNTQuMDU0NUw5LjcwMDYyIDUzLjg3MVY1My44NzFMMTAuNjE3IDUzLjY5MTJWNTMuNjkxMkwxMS4yNTk5IDUzLjU3NDdDMTEuMzY5MiA1My41NTU2IDExLjQ3OTUgNTMuNTM2NyAxMS41OTA4IDUzLjUxNzlMMTIuMjcxMiA1My40MDc0QzEyLjM4NjYgNTMuMzg5NCAxMi41MDMgNTMuMzcxNSAxMi42MjA1IDUzLjM1NEwxMy4zMzcxIDUzLjI1MTNWNTMuMjUxM0wxNC4wNzcxIDUzLjE1NDlWNTMuMTU0OUwxNC44NDAyIDUzLjA2NTdWNTMuMDY1N0wxNS42MjU4IDUyLjk4NDVWNTIuOTg0NUwxNi40MzMzIDUyLjkxMjFDMTYuNTY5NyA1Mi45MDA4IDE2LjcwNyA1Mi44ODk5IDE2Ljg0NTIgNTIuODc5NUwxNy42ODQ3IDUyLjgyMTlDMjEuNTA5NCA1Mi41ODY5IDI1Ljk2MjMgNTIuNjg0NyAzMC44MzIxIDUzLjQ2M1pNMzMuNzQwMSA0NS42NDUzQzMzLjg5NjMgNDUuNjcwMiAzNC4wMDMzIDQ1LjgxOTcgMzMuOTc4NiA0NS45Nzk0QzMzLjk1NCA0Ni4xMzg4IDMzLjgwNjYgNDYuMjQ5MiAzMy42NTE4IDQ2LjIyMzJDMzAuNjcxNyA0NS43NDY5IDI3LjgyNjIgNDUuNDcxMyAyNS4xNzEyIDQ1LjM1MDdMMjQuMTg0NiA0NS4zMTI3QzIzLjM3MDEgNDUuMjg2OSAyMi41NzQ5IDQ1LjI3NTggMjEuODAwNiA0NS4yNzc4TDIwLjg4MTYgNDUuMjg2NUMxOS45NzMgNDUuMzAxMyAxOS4wOTU1IDQ1LjMzNDMgMTguMjUyMiA0NS4zODMyTDE3LjQyMDQgNDUuNDM3MlY0NS40MzcyTDE2LjYxMTkgNDUuNTAxM1Y0NS41MDEzTDE1LjgyNzYgNDUuNTc0OEMxNC45MjY4IDQ1LjY2NTggMTQuMDc2NSA0NS43NzUyIDEzLjI4MTMgNDUuODk4OUwxMi42MTM0IDQ2LjAwODVDMTIuNTA0MyA0Ni4wMjczIDEyLjM5NjQgNDYuMDQ2NCAxMi4yODk3IDQ2LjA2NTdMMTEuNjYzNSA0Ni4xODQ4QzExLjU2MTUgNDYuMjA1MiAxMS40NjA3IDQ2LjIyNTggMTEuMzYxMSA0Ni4yNDY2TDEwLjc3ODEgNDYuMzc0MUMxMC4zOTkyIDQ2LjQ2MDggMTAuMDQwMSA0Ni41NTA5IDkuNzAxNjMgNDYuNjQzNEM5LjY3NjcyIDQ2LjY1MDEgOS42NTE4MiA0Ni42NTMzIDkuNjI3MiA0Ni42NTMzQzkuNTAwOTggNDYuNjUzMyA5LjM4NTIzIDQ2LjU2NzEgOS4zNTA3MSA0Ni40MzY0QzkuMzEwMjQgNDYuMjgwMiA5LjQwMDggNDYuMTE5NyA5LjU1MzM0IDQ2LjA3OEwxMC4wODI3IDQ1LjkzOTVWNDUuOTM5NUwxMC42NDI2IDQ1LjgwNTVDMTAuNzM4NCA0NS43ODM2IDEwLjgzNTUgNDUuNzYxOCAxMC45MzM4IDQ1Ljc0MDNMMTEuNTM4MiA0NS42MTM5VjQ1LjYxMzlMMTIuMTcxNSA0NS40OTMzVjQ1LjQ5MzNMMTIuODMzIDQ1LjM3OTFDMTMuMzk1OCA0NS4yODY2IDEzLjk4NzMgNDUuMjAxMyAxNC42MDU4IDQ1LjEyNDZMMTUuMzYwOCA0NS4wMzY3QzE1LjQ4ODcgNDUuMDIyNyAxNS42MTc3IDQ1LjAwOTIgMTUuNzQ3OCA0NC45OTZMMTYuNTQwMyA0NC45MjE0QzE2LjY3NDQgNDQuOTA5NyAxNi44MDk2IDQ0Ljg5ODUgMTYuOTQ1NyA0NC44ODc3TDE3Ljc3NDMgNDQuODI3NkMxNy45MTQ0IDQ0LjgxODUgMTguMDU1NCA0NC44MDk4IDE4LjE5NzQgNDQuODAxNUwxOS4wNjA2IDQ0Ljc1NzJWNDQuNzU3MkwxOS45NDYxIDQ0LjcyNDFWNDQuNzI0MUwyMC44NTMxIDQ0LjcwMjhDMjEuOTIzNiA0NC42ODQ5IDIzLjAzNjggNDQuNjkyMSAyNC4xODggNDQuNzI4MkwyNS4xODM4IDQ0Ljc2NjJDMjUuNTE4OCA0NC43ODE0IDI1Ljg1NjggNDQuNzk4OSAyNi4xOTc2IDQ0LjgxOUwyNy4yMjg2IDQ0Ljg4N0MyOS4zMDc1IDQ1LjAzODcgMzEuNDg2IDQ1LjI4NDkgMzMuNzQwMSA0NS42NDUzWk0zOS4xOTIzIDQwLjI4MjlDMzkuMzQ4NSA0MC4zMDc4IDM5LjQ1NTUgNDAuNDU3MyAzOS40MzA5IDQwLjYxNjlDMzkuNDA2MiA0MC43NzY2IDM5LjI1ODggNDAuODg3MSAzOS4xMDQgNDAuODYwN0MzNi4xMjM3IDQwLjM4NDQgMzMuMjc4MiA0MC4xMDg3IDMwLjYyMzIgMzkuOTg4MUwyOS42MzY2IDM5Ljk1MDFDMjguNDk2MiAzOS45MTQgMjcuMzkzNiAzOS45MDY1IDI2LjMzMzUgMzkuOTIzOEwyNS40MzU0IDM5Ljk0NDZDMjQuODQzNyAzOS45NjI0IDI0LjI2NjMgMzkuOTg3OSAyMy43MDQxIDQwLjAyMDVMMjIuODcyMiA0MC4wNzQ2QzIyLjczNTUgNDAuMDg0NCAyMi41OTk4IDQwLjA5NDcgMjIuNDY1MSA0MC4xMDU0TDIxLjY2ODYgNDAuMTc0MkMyMS41Mzc5IDQwLjE4NjUgMjEuNDA4MiA0MC4xOTkxIDIxLjI3OTUgNDAuMjEyMUwyMC41MTk4IDQwLjI5NDZDMTkuODk3MyA0MC4zNjY5IDE5LjMwMTIgNDAuNDQ3OSAxOC43MzMyIDQwLjUzNjNMMTguMDY1MyA0MC42NDU5QzE3Ljk1NjIgNDAuNjY0NyAxNy44NDg0IDQwLjY4MzggMTcuNzQxNiA0MC43MDMxTDE3LjExNTQgNDAuODIyM1Y0MC44MjIzTDE2LjUxNzkgNDAuOTQ3MlY0MC45NDcyTDE1Ljk0OTYgNDEuMDc3M0MxNS42NzI5IDQxLjE0MzUgMTUuNDA3NCA0MS4yMTE1IDE1LjE1MzYgNDEuMjgxQzE1LjEyODcgNDEuMjg3NiAxNS4xMDM4IDQxLjI5MDggMTUuMDc5MSA0MS4yOTA4QzE0Ljk1MjkgNDEuMjkwOCAxNC44MzcyIDQxLjIwNDYgMTQuODAyNiA0MS4wNzM5QzE0Ljc2MjIgNDAuOTE3NyAxNC44NTI3IDQwLjc1NzIgMTUuMDA1MyA0MC43MTU2QzE1LjQzMzUgNDAuNTk4NSAxNS44OTQzIDQwLjQ4NTQgMTYuMzg1NyA0MC4zNzc5TDE2Ljk5MDIgNDAuMjUxNUMxNy4wOTM0IDQwLjIzMDkgMTcuMTk3NyA0MC4yMTA2IDE3LjMwMzMgNDAuMTkwNUwxNy45NTA4IDQwLjA3M0MxOC44MzI5IDM5LjkyMDYgMTkuNzg5MyAzOS43ODU4IDIwLjgxMjkgMzkuNjc0M0wyMS41OTMxIDM5LjU5NTFDMjEuNzI1MiAzOS41ODI3IDIxLjg1ODQgMzkuNTcwNyAyMS45OTI1IDM5LjU1OUwyMi44MDkzIDM5LjQ5NEMyMi45NDc0IDM5LjQ4NCAyMy4wODY1IDM5LjQ3NDQgMjMuMjI2NiAzOS40NjUzTDI0LjA3ODUgMzkuNDE1NkMyNS45NDg5IDM5LjMxOTcgMjcuOTc4MiAzOS4zMDA2IDMwLjEzNiAzOS4zODMxTDMxLjE0MDkgMzkuNDI4NFYzOS40Mjg0TDMyLjE2MzQgMzkuNDg4OEMzNC4zOTc0IDM5LjYzNjEgMzYuNzUwNSAzOS44OTI1IDM5LjE5MjMgNDAuMjgyOVoiIGZpbGw9IiMwMDNDRTUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01Mi4yMTMgNDkuMDM4NkM1Mi4xMTQ0IDQ3LjQ3MTcgNDguMzY5NSA0Ni43NTcyIDQzLjQ1OCA0Ny41NjE4QzM4LjU0NjUgNDguMzY2NCAzNS4wOTk3IDUwLjEzNDEgMzQuOTA2NiA1MS4zNjE1QzM0LjcxMzMgNTIuNTg4OSAzOS44NjA1IDUxLjg2MjUgNDMuMzQ4MSA1MS42OTAyQzQ5LjMxODEgNTEuMjExOCA1Mi4wNzk1IDUwLjU5MjYgNTIuMjEzIDQ5LjAzODZaIiBmaWxsPSIjRkZCNERFIi8+CjxnIGNsaXAtcGF0aD0idXJsKCNjbGlwMF8yMjg4XzM1OSkiPgo8cGF0aCBkPSJNMTkuMzYwMSAyMy4yODM5VjI2Ljg3ODZMMjAuMjIyNiAyNy4zNjg5VjQ2Ljk4NEwzNy4xNzAxIDU0LjY2MzVWMjcuNjk1M0MzNy4xNzAxIDI3LjIwNTYgMTkuMzYwMSAyMy4yODM5IDE5LjM2MDEgMjMuMjgzOVoiIGZpbGw9IiMwQjdFRkYiLz4KPHBhdGggZD0iTTM3LjE3MDIgMjcuNjk1M1YzMS44NjIxVjMyLjAzNzRWNTQuNjYzNUw2MC44NzA4IDQ3LjcyMThWMjcuNjk1M0w2MS42MDAyIDI3LjU3M1YyMi42OTE4TDM3LjE3MDIgMjcuNjk1M1oiIGZpbGw9IiMwMDNDRTUiLz4KPHBhdGggZD0iTTE5LjM2MDEgMjMuMjgzOUw0NC43OTQ4IDE5LjMzMDNMNjEuNjAwMSAyMi42OTE5TDM3LjE3MDEgMjcuNjk1M0wxOS4zNjAxIDIzLjI4MzlaIiBmaWxsPSIjMDZBMEZGIi8+CjxwYXRoIGQ9Ik02MC44NzA3IDI3LjY5NTNMMzcuMTY5NCAzMi40NDdWMzMuOTIyN0MzNy4xNjk0IDMzLjkyMjcgNTIuMjk1NSAzMC4yMzM1IDU2LjMxMjMgMzAuMzU2M0M2MC4zMjkyIDMwLjQ3OTIgNjAuODcwNyAzMC42NDMxIDYwLjg3MDcgMzAuNjQzMVYyNy42OTQ3VjI3LjY5NTNaIiBmaWxsPSIjMDAyMTk5Ii8+CjxwYXRoIGQ9Ik0yMC4yMjI3IDI3LjM2ODhMMzcuMTcwMSAzMi40NDc2VjMzLjkyMjdMMjAuMjIyNyAyNy42OTUzVjI3LjM2ODhaIiBmaWxsPSIjMDAzQ0U1Ii8+CjxwYXRoIGQ9Ik0yNi4yMTk0IDI0Ljk4M0wyNi4wMzE1IDQ5LjYxNjFMMjkuNTYwNSA1MS4yMTUyTDI5LjUwMzkgMjUuNzk2OEwyNi4yMTk0IDI0Ljk4M1oiIGZpbGw9IiNGRUEyMzEiLz4KPHBhdGggZD0iTTQ4LjIxNzggMjUuNDMzTDQ4LjQ4NTIgNTEuMzQ5Nkw1MS44Nzg3IDUwLjM1NTFMNTEuMzc2OSAyNC43ODU1TDQ4LjIxNzggMjUuNDMzWiIgZmlsbD0iI0ZFQTIzMSIvPgo8cGF0aCBkPSJNMjkuNTAzNyAyNS43OTY4TDUzLjU1IDIxLjA4MThMNTAuNjYwNyAyMC41MDM2TDI2LjIxOTIgMjQuOTgzTDI5LjUwMzcgMjUuNzk2OFoiIGZpbGw9IiNGRkQ4ODAiLz4KPHBhdGggZD0iTTQ4LjIxNzggMjUuNDMzTDMxLjUwNTkgMjEuMzk2MkwzNC4xNjc1IDIwLjk4MjRMNTEuMzc3IDI0Ljc4NTVMNDguMjE3OCAyNS40MzNaIiBmaWxsPSIjRkZEODgwIi8+CjxwYXRoIGQ9Ik00NS45NTM4IDExLjY2MjJDNDUuMTQ5NyAxMS44MTI4IDQ0LjQxNDMgMTIuMjQwNCA0My44MDgzIDEyLjc4OTdDNDMuMjAyNCAxMy4zMzk2IDQyLjcxNjMgMTQuMDA4OCA0Mi4yODMzIDE0LjcwMzNDNDAuODg4MyAxNi45NDA5IDQwLjAwNjUgMTkuNDk1OSAzOS43MjQ2IDIyLjExNzhDMzkuNjkzMyAyMi40MTA2IDM5LjY3MjIgMjIuNzIzMiAzOS44MDk1IDIyLjk4NEM0MC4wNjYxIDIzLjQ3MTIgNDAuNzM0MSAyMy41NDgzIDQxLjI3ODYgMjMuNDYyOEM0Mi4zMjEyIDIzLjI5OTYgNDMuMjgyNSAyMi43NzMyIDQ0LjA4NzggMjIuMDkwN0M0NC44OTMxIDIxLjQwODkgNDUuNTU0NCAyMC41NzQxIDQ2LjE2ODggMTkuNzE2NEM0Ni44NjA5IDE4Ljc0OTcgNDcuNTA1NCAxNy43MzcyIDQ3LjkzIDE2LjYyNjVDNDguMTMzIDE2LjA5NTIgNDguMjg2IDE1LjUzMzkgNDguMjY5MSAxNC45NjUzQzQ4LjI1NzEgMTQuNTU5OSA0OC4xNTg5IDE0LjE2MTggNDguMDQzMiAxMy43NzMzQzQ3LjcxNjggMTIuNjc3MSA0Ny4zODAxIDExLjM5NTQgNDUuOTU0NCAxMS42NjI4TDQ1Ljk1MzggMTEuNjYyMloiIGZpbGw9IiNGRUEyMzEiLz4KPHBhdGggZD0iTTUxLjA4MzcgMTcuNjY0OUM0Ny45MDY1IDIxLjQyMDMgNDEuMjg1MiAyMy4wMTQ3IDQxLjA4MDQgMjMuMDI5MUw0MS4wNDkxIDIzLjcxMDRDNDAuOTU2MyAyMy43MDEzIDQwLjg2NDggMjMuNjg5OSA0MC43NzI2IDIzLjY3NjZDNDAuNDc0NSAyMy42MzM5IDQwLjE2MDEgMjMuNTU5MiAzOS45NTIzIDIzLjM0MTFDMzkuMzY4IDIyLjcyNzQgNDAuMzExMyAyMi4zNjg0IDQwLjcxNiAyMi4xMDk0QzQxLjMxMTEgMjEuNzI4NyA0MS44ODQ1IDIxLjMxMzcgNDIuNDMwMiAyMC44NjVDNDMuNTI1MiAxOS45NjMzIDQ0LjUxMTIgMTguOTIzNyA0NS4zMjAxIDE3Ljc1N0M0NS43Nzc5IDE3LjA5ODEgNDYuMTc4NCAxNi4zOTk0IDQ2LjUwOTEgMTUuNjY3NkM0Ny4wNTc4IDE0LjQ1MzkgNDcuMjY4NiAxMy4wNDIxIDQ2LjkwOTcgMTEuNzU5MkM0OC4zNzc1IDEyLjI0NjQgNDkuNTA5OSAxMy41Njk3IDUwLjE3NzIgMTQuOTE4M0M1MC42MDY3IDE1Ljc4NTcgNTAuODg2MiAxNi43MTUgNTEuMDgzNyAxNy42NjQ5VjE3LjY2NDlaIiBmaWxsPSIjRkZEODgwIi8+CjxwYXRoIGQ9Ik0zMi4yODk1IDEzLjA1ODRDMzMuMTA3NCAxMy4wMzk3IDMzLjkxNTIgMTMuMzA1MyAzNC42MjIzIDEzLjcxNzNDMzUuMzI5NCAxNC4xMjkzIDM1Ljk0MzIgMTQuNjg0IDM2LjUxMDUgMTUuMjczN0MzOC4zMzg2IDE3LjE3NCAzOS43Mjk5IDE5LjQ5MTEgNDAuNTQ4NSAyMS45OTc0QzQwLjY0IDIyLjI3NzQgNDAuNzI1IDIyLjU3ODYgNDAuNjQ0MyAyMi44NjIzQzQwLjQ5NDMgMjMuMzkyMyAzOS44NTY0IDIzLjYwNTYgMzkuMzA2NSAyMy42MzUxQzM4LjI1MzEgMjMuNjkxMSAzNy4yMDMyIDIzLjM3NDkgMzYuMjc0NCAyMi44NzQzQzM1LjM0NTcgMjIuMzczOCAzNC41MjUzIDIxLjY5NDQgMzMuNzQ2NSAyMC45ODI1QzMyLjg2ODkgMjAuMTgwMiAzMi4wMjkzIDE5LjMyMjUgMzEuMzgzNiAxOC4zMjM4QzMxLjA3NDYgMTcuODQ2MiAzMC44MDkgMTcuMzI4OCAzMC43MDc4IDE2Ljc2ODZDMzAuNjM1NSAxNi4zNjkzIDMwLjY0OTQgMTUuOTU5NyAzMC42ODI1IDE1LjU1NTZDMzAuNzc1MyAxNC40MTU0IDMwLjgzODUgMTMuMDkxNSAzMi4yODg5IDEzLjA1ODRIMzIuMjg5NVoiIGZpbGw9IiNGRUEyMzEiLz4KPHBhdGggZD0iTTQwLjU3ODUgMjMuMjQyM0M0MC40MjA3IDIzLjQ5ODMgNDAuMTI4IDIzLjYzNjMgMzkuODQ1NSAyMy43NDA1TDM4Ljc2NzkgMjMuMTUwMkMzOC43Njc5IDIzLjE1MDIgMzMuNjI2NSAyMi43NzkyIDI4LjUxNDYgMTkuNjgzOUMyOC41Mjg1IDE4LjgxNzcgMjguNjE2NCAxNy45NTY0IDI4LjgzMTUgMTcuMTE4NkMyOS4yMDQ5IDE1LjY2MTYgMzAuMDM4NSAxNC4xMzE3IDMxLjM3MzkgMTMuMzUxMUMzMS4yODgzIDE0LjY4MSAzMS43ODcgMTYuMDE4NyAzMi41NzQ5IDE3LjA5MjdDMzMuMDUwMSAxNy43Mzk2IDMzLjU4NjggMTguMzQwNyAzNC4xNzA0IDE4Ljg5MDZDMzUuMjA0IDE5Ljg2MzkgMzYuMzgzMyAyMC42NzcxIDM3LjY0MTYgMjEuMzMyNEMzOC4yNjggMjEuNjU4OSAzOC45MTQ5IDIxLjk0NjIgMzkuNTc2MiAyMi4xOTQ5QzQwLjAyNjIgMjIuMzY0MiA0MS4wMjMgMjIuNTIwOCA0MC41Nzg1IDIzLjI0MjNaIiBmaWxsPSIjRkZEODgwIi8+CjxwYXRoIGQ9Ik0zOC4zODQ0IDIxLjgzMTdDMzguMTg0NSAyMi41NTc1IDM4LjU0NzEgMjMuNDAzMiAzOS4yMTc0IDIzLjc0NTNDMzkuNDYxNCAyMy44Njk5IDM5LjczNDIgMjMuOTMwOCA0MC4wMDcxIDIzLjk1NTVDNDAuNzk4NSAyNC4wMjg0IDQxLjY5NDIgMjMuNzMxNCA0Mi4wNDE3IDIzLjAxNjVDNDIuMzA5MSAyMi40NjU5IDQyLjE3NzIgMjEuNzY0OCA0MS43NzQ5IDIxLjMwMzVDNDAuODQ5NyAyMC4yNDI4IDM4Ljc5ODggMjAuMzI1MyAzOC4zODQ0IDIxLjgzMTdWMjEuODMxN1oiIGZpbGw9IiNGRkQ4ODAiLz4KPHBhdGggZD0iTTQyLjA0MTYgMjIuMjkzN0M0MS42OTQ2IDIzLjAwODcgNDAuNzk5IDIzLjMwNTYgNDAuMDA2OSAyMy4yMzI3QzM5LjczNDEgMjMuMjA3NCAzOS40NjEyIDIzLjE0NjYgMzkuMjE3MyAyMy4wMjI1QzM4LjgwMjMgMjIuODEwNSAzOC41MDYgMjIuNDA2NCAzOC4zODY3IDIxLjk1N0MzOC4zODYxIDIxLjk2IDM4LjM4NDkgMjEuOTYzNyAzOC4zODM3IDIxLjk2NjdDMzguMTgzNyAyMi42OTI1IDM4LjU0NjMgMjMuNTM4MSAzOS4yMTY3IDIzLjg4MDJDMzkuNDYwNiAyNC4wMDQ5IDM5LjczMzUgMjQuMDY1NyA0MC4wMDYzIDI0LjA5MDRDNDAuNzk3OCAyNC4xNjMzIDQxLjY5MzQgMjMuODY2NCA0Mi4wNDEgMjMuMTUxNEM0Mi4yMDA2IDIyLjgyMzIgNDIuMjE4MSAyMi40NDEzIDQyLjEyMDUgMjIuMDg4M0M0Mi4wOTk0IDIyLjE1ODggNDIuMDczNSAyMi4yMjc1IDQyLjA0MSAyMi4yOTM3SDQyLjA0MTZaIiBmaWxsPSIjRkVBMjMxIi8+CjxwYXRoIGQ9Ik01MS4yMzc5IDIwLjI2MzNDNTEuMTYwOCAyMC4zNzgzIDUxLjA1MjQgMjAuNDY4NiA1MC45NDQ2IDIwLjU1NkM0OC41MDU4IDIyLjUyODYgNDUuNDA2OCAyMy42Njk0IDQyLjI3MTggMjMuNzQ4OUM0MS44NjM0IDIzLjc1OTEgNDEuNDU0NCAyMy43NTI1IDQxLjA0OTEgMjMuNzEwM0w0MS4wODA0IDIzLjAyOTFDNDEuMjg1MiAyMy4wMTQ2IDQ3LjkwNjUgMjEuNDIwMyA1MS4wODM3IDE3LjY2NDlDNTEuMTkzOSAxOC4xOTA3IDUxLjI3ODkgMTguNzIzMSA1MS4zNTExIDE5LjI1NDRDNTEuMzk3NSAxOS41OTc3IDUxLjQzMTIgMTkuOTc1MyA1MS4yMzc5IDIwLjI2MzNWMjAuMjYzM1oiIGZpbGw9IiNGRUEyMzEiLz4KPHBhdGggZD0iTTM5Ljg0NTUgMjMuNzQwNUMzOS4zNzUxIDIzLjkxMjcgMzguODg2IDI0LjAzMDIgMzguMzkzOSAyNC4xMjExQzM1LjMxMDEgMjQuNjkyNyAzMi4wNDE5IDI0LjIxODEgMjkuMjQ3NyAyMi43OTM2QzI5LjEyNDIgMjIuNzMwNCAyOC45OTk2IDIyLjY2NDEgMjguOTAwMiAyMi41NjcxQzI4LjY1MTQgMjIuMzI2MiAyOC42MDYyIDIxLjk0OTIgMjguNTgwOSAyMS42MDRDMjguNTMzNCAyMC45NjYyIDI4LjUwMzkgMjAuMzI0MSAyOC41MTQ3IDE5LjY4MzhDMzMuNjI2NiAyMi43NzkyIDM4Ljc2OCAyMy4xNTAyIDM4Ljc2OCAyMy4xNTAyTDM5Ljg0NTUgMjMuNzQwNVYyMy43NDA1WiIgZmlsbD0iI0ZFQTIzMSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzIyODhfMzU5Ij4KPHJlY3Qgd2lkdGg9IjQyLjI0IiBoZWlnaHQ9IjQzLjAzNzUiIGZpbGw9IndoaXRlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOS4zNjAxIDExLjYyNikiLz4KPC9jbGlwUGF0aD4KPC9kZWZzPgo8L3N2Zz4K';
+    const iconoBonoRegularBase64 = 'PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHZpZXdCb3g9IjAgMCA4OCA4OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik03Ni45NzA1IDY0LjMwODJDNzYuNjQxOSA2NC44NDE1IDc2LjI5OTQgNjUuMzY2NiA3NS45NDY2IDY1Ljg4MUM3NS40ODcxIDY2LjU1MjMgNzUuMDA1MyA2Ny4yMDc4IDc0LjUwMjggNjcuODQ4MUM3My4zOTggNjkuMjYwOCA3Mi4xOTUxIDcwLjU5NjQgNzAuOTA3OSA3MS44NDA0QzY2Ljc1NzEgNzUuODUzNyA2MS43MTMxIDc4Ljk0NiA1Ni4xMDMgODAuNzkwN0M1NC43MTc3IDgxLjI0NTIgNTMuMjk2MyA4MS42MjU1IDUxLjg0NTYgODEuOTIzMUM0OS4zMTI0IDgyLjQ0NjQgNDYuNjg4MSA4Mi43MiA0NCA4Mi43MkMzOS4yOTg2IDgyLjcyIDM0Ljc5MTYgODEuODgyIDMwLjYyMTggODAuMzQ2OEMyMi40MjE4IDc3LjMyNjggMTUuNTI0NSA3MS42MTE1IDExLjAwODkgNjQuMjc1NEM3LjM3NjA3IDU4LjM3ODEgNS4yODAwMyA1MS40MzQxIDUuMjgwMDMgNDRDNS4yODAwMyAyMi42MTQ0IDIyLjYxNjMgNS4yODAwMyA0NCA1LjI4MDAzQzYyLjEzODIgNS4yODAwMyA3Ny4zNjI5IDE3Ljc0OTQgODEuNTY3IDM0LjU4NjhDODEuNjg3NSAzNS4wNjY5IDgxLjc5OTQgMzUuNTUyMiA4MS45MDA5IDM2LjAzOTJDODIuNDM3OCAzOC42MDg1IDgyLjcyIDQxLjI3MDcgODIuNzIgNDRDODIuNzIgNTEuNDQ3OSA4MC42MTcxIDU4LjQwNTQgNzYuOTcwNSA2NC4zMDgyWiIgZmlsbD0iIzhCODNGRiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTM0LjQ1NTEgMjUuNDk3M0wzNS4wMDQ2IDI4LjEzMjJMMzUuMzMzMiAyOS42Njg5TDM1LjQ1NzUgMzAuMjMyOUMzNS41NTE2IDMwLjY1NTQgMzUuNjQ1IDMxLjA2NTYgMzUuNzM4NSAzMS40NjVMMzYuMDE5MyAzMi42MzMyQzM2LjI1NDIgMzMuNTgzIDM2LjQ5MjYgMzQuNDc3MiAzNi43NDMzIDM1LjM0MzFMMzYuOTY0OSAzNi4wODk4QzM3LjMyMzUgMzcuMjY4OCAzNy43MDA1IDM4LjM2NzUgMzguMDk3OCAzOS4zODU0QzM3Ljc0MDYgMzguMzk0IDM3LjQxNDIgMzcuMzU4NiAzNy4xMDU4IDM2LjI1MThMMzYuOTAyNCAzNS41MDIyQzM2Ljg2ODkgMzUuMzc1NCAzNi44MzU2IDM1LjI0NzcgMzYuODAyNSAzNS4xMTg5TDM2LjYwNTcgMzQuMzM0MkwzNi41MDg2IDMzLjkzMjNMMzYuMjY4OSAzMi44OTgxTDM2LjAzMjQgMzEuODE4OEwzNS44NDQ0IDMwLjkyMDVMMzUuNjU2NiAyOS45ODk1TDM1LjQ2ODMgMjkuMDIzOEwzNS4yNzg2IDI4LjAyMTZDMzQuOTI4NSAyNi4xNDU2IDM2LjE2NTQgMjQuMzQxIDM4LjA0MTMgMjMuOTkwOEMzOS45MTczIDIzLjY0MDYgNDEuNzIxOSAyNC44Nzc1IDQyLjA3MjEgMjYuNzUzNUw0Mi4yNDkgMjcuNjg4TDQyLjQyNDEgMjguNTg2Mkw0Mi41OTgxIDI5LjQ0OTZMNDIuNzcxNyAzMC4yNzk4TDQyLjk0NTUgMzEuMDc4NEw0My4yMDgxIDMyLjIyMDdMNDMuMzg1NCAzMi45NDc1TDQzLjU2NTMgMzMuNjQ4M0M0My42ODYxIDM0LjEwNzIgNDMuODA5MSAzNC41NDk5IDQzLjkzNTIgMzQuOTc4NUw0NC4xMjY1IDM1LjYxMTFDNDQuNTc4OCAzNy4wNjM5IDQ1LjA3MzMgMzguMzU3MiA0NS42NDc2IDM5LjU4MzFMNDUuODk4NyA0MC4xMDQ1TDQ2LjAyODIgNDAuMzYyN0M0OC4xNjQ4IDQ0LjU2ODQgNTAuOTI3NCA0Ni44NTk0IDU0Ljc2NzIgNDcuMjc5NUM1My41OTIzIDQzLjg3NTggNTMuNDg3NiA0MC4zOTI5IDU0LjM1NjEgMzYuNTEwNUM1NC44MzY3IDM0LjM2MTcgNTYuOTY4NCAzMy4wMDkzIDU5LjExNzMgMzMuNDlDNjEuMjY2MSAzMy45NzA3IDYyLjYxODQgMzYuMTAyMyA2Mi4xMzc4IDM4LjI1MTJDNjEuMjI0MyA0Mi4zMzUgNjEuODkxNSA0NS4yNzg3IDY0LjgxNTkgNDkuMTEzNUw2NS4wMTg3IDQ5LjM3NjRDNjcuOTc3NiA1My4xNjQ5IDY5LjAwNDIgNTcuMzYgNjguMzM5NSA2MS4zMzk2QzY4LjIxMDYgNjIuMTExMyA2OC4wMTYzIDYyLjg2ODggNjcuNzY1NiA2My41OTA4QzY3LjQ5MTkgNjQuOTI5OSA2Ny44MTgyIDY2LjM3NzIgNjguNTE4NCA2OC4yMTQ4TDY4LjczOTUgNjguNzc4MUM2OC43NzgxIDY4Ljg3NCA2OC44MTc2IDY4Ljk3MSA2OC44NTggNjkuMDY5TDY5LjExMDIgNjkuNjcwNkw2OS4zODE0IDcwLjI5OThMNzAuNDQ1MyA3Mi4yNzUxQzY1Ljk1ODIgNzYuNjEwMiA1OS4wMjE3IDgwLjUwMTQgNTEuODQ1NiA4MS45MjMxQzUxLjE2MTcgNzkuMTk0OCA0OC41MDM5IDc0LjY0NiA0Ny4yODgzIDczLjMzODNMNDcuMDIyNSA3My4wNjA2QzQ2LjkzMTQgNzIuOTY4MiA0Ni44Mzc4IDcyLjg3NTkgNDYuNzQxNSA3Mi43ODM2TDQ2LjQ0NCA3Mi41MDY2TDQ2LjEyODkgNzIuMjI4OUM0Ni4wNzQ4IDcyLjE4MjUgNDYuMDE5OSA3Mi4xMzYxIDQ1Ljk2NDMgNzIuMDg5NUw0NS42MjAzIDcxLjgwOTRMNDUuMjU1NSA3MS41MjY4TDQ0Ljg2ODYgNzEuMjQwOUM0NC44MDIyIDcxLjE5MyA0NC43MzQ4IDcxLjE0NDkgNDQuNjY2NCA3MS4wOTY2TDQ0LjI0NDEgNzAuODA0N0M0NC4xNzE2IDcwLjc1NTYgNDQuMDk4MSA3MC43MDY0IDQ0LjAyMzUgNzAuNjU2OUw0My41NjI5IDcwLjM1NzNDNDMuNDgzOSA3MC4zMDY5IDQzLjQwMzggNzAuMjU2MiA0My4zMjI1IDcwLjIwNTNMNDIuODIwOCA2OS44OTYzTDQyLjI5IDY5LjU4MDRMNDEuNzI5MSA2OS4yNTY2TDQxLjEzNjYgNjguOTI0NEw0MC41MTE1IDY4LjU4M0wzOS44NTIzIDY4LjIzMTdMMzkuMTU3OCA2Ny44Njk4TDM4LjQyNjkgNjcuNDk2NkwzNy42NTgyIDY3LjExMTRDMzcuNTI2OSA2Ny4wNDYyIDM3LjM5MzkgNjYuOTgwNCAzNy4yNTkzIDY2LjkxNDFMMzcuMTAzNiA2Ni44NTI0TDM2LjQzNTkgNjYuNTc5NEMzMC44NDczIDY0LjI0NDQgMjcuNDU2NyA2MS41Mjg5IDI0LjM5NDYgNTcuNDQwN0wyNC4wMzU4IDU2Ljk1MzNMMjMuNjc5MyA1Ni40NTI5TDIzLjMyNDUgNTUuOTM5MUwyMC40NTExIDUxLjU2ODdMMTkuOTczNyA1MC44NTYzTDE5LjY3MzMgNTAuNDE3MkMxOC41ODM1IDQ4Ljg1MDYgMTguOTcwMSA0Ni42OTcyIDIwLjUzNjcgNDUuNjA3NEMyMi4xMDMzIDQ0LjUxNzYgMjQuMjU2NyA0NC45MDQxIDI1LjM0NjUgNDYuNDcwN0wyNS44MTc2IDQ3LjE2MTlMMjYuODY0MyA0OC43NDA5QzI0LjQyNTcgNDQuMzE3MyAyMi42NzI4IDM5LjIxNjMgMjEuNzg0MSAzNC40NTU2QzIxLjQzNCAzMi41Nzk2IDIyLjY3MDkgMzAuNzc1IDI0LjU0NjggMzAuNDI0OEMyNi40MjI4IDMwLjA3NDYgMjguMjI3NCAzMS4zMTE2IDI4LjU3NzYgMzMuMTg3NUMyOC42ODUzIDMzLjc2NDQgMjguODAzNyAzNC4zMzcyIDI4LjkzMjUgMzQuOTA1MUwyOS4wOTIgMzUuNTg0MUwyOS4yNjE1IDM2LjI1OEMyOS4zNDg3IDM2LjU5MzYgMjkuNDM5NiAzNi45MjcyIDI5LjUzNCAzNy4yNTg1TDI5LjcyNzcgMzcuOTE4MUwyOS44MjgyIDM4LjI0NTVMMzAuMDM2MSAzOC44OTU1TDMwLjI1MzQgMzkuNTM4NUMzMi4wMDA4IDQ0LjU3NDEgMzQuNjA2NyA0OC45MzU0IDM3LjgyNjIgNTEuODM3MkwzNy44NjczIDUxLjcxNEMzNy4wNTQ1IDUwLjk1OTcgMzYuMjkyMyA1MC4xMDg4IDM1LjU4MDcgNDkuMTY3MUMzMy4yNDU1IDQ2LjA3NjkgMzEuNTE1NyA0Mi4xMzcyIDMwLjEwNTEgMzcuMjY1QzI5LjYwOSAzNS41NTE2IDI5LjE2NDEgMzMuNzY2NCAyOC43MTE4IDMxLjczNDVMMjguNTE2OSAzMC44NDY0TDI3LjY5MjUgMjYuOTIwOUMyNy4yOTk0IDI1LjA1MzUgMjguNDk0NiAyMy4yMjA5IDMwLjM2MiAyMi44Mjc4QzMyLjIyOTUgMjIuNDM0NyAzNC4wNjIgMjMuNjI5OSAzNC40NTUxIDI1LjQ5NzNaIiBmaWxsPSIjRkZDOEU5Ii8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzIuOTQ2NCA0MS42NzY0QzM0LjYyOTggNDIuNzY0MiAzNi40ODEgNDIuODkzIDM3LjA4MTMgNDEuOTY0QzM3LjY4MTcgNDEuMDM1MSAzNi44MDM3IDM5LjQwMDIgMzUuMTIwMyAzOC4zMTI0QzMzLjQzNjkgMzcuMjI0NiAzMS41ODU1IDM3LjA5NTYgMzAuOTg1MyAzOC4wMjQ2QzMwLjM4NDkgMzguOTUzNyAzMS4yNjMgNDAuNTg4NCAzMi45NDY0IDQxLjY3NjQiIGZpbGw9IiNGRkI0REUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01Mi4zNTcyIDUzLjQ5MDZDNTIuNTY5IDUxLjU4NDYgNTAuMTc4NyA0OS43NTQ4IDQ3LjAxODMgNDkuNDAzOEM0My44NTggNDkuMDUyNiA0MS4xMjQ1IDUwLjMxMyA0MC45MTI3IDUyLjIxOUM0MC43MDA4IDU0LjEyNSA0My4wOTExIDU1Ljk1NDcgNDYuMjUxNCA1Ni4zMDU5QzQ5LjQxMTggNTYuNjU3IDUyLjE0NTMgNTUuMzk2NyA1Mi4zNTcyIDUzLjQ5MDZaIiBmaWxsPSIjRkZCNERFIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNTUuNjMyNSA1MC4wOTE0QzU1LjgwNzYgNTAuMTk1OSA1NS44NjQ3IDUwLjQyMjUgNTUuNzYwMiA1MC41OTc2QzU0LjEyMjYgNTMuMzQwMSA1NC4wNzk4IDU4LjcwMDcgNTUuNzc5OSA2Mi40NzY1QzU1Ljg2MzYgNjIuNjYyNCA1NS43ODA3IDYyLjg4MSA1NS41OTQ4IDYyLjk2NDdDNTUuNDA4OSA2My4wNDg0IDU1LjE5MDQgNjIuOTY1NSA1NS4xMDY2IDYyLjc3OTZDNTMuMzEyNSA1OC43OTUgNTMuMzU3NCA1My4xODE1IDU1LjEyNjMgNTAuMjE5MUM1NS4yMzA4IDUwLjA0NCA1NS40NTc1IDQ5Ljk4NjggNTUuNjMyNSA1MC4wOTE0Wk0yNi41NDMyIDQ3LjQ1OUMyOC4yNzQyIDUxLjUyNjcgMzEuMjc2NSA1NS40NDQ5IDM0LjI5NzggNTcuNTI4MUMzNC40NjU2IDU3LjY0MzkgMzQuNTA3OSA1Ny44NzM4IDM0LjM5MjEgNTguMDQxNkMzNC4yNzY0IDU4LjIwOTUgMzQuMDQ2NSA1OC4yNTE3IDMzLjg3ODYgNTguMTM2QzMwLjczNTEgNTUuOTY4NCAyNy42NDY5IDUxLjkzODIgMjUuODYzOCA0Ny43NDgxQzI1Ljc4NCA0Ny41NjA1IDI1Ljg3MTMgNDcuMzQzNyAyNi4wNTg5IDQ3LjI2MzhDMjYuMjQ2NSA0Ny4xODQgMjYuNDYzMyA0Ny4yNzEzIDI2LjU0MzIgNDcuNDU5Wk0yOS4wOTQ5IDMyLjkzMUMyOS4zNTA2IDM0LjE0MTUgMjkuNjUyMSAzNS4zNTI1IDI5Ljk5MDEgMzYuNTQzOUwzMC4xOTczIDM3LjI1NjJMMzAuNDEyOCAzNy45NjI4QzMwLjYzMjIgMzguNjY2MiAzMC44NjM1IDM5LjM1OTcgMzEuMTA0NyA0MC4wMzg4TDMxLjM0OSA0MC43MTNMMzEuNTk5NCA0MS4zNzY2TDMxLjg1NTUgNDIuMDI4OEwzMi4xMTY4IDQyLjY2ODRWNDIuNjY4NEwzMi4zODI5IDQzLjI5NDdDMzIuNDcyMyA0My41MDExIDMyLjU2MjUgNDMuNzA1MSAzMi42NTMyIDQzLjkwNjVMMzIuOTI3NSA0NC41MDNMMzMuMjA1MiA0NS4wODMxTDMzLjQ4NTkgNDUuNjQ1OUwzMy43NjkxIDQ2LjE5MDRDMzUuMDk2IDQ4LjY4NzMgMzYuNDkxNCA1MC41NTUzIDM3Ljc1MTYgNTEuMzUxNUMzNy45MjQgNTEuNDYwNCAzNy45NzU0IDUxLjY4ODQgMzcuODY2NSA1MS44NjA4QzM3Ljc1NzYgNTIuMDMzMiAzNy41Mjk2IDUyLjA4NDYgMzcuMzU3MiA1MS45NzU3QzM1LjEzOTEgNTAuNTc0MyAzMi42MjM1IDQ2LjI3MzIgMzAuNjc3OSA0MS4wMzI3TDMwLjQyNzUgNDAuMzQ0TDMwLjE4MzkgMzkuNjQ1NkwyOS45NDc3IDM4LjkzODVDMjkuOTA4OSAzOC44MiAyOS44NzA1IDM4LjcwMTEgMjkuODMyNCAzOC41ODJMMjkuNjA3OSAzNy44NjM2TDI5LjM5MTkgMzcuMTM4OVYzNy4xMzg5TDI5LjEzNDIgMzYuMjI1NlYzNi4yMjU2TDI4Ljg5MTIgMzUuMzA1OUMyOC43MDI4IDM0LjU2OCAyOC41MjkzIDMzLjgyNTggMjguMzcyNSAzMy4wODM1QzI4LjMzMDQgMzIuODg0MSAyOC40NTggMzIuNjg4MiAyOC42NTc0IDMyLjY0NjFDMjguODU2OSAzMi42MDM5IDI5LjA1MjggMzIuNzMxNSAyOS4wOTQ5IDMyLjkzMVpNMzUuMDAxNiAyNy43NjI2QzM1LjI1NzMgMjguOTczMSAzNS41NTg4IDMwLjE4NDIgMzUuODk2OCAzMS4zNzU1TDM2LjEwNCAzMi4wODc4TDM2LjMxOTQgMzIuNzk0NEMzNi41Mzg5IDMzLjQ5NzkgMzYuNzcwMiAzNC4xOTE0IDM3LjAxMTMgMzQuODcwNUwzNy4yNTU3IDM1LjU0NDZMMzcuNTA2MSAzNi4yMDgzTDM3Ljc2MjIgMzYuODYwNEwzOC4wMjM1IDM3LjUwMDFWMzcuNTAwMUwzOC4yODk1IDM4LjEyNjNDMzguMzc5IDM4LjMzMjcgMzguNDY5MSAzOC41MzY3IDM4LjU1OTkgMzguNzM4MkwzOC44MzQyIDM5LjMzNDZMMzkuMTExOSAzOS45MTQ3TDM5LjM5MjYgNDAuNDc3NUwzOS42NzU4IDQxLjAyMkM0MS4wMDI3IDQzLjUxODkgNDIuMzk4IDQ1LjM4NyA0My42NTgzIDQ2LjE4MzJDNDMuODMwNiA0Ni4yOTIxIDQzLjg4MjEgNDYuNTIwMSA0My43NzMyIDQ2LjY5MjRDNDMuNjY0MyA0Ni44NjQ4IDQzLjQzNjMgNDYuOTE2MyA0My4yNjM5IDQ2LjgwNzRDNDEuMDQ1NyA0NS40MDYgMzguNTMwMiA0MS4xMDQ5IDM2LjU4NDYgMzUuODY0NEwzNi4zMzQyIDM1LjE3NTdMMzYuMDkwNiAzNC40NzczTDM1Ljg1NDMgMzMuNzcwMUMzNS44MTU2IDMzLjY1MTYgMzUuNzc3MiAzMy41MzI4IDM1LjczOTEgMzMuNDEzNkwzNS41MTQ2IDMyLjY5NTJMMzUuMjk4NSAzMS45NzA1VjMxLjk3MDVMMzUuMDkxMyAzMS4yNDA1TDM0Ljk5MTEgMzAuODczOFYzMC44NzM4TDM0Ljc5NzkgMzAuMTM3NUMzNC42MDk1IDI5LjM5OTcgMzQuNDM2IDI4LjY1NzUgMzQuMjc5MiAyNy45MTUyQzM0LjIzNzEgMjcuNzE1NyAzNC4zNjQ2IDI3LjUxOTggMzQuNTY0MSAyNy40Nzc3QzM0Ljc2MzYgMjcuNDM1NiAzNC45NTk1IDI3LjU2MzEgMzUuMDAxNiAyNy43NjI2WiIgZmlsbD0iIzAwMjE5OSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQzLjcyMjcgMjAuNTMzOEMzOS4wMzczIDIwLjUzMzggMzUuMjM5MyAxNi43MzUyIDM1LjIzOTMgMTIuMDUwMUMzNS4yMzkzIDcuMzY0NDkgMzkuMDM3MyAzLjU2NjQxIDQzLjcyMjcgMy41NjY0MUM0OC40MDgxIDMuNTY2NDEgNTIuMjA2NCA3LjM2NDQ5IDUyLjIwNjQgMTIuMDUwMUM1Mi4yMDY0IDE2LjczNTIgNDguNDA4MSAyMC41MzM4IDQzLjcyMjcgMjAuNTMzOFoiIGZpbGw9IiNGRkM3NEEiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00OS43MTI3IDE4LjA1NzNDNDguMzk2MSAxOS4zNzAxIDQ2LjY0OTkgMjAuMjUxMiA0NC43MDM2IDIwLjQ3NTZMNDUuNzQzOCAxOS45Nzc5VjE5Ljk3NzlDNDcuMDY2NSAxOS4zMzc4IDQ4LjM4ODEgMTguNjk0MSA0OS43MTI3IDE4LjA1NzNaTTQzLjcyMjcgMy41NjY0MUM0Ni4zMjc5IDMuNTY2NDEgNDguNjU3MyA0Ljc0MTQ5IDUwLjIxMzUgNi41ODkyOUM0NS4zMjk0IDkuMjU0MDUgNDAuNTAxMSAxMi4wMTc5IDM1LjcxNzEgMTQuODU4QzM1LjQwODcgMTMuOTc4OSAzNS4yMzkzIDEzLjAzNDUgMzUuMjM5MyAxMi4wNTAxQzM1LjIzOTMgNy4zNjQ0OSAzOS4wMzcxIDMuNTY2NDEgNDMuNzIyNyAzLjU2NjQxWiIgZmlsbD0iI0ZGRTM5QyIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQzLjU4ODQgMTguMzY1QzQwLjAyNjMgMTguMzY1IDM3LjEzODkgMTUuNDc3NiAzNy4xMzg5IDExLjkxNThDMzcuMTM4OSA4LjM1MzY3IDQwLjAyNjMgNS40NjYzMSA0My41ODg0IDUuNDY2MzFDNDcuMTUwNSA1LjQ2NjMxIDUwLjAzNzYgOC4zNTM2NyA1MC4wMzc2IDExLjkxNThDNTAuMDM3NiAxNS40Nzc2IDQ3LjE1MDUgMTguMzY1IDQzLjU4ODQgMTguMzY1WiIgZmlsbD0iI0ZGOTcwMCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQzLjg1NzIgMTguNTQ3MkM0MC4zNDI5IDE4LjU0NzIgMzcuNDk0NCAxNS42OTg1IDM3LjQ5NDQgMTIuMTg0NEMzNy40OTQ0IDguNjcwMzMgNDAuMzQyOSA1LjgyMTU5IDQzLjg1NzIgNS44MjE1OUM0Ny4zNzEzIDUuODIxNTkgNTAuMjE5OCA4LjY3MDMzIDUwLjIxOTggMTIuMTg0NEM1MC4yMTk4IDE1LjY5ODUgNDcuMzcxMyAxOC41NDcyIDQzLjg1NzIgMTguNTQ3MloiIGZpbGw9IiNGRkE5MDAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01MS45MzE2IDMyLjAyMDdMNTMuMTg5NiAzMy4yODQ4QzUzLjI3MjUgMzMuMzQyMSA1My4zNTAyIDMzLjQwNTYgNTMuNDIyMyAzMy40NzU2QzU1LjA0NyAzNS4wNTEyIDUzLjUyODcgMzkuMjUzMiA1MC4wMzAzIDQyLjg2MDlDNDYuNTMyIDQ2LjQ2ODMgNDMuMjk1MyA0Ny43NDIyIDQwLjU0NDcgNDYuNDQ3MUM0MC4yMTk0IDQ2LjI0MDUgMzkuOTczNiA0NS45OTQyIDM5Ljc5OTcgNDUuNzE0M0wzOS4xMTg0IDQ0Ljg3NTRMMzkuNDY5MyA0NC41MjI3QzM5LjQzMDcgNDIuNTQxMSA0MS4zMzQ3IDM5Ljc0MDQgNDMuODMwMiAzNy4xNjcxQzQ2LjE3NzcgMzQuNzQ2MiA0OC45NjE5IDMzLjIwMjQgNTEuMDMwOCAzMi45MjQ4TDUxLjkzMTYgMzIuMDIwN1oiIGZpbGw9IiNGRkE5MDAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00OC42MzYyIDQxLjUwODlDNDUuMTM3OSA0NS4xMTY0IDQwLjk4NTkgNDYuNzY0NiAzOS4zNjI0IDQ1LjE5MDNDMzcuNzM5IDQzLjYxNTggMzkuMjU4OSAzOS40MTUyIDQyLjc1NzQgMzUuODA4QzQ2LjI1NTkgMzIuMjAwMyA1MC40MDc3IDMwLjU1MjEgNTIuMDMxIDMyLjEyNjNDNTMuNjU0NiAzMy43MDA2IDUyLjEzNDkgMzcuOTAxMyA0OC42MzYyIDQxLjUwODkiIGZpbGw9IiNGRkM3NEEiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00MS44ODk4IDQxLjAyNjJDNDIuNzQwMSA0MC42NDcyIDQzLjYzMjIgNDAuMjgyNiA0NC40MjI4IDM5Ljc4NTRDNDcuMjQzMSAzOC4wMTEyIDQ5LjE5MDQgMzQuOTI1OCA0OS4zNjk0IDMxLjYzNkM0Ny40Mzk2IDMyLjAzMiA0NC45NjgzIDMzLjUyNzcgNDIuNzU3MyAzNS44MDhDNDAuNjQwMyAzNy45OTA5IDM5LjI0OTYgNDAuMzkwMSAzOC44Mzk2IDQyLjI5NDNDMzkuODY4NiA0MS45MDE4IDQwLjg4NDUgNDEuNDc0IDQxLjg4OTggNDEuMDI2MiIgZmlsbD0iI0ZGRDg4MCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQ3LjU2MzUgNDAuMjMzNkM0NC44NzQ3IDQzLjAwNjIgNDIuMTY1IDQ0LjcyNjggNDEuMDc0NSA0My42NjkyQzM5LjkxNjkgNDIuNTQ2NiA0MC45MjU2IDM5LjE3NjUgNDMuNjE0MiAzNi40MDM4QzQ2LjMwMjkgMzMuNjMxMiA0OS4zNjY3IDMyLjI0MTIgNTAuNDU3IDMzLjI5ODZDNTAuNzI0NSAzMy41NTggNTEuMDE1NyAzMy44NDAyIDUxLjA0NDcgMzQuNzU3NUM1MS4wOTA1IDM2LjIwNSA0OS41OTI1IDM4LjE0MTIgNDcuNTYzNSA0MC4yMzM2IiBmaWxsPSIjRkY5NzAwIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNDcuODk2NCA0MC43OTE1QzQ1LjI3MjYgNDMuNDk3MyA0Mi4yNjE2IDQ0LjgzMzIgNDEuMTcxMyA0My43NzU4QzQwLjA4MDggNDIuNzE4MyA0MS4zMjMzIDM5LjY2NzYgNDMuOTQ3MSAzNi45NjJDNDYuNTcxMiAzNC4yNTYyIDQ5LjU4MjIgMzIuOTIwMyA1MC42NzI3IDMzLjk3NzlDNTEuNzYzIDM1LjAzNTMgNTAuNTIwMiAzOC4wODU5IDQ3Ljg5NjQgNDAuNzkxNSIgZmlsbD0iI0ZGQTkwMCIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTI2LjU3MDQgMjIuNTA4OUMyOC44NTYyIDIwLjgwODIgMzIuNzgwMSAyMS4wNzQ4IDM2LjEwOTkgMjMuMzU3OEMzOS40Mzk5IDI1LjY0MDkgNDEuMTAzMiAyOS4yMDUyIDQwLjM0MDUgMzEuOTUwNEw0MC41NDU3IDMyLjA5MDhMMzkuNzc3NCAzMy4yMTExTDM5Ljc3NSAzMy4yMDkyTDM5LjcwODQgMzMuMzEyMUMzNy44MTY5IDM2LjA3MDcgMzMuMjIzMiAzNi4yMjM1IDI5LjM1MzEgMzMuNjk1N0wyOS4xMjYzIDMzLjU0MzlDMjUuMjEwMiAzMC44NTkgMjMuNTk5NSAyNi40MDI1IDI1LjUyNzggMjMuNTg5NUwyNS41OTg1IDIzLjQ4OTRWMjMuNDg5NEwyNS41OTcxIDIzLjQ4ODdMMjYuMzY1NCAyMi4zNjgyTDI2LjU3MDQgMjIuNTA4OVoiIGZpbGw9IiNGRkE5MDAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00MC41NDU2IDMyLjA5MDhDNDIuNDc0MiAyOS4yNzc5IDQwLjg2MzEgMjQuODIxMyAzNi45NDcyIDIyLjEzNjVDMzMuMDMxMyAxOS40NTE2IDI4LjI5MzcgMTkuNTU1NSAyNi4zNjUzIDIyLjM2ODJDMjQuNDM2OCAyNS4xODExIDI2LjA0NzcgMjkuNjM3NyAyOS45NjM2IDMyLjMyMjZDMzMuODc5NSAzNS4wMDcyIDM4LjYxNzEgMzQuOTAzNSA0MC41NDU2IDMyLjA5MDhaIiBmaWxsPSIjRkZDNzRBIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNDAuNzI0MyAzMS44MDc2QzQwLjY2ODMgMzEuOTAzNCA0MC42MDkzIDMxLjk5ODEgNDAuNTQ1OCAzMi4wOTA3QzM5LjQ3NjQgMzMuNjUwNSAzNy41NDI2IDM0LjM3NTYgMzUuMzY0NyAzNC4yNTU4QzM3LjI2NzcgMzMuNzcxMiAzOS4wNzEyIDMyLjg5MjYgNDAuNzI0MyAzMS44MDc2Wk0zMy44MzIgMjAuNjIwNUMzMy44NjIyIDIwLjgxOTUgMzMuODY3MiAyMS4wMTk5IDMzLjgzNDcgMjEuMjI0M0MzMy43ODkxIDIxLjUxMiAzMy40ODQxIDIyLjAyMjkgMzMuMjQ0MSAyMi4yNDI1QzMyLjM3MiAyMy4wNDExIDMxLjE0NjkgMjMuMzgzMiAyOS44ODIgMjMuMzE4OUMyOC42NTc0IDIzLjI1NjcgMjcuNDg4NiAyMi44ODkzIDI2LjM5MTEgMjIuMzMzN0MyNy44MzQxIDIwLjI3MTUgMzAuODAyNSAxOS42OTAxIDMzLjgzMiAyMC42MjA1WiIgZmlsbD0iI0ZGRTM5QyIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTMwLjc0ODMgMzAuODk2M0MzMy43NTc3IDMyLjk1OTYgMzcuMzc3MSAzMi45MTE1IDM4LjgzMjggMzAuNzg4NUM0MC4yODg0IDI4LjY2NTUgMzkuMDI4OCAyNS4yNzE4IDM2LjAxOTEgMjMuMjA4NUMzMy4wMDk3IDIxLjE0NTEgMjkuMzkwMSAyMS4xOTM1IDI3LjkzNDYgMjMuMzE2NUMyNi40NzkgMjUuNDM5NSAyNy43Mzg4IDI4LjgzMyAzMC43NDgzIDMwLjg5NjMiIGZpbGw9IiNGRjk3MDAiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0zMC43NTIxIDMxLjE3MjVDMzMuNjg5IDMzLjE4NjEgMzcuMjEyNiAzMy4xNTE1IDM4LjYyMjQgMzEuMDk1M0M0MC4wMzIyIDI5LjAzOTEgMzguNzk0MiAyNS43NDAxIDM1Ljg1NzQgMjMuNzI2NkMzMi45MjAzIDIxLjcxMyAyOS4zOTY5IDIxLjc0NzMgMjcuOTg3MSAyMy44MDM1QzI2LjU3NzMgMjUuODU5NyAyNy44MTUyIDI5LjE1ODkgMzAuNzUyMSAzMS4xNzI1IiBmaWxsPSIjRkZBOTAwIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzYuODE1NSAzMC44NjY4QzM0LjE2MDEgMzIuMDY1MyAzMS4xNzkgMzIuMzc2MyAyOC41NjQ0IDMxLjE5OTRDMjYuNTgyNCAyOS4zNDU1IDI1LjQ5MDMgMjcuMDEyMiAyNS41NTUyIDI0LjkzODVDMjcuMTI4NiAyNS42ODQ0IDI4LjgxNjIgMjYuMTE3NyAzMC41ODE1IDI2LjAzMjRDMzIuNTEyNiAyNS45MzkxIDM0LjQxNDkgMjUuMTY5NyAzNS42MzgzIDIzLjYyOTFDMzYuMDczIDIzLjA4MTUgMzYuMzQ0NCAyMi40Njc2IDM2LjQ3MjkgMjEuODI5M0MzNi42MzIxIDIxLjkyNzYgMzYuNzkwNiAyMi4wMjkgMzYuOTQ3MiAyMi4xMzY2QzM5LjI2ODQgMjMuNzI3OSA0MC43Nzk1IDI1Ljk0MTcgNDEuMjIzOSAyOC4wNjdDMzkuODYwNCAyOS4xODI2IDM4LjM2NyAzMC4xNjY1IDM2LjgxNTUgMzAuODY2OCIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4yIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzkuMDUwNSA0NS41MDE0TDM5LjUwMTEgNDYuMzI1NEw0MC4zMjUzIDQ2Ljc3NkwzOS41MDExIDQ3LjIyNjhMMzkuMDUwNSA0OC4wNTFMMzguNTk5OSA0Ny4yMjY4TDM3Ljc3NTcgNDYuNzc2TDM4LjU5OTkgNDYuMzI1NEwzOS4wNTA1IDQ1LjUwMTRaTTMyLjk1NzcgMzEuODk4OEwzMy4zMzggMzIuNTk0NEwzNC4wMzMzIDMyLjk3NDVMMzMuMzM4IDMzLjM1NDlMMzIuOTU3NyAzNC4wNTAyTDMyLjU3NzQgMzMuMzU0OUwzMS44ODIxIDMyLjk3NDVMMzIuNTc3NCAzMi41OTQ0TDMyLjk1NzcgMzEuODk4OFpNNDIuMDczNyAzMC4zMjMxTDQyLjU5MzggMzEuMjc0MUw0My41NDQ4IDMxLjc5NDJMNDIuNTkzOCAzMi4zMTQzTDQyLjA3MzcgMzMuMjY1M0w0MS41NTM1IDMyLjMxNDNMNDAuNjAyNiAzMS43OTQyTDQxLjU1MzUgMzEuMjc0MUw0Mi4wNzM3IDMwLjMyMzFaTTUxLjc1NTMgMzEuNzk0Mkw1MS45ODA1IDMyLjIwNjFMNTIuMzkyNyAzMi40MzE3TDUxLjk4MDUgMzIuNjU2OUw1MS43NTUzIDMzLjA2ODlMNTEuNTI5OSAzMi42NTY5TDUxLjExNzkgMzIuNDMxN0w1MS41Mjk5IDMyLjIwNjFMNTEuNzU1MyAzMS43OTQyWk0zMS45MDUyIDE0LjIwNTJMMzIuNjMxMSAxNS41MzI1TDMzLjk1ODcgMTYuMjU4NEwzMi42MzExIDE2Ljk4NDVMMzEuOTA1MiAxOC4zMTJMMzEuMTc5NCAxNi45ODQ1TDI5Ljg1MTggMTYuMjU4NEwzMS4xNzk0IDE1LjUzMjVMMzEuOTA1MiAxNC4yMDUyWk01Mi4yMDY0IDkuNzcxOTdMNTIuOTY0NCAxMS4xNTc2TDU0LjM1IDExLjkxNTZMNTIuOTY0NCAxMi42NzM0TDUyLjIwNjQgMTQuMDU5Mkw1MS40NDg0IDEyLjY3MzRMNTAuMDYyNSAxMS45MTU2TDUxLjQ0ODQgMTEuMTU3Nkw1Mi4yMDY0IDkuNzcxOTdaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K';
+    const iconoBonoDigitalBase64 = 'PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHZpZXdCb3g9IjAgMCA4OCA4OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik01LjI3OTc5IDQ0QzUuMjc5NzkgNjUuMzg0NSAyMi42MTUzIDgyLjcyIDQzLjk5OTggODIuNzJDNjUuMzg0MyA4Mi43MiA4Mi43MTk4IDY1LjM4NDUgODIuNzE5OCA0NEM4Mi43MTk4IDIyLjYxNTggNjUuMzg0MyA1LjI4MDAzIDQzLjk5OTggNS4yODAwM0MyMi42MTUzIDUuMjgwMDMgNS4yNzk3OSAyMi42MTU4IDUuMjc5NzkgNDQiIGZpbGw9IiNEQ0VERkYiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yOS4yODMzIDUuNDc2MDdMMjYuNjM2IDUuNzc5OTdDMjQuOTAwNSA2LjAxMTQzIDI0LjA2ODcgNy4yNDY1NCAyNC4xNjk5IDguNjc2MDVMMjcuMDQzNiA0OS4yMjcxQzI3LjE0NDggNTAuNjU2NiAyOC40MTEgNTEuNzM0OSAyOS44NzIgNTEuNjM1OUwzMy42ODU4IDUxLjM3NzMiIGZpbGw9IiMwMDVDRkYiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00Ny40NzQgNS4zMTMzNUM0Ny40MzE4IDUuMzEzMzUgNDcuMzg5NiA1LjMxNDc3IDQ3LjM0NzMgNS4zMTc2TDI5LjMzNzggNi41Mzk3QzI4Ljg2MTYgNi41NzE5NSAyOC40MjY3IDYuNzgzODkgMjguMTEzNiA3LjEzNjE3QzI3LjgwMDEgNy40ODg0NSAyNy42NDU3IDcuOTM5MjEgMjcuNjc4NyA4LjQwNTI0TDMwLjU2NTIgNDkuMTM3OUMzMC42MzM0IDUwLjA5OTQgMzEuNDkwNSA1MC44MjcyIDMyLjQ3MTUgNTAuNzYxMkw1MC40ODExIDQ5LjUzOTFDNTEuNDY0MiA0OS40NzI0IDUyLjIwODEgNDguNjM1NCA1Mi4xNDAyIDQ3LjY3MzZMNDkuMjUzNCA2Ljk0MDkzQzQ5LjIyMDQgNi40NzQ2MSA0OS4wMDM4IDYuMDQ5NjEgNDguNjQzOSA1Ljc0Mjg4QzQ4LjMxNiA1LjQ2MzMyIDQ3LjkwNDUgNS4zMTMzNSA0Ny40NzQgNS4zMTMzNVY1LjMxMzM1WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yOS42ODM4IDUyLjA4MDVDMjguOTM3IDUyLjA4MDUgMjguMjIzMSA1MS44MTk5IDI3LjY1NCA1MS4zMzUyQzI3LjAyOTggNTAuODAzNSAyNi42NTQyIDUwLjA2NTUgMjYuNTk2OSA0OS4yNTc0TDIzLjcyMzEgOC43MDYzOUMyMy41OTYyIDYuOTEyNzIgMjQuNzE1OCA1LjU5Mzg1IDI2LjU3NTUgNS4zNDU5OEwyOS4yMzEzIDUuMDQwOTVMMjkuMzM1NyA1LjkxMTMzTDI2LjY4ODMgNi4yMTUyM0MyNS4zMjA0IDYuMzk3NzQgMjQuNTIzMiA3LjMyOTI0IDI0LjYxNjYgOC42NDU1NkwyNy40OTA0IDQ5LjE5NjlDMjcuNTMxMiA0OS43NzE1IDI3Ljc5OCA1MC4yOTYyIDI4LjI0MTkgNTAuNjc0MkMyOC42ODYgNTEuMDUyMiAyOS4yNTQ3IDUxLjIzOTMgMjkuODQwOCA1MS4xOTg4TDMzLjY1NDkgNTAuOTQwMkwzMy43MTY4IDUxLjgxNDVMMjkuOTAzIDUyLjA3MzFDMjkuODI5NSA1Mi4wNzc5IDI5Ljc1NjQgNTIuMDgwNSAyOS42ODM4IDUyLjA4MDUiIGZpbGw9IiMwMDVDRkYiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00OS42NTY0IDQuNjAzOTRDNTAuMzI3MyA1LjE3NTIzIDUwLjczMDYgNS45NjgwOCA1MC43OTIyIDYuODM2NDhMNTMuNjc4NyA0Ny41NjkyQzUzLjgwNTYgNDkuMzYxNyA1Mi40MTkyIDUwLjkyMTEgNTAuNTg3OCA1MS4wNDVMMzIuNTc3OSA1Mi4yNjcxQzMyLjUwMDIgNTIuMjcyNSAzMi40MjI0IDUyLjI3NTMgMzIuMzQ1NSA1Mi4yNzUzQzMwLjYxMzUgNTIuMjc1MyAyOS4xNDc4IDUwLjk1ODEgMjkuMDI2MSA0OS4yNDIzTDI2LjEzOTYgOC41MDk2MUMyNi4wNzc3IDcuNjQxNSAyNi4zNjU3IDYuODAxNjggMjYuOTQ5NSA2LjE0NDkzQzI3LjUzMzMgNS40ODg0NyAyOC4zNDM0IDUuMDk0MDIgMjkuMjMwOCA1LjAzMzc1TDQ3LjI0MDEgMy44MTEzN0M0OC4xMjcyIDMuNzQ4MjcgNDguOTg1NiA0LjAzMjY1IDQ5LjY1NjQgNC42MDM5NFpNNDcuNDczNyA1LjMxMzMyTDQ3LjM0NzEgNS4zMTc1Nkw0My41MTI1IDUuNTc3OTlDNDMuNTUyMyA1LjY5NjYxIDQzLjU3NzkgNS44MjIwMiA0My41ODcxIDUuOTUyNEM0My42NDM5IDYuNzUxMTUgNDMuMDY4NiA3LjQ0OTQ2IDQyLjI4MjIgNy41Njc5N0w0Mi4xNTY0IDcuNTgxOEwzNS4wODg2IDguMDczM0MzNC4yMzg3IDguMTMyNCAzMy41MDEyIDcuNDk4NzIgMzMuNDQxNSA2LjY1Nzk0QzMzLjQzMTggNi41MjE2NCAzMy40NDA1IDYuMzg4MjcgMzMuNDY1NSA2LjI2MDIxTDI5LjMzNzUgNi41Mzk2NkMyOC44NjEzIDYuNTcxOTEgMjguNDI2NCA2Ljc4Mzg1IDI4LjExMzMgNy4xMzYxM0MyNy43OTk5IDcuNDg4NDIgMjcuNjQ1NCA3LjkzOTE3IDI3LjY3ODQgOC40MDUyTDMwLjU2NDkgNDkuMTM3OUMzMC42MzMyIDUwLjA5OTQgMzEuNDkwMiA1MC44MjcxIDMyLjQ3MTIgNTAuNzYxMkw1MC40ODA4IDQ5LjUzOTFDNTEuNDYzOSA0OS40NzIzIDUyLjIwNzggNDguNjM1MyA1Mi4xMzk5IDQ3LjY3MzZMNDkuMjUzMSA2Ljk0MDg5QzQ5LjIyMDEgNi40NzQ1OCA0OS4wMDM2IDYuMDQ5NTcgNDguNjQzNiA1Ljc0Mjg1QzQ4LjMxNTcgNS40NjMyOCA0Ny45MDQyIDUuMzEzMzIgNDcuNDczNyA1LjMxMzMyWk01MC4wMDQ4IDQyLjE1OEM1MC4wOTAzIDQzLjM2NjUgNDkuMTU5IDQ0LjQxMzcgNDcuOTI0NCA0NC40OTc1TDM1LjMyMTIgNDUuMzUyNkMzNC4wODY2IDQ1LjQzNjYgMzMuMDE2MiA0NC41MjUyIDMyLjkzMDkgNDMuMzE3QzMyLjg0NTMgNDIuMTA4OCAzMy43NzY2IDQxLjA2MTMgMzUuMDExIDQwLjk3NzhMNDcuNjE0NCA0MC4xMjI0QzQ4Ljg0ODggNDAuMDM4NCA0OS45MTg5IDQwLjk1MDEgNTAuMDA0OCA0Mi4xNThaIiBmaWxsPSIjMEI3RUZGIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMzYuMDA1MSA2LjEwNDVDMzYuMjU3MiA2LjEwNDUgMzYuNDYxNyA2LjMwNDI3IDM2LjQ2MTcgNi41NTEwMUMzNi40NjE3IDYuNzk3NDcgMzYuMjU3MiA2Ljk5NzUyIDM2LjAwNTEgNi45OTc1MkMzNS43NTMzIDYuOTk3NTIgMzUuNTQ4OCA2Ljc5NzQ3IDM1LjU0ODggNi41NTEwMUMzNS41NDg4IDYuMzA0MjcgMzUuNzUzMyA2LjEwNDUgMzYuMDA1MSA2LjEwNDVaTTQxLjA4NjEgNS43OTQ4OUM0MS4zMzYyIDUuNzgwMTggNDEuNTUzNCA1Ljk2NDEgNDEuNTcwMSA2LjIwOTcxQzQxLjU4NjkgNi40NTUwMyA0MS4zOTcyIDYuNjY3MjUgNDEuMTQ2NSA2LjY4MzY2TDM3LjM1MzYgNi45Mjk4NFY2LjkyOTg0QzM3LjExNTkgNi45Mjk4NCAzNi45MTYxIDYuNzQ5MzEgMzYuODk5OSA2LjUxMzg5QzM2Ljg4MzQgNi4yNjg1NiAzNy4wNzMxIDYuMDU2MzUgMzcuMzIzOCA2LjAzOTkzTDQxLjA4NjEgNS43OTQ4OVoiIGZpbGw9IiM4M0YwRkYiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNC44NjA1IDMwLjI0MTNDMjYuMTY3NCAzMC42MjM2IDI2LjkzMjggMzEuOTMyMSAyNi42MzA5IDMzLjIxNDhMMjYuNTMxOSAzMy41OTQyTDI2LjQ0NiAzMy45ODI0TDI2LjM4NCAzNC4zMDA1TDI2LjMxOCAzNC42ODAzTDI2LjI1MSAzNS4xMjAxTDI2LjE4NjIgMzUuNjE4MUwyNi4xMjY3IDM2LjE3MjVMMjYuMDkxNiAzNi41NzI2TDI2LjA2MTEgMzYuOTk2NEwyNi4wMzYzIDM3LjQ0MzRMMjYuMDE3OSAzNy45MTMyTDI2LjAwNyAzOC40MDUyQzI2LjAwNDcgMzguNTcyOCAyNi4wMDM5IDM4Ljc0NCAyNi4wMDQ1IDM4LjkxODhMMjYuMDExMyAzOS40NTM1QzI2LjAxNTIgMzkuNjM1MiAyNi4wMjA4IDM5LjgyMDQgMjYuMDI4MyA0MC4wMDg5TDI2LjA1NjUgNDAuNTg0M0wyNi4wNzUgNDAuODc5NEwyNi4xMjE3IDQxLjQ4NEwyNi4xODE3IDQyLjEwNzNDMjYuMzA0OCA0My4yNjcgMjYuNTAwNCA0NC41MTg3IDI2Ljc5NDIgNDUuODQ3OUMyNy43MTkgNDguMjg1MyAzMS42NTM5IDUwLjM5MTUgMzYuMzgwMSA0OS4wNzAxQzM3LjgwMjggNDguNzE0NCAzOS4xMjEzIDQ4LjY2OSA0MC4wNCA0OC43MDQxTDQwLjQwODUgNDguNzIzM0M0MS44MjUzIDQ4LjgxODEgNDIuODk1NCA1MC4wMTg3IDQyLjc5ODUgNTEuNDA0OUM0Mi43MDE5IDUyLjc5MTQgNDEuNDc4NiA1My44MzgxIDQwLjA1ODMgNTMuNzQ0MUMzOC4wNDU5IDUzLjYwODYgMzYuNzMzNyA1NC4xNDQ1IDM1Ljg5MTMgNTQuODAxMUMyOS4zOTYyIDYwLjY2NjMgNDYuMzQzNiA3NC44MjgxIDU4LjUxNTcgNzUuNTIwN0w1OS40MTc4IDc1LjU3NDlDNTkuNDE3OCA3NS41NzQ5IDY0LjQyMTcgNzUuOTkwMSA2Ni4yNzE5IDc1LjY4MjRDNTkuNTM4NiA4MC41OCA1MS41NzQgODIuNjMwNSA0My45OTk4IDgyLjcyQzMyLjI0NiA4My4xNTQ3IDE5Ljk4MzMgNzQuNTY5NSAxOS45ODMzIDc0LjU2OTVMMTguNzg5NSA3My40MTQ2TDE4LjQwMDMgNzIuNzI0NEwxOC4wMjkyIDcyLjA0NDZMMTcuNjc1OSA3MS4zNzZMMTcuMzM5OSA3MC43MTkxTDE3LjE3ODMgNzAuMzk1MkwxNi44Njc2IDY5Ljc1N0wxNi40MzIgNjguODI0N0wxNi4xNjE0IDY4LjIyMDdMMTUuOTA2MSA2Ny42MzE0TDE1LjU1MSA2Ni43NzY1TDE1LjIyODEgNjUuOTU4MkwxNS4wMyA2NS40MzRMMTQuODQ1MyA2NC45Mjc2TDE0LjY3MzQgNjQuNDM5NkwxNC41MTQxIDYzLjk3MDVMMTQuMjk3NiA2My4zMDM5TDE0LjE2NzYgNjIuODg1TDEzLjk5MzQgNjIuMjk2NEwxMy44NDI3IDYxLjc1NzRMMTMuNzE0MyA2MS4yN0wxMy41NDU3IDYwLjU3NzlMMTMuNDI4NiA2MC4wNDQzTDEzLjM0NzIgNTkuNjI2NkwxMy4yMjQxIDU5LjAzNDlMMTMuMTEwOSA1OC40NTA1TDEzLjAwNzMgNTcuODc1MUwxMi45MTI4IDU3LjMxMDNMMTIuODI3IDU2Ljc1NzdMMTIuNzQ5NSA1Ni4yMTlMMTIuNjQ3OCA1NS40NDA4TDEyLjU2MjQgNTQuNzAzMkwxMi40OTIgNTQuMDExOUwxMi40MzUgNTMuMzcyNUwxMi4zNzc2IDUyLjYxMDNMMTIuMzM4MyA1MS45NjM1TDEyLjMwMzEgNTEuMTQ5NUwxMi4yOTU0IDUwLjgwMTdDMTIuMjk1NCA0OS41MTQ3IDEzLjI4MjkgNDguNDUzMSAxNC41NTY5IDQ4LjMwMzVMMTQuNTU5NSA0Ny4zOTgyQzE0LjU2NDggNDYuMDYxNSAxNS42MzQ1IDQ0Ljk3MjEgMTYuOTggNDQuODk2TDE3LjE0MDcgNDQuODkxOEMxNy4yMzYxIDQ0Ljg5MjEgMTcuMzMwMyA0NC44OTc2IDE3LjQyMyA0NC45MDc4TDE3LjM5MzcgNDQuMzI4MUMxNy4zMjIgNDIuOTQwNSAxOC40MTM1IDQxLjc1ODMgMTkuODMxOCA0MS42ODgxQzIwLjIzOTEgNDEuNjY3NyAyMC42Mjk4IDQxLjc0MTkgMjAuOTgxMiA0MS44OTExQzIwLjk1MTEgNDEuNTQzMyAyMC45MjY2IDQxLjIwMjggMjAuOTA3MSA0MC44Njk5TDIwLjg3NDkgNDAuMjE0NUMyMC44NDkyIDM5LjU2OTMgMjAuODQyMyAzOC45NTU1IDIwLjg1MDEgMzguMzc1MkwyMC44NjI1IDM3LjgwNjJMMjAuODgzNiAzNy4yNkwyMC44OTcyIDM2Ljk5NTdMMjAuOTI5NyAzNi40ODQ5TDIwLjk2ODUgMzUuOTk4M0wyMS4wMTI3IDM1LjUzNjRMMjEuMDYxMyAzNS4wOTk3TDIxLjExMzMgMzQuNjg4N0wyMS4xNjc4IDM0LjMwNEwyMS4yNTIxIDMzLjc3NzJMMjEuMzA4NiAzMy40NjAzTDIxLjQxNzkgMzIuOTExMkwyMS40OTI5IDMyLjU3NTVMMjEuNjM3IDMyLjAxMzNMMjEuNjYwOCAzMS45MzIzQzIyLjA2NzMgMzAuNjAxIDIzLjQ5OTggMjkuODQyOSAyNC44NjA1IDMwLjI0MTNaTTU1LjI4MDQgMzAuMjQ1NUM1Ni41ODU3IDMwLjYzNDkgNTcuMzQzNSAzMS45NDg0IDU3LjAzMzUgMzMuMjI5N0w1Ni45MjI5IDMzLjY0MzFMNTYuODQ1MSAzMy45ODQyTDU2LjgwMTEgMzQuMjAwNUw1Ni43MzI5IDM0LjU3N0w1Ni42ODg0IDM0Ljg2TDU2LjY0NjUgMzUuMTY2NUw1Ni42MDg4IDM1LjQ5NDdMNTYuNTc2OCAzNS44NDI5QzU2LjU2MjUgMzYuMDIxNiA1Ni41NTEgMzYuMjA3MiA1Ni41NDMxIDM2LjM5ODRMNTYuNTMyMyAzNi43ODg0QzU2LjUwODIgMzguNTc1IDU2LjgyNiA0MC43NzM0IDU4LjEzMTggNDIuNjRDNjEuODkzOSA0Ny4xNTI0IDY2Ljg3NzEgNTAuNjgzNiA3My43Mjc2IDUzLjMzMTVDNzYuODY0MiA1NC41NDM3IDc3LjgxNTMgNTUuMTE4OSA4MC45MzQ5IDU1LjYyNDhDNzguMzgwOSA2My4zNDQ4IDczLjQ1MDggNzAuNDE5IDY3LjIzMjMgNzQuOTEzMUM2MS45NDUgNzIuNjU0IDU5Ljc0NDYgNzAuNTE5OSA1Ni40NjI1IDY4LjE3N0w1NS44MTc4IDY3LjcwOUw1NS4xOTYyIDY3LjI0MjJDNTUuMDk0NSA2Ny4xNjQ1IDU0Ljk5MzggNjcuMDg2OCA1NC44OTM5IDY3LjAwOTNMNTQuMzA2MyA2Ni41NDQ4QzUzLjkyMTkgNjYuMjM1OCA1My41NTIzIDY1LjkyOCA1My4xOTY4IDY1LjYyMTlMNTIuNjc0MSA2NS4xNjRDNTIuNTAzNCA2NS4wMTE4IDUyLjMzNjEgNjQuODYgNTIuMTcyMyA2NC43MDg4TDUxLjY5MDggNjQuMjU2Nkw1MS40NTc2IDY0LjAzMThMNTEuMDA1OSA2My41ODQ2TDUwLjU3MzYgNjMuMTQxMkM1MC4zNjIyIDYyLjkyMDUgNTAuMTU3OSA2Mi43MDEyIDQ5Ljk2MDQgNjIuNDgzNkw0OS41NzQ2IDYyLjA1MDZMNDkuMjA2NiA2MS42MjIzTDQ4Ljc3MSA2MS4wOTM5TDQ4LjM2MTkgNjAuNTczOEw0OC4wNTMxIDYwLjE2NEw0Ny43NjAyIDU5Ljc2MDFMNDcuNDgyOSA1OS4zNjIzTDQ3LjIyMDYgNTguOTcxMUw0Ni45NzMxIDU4LjU4NjVMNDYuNjI4MyA1OC4wMjI5TDQ2LjMzNDMgNTcuNTExOUM0NS45MTI2IDU2Ljc1NjggNDUuNTc3MiA1Ni4wNTMyIDQ1LjMxMDQgNTUuNDEyN0w0NS4xNDI1IDU0Ljk5NTJMNDQuOTkzNyA1NC41OTcxTDQ0Ljg2MyA1NC4yMTkzQzQ0Ljg0MjYgNTQuMTU4IDQ0LjgyMyA1NC4wOTc3IDQ0LjgwNCA1NC4wMzgyTDQ0LjY1MDkgNTMuNTI3Mkw0NC41NjcyIDUzLjIxNDVMNDQuNDk2OSA1Mi45MjVMNDQuNDM4OCA1Mi42NTk1TDQ0LjM3MTkgNTIuMzA3OUw0NC4zMjYgNTIuMDE0NUw0NC4yOTcxIDUxLjc4MTlMNDQuMjczNCA1MS40NzRMNDkuNTI3OCA1MS4xMTQ1TDUwLjQxMzYgNTEuMDYyQzUwLjY2NzkgNTEuMDQ4IDUxLjM1OTYgNTAuOTUwMSA1MS42MTg1IDUwLjc5NDdMNTEuMjA3MyA1MC4wNTAxTDUwLjk5NjMgNDkuNjYwM0M1MC44MTA4IDQ5LjM0MjkgNTAuNjYgNDkuMDI2IDUwLjUzODggNDguNzA3OUM1MC40MjcgNDguNDMxMyA1MC4zNDQ4IDQ4LjE2OTMgNTAuMjkxNiA0Ny44OTg4QzUwLjAyMTkgNDYuNzM0IDUwLjA4NjEgNDUuNTMxNCA1MC4yNTEzIDQ0LjIwMTFDNTAuMzc5OSA0My4xNjUyIDUwLjkxODYgNDIuMDM2OSA1MS42NDY5IDQxLjE2ODdMNTEuODQ4NiA0MC45Mzc2QzUxLjkyNzIgNDAuODUyNCA1Mi4wMDkyIDQwLjc2OTggNTIuMDk0OSA0MC42ODk5QzUyLjMyMzEgNDAuNDc0OSA1Mi41NjI2IDQwLjI4NjYgNTIuODA4NiA0MC4xMzM1TDUzLjEzNzEgMzkuOTQzMUw1Mi45NjQ0IDM3LjU3NDRMNTIuNzI3OSAzNC4xMjM1TDUyLjYwMzcgMzIuNDkxOUw1Mi41OSAzMi4xODlMNTIuNTA5NSAzMS4xNTdMNTIuNTA4OSAzMS4wOTY4QzUzLjE0NTMgMzAuMzA0NSA1NC4yMzU4IDI5LjkzMzMgNTUuMjgwNCAzMC4yNDU1WiIgZmlsbD0iI0ZGQzhFOSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTQ0LjI3MzQgNTEuNDc0QzQ2LjY5NTkgNTEuMjkxOCA1MC4yMDM5IDUxLjA3MDcgNTAuMjAzOSA1MS4wNzA3QzUwLjIwMzkgNTEuMDcwNyA0NS45NjEyIDU0Ljg2NDEgNDguNDkwNiA2MC43NzYyQzQ0Ljc1NzMgNTUuODM0IDQ0LjI3MzQgNTEuNDc0IDQ0LjI3MzQgNTEuNDc0WiIgZmlsbD0iI0ZGQzhFOSIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE0LjYxNzYgNDguMjg0OUMxNC43NTgzIDQ4LjI3MzUgMTQuODgxNCA0OC4zNjEzIDE0LjkxODggNDguNDg3N0wxNC45MzI0IDQ4LjU4MDFWNDguNTgwMUwxNC45ODcyIDQ5LjEzNjZWNDkuMTM2NkwxNS4wOTAzIDUwLjAxNjlWNTAuMDE2OUwxNS4xODg5IDUwLjczNTRWNTAuNzM1NEwxNS4yNzg5IDUxLjMxMzFWNTEuMzEzMUwxNS4zNDY4IDUxLjcwNjhWNTEuNzA2OEwxNS40MjEgNTIuMTAxMlY1Mi4xMDEyTDE1LjUwMTYgNTIuNDkwOUMxNS41MTU1IDUyLjU1NTIgMTUuNTI5OCA1Mi42MTkgMTUuNTQ0MyA1Mi42ODIzQzE1LjU3OTMgNTIuODM0OSAxNS40ODEzIDUyLjk4NiAxNS4zMjU0IDUzLjAyMDVDMTUuMzA0IDUzLjAyNSAxNS4yODI5IDUzLjAyNzMgMTUuMjYxOCA1My4wMjczQzE1LjEyOTQgNTMuMDI3MyAxNS4wMSA1Mi45Mzc5IDE0Ljk3OTkgNTIuODA2M0wxNC44OTcxIDUyLjQyNjFDMTQuODgzOCA1Mi4zNjIgMTQuODcwNyA1Mi4yOTc2IDE0Ljg1OCA1Mi4yMzNMMTQuNzg0NCA1MS44NDQzVjUxLjg0NDNMMTQuNzE2OSA1MS40NTU5VjUxLjQ1NTlMMTQuNjU1MyA1MS4wNzI3VjUxLjA3MjdMMTQuNTUgNTAuMzQxNlY1MC4zNDE2TDE0LjQ2NzcgNDkuNjg5OVY0OS42ODk5TDE0LjM1MyA0OC41ODk5VjQ4LjU4OTlDMTQuMzQgNDguNDM0MyAxNC40NTg2IDQ4LjI5NzYgMTQuNjE3NiA0OC4yODQ5Wk01MC44NzUxIDQ4LjM4NDdMNTAuOTY1IDQ4LjU4MzhWNDguNTgzOEw1MS4wNDYzIDQ4Ljc1MjlWNDguNzUyOUw1MS4yMTM3IDQ5LjA3OTNWNDkuMDc5M0w1MS4zNTQxIDQ5LjMzNDZDNTEuMzc5MyA0OS4zNzkyIDUxLjQwNTUgNDkuNDI0NiA1MS40MzI2IDQ5LjQ3MDhMNTEuNjA1NSA0OS43NTU4QzUyLjA2MzYgNTAuNDg0NiA1Mi43MTI5IDUxLjMxMjMgNTMuNDgyNiA1MS43MjA4QzUzLjYyMjggNTEuNzk1MiA1My42NzUyIDUxLjk2NjkgNTMuNTk4OCA1Mi4xMDQ1QzUzLjU0NjUgNTIuMTk5IDUzLjQ0NyA1Mi4yNTI0IDUzLjM0NDQgNTIuMjUyNEM1My4yOTc4IDUyLjI1MjQgNTMuMjUwNyA1Mi4yNDE0IDUzLjIwNjcgNTIuMjE4MkM1Mi4yMzE0IDUxLjcwMDUgNTEuNDU1NiA1MC42NDI3IDUwLjk1OCA0OS44MDMyTDUwLjc5NDEgNDkuNTE3MVY0OS41MTcxTDUwLjY1NCA0OS4yNTY2VjQ5LjI1NjZMNTAuNDkwMyA0OC45M1Y0OC45M0w1MC4zMzk2IDQ4LjU5ODlWNDguNTk4OUM1MC4yNzkyIDQ4LjQ1NDMgNTAuMzUwMyA0OC4yODkzIDUwLjQ5NzggNDguMjI5OUM1MC42NDQ2IDQ4LjE3MjIgNTAuODE0NCA0OC4yMzk4IDUwLjg3NTEgNDguMzg0N1pNMTcuMzYzNCA0NS4xMDMzQzE3LjUwMDcgNDUuMTAxNCAxNy42MTk5IDQ1LjE4NDcgMTcuNjU2NSA0NS4zMDY3TDE3LjY2ODEgNDUuMzgwMlY0NS4zODAyTDE3LjcxMTQgNDUuOTUxOVY0NS45NTE5TDE3Ljc2ODEgNDYuNTQwOFY0Ni41NDA4TDE3LjgyOTUgNDcuMDg1NVY0Ny4wODU1TDE3Ljg4MDUgNDcuNDg5M1Y0Ny40ODkzTDE3Ljk0MDMgNDcuOTIwN1Y0Ny45MjA3TDE4LjAwOTMgNDguMzc1M1Y0OC4zNzUzTDE4LjA4ODEgNDguODQ4NlY0OC44NDg2TDE4LjE3NzMgNDkuMzM2MlY0OS4zMzYyTDE4LjI3NzQgNDkuODMzOVY0OS44MzM5TDE4LjM4OTEgNTAuMzM3MkMxOC40MDg3IDUwLjQyMTQgMTguNDI4OCA1MC41MDU1IDE4LjQ0OTQgNTAuNTg5NkMxOC40ODY0IDUwLjc0MTYgMTguMzkwNyA1MC44OTQ0IDE4LjIzNTQgNTAuOTMwOUMxOC4yMTI5IDUwLjkzNiAxOC4xOSA1MC45Mzg1IDE4LjE2NzggNTAuOTM4NUMxOC4wMzcxIDUwLjkzODUgMTcuOTE4OCA1MC44NTE0IDE3Ljg4NjcgNTAuNzIxNUwxNy44MzEyIDUwLjQ4OTVWNTAuNDg5NUwxNy43Mjc1IDUwLjAyNjVWNTAuMDI2NUwxNy42MzM0IDQ5LjU2NzdWNDkuNTY3N0wxNy41NDg2IDQ5LjExNjNWNDkuMTE2M0wxNy40NzI1IDQ4LjY3NTZWNDguNjc1NkwxNy40MDQ3IDQ4LjI0ODlWNDguMjQ4OUwxNy4zNDQ5IDQ3LjgzOTRWNDcuODM5NEwxNy4yNjkxIDQ3LjI2NDZWNDcuMjY0NkwxNy4xNzY2IDQ2LjQzOVY0Ni40MzlMMTcuMTIwNSA0NS44MjMxVjQ1LjgyMzFMMTcuMDkwMSA0NS40MDFWNDUuNDAxQzE3LjA4MTggNDUuMjQ1MSAxNy4yMDQxIDQ1LjExMTkgMTcuMzYzNCA0NS4xMDMzWk0yMS4wMzM3IDQxLjkxNkMyMS4xNzMxIDQxLjkyNDQgMjEuMjgzMyA0Mi4wMjg1IDIxLjMwMTggNDIuMTU4N0wyMS4zMDI3IDQyLjI0MTRWNDIuMjQxNEwyMS4yOTA3IDQyLjYzOTJWNDIuNjM5MkwyMS4yOTA2IDQzLjE4NjFWNDMuMTg2MUwyMS4zMDA1IDQzLjYwNThWNDMuNjA1OEwyMS4zMjE0IDQ0LjA4NjlWNDQuMDg2OUwyMS4zNTY0IDQ0LjYyMzJWNDQuNjIzMkwyMS4zODkgNDUuMDA4NFY0NS4wMDg0TDIxLjQzIDQ1LjQxMzhWNDUuNDEzOEwyMS40ODAzIDQ1LjgzNzRWNDUuODM3NEwyMS41NDA4IDQ2LjI3NzVWNDYuMjc3NUwyMS42MTIzIDQ2LjczMjNWNDYuNzMyM0wyMS42OTU4IDQ3LjIwMDFWNDcuMjAwMUwyMS43OTIxIDQ3LjY3ODlWNDcuNjc4OUwyMS45MDIgNDguMTY3MUMyMS45NjA2IDQ4LjQxMzIgMjIuMDI0NiA0OC42NjIyIDIyLjA5NDUgNDguOTEyOUMyMi4xMzY4IDQ5LjA2NCAyMi4wNDU3IDQ5LjIxOTQgMjEuODkxOCA0OS4yNjA3QzIxLjg2NjQgNDkuMjY3MiAyMS44NDA3IDQ5LjI3MDYgMjEuODE1NSA0OS4yNzA2QzIxLjY4ODMgNDkuMjcwNiAyMS41NzE4IDQ5LjE4OCAyMS41MzY4IDQ5LjA2MjNDMjEuNDM4NyA0OC43MTA2IDIxLjM1MTkgNDguMzYzMiAyMS4yNzUyIDQ4LjAyMjZMMjEuMTY3NiA0Ny41MTdDMjEuMTM0MiA0Ny4zNTA0IDIxLjEwMzEgNDcuMTg1NyAyMS4wNzQyIDQ3LjAyMzRMMjAuOTk0IDQ2LjU0MzRWNDYuNTQzNEwyMC45MjYgNDYuMDc4OVY0Ni4wNzg5TDIwLjg2OTMgNDUuNjMxN1Y0NS42MzE3TDIwLjgyMyA0NS4yMDM1VjQ1LjIwMzVMMjAuNzg2IDQ0Ljc5NjFWNDQuNzk2MUwyMC43NTc1IDQ0LjQxMTNWNDQuNDExM0wyMC43Mjg1IDQzLjg4MDNWNDMuODgwM0wyMC43MTMgNDMuNDEwMVY0My40MTAxTDIwLjcwOCA0Mi44ODhWNDIuODg4TDIwLjcxMTcgNDIuNTgyOVY0Mi41ODI5TDIwLjcyNjkgNDIuMTgwNVY0Mi4xODA1QzIwLjczNyA0Mi4wMjQ2IDIwLjg3NDQgNDEuOTA5NyAyMS4wMzM3IDQxLjkxNloiIGZpbGw9IiMwMDNDRTUiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik00My43MTcxIDIxLjU1ODVDNDQuMTI0OSAyMC45OTczIDQ0LjkxMDQgMjAuODcyOSA0NS40NzE2IDIxLjI4MDhDNDUuOTk5OCAyMS42NjQ2IDQ2LjE0MSAyMi4zODMgNDUuODE1OCAyMi45MzQxTDQ1Ljc0OTMgMjMuMDM1M0w0MC45MzQgMjkuMzMwN0M0MC41NjAzIDI5Ljg0NSAzOS44NjcxIDI5Ljk5NDIgMzkuMzE5NyAyOS42OTdMMzkuMjEyMyAyOS42MzE1TDM2LjM5ODkgMjcuMDg5OUMzNS44MzYgMjYuNTcwOSAzNS42NzU2IDI1LjkxOSAzNi4wNjUzIDI1LjM0NTFDMzYuNDMyIDI0LjgwNDkgMzcuMTAxNiAyNC42OTU1IDM3LjY2MjggMjUuMDAyOUwzNy43NjYxIDI1LjA2NjFMMzkuNjE2NiAyNi44NjlMNDMuNzE3MSAyMS41NTg1WiIgZmlsbD0iI0ZGNzgwMCIvPgo8L3N2Zz4K';
+
+    // =========================================================================
+    // CONTENIDO EDITABLE
+    // Modifica textos, enlaces, preguntas, tarjetas y términos únicamente aquí.
+    // La lógica de renderizado que aparece después no contiene copy editorial de campaña.
+    // =========================================================================
+    const urlSolicitudTarjeta = 'https://www.mitarjetabcp.viabcp.com/login';
+
+    const beneficiosCampana = [
+        {
+            icono: iconoBonoAdicionalBase64,
+            titulo: 'Bono adicional',
+            descripcion: 'Gana hasta 8,000 millas adicionales al cumplir la meta de consumo requerida'
+        },
+        {
+            icono: iconoBonoRegularBase64,
+            titulo: 'Bono regular',
+            descripcion: 'Comienza a acumular millas al alcanzar la meta de consumo desde S/ 1,000 según la tarjeta'
+        },
+        {
+            icono: iconoBonoDigitalBase64,
+            titulo: 'Bono digital',
+            descripcion: 'Gana hasta 2,000 millas extra si pides tu tarjeta de crédito online.',
+            llamadaAccion: {
+                prefijo: 'Si aún no tienes una, ',
+                texto: 'pídela aquí',
+                sufijo: '.',
+                url: urlSolicitudTarjeta
+            }
+        }
+    ];
+
+    function crearColumnaBeneficio(beneficio) {
+        const columna = document.createElement('div');
+        columna.style.flex = '1 1 240px';
+        columna.style.maxWidth = '280px';
+        columna.style.textAlign = 'center';
+
+        const icono = document.createElement('img');
+        icono.src = 'data:image/svg+xml;base64,' + beneficio.icono;
+        icono.alt = '';
+        icono.width = 88;
+        icono.height = 88;
+
+        const titulo = document.createElement('div');
+        titulo.textContent = beneficio.titulo;
+        titulo.style.color = colorBeneficiosTitulo;
+        titulo.style.fontFamily = 'Flexo-Demi';
+        titulo.style.fontWeight = '700';
+        titulo.style.fontSize = '20px';
+        titulo.style.lineHeight = '28px';
+        titulo.style.marginTop = '16px';
+        titulo.style.marginBottom = '8px';
+
+        const descripcion = document.createElement('div');
+        descripcion.textContent = beneficio.descripcion;
+        descripcion.style.color = colorBeneficiosTexto;
+        descripcion.style.fontSize = '16px';
+        descripcion.style.lineHeight = '24px';
+
+        columna.appendChild(icono);
+        columna.appendChild(titulo);
+        columna.appendChild(descripcion);
+
+        if (beneficio.llamadaAccion) {
+            const pideAqui = document.createElement('div');
+            pideAqui.style.marginTop = '16px';
+            pideAqui.style.fontSize = '16px';
+            pideAqui.style.lineHeight = '24px';
+            pideAqui.style.color = colorBeneficiosTexto;
+            pideAqui.appendChild(document.createTextNode(beneficio.llamadaAccion.prefijo));
+
+            const enlace = document.createElement('a');
+            enlace.href = beneficio.llamadaAccion.url;
+            enlace.textContent = beneficio.llamadaAccion.texto;
+            enlace.style.color = colorConoceMas;
+            enlace.style.fontWeight = '600';
+            enlace.style.textDecoration = 'none';
+            pideAqui.appendChild(enlace);
+            pideAqui.appendChild(document.createTextNode(beneficio.llamadaAccion.sufijo));
+
+            columna.appendChild(pideAqui);
+        }
+
+        return columna;
+    }
+
+
+    const colorTabInactiva = '#98A2B3';
+    const colorBordeTabInactiva = '#E5E7EB';
+    const colorMetaConsumo = '#4D5B70';
+    const colorDivisorTarjeta = '#E5E7EB';
+    const colorFondoTarjeta = '#F5F8FF';
+    const colorAzulTarjeta = '#0A47F0';
+    const gapTarjetasMillas = 24;
+
+    const tarjetasMillas = [
+        {
+            marca: 'VISA',
+            nombre: 'Visa Platinum LATAM Pass',
+            img: 'https://www.viabcp.com/wcm/connect/9b0b38c1-ce1d-411f-9b2b-859a31397c42/Visa+Platinum+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9b0b38c1-ce1d-411f-9b2b-859a31397c42-oLZCT1g',
+            meta: 'S/ 1,000',
+            digital: '+ 2,000 millas',
+            regular: '+ 3,000 millas',
+            adicional: '+ 3,000 millas',
+            total: '8,000 millas'
+        },
+        {
+            marca: 'VISA',
+            nombre: 'Visa Signature LATAM Pass',
+            img: 'https://www.viabcp.com/wcm/connect/c7a363e3-55a5-4600-bea3-f64e7d9dfeed/Visa+Signature+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c7a363e3-55a5-4600-bea3-f64e7d9dfeed-oLZCWJ2',
+            meta: 'S/ 5,000',
+            digital: '+ 2,000 millas',
+            regular: '+ 6,000 millas',
+            adicional: '+ 5,000 millas',
+            total: '13,000 millas'
+        },
+        {
+            marca: 'VISA',
+            nombre: 'Visa Infinite Sapphire LATAM Pass',
+            img: 'https://www.viabcp.com/wcm/connect/11c5f148-d907-4e3b-b53d-aabb61896f38/142x90.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-11c5f148-d907-4e3b-b53d-aabb61896f38-oYNFXpF',
+            meta: 'S/ 8,000',
+            digital: '+ 2,000 millas',
+            regular: '+ 10,000 millas',
+            adicional: '+ 8,000 millas',
+            total: '20,000 millas'
+        },
+        {
+            marca: 'VISA',
+            nombre: 'Visa Infinite Iridium LATAM Pass',
+            img: 'https://www.viabcp.com/wcm/connect/2184b6ca-991f-40cc-b71d-9bab9dfa5424/Captura+de+Pantalla+2022-02-10+a+la%28s%29+16.47+1.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-2184b6ca-991f-40cc-b71d-9bab9dfa5424-oLZClbS',
+            meta: 'S/ 10,000',
+            digital: '+ 2,000 millas',
+            regular: '+ 15,000 millas',
+            adicional: '+ 8,000 millas',
+            total: '25,000 millas'
+        },
+        {
+            marca: 'AMEX',
+            nombre: 'AMEX Platinum LATAM Pass',
+            img: 'https://www.viabcp.com/wcm/connect/ae9dc651-8749-43d3-b5b4-47a9ccac2919/Amex+Platinum.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-ae9dc651-8749-43d3-b5b4-47a9ccac2919-oLZD1tm',
+            meta: 'S/ 1,000',
+            digital: '+ 2,000 millas',
+            regular: '+ 3,000 millas',
+            adicional: '+ 3,000 millas',
+            total: '8,000 millas'
+        },
+        {
+            marca: 'AMEX',
+            nombre: 'AMEX Black LATAM Pass',
+            img: 'https://www.viabcp.com/wcm/connect/90495ee7-bf9e-46ba-9adc-7558b7941613/Amex+Black.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-90495ee7-bf9e-46ba-9adc-7558b7941613-oLZD2Z1',
+            meta: 'S/ 5,000',
+            digital: '+ 2,000 millas',
+            regular: '+ 6,000 millas',
+            adicional: '+ 5,000 millas',
+            total: '13,000 millas'
+        }
+    ];
+
+    const pestanasMillas = [
+        { marca: 'VISA', etiqueta: 'VISA' },
+        { marca: 'AMEX', etiqueta: 'American Express' }
+    ];
+
+    const preguntasFrecuentes = [
+        {
+            pregunta: '¿Cómo participo en la promoción?',
+            respuestaHtml: '<p>Solicita y obtén una tarjeta de crédito participante durante la vigencia de la campaña y cumple las condiciones correspondientes para acceder a los bonos disponibles.</p>'
+        },
+        {
+            pregunta: '¿Qué tengo que hacer para ganar los bonos?',
+            respuestaHtml: '<p>Puedes hacerlo en simples pasos:</p>' +
+                '<ul><li>Debes adquirir tu tarjeta</li><li>Inscribirte en este formulario</li><li>Cumplir la meta de consumo</li></ul>'
+        },
+        {
+            pregunta: '¿Desde cuánto debo consumir?',
+            respuestaHtml: '<p>Desde S/1,000, dependiendo del tipo de tarjeta.</p>'
+        },
+        {
+            pregunta: '¿Hasta cuándo aplica la campaña?',
+            respuestaHtml: '<p>Del 1 al 31 de agosto de 2026.</p>'
+        },
+        {
+            pregunta: '¿Cuándo recibiré mis millas?',
+            respuestaHtml: '<p>Todos los bonos serán abonados a la cuenta LATAM Pass, como máximo, el 31/12/2026.</p>'
+        }
+    ];
+
+    const contenidoPagina = {
+        header: {
+            textoBoton: 'Adquirir tarjeta',
+            urlBoton: 'https://www.mitarjetabcp.viabcp.com/'
+        },
+        formulario: {
+            titulo: 'Inscríbete, adquiere una Tarjeta de Crédito BCP y gana muchas millas',
+            textoBoton: 'Inscribirme ahora',
+            textoRegistroCompletado: 'Registro completado',
+            exito: {
+                titulo: '¡Gracias por inscribirte!',
+                descripcion: 'Ya estás participando de nuestra campaña',
+                tituloSolicitud: '¿Aún no tienes una Tarjeta de Crédito BCP?',
+                descripcionSolicitud: '¡Pídela para poder participar de esta campaña!',
+                textoDestacado: 'participar de esta campaña!',
+                textoBoton: 'Pídela aquí',
+                urlBoton: urlSolicitudTarjeta
+            },
+            imagenes: {
+                mobile: 'https://www.viabcp.com/wcm/connect/c9a1cbd2-2e26-4bf8-8c09-87f65fbbfeea/Banner-Landing-Inscripcio%CC%81n_Mobile-%28763-x-300%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c9a1cbd2-2e26-4bf8-8c09-87f65fbbfeea-p.217aX&cache=none',
+                desktop: 'https://www.viabcp.com/wcm/connect/1422bda5-a24e-4ff6-a7d2-5b68245dcaee/Banner-Landing-Inscripcio%CC%81n_Desk-%281920-x-440%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-1422bda5-a24e-4ff6-a7d2-5b68245dcaee-p.212.S&cache=none'
+            }
+        },
+        conoceMas: {
+            texto: 'Conoce más',
+            url: '#bcp-titulo-seccion-millas'
+        },
+        beneficios: {
+            titulo: '¿Qué puedes ganar con esta campaña?',
+            subtitulo: 'Podrás acceder a 3 diferentes bonos de millas',
+            items: beneficiosCampana
+        },
+        millas: {
+            titulo: 'Estas son las millas que podrás ganar',
+            marcaInicial: 'VISA',
+            prefijoMeta: 'Meta de consumo ',
+            etiquetas: {
+                digital: 'Bono digital:',
+                regular: 'Bono regular:',
+                adicional: 'Bono adicional:',
+                total: 'Recibirás en total'
+            },
+            pestanas: pestanasMillas,
+            tarjetas: tarjetasMillas
+        },
+        preguntasFrecuentes: {
+            titulo: 'Preguntas frecuentes',
+            items: preguntasFrecuentes
+        },
+        bannerSeguro: {
+            titulo: 'No te quedes fuera de esta campaña',
+            descripcion: 'Válida del 1 al 31 de Agosto de 2026.',
+            textoBoton: 'Inscribirme ahora',
+            anclaBoton: '#formulario-latam-pass',
+            urlImagen: 'https://www.viabcp.com/wcm/connect/' +
+                '9ae17b23-0cfc-4526-a92a-d75e1647b5af/Ilustracion_ENTRYPOINT_SPT.png' +
+                '?MOD=AJPERES&CACHEID=ROOTWORKSPACE-9ae17b23-0cfc-4526-a92a-d75e1647b5af-pZ7JuV6',
+            tracking: {
+                categoria: 'Campaña LATAM Pass',
+                accion: 'Inscribirme ahora',
+                titulo: 'Banner - No te quedes fuera de esta campaña'
+            }
+        },
+        terminos: {
+            titulo: 'Términos y condiciones',
+            tituloAcordeon: 'Bono millas LATAM Pass',
+            abiertoInicialmente: true,
+            bloquesHtml: [
+                '<p>Promoción válida del 1 al 31 de agosto de 2026. Esta campaña es desarrollada por el Banco de Crédito del Perú (BCP) y por LATAM Airlines.</p>' +
+                    '<p><strong>Premio:</strong> bonos de millas LATAM Pass, según el siguiente detalle:</p>',
+                '<ol>' +
+                    '<li><strong>Bono Regular:</strong> por cada tarjeta de crédito que el participante solicite y obtenga por cualquier canal (presencial o virtual) y siempre que el participante llegue a la meta de consumo detallada en <a href="https://www.viabcp.com/tarjetas/tarjetas-credito">Tarjetas de crédito | BCP (viabcp.com)</a>.</li>' +
+                    '<li><strong>Un (1) Bono Adicional:</strong> se otorgará un (1) Bono Adicional a cada participante, como máximo, independientemente de la cantidad de tarjetas de crédito que obtenga, conforme al siguiente detalle:' +
+                    '<ol class="bcp_terminos_tarjetas">' +
+                    '<li><strong>VISA Platinum LATAM Pass y AMEX Platinum LATAM Pass:</strong> el participante será acreedor de tres mil (3,000) millas por Bono Adicional por alcanzar la meta de consumo de su Bono Regular (Bono Bienvenida), es decir, consumir mil (1,000) soles en los primeros 45 días desde la aprobación de tu tarjeta de crédito.</li>' +
+                    '<li><strong>VISA Signature LATAM Pass y AMEX Black LATAM Pass:</strong> el participante será acreedor de cinco mil (5,000) millas por Bono Adicional por alcanzar la meta de consumo de su Bono Regular (Bono Bienvenida), es decir, consumir cinco mil (5,000) soles en los primeros 90 días desde la aprobación de tu tarjeta de crédito.</li>' +
+                    '<li><strong>VISA Infinite Sapphire LATAM Pass:</strong> el participante será acreedor de ocho mil (8,000) millas por Bono Adicional por alcanzar la meta de consumo de su Bono Regular (Bono Bienvenida), es decir, consumir ocho mil (8,000) soles en los primeros 90 días desde la aprobación de tu tarjeta de crédito.</li>' +
+                    '<li><strong>VISA Infinite Iridium LATAM Pass:</strong> el participante será acreedor de ocho mil (8,000) millas por Bono Adicional por alcanzar la meta de consumo de su Bono Regular (Bono Bienvenida) en los primeros 90 días desde la aprobación de tu tarjeta de crédito.</li>' +
+                    '</ol></li>' +
+                    '<li><strong>Un (1) Bono Digital:</strong> en caso el participante solicite y obtenga su tarjeta de crédito únicamente a través de la web <a href="https://www.mitarjetabcp.viabcp.com">www.mitarjetabcp.viabcp.com</a>. Se otorgará un (1) Bono Digital a cada participante, como máximo, independientemente de la cantidad de tarjetas de crédito que obtenga. El Bono Digital será, en todos los casos, de dos mil (2,000) millas, independientemente de si el participante obtuvo el Bono Regular o Bono Adicional (o no). Solo aplicable para las siguientes tarjetas: VISA Platinum LATAM Pass, AMEX Platinum LATAM Pass, VISA Signature LATAM Pass, AMEX Black LATAM Pass, VISA Infinite Sapphire LATAM Pass y VISA Infinite Iridium LATAM Pass.</li>' +
+                    '</ol>',
+                '<p>Participan todos los clientes del BCP que tengan, al menos, una (1) oferta pre aprobada para obtener una tarjeta de crédito, y que reciban una comunicación con los detalles de la presente campaña. Todos los clientes deberán registrar sus datos personales en el siguiente <strong><a href="https://www.viabcp.com/bcp-latam-pass/solicitar-tarjeta-de-credito-bcp" target="_blank" rel="noopener noreferrer">formulario</a>.</strong></p>' +
+                    '<p>Todos los bonos serán abonados a la cuenta LATAM Pass, como máximo, el 31/12/2026.</p>',
+                '<div class="bcp_terminos_nota">' +
+                    '<p>En caso el cliente solicite más de una tarjeta de crédito con distintas metas de consumo, se le entregará un Bono Regular por cada una y únicamente un Bono Adicional por la tarjeta de crédito que tenga el mayor número de millas como premio.</p>' +
+                    '<p>El participante deberá contar previamente con una cuenta LATAM Pass para abonar las millas. En caso el cliente realice compras en dólares americanos se utilizará un tipo de cambio fijo de S/ 3.80 (Tres y 80/100 Soles) por dólar americano.</p>' +
+                    '</div>',
+                '<p><strong>Restricciones Adicionales:</strong></p><ol>' +
+                    '<li>Tarjetas sujetas a evaluación crediticia.</li>' +
+                    '<li>Para solicitar una tarjeta, el participante deberá tener, al momento de la solicitud, un ingreso bruto mensual mínimo de S/ 1,800.00 (Mil Ochocientos y 00/100 Soles) o su equivalente en dólares americanos.</li>' +
+                    '<li>No aplica para clientes que hayan cancelado su tarjeta de crédito dentro de los últimos seis (6) meses.</li>' +
+                    '<li>No acumulable con otras promociones de millas adicionales.</li>' +
+                    '<li>Las tarjetas adicionales, upgrades, renovaciones o reposiciones no aplican ni al bono de bienvenida ni al bono adicional.</li>' +
+                    '<li>No suman a la meta de consumo para el bono adicional: (i) las disposiciones de efectivo, (ii) traslados de deuda, (iii) efectivo preferente, (iv) consumos en casinos, (v) pagos de servicios realizados en viabcp.com o App Banca Móvil del BCP, (vi) débitos automáticos, (vii) pago de tributos ni (viii) servicios legales.</li>' +
+                    '<li>La acumulación de millas aplica sobre compras con la tarjeta de crédito en POS físico o virtual.</li>' +
+                    '<li>Los beneficios de las Tarjetas de crédito BCP LATAM Pass no son acumulables a los entregados por las categorías Elite LATAM Pass y otras Tarjetas de crédito BCP LATAM Pass.</li>' +
+                    '<li>Las millas no incluyen cargos por tasas aeroportuarias. Estas se rigen bajo los términos y condiciones del programa LATAM Pass. Para mayor información de los destinos aplicables ingresa <strong><a href="https://www.latamairlines.com/pe/es" target="_blank" rel="noopener noreferrer">aquí</a>.</strong></li>' +
+                    '</ol>',
+                '<div class="bcp_terminos_nota">' +
+                    '<p>El servicio de transporte de LATAM y la operatividad del programa LATAM Pass son de responsabilidad de LATAM. La acumulación, canje, uso y demás condiciones aplicables a las Millas LATAM Pass se rigen bajo el reglamento de LATAM Pass publicado <strong><a href="https://www.latam.com/es_pe/latam-pass/" target="_blank" rel="noopener noreferrer">aquí</a>.</strong></p>' +
+                    '<p>En caso el cliente acreedor del premio cancele o bloquee su tarjeta de crédito en virtud de la cual participó en la presente campaña previo al abono de millas, o si por algún otro hecho imputable a este no pueda realizarse la entrega del premio, este perderá su derecho al mismo.</p>' +
+                    '<p>El BCP y LATAM podrán, previa comunicación a los clientes, modificar alguno de los términos establecidos en el presente texto, únicamente cuando dicho cambio no afecte la naturaleza de la promoción.</p>' +
+                    '<p>Para más información sobre la promoción y/o restricciones llama a nuestra Banca por Teléfono al <strong>(01) 311-9898.</strong></p>' +
+                    '</div>'
+            ]
+        }
+    };
+
+    function aplicarBotonHeader() {
+        const opcionesHeader = document.querySelector('.header_sin_acceso .bcp_opciones');
+        if (!opcionesHeader) {
+            return false;
+        }
+
+        if (opcionesHeader.querySelector('.bcp_boton_adquirir_header')) {
+            return true;
+        }
+
+        const botonHeader = document.createElement('a');
+        botonHeader.className = 'bcp_boton_adquirir_header';
+        botonHeader.href = contenidoPagina.header.urlBoton;
+        botonHeader.textContent = contenidoPagina.header.textoBoton;
+        botonHeader.setAttribute('data-translate', 'true');
+        opcionesHeader.appendChild(botonHeader);
+        return true;
+    }
+
+    if (!aplicarBotonHeader()) {
+        const observerHeader = new MutationObserver(() => {
+            if (aplicarBotonHeader()) {
+                observerHeader.disconnect();
+            }
+        });
+        observerHeader.observe(document.body, { childList: true, subtree: true });
+    }
+
+    function inyectarImagenesFormulario() {
+        const imagenes = contenidoPagina.formulario.imagenes;
+        const formulario = document.querySelector('.bcp_formulario_latam_cards .form_promocion');
+
+        if (!formulario) {
+            return;
+        }
+
+        formulario.classList.remove('lazy_loading');
+
+        if (formulario.querySelector('.bcp_imagen_formulario')) {
+            return;
+        }
+
+        const picture = document.createElement('picture');
+        picture.className = 'bcp_imagen_formulario';
+        picture.setAttribute('aria-hidden', 'true');
+
+        const sourceMobile = document.createElement('source');
+        sourceMobile.media = '(max-width: 767px)';
+        sourceMobile.srcset = imagenes.mobile;
+
+        const imagen = document.createElement('img');
+        imagen.src = imagenes.desktop;
+        imagen.alt = '';
+        imagen.decoding = 'async';
+        imagen.setAttribute('fetchpriority', 'high');
+
+        picture.appendChild(sourceMobile);
+        picture.appendChild(imagen);
+        formulario.insertBefore(picture, formulario.firstChild);
+    }
+    inyectarImagenesFormulario();
+
+    function deshabilitarCtasRegistro() {
+        registroCompletado = true;
+        const selectores = [
+            '#formulario-latam-pass ' + BOTON_SELECTOR,
+            '.bcp_boton_inscribirse_millas',
+            '.bcp_banner_seguro_tarjetas_latam_piloto .bcp_boton_ancla_formulario',
+            'a[href="#formulario-latam-pass"]'
+        ];
+
+        document.querySelectorAll(selectores.join(',')).forEach((cta) => {
+            const esBoton = cta.tagName === 'BUTTON';
+            const texto = cta.querySelector('span');
+
+            if (esBoton) {
+                cta.disabled = true;
+            } else {
+                cta.tabIndex = -1;
+                cta.style.pointerEvents = 'none';
+            }
+
+            cta.setAttribute('aria-disabled', 'true');
+            cta.setAttribute('data-registro-completado', 'true');
+            cta.style.cursor = 'default';
+            cta.style.opacity = '0.45';
+
+            if (texto) {
+                texto.textContent = contenidoPagina.formulario.textoRegistroCompletado;
+            } else {
+                cta.textContent = contenidoPagina.formulario.textoRegistroCompletado;
+            }
+        });
+    }
+
+    function crearIconoExitoRegistro() {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.classList.add('bcp_exito_icono');
+        svg.setAttribute('viewBox', '0 0 56 56');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('focusable', 'false');
+
+        const circulo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circulo.setAttribute('cx', '28');
+        circulo.setAttribute('cy', '28');
+        circulo.setAttribute('r', '28');
+        circulo.setAttribute('fill', '#2DB300');
+
+        const check = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        check.setAttribute('d', 'M17 28.5L24 35.5L39.5 20');
+        check.setAttribute('fill', 'none');
+        check.setAttribute('stroke', '#FFFFFF');
+        check.setAttribute('stroke-width', '5');
+        check.setAttribute('stroke-linecap', 'round');
+        check.setAttribute('stroke-linejoin', 'round');
+
+        svg.appendChild(circulo);
+        svg.appendChild(check);
+        return svg;
+    }
+
+    function crearDescripcionSolicitudExito(contenidoExito) {
+        const descripcion = document.createElement('p');
+        descripcion.className = 'bcp_exito_solicitud_descripcion';
+        const indiceDestacado = contenidoExito.descripcionSolicitud.indexOf(
+            contenidoExito.textoDestacado);
+
+        if (indiceDestacado === -1) {
+            descripcion.textContent = contenidoExito.descripcionSolicitud;
+            return descripcion;
+        }
+
+        descripcion.appendChild(document.createTextNode(
+            contenidoExito.descripcionSolicitud.slice(0, indiceDestacado)));
+        const destacado = document.createElement('strong');
+        destacado.textContent = contenidoExito.textoDestacado;
+        descripcion.appendChild(destacado);
+        descripcion.appendChild(document.createTextNode(
+            contenidoExito.descripcionSolicitud.slice(
+                indiceDestacado + contenidoExito.textoDestacado.length)));
+        return descripcion;
+    }
+
+    function crearEstadoExitoFormulario() {
+        const contenidoExito = contenidoPagina.formulario.exito;
+        const exito = document.createElement('div');
+        exito.className = 'bcp_exito_registro_latam';
+        exito.setAttribute('role', 'region');
+        exito.setAttribute('aria-labelledby', 'bcp-exito-registro-titulo');
+        exito.tabIndex = -1;
+
+        const confirmacion = document.createElement('div');
+        confirmacion.className = 'bcp_exito_confirmacion';
+        confirmacion.setAttribute('role', 'status');
+        confirmacion.setAttribute('aria-live', 'polite');
+        confirmacion.setAttribute('aria-atomic', 'true');
+
+        const titulo = document.createElement('h2');
+        titulo.id = 'bcp-exito-registro-titulo';
+        titulo.className = 'bcp_exito_titulo';
+        titulo.textContent = contenidoExito.titulo;
+
+        const descripcion = document.createElement('p');
+        descripcion.className = 'bcp_exito_descripcion';
+        descripcion.textContent = contenidoExito.descripcion;
+
+        const solicitud = document.createElement('div');
+        solicitud.className = 'bcp_exito_solicitud';
+        const tituloSolicitud = document.createElement('h3');
+        tituloSolicitud.className = 'bcp_exito_solicitud_titulo';
+        tituloSolicitud.textContent = contenidoExito.tituloSolicitud;
+
+        const botonSolicitud = document.createElement('a');
+        botonSolicitud.className =
+            'bcp-btn-primary bcp_boton_naranja large bcp_exito_solicitud_boton';
+        botonSolicitud.href = contenidoExito.urlBoton;
+        botonSolicitud.textContent = contenidoExito.textoBoton;
+
+        solicitud.appendChild(tituloSolicitud);
+        solicitud.appendChild(crearDescripcionSolicitudExito(contenidoExito));
+        solicitud.appendChild(botonSolicitud);
+        confirmacion.appendChild(crearIconoExitoRegistro());
+        confirmacion.appendChild(titulo);
+        confirmacion.appendChild(descripcion);
+        exito.appendChild(confirmacion);
+        exito.appendChild(solicitud);
+        return exito;
+    }
+
+    function mostrarEstadoExitoFormulario(formLatamPass) {
+        const contenedorFormulario = formLatamPass.querySelector('.bcp_contenedor_formulario');
+        const registroFormulario = formLatamPass.querySelector('.bcp_registro_formulario');
+        if (!contenedorFormulario || !registroFormulario) {
+            return;
+        }
+
+        registroFormulario.hidden = true;
+        registroFormulario.setAttribute('aria-hidden', 'true');
+        registroFormulario.style.display = 'none';
+
+        let estadoExito = contenedorFormulario.querySelector('.bcp_exito_registro_latam');
+        if (!estadoExito) {
+            estadoExito = crearEstadoExitoFormulario();
+            contenedorFormulario.appendChild(estadoExito);
+        }
+
+        requestAnimationFrame(() => estadoExito.focus());
+    }
+
+    function crearFilaBono(etiqueta, valor, esTotal) {
+        const fila = document.createElement('div');
+        fila.style.display = 'flex';
+        fila.style.justifyContent = 'space-between';
+        fila.style.alignItems = esTotal ? 'center' : 'flex-start';
+        fila.style.padding = esTotal ? '0 0 8px' : '8px 0';
+        fila.style.marginTop = esTotal ? '16px' : '0';
+
+        const nombreFila = document.createElement('span');
+        nombreFila.textContent = etiqueta;
+        nombreFila.style.color = colorBeneficiosTexto;
+        nombreFila.style.fontWeight = esTotal ? '700' : '400';
+        if (esTotal) {
+            nombreFila.style.fontSize = '14px';
+            nombreFila.style.lineHeight = '22px';
+        }
+
+        const valorFila = document.createElement('span');
+        valorFila.textContent = valor;
+        valorFila.style.color = esTotal ? colorBeneficiosTexto : colorAzulTarjeta;
+        valorFila.style.fontWeight = '700';
+        if (esTotal) {
+            valorFila.style.fontSize = '16px';
+            valorFila.style.lineHeight = '24px';
+        }
+
+        fila.appendChild(nombreFila);
+        fila.appendChild(valorFila);
+        return fila;
+    }
+
+    function crearDivisorTarjeta() {
+        const divisor = document.createElement('hr');
+        divisor.style.border = 'none';
+        divisor.style.borderTop = '1px solid ' + colorDivisorTarjeta;
+        divisor.style.margin = '0';
+        return divisor;
+    }
+
+    function crearTarjetaMillas(tarjeta) {
+        const columna = document.createElement('div');
+        columna.className = 'bcp_tarjeta_millas';
+        columna.style.backgroundColor = colorFondoTarjeta;
+        columna.style.borderRadius = '16px';
+        columna.style.padding = '16px 32px 24px 32px';
+        columna.style.textAlign = 'left';
+        columna.style.boxSizing = 'border-box';
+        columna.style.scrollSnapAlign = 'center';
+        columna.style.scrollSnapStop = 'always';
+
+        const img = document.createElement('img');
+        img.src = tarjeta.img;
+        // El nombre visible inmediatamente debajo ya identifica la tarjeta.
+        img.alt = '';
+        img.draggable = false;
+        img.width = 92;
+        img.height = 59;
+        img.style.display = 'block';
+        img.style.margin = '0 auto 16px auto';
+        img.style.borderRadius = '4px';
+        img.style.boxShadow =
+            '0 4px 6px rgba(32, 46, 68, 0.12), 0 8px 16px rgba(32, 46, 68, 0.16)';
+
+        const nombre = document.createElement('div');
+        nombre.className = 'bcp_tarjeta_millas_nombre';
+        nombre.textContent = tarjeta.nombre;
+        nombre.style.color = colorBeneficiosTitulo;
+        nombre.style.fontFamily = 'Flexo-Demi';
+        nombre.style.fontSize = '16px';
+        nombre.style.lineHeight = '24px';
+        nombre.style.textAlign = 'center';
+        nombre.style.marginBottom = '4px';
+
+        const meta = document.createElement('div');
+        meta.textContent = contenidoPagina.millas.prefijoMeta + tarjeta.meta;
+        meta.style.color = colorMetaConsumo;
+        meta.style.fontSize = '14px';
+        meta.style.lineHeight = '22px';
+        meta.style.textAlign = 'center';
+        meta.style.marginBottom = '16px';
+
+        columna.appendChild(img);
+        columna.appendChild(nombre);
+        columna.appendChild(meta);
+        columna.appendChild(crearFilaBono(contenidoPagina.millas.etiquetas.digital,
+            tarjeta.digital, false));
+        columna.appendChild(crearDivisorTarjeta());
+        columna.appendChild(crearFilaBono(contenidoPagina.millas.etiquetas.regular,
+            tarjeta.regular, false));
+        columna.appendChild(crearDivisorTarjeta());
+        columna.appendChild(crearFilaBono(contenidoPagina.millas.etiquetas.adicional,
+            tarjeta.adicional, false));
+        columna.appendChild(crearDivisorTarjeta());
+        columna.appendChild(crearFilaBono(contenidoPagina.millas.etiquetas.total,
+            tarjeta.total, true));
+
+        return columna;
+    }
+
+    function crearSeccionMillas() {
+        const idTituloMillas = 'bcp-titulo-seccion-millas';
+        const idPanelMillas = 'bcp-panel-tarjetas-millas';
+        const idCarruselMillas = 'bcp-carrusel-tarjetas-millas';
+        const seccion = document.createElement('div');
+        seccion.className = 'bcp_seccion_millas container';
+        seccion.style.textAlign = 'center';
+
+        const titulo = document.createElement('h2');
+        titulo.id = idTituloMillas;
+        titulo.className = 'bcp_seccion_beneficios_titulo';
+        titulo.textContent = contenidoPagina.millas.titulo;
+        titulo.style.color = colorBeneficiosTitulo;
+        titulo.style.fontFamily = 'Flexo-Demi';
+        titulo.style.marginBottom = '32px';
+
+        const filaTabs = document.createElement('div');
+        filaTabs.setAttribute('role', 'tablist');
+        filaTabs.setAttribute('aria-label', 'Marca de tarjeta');
+        filaTabs.style.display = 'inline-flex';
+        filaTabs.style.marginBottom = '32px';
+
+        const panelTarjetas = document.createElement('div');
+        panelTarjetas.id = idPanelMillas;
+        panelTarjetas.className = 'bcp_panel_millas';
+        panelTarjetas.setAttribute('role', 'tabpanel');
+        panelTarjetas.tabIndex = 0;
+
+        const carruselTarjetas = document.createElement('div');
+        carruselTarjetas.setAttribute('role', 'region');
+        carruselTarjetas.setAttribute('aria-roledescription', 'carrusel');
+        carruselTarjetas.setAttribute('aria-labelledby', idTituloMillas);
+        carruselTarjetas.style.position = 'relative';
+        carruselTarjetas.style.marginBottom = '32px';
+
+        const contenedorTarjetas = document.createElement('div');
+        contenedorTarjetas.id = idCarruselMillas;
+        contenedorTarjetas.className = 'bcp_contenedor_tarjetas_millas';
+        contenedorTarjetas.setAttribute('aria-atomic', 'false');
+        contenedorTarjetas.style.display = 'flex';
+        contenedorTarjetas.style.flexWrap = 'nowrap';
+        contenedorTarjetas.style.justifyContent = 'flex-start';
+        contenedorTarjetas.style.gap = gapTarjetasMillas + 'px';
+        contenedorTarjetas.style.overflowX = 'auto';
+        contenedorTarjetas.style.overflowY = 'hidden';
+        contenedorTarjetas.style.paddingBottom = '24px';
+        contenedorTarjetas.style.scrollBehavior = 'smooth';
+        contenedorTarjetas.style.scrollSnapType = 'x mandatory';
+        contenedorTarjetas.style.overscrollBehaviorX = 'contain';
+        contenedorTarjetas.style.WebkitOverflowScrolling = 'touch';
+        contenedorTarjetas.style.boxSizing = 'border-box';
+        contenedorTarjetas.style.width = '100%';
+
+        function crearFlechaCarrusel(direccion) {
+            const flecha = document.createElement('button');
+            const esAnterior = direccion === -1;
+            flecha.className = 'bcp_flecha_millas';
+            flecha.type = 'button';
+            flecha.setAttribute('aria-label', esAnterior ? 'Ver tarjetas anteriores' : 'Ver tarjetas siguientes');
+            flecha.setAttribute('aria-controls', idCarruselMillas);
+            flecha.style.display = 'none';
+            flecha.style.alignItems = 'center';
+            flecha.style.justifyContent = 'center';
+            flecha.style.position = 'absolute';
+            flecha.style.top = '50%';
+            flecha.style[esAnterior ? 'left' : 'right'] = '-16px';
+            flecha.style.transform = 'translateY(-50%)';
+            flecha.style.zIndex = '2';
+            flecha.style.padding = '0';
+            flecha.style.border = '0';
+            flecha.style.borderRadius = '50%';
+            flecha.style.backgroundColor = colorConoceMas;
+            flecha.style.color = '#FFFFFF';
+            flecha.style.fontFamily = 'Arial, sans-serif';
+            flecha.style.fontWeight = '400';
+            flecha.style.lineHeight = '1';
+            flecha.style.cursor = 'pointer';
+            flecha.style.boxShadow = 'none';
+            flecha.style.transition = 'opacity 160ms ease';
+
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            svg.setAttribute('width', '15');
+            svg.setAttribute('height', '10');
+            svg.setAttribute('viewBox', '0 0 15 10');
+            svg.setAttribute('fill', 'none');
+            svg.setAttribute('aria-hidden', 'true');
+            svg.style.display = 'block';
+            if (esAnterior) {
+                svg.style.transform = 'rotate(180deg)';
+            }
+
+            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            path.setAttribute('d', 'M1 5H14M10 1L14 5L10 9');
+            path.setAttribute('stroke', '#FFFFFF');
+            path.setAttribute('stroke-width', '1.6');
+            path.setAttribute('stroke-linecap', 'round');
+            path.setAttribute('stroke-linejoin', 'round');
+
+            svg.appendChild(path);
+            flecha.appendChild(svg);
+            return flecha;
+        }
+
+        const flechaAnterior = crearFlechaCarrusel(-1);
+        const flechaSiguiente = crearFlechaCarrusel(1);
+        const estadoCarrusel = document.createElement('div');
+        estadoCarrusel.className = 'bcp_solo_lectores';
+        estadoCarrusel.setAttribute('aria-live', 'polite');
+        estadoCarrusel.setAttribute('aria-atomic', 'true');
+        let indiceTarjetaActiva = 0;
+        let ultimoMensajeAnunciado = '';
+
+        function obtenerCantidadTarjetasVisibles() {
+            const primeraTarjeta = contenedorTarjetas.firstElementChild;
+            if (!primeraTarjeta) {
+                return 0;
+            }
+
+            const anchoTarjeta = primeraTarjeta.getBoundingClientRect().width;
+            const capacidad = (contenedorTarjetas.clientWidth + gapTarjetasMillas) /
+                (anchoTarjeta + gapTarjetasMillas);
+            return Math.max(1, Math.floor(capacidad + 0.001));
+        }
+
+        function hayDesbordeTarjetas() {
+            return contenedorTarjetas.children.length > obtenerCantidadTarjetasVisibles();
+        }
+
+        function actualizarEstadoBotonesCarrusel() {
+            const cantidadTarjetas = contenedorTarjetas.children.length;
+            const cantidadVisible = Math.min(cantidadTarjetas, obtenerCantidadTarjetasVisibles());
+            const ultimoIndice = Math.max(0, cantidadTarjetas - cantidadVisible);
+            const hayDesborde = cantidadTarjetas > cantidadVisible;
+
+            const aplicarEstado = (boton, deshabilitado) => {
+                boton.disabled = deshabilitado;
+                boton.setAttribute('aria-disabled', deshabilitado ? 'true' : 'false');
+                boton.style.opacity = deshabilitado ? '0.45' : '1';
+                boton.style.cursor = deshabilitado ? 'default' : 'pointer';
+            };
+
+            aplicarEstado(flechaAnterior, !hayDesborde || indiceTarjetaActiva <= 0);
+            aplicarEstado(flechaSiguiente, !hayDesborde || indiceTarjetaActiva >= ultimoIndice);
+        }
+
+        function centrarTarjetaActiva(animar) {
+            const tarjeta = contenedorTarjetas.children[indiceTarjetaActiva];
+            if (!tarjeta) {
+                return;
+            }
+
+            const cantidadVisible = obtenerCantidadTarjetasVisibles();
+            const destino = cantidadVisible === 1 ?
+                tarjeta.offsetLeft - ((contenedorTarjetas.clientWidth - tarjeta.offsetWidth) / 2) :
+                tarjeta.offsetLeft;
+            const reducirMovimiento = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            const destinoSeguro = Math.max(0, destino);
+            if (Math.abs(contenedorTarjetas.scrollLeft - destinoSeguro) < 1) {
+                return;
+            }
+            contenedorTarjetas.scrollTo({
+                left: destinoSeguro,
+                behavior: animar && !reducirMovimiento ? 'smooth' : 'auto'
+            });
+        }
+
+        function actualizarIndiceTarjetaActiva() {
+            const cantidadVisible = obtenerCantidadTarjetasVisibles();
+            const referenciaVisible = cantidadVisible === 1 ?
+                contenedorTarjetas.scrollLeft + (contenedorTarjetas.clientWidth / 2) :
+                contenedorTarjetas.scrollLeft;
+            let distanciaMenor = Infinity;
+
+            Array.from(contenedorTarjetas.children).forEach((tarjeta, indice) => {
+                const referenciaTarjeta = cantidadVisible === 1 ?
+                    tarjeta.offsetLeft + (tarjeta.offsetWidth / 2) :
+                    tarjeta.offsetLeft;
+                const distancia = Math.abs(referenciaTarjeta - referenciaVisible);
+                if (distancia < distanciaMenor) {
+                    distanciaMenor = distancia;
+                    indiceTarjetaActiva = indice;
+                }
+            });
+
+            indiceTarjetaActiva = Math.min(indiceTarjetaActiva,
+                Math.max(0, contenedorTarjetas.children.length - cantidadVisible));
+        }
+
+        function actualizarAccesibilidadCarrusel(anunciar) {
+            const cantidadTarjetas = contenedorTarjetas.children.length;
+            const cantidadVisible = Math.min(cantidadTarjetas, obtenerCantidadTarjetasVisibles());
+            const primerIndiceVisible = Math.min(indiceTarjetaActiva,
+                Math.max(0, cantidadTarjetas - cantidadVisible));
+            const ultimoIndiceVisible = Math.min(cantidadTarjetas,
+                primerIndiceVisible + cantidadVisible);
+
+            Array.from(contenedorTarjetas.children).forEach((tarjeta, indice) => {
+                const esVisible = indice >= primerIndiceVisible && indice < ultimoIndiceVisible;
+                tarjeta.setAttribute('aria-hidden', esVisible ? 'false' : 'true');
+            });
+
+            let mensaje;
+            if (cantidadTarjetas === cantidadVisible) {
+                mensaje = 'Mostrando las ' + cantidadTarjetas + ' tarjetas disponibles.';
+            } else {
+                mensaje = 'Mostrando tarjetas ' + (primerIndiceVisible + 1) + ' a ' +
+                    ultimoIndiceVisible + ' de ' + cantidadTarjetas + '.';
+            }
+
+            if (anunciar && mensaje !== ultimoMensajeAnunciado) {
+                ultimoMensajeAnunciado = mensaje;
+                estadoCarrusel.textContent = '';
+                requestAnimationFrame(() => {
+                    estadoCarrusel.textContent = mensaje;
+                });
+            } else {
+                estadoCarrusel.textContent = mensaje;
+                ultimoMensajeAnunciado = mensaje;
+            }
+            actualizarEstadoBotonesCarrusel();
+        }
+
+        function actualizarFlechasCarrusel() {
+            contenedorTarjetas.style.paddingLeft = '0';
+            contenedorTarjetas.style.paddingRight = '0';
+            Array.from(contenedorTarjetas.children).forEach((tarjeta) => {
+                tarjeta.style.removeProperty('flex');
+                tarjeta.style.removeProperty('width');
+                tarjeta.style.removeProperty('max-width');
+            });
+
+            const cantidadTarjetas = contenedorTarjetas.children.length;
+            const cantidadVisible = Math.min(cantidadTarjetas, obtenerCantidadTarjetasVisibles());
+
+            // El ancho base define cuántos cards caben. Luego se reparte todo el ancho
+            // disponible entre esa cantidad, conservando siempre los gaps de 24px.
+            if (cantidadVisible > 0) {
+                const anchoDisponibleCards = contenedorTarjetas.clientWidth -
+                    (gapTarjetasMillas * (cantidadVisible - 1));
+                const anchoCalculado = anchoDisponibleCards / cantidadVisible;
+                const esDesktop = window.matchMedia ?
+                    window.matchMedia('(min-width: 1280px)').matches : window.innerWidth >= 1280;
+                const limitarAnchoDosTarjetas = cantidadTarjetas === 2 && esDesktop;
+                const anchoTarjeta = limitarAnchoDosTarjetas ?
+                    Math.min(anchoCalculado, 320) : anchoCalculado;
+                Array.from(contenedorTarjetas.children).forEach((tarjeta) => {
+                    tarjeta.style.flex = '0 0 ' + anchoTarjeta + 'px';
+                    tarjeta.style.width = anchoTarjeta + 'px';
+                    if (limitarAnchoDosTarjetas) {
+                        tarjeta.style.maxWidth = '320px';
+                    }
+                });
+            }
+
+            const hayDesborde = cantidadTarjetas > cantidadVisible;
+            const display = hayDesborde ? 'flex' : 'none';
+            flechaAnterior.style.display = display;
+            flechaSiguiente.style.display = display;
+            panelTarjetas.tabIndex = hayDesborde ? -1 : 0;
+            contenedorTarjetas.style.cursor = hayDesborde ? 'grab' : 'default';
+            contenedorTarjetas.style.justifyContent = hayDesborde ? 'flex-start' : 'center';
+
+            Array.from(contenedorTarjetas.children).forEach((tarjeta) => {
+                tarjeta.style.scrollSnapAlign = cantidadVisible === 1 ? 'center' : 'start';
+            });
+
+            if (hayDesborde && cantidadVisible === 1) {
+                const primeraTarjeta = contenedorTarjetas.firstElementChild;
+                const espacioLateral = Math.max(0,
+                    (contenedorTarjetas.clientWidth - primeraTarjeta.offsetWidth) / 2);
+                contenedorTarjetas.style.paddingLeft = espacioLateral + 'px';
+                contenedorTarjetas.style.paddingRight = espacioLateral + 'px';
+                requestAnimationFrame(() => centrarTarjetaActiva(false));
+            } else if (hayDesborde) {
+                indiceTarjetaActiva = Math.min(indiceTarjetaActiva,
+                    contenedorTarjetas.children.length - cantidadVisible);
+                requestAnimationFrame(() => centrarTarjetaActiva(false));
+            } else {
+                indiceTarjetaActiva = 0;
+                contenedorTarjetas.scrollLeft = 0;
+            }
+            actualizarAccesibilidadCarrusel(false);
+        }
+
+        function moverCarrusel(direccion) {
+            const cantidadTarjetas = contenedorTarjetas.children.length;
+            if (!cantidadTarjetas || !hayDesbordeTarjetas()) {
+                return;
+            }
+
+            const cantidadVisible = obtenerCantidadTarjetasVisibles();
+            const ultimoIndice = Math.max(0, cantidadTarjetas - cantidadVisible);
+            if (direccion === -1) {
+                indiceTarjetaActiva = Math.max(0, indiceTarjetaActiva - 1);
+            } else {
+                indiceTarjetaActiva = Math.min(ultimoIndice, indiceTarjetaActiva + 1);
+            }
+            actualizarAccesibilidadCarrusel(true);
+            centrarTarjetaActiva(true);
+        }
+
+        flechaAnterior.addEventListener('click', () => moverCarrusel(-1));
+        flechaSiguiente.addEventListener('click', () => moverCarrusel(1));
+
+        let arrastrando = false;
+        let posicionInicialPuntero = 0;
+        let scrollInicial = 0;
+        let temporizadorFinScroll = null;
+
+        function iniciarArrastre(event) {
+            if (event.pointerType === 'touch' || event.button !== 0 || !hayDesbordeTarjetas()) {
+                return;
+            }
+
+            arrastrando = true;
+            posicionInicialPuntero = event.clientX;
+            scrollInicial = contenedorTarjetas.scrollLeft;
+            contenedorTarjetas.setPointerCapture(event.pointerId);
+            contenedorTarjetas.style.cursor = 'grabbing';
+            contenedorTarjetas.style.scrollSnapType = 'none';
+            contenedorTarjetas.style.userSelect = 'none';
+        }
+
+        function arrastrar(event) {
+            if (!arrastrando) {
+                return;
+            }
+
+            event.preventDefault();
+            contenedorTarjetas.scrollLeft = scrollInicial - (event.clientX - posicionInicialPuntero);
+        }
+
+        function terminarArrastre(event) {
+            if (!arrastrando) {
+                return;
+            }
+
+            arrastrando = false;
+            if (contenedorTarjetas.hasPointerCapture(event.pointerId)) {
+                contenedorTarjetas.releasePointerCapture(event.pointerId);
+            }
+            contenedorTarjetas.style.cursor = 'grab';
+            contenedorTarjetas.style.scrollSnapType = 'x mandatory';
+            contenedorTarjetas.style.userSelect = '';
+            actualizarIndiceTarjetaActiva();
+            actualizarAccesibilidadCarrusel(true);
+            centrarTarjetaActiva(true);
+        }
+
+        contenedorTarjetas.addEventListener('pointerdown', iniciarArrastre);
+        contenedorTarjetas.addEventListener('pointermove', arrastrar);
+        contenedorTarjetas.addEventListener('pointerup', terminarArrastre);
+        contenedorTarjetas.addEventListener('pointercancel', terminarArrastre);
+        contenedorTarjetas.addEventListener('dragstart', (event) => event.preventDefault());
+
+        contenedorTarjetas.addEventListener('scroll', () => {
+            clearTimeout(temporizadorFinScroll);
+            temporizadorFinScroll = setTimeout(() => {
+                if (!arrastrando && hayDesbordeTarjetas()) {
+                    actualizarIndiceTarjetaActiva();
+                    actualizarAccesibilidadCarrusel(true);
+                    centrarTarjetaActiva(true);
+                }
+            }, 140);
+        }, { passive: true });
+
+        carruselTarjetas.appendChild(flechaAnterior);
+        carruselTarjetas.appendChild(flechaSiguiente);
+        carruselTarjetas.appendChild(contenedorTarjetas);
+        carruselTarjetas.appendChild(estadoCarrusel);
+        panelTarjetas.appendChild(carruselTarjetas);
+
+        let marcaActiva = contenidoPagina.millas.marcaInicial;
+
+        function renderizarTarjetas() {
+            clearTimeout(temporizadorFinScroll);
+            panelTarjetas.setAttribute('aria-busy', 'true');
+            contenedorTarjetas.innerHTML = '';
+            indiceTarjetaActiva = 0;
+            ultimoMensajeAnunciado = '';
+            contenedorTarjetas.scrollLeft = 0;
+            const tarjetasFiltradas = contenidoPagina.millas.tarjetas.filter((tarjeta) =>
+                tarjeta.marca === marcaActiva);
+            tarjetasFiltradas.forEach((tarjeta, indice) => {
+                const tarjetaEl = crearTarjetaMillas(tarjeta);
+                tarjetaEl.setAttribute('role', 'group');
+                tarjetaEl.setAttribute('aria-roledescription', 'tarjeta');
+                tarjetaEl.setAttribute('aria-label', tarjeta.nombre + ', ' +
+                    (indice + 1) + ' de ' + tarjetasFiltradas.length);
+                const nombreVisible = tarjetaEl.querySelector('.bcp_tarjeta_millas_nombre');
+                if (nombreVisible) {
+                    nombreVisible.setAttribute('aria-hidden', 'true');
+                }
+                contenedorTarjetas.appendChild(tarjetaEl);
+            });
+            requestAnimationFrame(() => {
+                actualizarFlechasCarrusel();
+                panelTarjetas.setAttribute('aria-busy', 'false');
+            });
+        }
+
+        function actualizarEstadoTabs() {
+            Array.from(filaTabs.children).forEach((tab) => {
+                const activa = tab.getAttribute('data-marca') === marcaActiva;
+                tab.setAttribute('aria-selected', activa ? 'true' : 'false');
+                tab.tabIndex = activa ? 0 : -1;
+                tab.style.color = activa ? colorConoceMas : colorTabInactiva;
+                tab.style.borderBottom = activa ?
+                    '3px solid ' + colorConoceMas :
+                    '2px solid ' + colorBordeTabInactiva;
+                if (activa) {
+                    panelTarjetas.setAttribute('aria-labelledby', tab.id);
+                }
+            });
+        }
+
+        function activarMarca(marca) {
+            if (marcaActiva !== marca) {
+                marcaActiva = marca;
+                renderizarTarjetas();
+            }
+            actualizarEstadoTabs();
+        }
+
+        function renderizarTabs() {
+            filaTabs.innerHTML = '';
+            contenidoPagina.millas.pestanas.forEach((pestana, indice) => {
+                const tab = document.createElement('button');
+                tab.id = 'bcp-tab-millas-' + pestana.marca.toLowerCase();
+                tab.className = 'bcp_tab_millas';
+                tab.type = 'button';
+                tab.setAttribute('role', 'tab');
+                tab.setAttribute('aria-controls', idPanelMillas);
+                tab.setAttribute('data-marca', pestana.marca);
+                tab.appendChild(document.createTextNode(pestana.etiqueta + ' '));
+                const conteo = document.createElement('span');
+                conteo.className = 'bcp_conteo_tab_millas';
+                conteo.textContent = '(' + contenidoPagina.millas.tarjetas.filter((tarjeta) =>
+                    tarjeta.marca === pestana.marca).length + ')';
+                tab.appendChild(conteo);
+                tab.style.cursor = 'pointer';
+                tab.style.padding = '0 16px 8px 16px';
+                tab.style.fontFamily = 'Flexo-Demi';
+                tab.style.fontSize = '16px';
+                tab.style.lineHeight = '24px';
+                tab.style.background = 'transparent';
+                tab.style.borderTop = '0';
+                tab.style.borderLeft = '0';
+                tab.style.borderRight = '0';
+                tab.style.whiteSpace = 'nowrap';
+
+                tab.addEventListener('click', () => {
+                    activarMarca(pestana.marca);
+                });
+
+                tab.addEventListener('keydown', (event) => {
+                    let nuevoIndice = indice;
+                    if (event.key === 'ArrowLeft') {
+                        nuevoIndice = (indice - 1 + contenidoPagina.millas.pestanas.length) %
+                            contenidoPagina.millas.pestanas.length;
+                    } else if (event.key === 'ArrowRight') {
+                        nuevoIndice = (indice + 1) % contenidoPagina.millas.pestanas.length;
+                    } else if (event.key === 'Home') {
+                        nuevoIndice = 0;
+                    } else if (event.key === 'End') {
+                        nuevoIndice = contenidoPagina.millas.pestanas.length - 1;
+                    } else {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const nuevaPestana = contenidoPagina.millas.pestanas[nuevoIndice];
+                    activarMarca(nuevaPestana.marca);
+                    filaTabs.children[nuevoIndice].focus();
+                });
+
+                filaTabs.appendChild(tab);
+            });
+            actualizarEstadoTabs();
+        }
+
+        renderizarTabs();
+        renderizarTarjetas();
+        let frameActualizacionTamano = null;
+        function programarActualizacionTamano() {
+            if (frameActualizacionTamano !== null) {
+                cancelAnimationFrame(frameActualizacionTamano);
+            }
+            frameActualizacionTamano = requestAnimationFrame(() => {
+                frameActualizacionTamano = null;
+                actualizarFlechasCarrusel();
+            });
+        }
+
+        if ('ResizeObserver' in window) {
+            const observerTamano = new ResizeObserver(programarActualizacionTamano);
+            observerTamano.observe(contenedorTarjetas);
+        } else {
+            window.addEventListener('resize', programarActualizacionTamano);
+        }
+
+        const botonInscribirse = document.createElement('button');
+        botonInscribirse.type = 'button';
+        botonInscribirse.className =
+            'bcp_boton_naranja large bcp_boton_inscribirse_millas bcp_cta_registro';
+        botonInscribirse.textContent = contenidoPagina.formulario.textoBoton;
+        botonInscribirse.style.display = 'flex';
+        botonInscribirse.style.alignItems = 'center';
+        botonInscribirse.style.justifyContent = 'center';
+        botonInscribirse.style.margin = '0 auto';
+        botonInscribirse.style.float = 'none';
+        botonInscribirse.style.width = 'fit-content';
+        botonInscribirse.style.backgroundColor = colorConoceMas;
+        botonInscribirse.style.color = '#FFFFFF';
+        botonInscribirse.style.fontFamily = 'Flexo-Demi';
+        botonInscribirse.style.fontWeight = '700';
+        botonInscribirse.style.lineHeight = '24px';
+        botonInscribirse.style.padding = '16px 40px';
+        botonInscribirse.style.boxSizing = 'border-box';
+        botonInscribirse.style.maxWidth = '100%';
+        botonInscribirse.style.border = '0';
+        botonInscribirse.style.borderRadius = '999px';
+        botonInscribirse.style.cursor = 'pointer';
+
+        botonInscribirse.addEventListener('click', () => {
+            const formulario = document.querySelector('#formulario-latam-pass');
+            if (formulario) {
+                const reducirMovimiento = window.matchMedia &&
+                    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                formulario.scrollIntoView({
+                    behavior: reducirMovimiento ? 'auto' : 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+        registrarVistaPromocion(botonInscribirse, nombrePromocionHomePiloto,
+            'Inscribirme Ahora - Carrusel');
+
+        seccion.appendChild(titulo);
+        seccion.appendChild(filaTabs);
+        seccion.appendChild(document.createElement('br'));
+        seccion.appendChild(panelTarjetas);
+        seccion.appendChild(botonInscribirse);
+        return seccion;
+    }
+
+    function crearIconoAcordeon() {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.classList.add('content_icon');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('width', '24');
+        svg.setAttribute('height', '24');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M7 9.66673C6.99998 9.38761 7.18627 9.13802 7.46682 9.04132C7.74737 8.94462 8.06276 9.02127 8.25714 9.23341L12 13.3333L15.7428 9.23341C15.9992 8.95359 16.4501 8.92076 16.75 9.16008C17.0498 9.3994 17.0849 9.82024 16.8285 10.1001L12.5428 14.7666C12.4071 14.9147 12.2088 15 12 15C11.7912 15 11.5928 14.9147 11.4571 14.7666L7.17143 10.1001C7.06078 9.9793 6.99999 9.82563 7 9.66673Z');
+        path.setAttribute('fill', '#606C7F');
+        svg.appendChild(path);
+        return svg;
+    }
+
+    function crearSeccionPreguntasFrecuentes() {
+        const seccion = document.createElement('section');
+        const idTitulo = 'bcp-titulo-preguntas-frecuentes-latam';
+        seccion.className = 'bcp_preguntas_frecuentes_sin_categorias ' +
+            'bcp_preguntas_frecuentes_latam_piloto';
+        seccion.setAttribute('aria-labelledby', idTitulo);
+        seccion.setAttribute('data-alineacion', 'CENTRADO');
+
+        const presentacion = document.createElement('div');
+        presentacion.className = 'bcp_presentacion_preguntas';
+        const container = document.createElement('div');
+        container.className = 'container';
+        const contenedorAcordeon = document.createElement('div');
+        contenedorAcordeon.className = 'bcp_contenedor_acordeon';
+
+        const titulo = document.createElement('h2');
+        titulo.id = idTitulo;
+        titulo.className = 'bcp_titulo_principal';
+        titulo.textContent = contenidoPagina.preguntasFrecuentes.titulo;
+        contenedorAcordeon.appendChild(titulo);
+
+        const listado = document.createElement('div');
+        listado.className = 'bcp_preguntas_respuestas';
+
+        contenidoPagina.preguntasFrecuentes.items.forEach((item, indice) => {
+            const idPregunta = 'bcp-pregunta-frecuente-' + (indice + 1);
+            const idRespuesta = 'bcp-respuesta-frecuente-' + (indice + 1);
+            const componente = document.createElement('div');
+            componente.className = 'bcp_component_preguntas';
+            const envoltura = document.createElement('div');
+            envoltura.className = 'accordion-wrap';
+
+            const boton = document.createElement('button');
+            boton.id = idPregunta;
+            boton.type = 'button';
+            boton.className = 'accordion-item acordeon-header-pregunta';
+            boton.setAttribute('aria-expanded', 'false');
+            boton.setAttribute('aria-controls', idRespuesta);
+
+            const cabecera = document.createElement('span');
+            cabecera.className = 'accordion-header';
+            const textoPregunta = document.createElement('span');
+            textoPregunta.className = 'acordeon-header-pregunta-texto';
+            textoPregunta.textContent = item.pregunta;
+            cabecera.appendChild(textoPregunta);
+            cabecera.appendChild(crearIconoAcordeon());
+            boton.appendChild(cabecera);
+
+            const respuesta = document.createElement('div');
+            respuesta.id = idRespuesta;
+            respuesta.className = 'accordion-text bcp_texto_enriquecido_formateado';
+            respuesta.setAttribute('role', 'region');
+            respuesta.setAttribute('aria-labelledby', idPregunta);
+            respuesta.setAttribute('aria-hidden', 'true');
+            respuesta.setAttribute('inert', '');
+            respuesta.style.maxHeight = '0px';
+
+            const contenidoRespuesta = document.createElement('div');
+            contenidoRespuesta.className = 'acordeon-header-respuesta';
+            contenidoRespuesta.innerHTML = item.respuestaHtml;
+            contenidoRespuesta.querySelectorAll('a[target="_blank"]').forEach((enlace) => {
+                enlace.setAttribute('rel', 'noopener noreferrer');
+            });
+            respuesta.appendChild(contenidoRespuesta);
+
+            boton.addEventListener('click', () => {
+                const abrir = boton.getAttribute('aria-expanded') !== 'true';
+                boton.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+                respuesta.setAttribute('aria-hidden', abrir ? 'false' : 'true');
+                envoltura.classList.toggle('activo', abrir);
+                if (abrir) {
+                    respuesta.removeAttribute('inert');
+                    respuesta.style.maxHeight = respuesta.scrollHeight + 'px';
+                } else {
+                    respuesta.setAttribute('inert', '');
+                    respuesta.style.maxHeight = '0px';
+                }
+            });
+
+            if ('ResizeObserver' in window) {
+                const observerRespuesta = new ResizeObserver(() => {
+                    if (boton.getAttribute('aria-expanded') === 'true') {
+                        respuesta.style.maxHeight = respuesta.scrollHeight + 'px';
+                    }
+                });
+                observerRespuesta.observe(contenidoRespuesta);
+            }
+
+            envoltura.appendChild(boton);
+            envoltura.appendChild(respuesta);
+            componente.appendChild(envoltura);
+            listado.appendChild(componente);
+        });
+
+        contenedorAcordeon.appendChild(listado);
+        container.appendChild(contenedorAcordeon);
+        presentacion.appendChild(container);
+        seccion.appendChild(presentacion);
+        return seccion;
+    }
+
+    function crearBannerSeguroTarjetas() {
+        const idTitulo = 'bcp-titulo-seguro-tarjetas-latam';
+        const contenidoBanner = contenidoPagina.bannerSeguro;
+        const seccion = document.createElement('section');
+        seccion.className = 'bcp_banner_secundario_columnas bcp_banner_seguro_tarjetas_latam_piloto';
+        seccion.setAttribute('aria-labelledby', idTitulo);
+        seccion.setAttribute('data-translate-comp', 'true');
+        seccion.setAttribute('taggeo-category', contenidoBanner.tracking.categoria);
+        seccion.setAttribute('taggeo-action', contenidoBanner.tracking.accion);
+        seccion.setAttribute('titulo', contenidoBanner.tracking.titulo);
+
+        const container = document.createElement('div');
+        container.className = 'container';
+        const banner = document.createElement('div');
+        banner.className = 'bcp_contenedor_banner bcp_fondo_celeste_claro bcp_color_texto_oscuro';
+
+        const contenedorImagen = document.createElement('div');
+        contenedorImagen.className = 'banner_imagen_sobrepuesta';
+        contenedorImagen.setAttribute('aria-hidden', 'true');
+        const imagen = document.createElement('img');
+        imagen.src = contenidoBanner.urlImagen;
+        imagen.alt = '';
+        imagen.loading = 'lazy';
+        imagen.width = 240;
+        imagen.height = 224;
+        contenedorImagen.appendChild(imagen);
+
+        const grupoTextos = document.createElement('div');
+        grupoTextos.className = 'bcp_grupo_textos';
+        const textos = document.createElement('div');
+        textos.className = 'banner_textos';
+        const titulo = document.createElement('h2');
+        titulo.id = idTitulo;
+        titulo.className = 'banner_titulo';
+        titulo.setAttribute('data-translate', 'true');
+        titulo.textContent = contenidoBanner.titulo;
+        const descripcion = document.createElement('div');
+        descripcion.className = 'banner_descripcion';
+        descripcion.setAttribute('data-translate', 'true');
+        descripcion.textContent = contenidoBanner.descripcion;
+        textos.appendChild(titulo);
+        textos.appendChild(descripcion);
+
+        const contenedorBoton = document.createElement('div');
+        contenedorBoton.className = 'bcp_contenedor_boton';
+        const botonAncla = document.createElement('button');
+        botonAncla.type = 'button';
+        botonAncla.className =
+            'bcp-btn-primary bcp_boton_naranja large bcp_boton_ancla_formulario bcp_cta_registro';
+        botonAncla.setAttribute('aria-controls', 'formulario-latam-pass');
+        botonAncla.setAttribute('data-translate', 'true');
+        const textoEnlace = document.createElement('span');
+        textoEnlace.textContent = contenidoBanner.textoBoton;
+        botonAncla.appendChild(textoEnlace);
+        botonAncla.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (registroCompletado) {
+                return;
+            }
+
+            const formulario = document.querySelector(contenidoBanner.anclaBoton);
+            if (!formulario) {
+                return;
+            }
+
+            const reducirMovimiento = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            formulario.scrollIntoView({
+                behavior: reducirMovimiento ? 'auto' : 'smooth',
+                block: 'start'
+            });
+        });
+        registrarVistaPromocion(botonAncla, nombrePromocionHomePiloto,
+            'Inscribirme Ahora - Final');
+        contenedorBoton.appendChild(botonAncla);
+
+        grupoTextos.appendChild(textos);
+        grupoTextos.appendChild(contenedorBoton);
+        banner.appendChild(contenedorImagen);
+        banner.appendChild(grupoTextos);
+        container.appendChild(banner);
+        seccion.appendChild(container);
+        return seccion;
+    }
+
+    function crearSeccionTerminosCondiciones() {
+        const idTitulo = 'bcp-titulo-terminos-condiciones-latam';
+        const seccion = document.createElement('section');
+        seccion.className = 'bcp_seccion_terminos container';
+        seccion.setAttribute('aria-labelledby', idTitulo);
+        seccion.style.paddingLeft = '24px';
+        seccion.style.paddingRight = '24px';
+        seccion.style.textAlign = 'center';
+
+        const titulo = document.createElement('h2');
+        titulo.id = idTitulo;
+        titulo.className = 'bcp_seccion_beneficios_titulo';
+        titulo.textContent = contenidoPagina.terminos.titulo;
+        titulo.style.color = colorBeneficiosTitulo;
+        titulo.style.fontFamily = 'Flexo-Demi';
+        titulo.style.marginBottom = '32px';
+
+        const contenedor = document.createElement('div');
+        contenedor.className = 'bcp_terminos_contenedor';
+        const detalle = document.createElement('details');
+        detalle.className = 'bcp_terminos_detalle';
+        detalle.open = contenidoPagina.terminos.abiertoInicialmente;
+        const resumen = document.createElement('summary');
+        resumen.className = 'bcp_terminos_resumen';
+        const textoResumen = document.createElement('span');
+        textoResumen.textContent = contenidoPagina.terminos.tituloAcordeon;
+        const icono = crearIconoAcordeon();
+        icono.classList.add('bcp_terminos_icono');
+        resumen.appendChild(textoResumen);
+        resumen.appendChild(icono);
+        detalle.appendChild(resumen);
+
+        const contenido = document.createElement('div');
+        contenido.className = 'bcp_terminos_contenido';
+
+        function agregarGrupo(contenidoHtml, claseAdicional) {
+            const grupo = document.createElement('div');
+            grupo.className = 'bcp_terminos_grupo' + (claseAdicional ? ' ' + claseAdicional : '');
+            const cuerpo = document.createElement('div');
+            cuerpo.innerHTML = contenidoHtml;
+            grupo.appendChild(cuerpo);
+            contenido.appendChild(grupo);
+        }
+
+        contenidoPagina.terminos.bloquesHtml.forEach((bloqueHtml) => {
+            agregarGrupo(bloqueHtml);
+        });
+
+        contenido.querySelectorAll('a[target="_blank"]').forEach((enlace) => {
+            enlace.setAttribute('rel', 'noopener noreferrer');
+        });
+        detalle.appendChild(contenido);
+        contenedor.appendChild(detalle);
+        seccion.appendChild(titulo);
+        seccion.appendChild(contenedor);
+        return seccion;
+    }
+
+    function crearSeccionBeneficios() {
+        const seccion = document.createElement('div');
+        seccion.className = 'bcp_seccion_beneficios container';
+        seccion.style.paddingLeft = '24px';
+        seccion.style.paddingRight = '24px';
+        seccion.style.textAlign = 'center';
+
+        const titulo = document.createElement('h2');
+        titulo.className = 'bcp_seccion_beneficios_titulo';
+        titulo.textContent = contenidoPagina.beneficios.titulo;
+        titulo.style.color = colorBeneficiosTitulo;
+        titulo.style.fontFamily = 'Flexo-Demi';
+        titulo.style.marginBottom = '32px';
+
+        const subtitulo = document.createElement('div');
+        subtitulo.textContent = contenidoPagina.beneficios.subtitulo;
+        subtitulo.style.color = colorBeneficiosTexto;
+        subtitulo.style.fontSize = '16px';
+        subtitulo.style.lineHeight = '24px';
+        subtitulo.style.marginBottom = '40px';
+
+        const fila = document.createElement('div');
+        fila.style.display = 'flex';
+        fila.style.flexWrap = 'wrap';
+        fila.style.justifyContent = 'center';
+        fila.style.gap = '32px';
+
+        contenidoPagina.beneficios.items.forEach((beneficio) => {
+            fila.appendChild(crearColumnaBeneficio(beneficio));
+        });
+
+        seccion.appendChild(titulo);
+        seccion.appendChild(subtitulo);
+        seccion.appendChild(fila);
+        return seccion;
+    }
+
+    // El formulario ya está en el HTML al parsear (no se inyecta por AJAX), pero por las dudas
+    // de timing de inyección del propio piloto.html se reintenta hasta encontrarlo.
+    function aplicarCambiosFormulario() {
+        const formLatamPass = document.querySelector('#formulario-latam-pass');
+        const botonEl = formLatamPass && formLatamPass.querySelector(BOTON_SELECTOR);
+        const tipoDocumentoEl = formLatamPass && formLatamPass.querySelector(TIPO_DOC_SELECTOR);
+        if (!formLatamPass || !botonEl || !tipoDocumentoEl) {
+            return false;
+        }
+
+        const tituloEl = formLatamPass.querySelector('.bcp_titulo');
+        if (tituloEl) {
+            tituloEl.textContent = contenidoPagina.formulario.titulo;
+        }
+        botonEl.textContent = contenidoPagina.formulario.textoBoton;
+        botonEl.classList.add('bcp_cta_registro');
+        registrarVistaPromocion(botonEl, nombrePromocionHomePiloto,
+            'Inscribirme Ahora - Inicio');
+
+        const descripcionEl = formLatamPass.querySelector('.bcp_descripcion');
+        if (descripcionEl && !formLatamPass.querySelector('.bcp_conoce_mas')) {
+            descripcionEl.insertAdjacentElement('afterend', crearBloqueConoceMas());
+        }
+
+        const contenedorBoton = botonEl.closest('.bcp_content_boton') || botonEl;
+        if (tipoDocumentoEl.nextElementSibling !== contenedorBoton) {
+            tipoDocumentoEl.insertAdjacentElement('afterend', contenedorBoton);
+        }
+        botonEl.style.setProperty('width', '100%', 'important');
+
+        let ancla = formLatamPass;
+        if (!document.querySelector('.bcp_seccion_beneficios')) {
+            const seccionBeneficios = crearSeccionBeneficios();
+            formLatamPass.insertAdjacentElement('afterend', seccionBeneficios);
+            ancla = seccionBeneficios;
+        } else {
+            ancla = document.querySelector('.bcp_seccion_beneficios');
+        }
+
+        let seccionMillas = document.querySelector('.bcp_seccion_millas');
+        if (!seccionMillas) {
+            seccionMillas = crearSeccionMillas();
+            ancla.insertAdjacentElement('afterend', seccionMillas);
+        }
+
+        let seccionPreguntas = document.querySelector('.bcp_preguntas_frecuentes_latam_piloto');
+        if (!seccionPreguntas) {
+            seccionPreguntas = crearSeccionPreguntasFrecuentes();
+            seccionMillas.insertAdjacentElement('afterend', seccionPreguntas);
+        }
+
+        let bannerSeguro = document.querySelector('.bcp_banner_seguro_tarjetas_latam_piloto');
+        if (!bannerSeguro) {
+            bannerSeguro = crearBannerSeguroTarjetas();
+            seccionPreguntas.insertAdjacentElement('afterend', bannerSeguro);
+        }
+
+        if (!document.querySelector('.bcp_seccion_terminos')) {
+            bannerSeguro.insertAdjacentElement('afterend', crearSeccionTerminosCondiciones());
+        }
+
+        return true;
+    }
+
+    if (!aplicarCambiosFormulario()) {
+        const observerFormulario = new MutationObserver(() => {
+            if (aplicarCambiosFormulario()) {
+                observerFormulario.disconnect();
+            }
+        });
+        observerFormulario.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // No se hardcodea la URL de los módulos: el query string (CACHEID/V) es un cache-buster
+    // que cambia con cada deploy del sitio. Si nuestro import() no resuelve a la MISMA url que
+    // ya usó el <script type="module"> de la página, el navegador lo trata como un módulo
+    // distinto y lo vuelve a evaluar, y customElements.define() explota la segunda vez
+    // ("already been used"). Por eso se lee la url en vivo desde ese script.
+    //
+    // La resolución relativa-a-absoluta se hace con un <a> en vez de new URL(...) porque
+    // esta página pisa el global URL: un tag de GTM hace var URL = google_tag_manager[...],
+    // que sobreescribe el constructor nativo con un string.
+    function resolverRutaAbsoluta(ruta) {
+        const enlace = document.createElement('a');
+        enlace.href = ruta;
+        return enlace.href;
+    }
+
+    function resolverUrlModulo(nombreArchivo) {
+        const patron = new RegExp('from\\s*["\']([^"\']*' + nombreArchivo.replace('.', '\\.') + '[^"\']*)["\']');
+        for (const script of document.querySelectorAll('script[type="module"]')) {
+            const match = script.textContent.match(patron);
+            if (match) {
+                return resolverRutaAbsoluta(match[1]);
+            }
+        }
+        throw new Error('No se encontró el import de ' + nombreArchivo + ' en la página.');
+    }
+
+    let modulosCargados = null;
+    function cargarModulos() {
+        if (!modulosCargados) {
+            modulosCargados = Promise.all([
+                import(resolverUrlModulo('formulario-v2.js')),
+                import(resolverUrlModulo('recaptcha.js'))
+            ]);
+        }
+        return modulosCargados;
+    }
+
+    async function manejarEnvioFormulario(botonSuscribirse) {
+        const formLatamPass = botonSuscribirse.closest('#formulario-latam-pass');
+        const strTipoNroDocumento = formLatamPass.querySelector(TIPO_DOC_SELECTOR);
+
+        const [
+            { validarTipoNroDocumento, getTipoDocumento, getNroDocumento, actualizarEstadoBoton, sendApiForm },
+            { renderRecaptcha }
+        ] = await cargarModulos();
+
+        if (!validarTipoNroDocumento(strTipoNroDocumento)) {
+            return;
+        }
+
+        const dataFormulario = {
+            tipodocumento: getTipoDocumento(strTipoNroDocumento),
+            documento: getNroDocumento(strTipoNroDocumento),
+            coordenadas: '0,0',
+            intencionventa: intencionVenta
+        };
+
+        actualizarEstadoBoton(botonSuscribirse, true);
+
+        renderRecaptcha(botonSuscribirse, (strTokenCaptcha) => {
+            try {
+                if (!dataFormulario.tipodocumento && !dataFormulario.documento) {
+                    location.reload();
+                    return;
+                }
+
+                const jsonRequest = {
+                    leadId: getLeadID(),
+                    producto: strNombreProducto,
+                    tipoFormulario: 'SOLICITUDWEBLATAM',
+                    tipoProducto: strNombreProducto,
+                    captchaToken: strTokenCaptcha,
+                    data: dataFormulario
+                };
+
+                // A diferencia de referencia.html, acá no se redirige a /campanas-latam al terminar.
+                // En referencia.html ese reset nunca hace falta porque la redirección navega
+                // fuera de la página; acá hay que hacerlo a mano o el botón queda girando.
+                sendApiForm(jsonRequest, strTokenCaptcha, () => {
+                    actualizarEstadoBoton(botonSuscribirse, false);
+                    // actualizarEstadoBoton puede restaurar la etiqueta original del botón.
+                    botonSuscribirse.textContent = contenidoPagina.formulario.textoBoton;
+                    mostrarEstadoExitoFormulario(formLatamPass);
+                    deshabilitarCtasRegistro();
+                });
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    }
+
+    // El listener original vive en el propio botón (dentro del <script type="module">
+    // de referencia.html), así que hay que interceptar más arriba en fase de captura
+    // para llegar antes: un capture:true en el mismo nodo no alcanza, ahí el orden
+    // lo define el registro, no la fase.
+    document.addEventListener('click', (event) => {
+        const boton = event.target.closest(BOTON_SELECTOR);
+        if (!boton) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        if (registroCompletado) {
+            return;
+        }
+
+        manejarEnvioFormulario(boton).catch(console.error);
+    }, true);
+
+})();
+
+</script>
