@@ -196,6 +196,12 @@
             'background: #E6F1FF;' +
             'box-sizing: border-box;' +
             '}' +
+            '.bcp_formulario_latam_cards .bcp_exito_solicitud_imagen {' +
+            'display: block;' +
+            'margin: 0 auto 16px auto;' +
+            'border-radius: 4px;' +
+            'box-shadow: 0 4px 6px rgba(32, 46, 68, 0.12), 0 8px 16px rgba(32, 46, 68, 0.16);' +
+            '}' +
             '.bcp_formulario_latam_cards .bcp_exito_solicitud_titulo {' +
             'margin: 0 0 16px;' +
             'color: #002A8D;' +
@@ -349,6 +355,12 @@
             '.bcp_conteo_tab_millas {' +
             'display: inline;' +
             '}' +
+            '.bcp_formulario_latam_cards,' +
+            '.bcp_seccion_beneficios,' +
+            '.bcp_seccion_millas,' +
+            '.bcp_seccion_terminos {' +
+            'padding-bottom: 80px !important;' +
+            '}' +
             '}' +
             '@media (min-width: 1280px) {' +
             '.bcp_formulario_latam_cards,' +
@@ -356,6 +368,14 @@
             '.bcp_seccion_millas,' +
             '.bcp_seccion_terminos {' +
             'padding-bottom: 100px !important;' +
+            '}' +
+            '}' +
+            // El .container del sitio queda fijo en 936px entre 992 y 1279px (salta recién a
+            // 1208px desde 1280px), y en ese rango el carrusel de millas se ve angosto aunque
+            // sobre pantalla. Se ensancha de forma fluida hasta igualar el ancho desktop.
+            '@media (min-width: 992px) and (max-width: 1279px) {' +
+            '.bcp_seccion_millas.container {' +
+            'width: min(1208px, calc(100% - 64px));' +
             '}' +
             '}';
         document.head.appendChild(estilos);
@@ -452,6 +472,7 @@
             '.bcp_preguntas_frecuentes_sin_categorias {' +
             'padding-left: 0;' +
             'padding-right: 0;' +
+            'padding-bottom: 80px;' +
             '}' +
             '.bcp_preguntas_frecuentes_sin_categorias .bcp_contenedor_acordeon {' +
             'width: 70%;' +
@@ -550,7 +571,7 @@
             '}' +
             '@media (min-width: 992px) {' +
             '.bcp_banner_secundario_columnas {' +
-            'padding: 0 0 48px;' +
+            'padding: 0 0 80px;' +
             '}' +
             '.bcp_banner_secundario_columnas .bcp_contenedor_banner {' +
             'flex-direction: row;' +
@@ -948,7 +969,8 @@
                 descripcionSolicitud: '¡Pídela para poder participar de esta campaña!',
                 textoDestacado: 'participar de esta campaña!',
                 textoBoton: 'Pídela aquí',
-                urlBoton: urlSolicitudTarjeta
+                urlBoton: urlSolicitudTarjeta,
+                imagenTarjeta: 'https://www.viabcp.com/wcm/connect/db7653d8-4820-4ecb-92ef-ad5d76c9b1a2/Visa+Oro+LATAM+Pass.png?MOD=AJPERES&CACHEID=ROOTWORKSPACE-db7653d8-4820-4ecb-92ef-ad5d76c9b1a2-pnZ4TuX'
             },
             imagenes: {
                 mobile: 'https://www.viabcp.com/wcm/connect/c9a1cbd2-2e26-4bf8-8c09-87f65fbbfeea/Banner-Landing-Inscripcio%CC%81n_Mobile-%28763-x-300%29.jpg?MOD=AJPERES&CACHEID=ROOTWORKSPACE-c9a1cbd2-2e26-4bf8-8c09-87f65fbbfeea-p.217aX&cache=none',
@@ -1208,6 +1230,16 @@
 
         const solicitud = document.createElement('div');
         solicitud.className = 'bcp_exito_solicitud';
+
+        const imagenSolicitud = document.createElement('img');
+        imagenSolicitud.className = 'bcp_exito_solicitud_imagen';
+        imagenSolicitud.src = contenidoExito.imagenTarjeta;
+        // El título de abajo ya identifica que se trata de una tarjeta BCP.
+        imagenSolicitud.alt = '';
+        imagenSolicitud.draggable = false;
+        imagenSolicitud.width = 92;
+        imagenSolicitud.height = 59;
+
         const tituloSolicitud = document.createElement('h3');
         tituloSolicitud.className = 'bcp_exito_solicitud_titulo';
         tituloSolicitud.textContent = contenidoExito.tituloSolicitud;
@@ -1218,6 +1250,7 @@
         botonSolicitud.href = contenidoExito.urlBoton;
         botonSolicitud.textContent = contenidoExito.textoBoton;
 
+        solicitud.appendChild(imagenSolicitud);
         solicitud.appendChild(tituloSolicitud);
         solicitud.appendChild(crearDescripcionSolicitudExito(contenidoExito));
         solicitud.appendChild(botonSolicitud);
@@ -1589,9 +1622,12 @@
                 const anchoDisponibleCards = contenedorTarjetas.clientWidth -
                     (gapTarjetasMillas * (cantidadVisible - 1));
                 const anchoCalculado = anchoDisponibleCards / cantidadVisible;
-                const esDesktop = window.matchMedia ?
-                    window.matchMedia('(min-width: 1280px)').matches : window.innerWidth >= 1280;
-                const limitarAnchoDosTarjetas = cantidadTarjetas === 2 && esDesktop;
+                // 992px porque desde ahí el .container del sitio ya se acerca al ancho
+                // desktop (ver inyectarEstilos): sin este límite, con solo 2 tarjetas
+                // (AMEX) el reparto las estira mucho antes de llegar a los 1280px.
+                const esPantallaAncha = window.matchMedia ?
+                    window.matchMedia('(min-width: 992px)').matches : window.innerWidth >= 992;
+                const limitarAnchoDosTarjetas = cantidadTarjetas === 2 && esPantallaAncha;
                 const anchoTarjeta = limitarAnchoDosTarjetas ?
                     Math.min(anchoCalculado, 320) : anchoCalculado;
                 Array.from(contenedorTarjetas.children).forEach((tarjeta) => {
@@ -2381,3 +2417,4 @@
 })();
 
 </script>
+    
