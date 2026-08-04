@@ -153,6 +153,9 @@
             '#bcp-titulo-seccion-millas {' +
             'scroll-margin-top: 96px;' +
             '}' +
+            '#bcp-seccion-beneficios {' +
+            'scroll-margin-top: 96px;' +
+            '}' +
             '#formulario-latam-pass {' +
             'scroll-margin-top: 72px;' +
             '}' +
@@ -741,6 +744,20 @@
         contenedor.style.fontWeight = '600';
         contenedor.style.textDecoration = 'none';
         contenedor.style.cursor = 'pointer';
+        contenedor.addEventListener('click', (event) => {
+            const destino = document.querySelector('.bcp_seccion_beneficios');
+            if (!destino) {
+                return;
+            }
+
+            event.preventDefault();
+            const reducirMovimiento = window.matchMedia &&
+                window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            destino.scrollIntoView({
+                behavior: reducirMovimiento ? 'auto' : 'smooth',
+                block: 'start'
+            });
+        });
 
         const texto = document.createElement('span');
         texto.textContent = contenidoPagina.conoceMas.texto;
@@ -979,7 +996,7 @@
         },
         conoceMas: {
             texto: 'Conoce más',
-            url: '#bcp-titulo-seccion-millas'
+            url: '#bcp-seccion-beneficios'
         },
         beneficios: {
             titulo: '¿Qué puedes ganar con esta campaña?',
@@ -2195,6 +2212,7 @@
 
     function crearSeccionBeneficios() {
         const seccion = document.createElement('div');
+        seccion.id = 'bcp-seccion-beneficios';
         seccion.className = 'bcp_seccion_beneficios container';
         seccion.style.paddingLeft = '24px';
         seccion.style.paddingRight = '24px';
