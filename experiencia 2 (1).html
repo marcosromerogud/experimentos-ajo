@@ -1,0 +1,565 @@
+<script>
+  (() => {
+    // === CONFIGURACIÓN: sección DESPUÉS de la cual se insertará el componente ===
+    // Se usa aria-label porque el ID es volátil
+    const SELECTOR_SECCION_ANTERIOR = '[aria-label="Todo sobre tu préstamo tarjetero"]';
+    // =============================================================================
+
+    const CSS = `
+      @font-face {
+        font-family: Flexo;
+        font-style: normal;
+        font-weight: 400;
+        src:
+          url(/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-Regular-webfont.woff2),
+          url(/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-Regular-webfont.woff);
+      }
+
+      @font-face {
+        font-family: Flexo;
+        font-style: italic;
+        font-weight: 400;
+        src:
+          url(/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-It-webfont.woff2),
+          url(/ViaBCPThemeLight/fonts/webfontkit-FlexoItalic-FlexoRegular/Flexo-It-webfont.woff);
+      }
+
+      @font-face {
+        font-family: Flexo-Demi;
+        font-style: normal;
+        font-weight: 400;
+        src:
+          url(/ViaBCPThemeLight/fonts/webfontkit-FlexoDemi-FlexoHeavy/Flexo-Demi-webfont.woff2),
+          url(/ViaBCPThemeLight/fonts/webfontkit-FlexoDemi-FlexoHeavy/Flexo-Demi-webfont.woff);
+      }
+
+      .section_pasos_home_new p,
+      .section_pasos_home_new a {
+        font-family: Flexo;
+      }
+
+      .section_pasos_home_new span {
+        font-family: inherit;
+      }
+
+      .section_pasos_home_new h2 {
+        font-family: Flexo-Demi;
+      }
+
+      .section_pasos_home_new {
+        overflow-x: hidden;
+        padding: 64px 0 30px;
+      }
+
+      .titulo_contenedor_pasos {
+        text-align: center;
+        padding: 0 24px;
+        margin-bottom: 0;
+      }
+
+      .titulo_contenedor_pasos h2 {
+        font-family: Flexo-Demi;
+        font-size: 32px;
+        line-height: 40px;
+        color: #002a8d;
+        margin: 0 0 12px;
+      }
+
+      .titulo_contenedor_pasos p {
+        font-size: 16px;
+      }
+
+      .text_decoration_pasos {
+        color: #ff7800;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .pasos_canal_selector {
+        display: flex;
+        justify-content: center;
+        padding: 32px 24px 0;
+      }
+
+      .pasos_canal_activo {
+        display: inline-block;
+        font-family: Flexo-Demi;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0;
+        text-align: center;
+        color: #202e44;
+        padding: 12px 0;
+        border-bottom: 2px solid #ff7800;
+      }
+
+      .mobile_pasos_card {
+        margin: 24px 24px 0;
+        padding: 28px 20px 24px;
+        border-radius: 24px;
+        background-color: #eef1fb;
+        text-align: center;
+      }
+
+      .mobile_paso_contador {
+        margin: 0 0 8px;
+        font-family: Flexo-Demi !important;
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #7784a1;
+      }
+
+      .mobile_paso_titulo {
+        margin: 0 0 8px;
+        font-family: Flexo-Demi !important;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 26px;
+        color: #202e44;
+      }
+
+      .mobile_paso_bajada {
+        margin: 0 0 24px;
+        font-size: 15px;
+        line-height: 22px;
+        color: #606c7f;
+      }
+
+      .mobile_paso_imagen_wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mobile_paso_imagen {
+        width: 62%;
+        max-width: 220px;
+        border-radius: 24px;
+      }
+
+      .mobile_paso_flecha {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 18px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s ease;
+      }
+
+      .mobile_paso_flecha:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+
+      .mobile_paso_flecha_izq {
+        left: -8px;
+        background-color: #e4e6ec;
+        color: #3e4759;
+      }
+
+      .mobile_paso_flecha_der {
+        right: -8px;
+        background-color: #ff7800;
+        color: #ffffff;
+      }
+
+      .dots-component-mobile {
+        margin: 20px 0 0;
+      }
+
+      .pasos_buton_center {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 64px;
+      }
+
+      .pasos_desktop_st {
+        display: none;
+      }
+
+      .st_contenedor_pasos_stepper {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+        cursor: pointer;
+      }
+
+      .st_pasos_stepper span {
+        width: 28px;
+        height: 28px;
+        display: inline-block;
+        color: #202e44;
+        border: 2px solid #202e44;
+        border-radius: 50%;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        padding: 3px 0;
+        box-sizing: border-box;
+        font-family: Flexo-Demi;
+        flex-shrink: 0;
+      }
+
+      .st_pasos_stepper.activo span {
+        background-color: #002a8d;
+        border-color: #002a8d;
+        color: #fff;
+      }
+
+      .titulo_step {
+        color: #202e44;
+        margin: 0;
+        font-size: 20px;
+        line-height: 28px;
+        font-family: Flexo-Demi !important;
+      }
+
+      .bajada_step {
+        margin: 4px 0 0;
+        font-size: 16px;
+        line-height: 24px;
+        color: #606c7f;
+      }
+
+      .cards_pasos_imagenes {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        justify-content: center;
+        padding: 0 0 28px;
+      }
+
+      .cards_pasos_manual img {
+        border-radius: 32px;
+      }
+
+      .cards_pasos_manual_activo {
+        display: block;
+      }
+
+      .cards_pasos_manual_desactivo {
+        display: none;
+      }
+
+      .cards_pasos_flecha_derecha,
+      .cards_pasos_flecha_izquierda {
+        cursor: pointer;
+      }
+
+      .dots-component {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .pasos_desktop_st .dots-component {
+        display: none;
+      }
+
+      .dots-component__item {
+        width: 8px;
+        height: 8px;
+        background-color: #d2d5dc;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      .active-dot {
+        background-color: #3d77ff;
+      }
+
+      @media (width <= 991px) {
+        .titulo_contenedor_pasos h2 {
+          font-size: 24px;
+          line-height: 32px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .pasos_mobile {
+          display: none;
+        }
+
+        .pasos_desktop_st {
+          display: flex;
+          gap: 48px;
+          justify-content: center;
+          padding: 56px 24px 64px;
+        }
+      }
+
+      .pasos__button {
+        display: block;
+        border-radius: 24px;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 16px 24px;
+        background-color: #ff7800;
+        font-family: Flexo-Demi;
+        font-size: 16px;
+        line-height: 16px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        user-select: none;
+      }
+
+      .pasos__button:hover {
+        text-decoration: none;
+        color: #ffffff;
+        background: #ff961f;
+      }
+
+      @media (min-width: 768px) {
+        .pasos__button {
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 40px;
+        }
+      }
+    `;
+
+    const HTML = `
+      <section class="section_pasos_home_new">
+        <div class="titulo_contenedor_pasos">
+          <h2>¿Cómo obtener tu Préstamo Tarjetero?</h2>
+          <p>Solo sigue los siguientes pasos</p>
+        </div>
+        <div class="pasos_canal_selector">
+          <span class="pasos_canal_activo">App BCP</span>
+        </div>
+        <div class="pasos_mobile">
+          <div class="mobile_pasos_card">
+            <p class="mobile_paso_contador">PASO <span class="mobile_paso_actual">1</span> DE 5</p>
+            <p class="mobile_paso_titulo">Ingresa a la sección "Para ti"</p>
+            <p class="mobile_paso_bajada">Puedes encontrarla en la parte inferior de la pantalla</p>
+            <div class="mobile_paso_imagen_wrap">
+              <button class="mobile_paso_flecha mobile_paso_flecha_izq" id="ma_prev_paso" aria-label="Paso anterior">&#8592;</button>
+              <img class="mobile_paso_imagen" src="https://www.viabcp.com/wcm/connect/c7ef79d9-5182-4ebb-8c6a-ae9636108de0/1_mobile.png?MOD=AJPERES&amp;attachment=false&amp;id=1784577916566" alt="">
+              <button class="mobile_paso_flecha mobile_paso_flecha_der" id="ma_next_paso" aria-label="Paso siguiente">&#8594;</button>
+            </div>
+          </div>
+          <div class="dots-component dots-component-mobile">
+            <div class="dots-component__item active-dot"></div>
+            <div class="dots-component__item"></div>
+            <div class="dots-component__item"></div>
+            <div class="dots-component__item"></div>
+            <div class="dots-component__item"></div>
+          </div>
+        </div>
+        <div class="st_contenedor_pasos">
+          <div class="pasos_desktop_st">
+            <div>
+              <div>
+                <div class="st_contenedor_pasos_stepper">
+                  <div class="st_pasos_stepper activo"><span>1</span></div>
+                  <div>
+                    <p class="titulo_step activo">Ingresa a la sección "Para ti"</p>
+                    <p class="bajada_step">Puedes encontrarla en la parte inferior de la pantalla</p>
+                  </div>
+                </div>
+                <div class="st_contenedor_pasos_stepper">
+                  <div class="st_pasos_stepper"><span>2</span></div>
+                  <div>
+                    <p class="titulo_step">Selecciona "Préstamo Tarjetero"</p>
+                    <p class="bajada_step">En ofertas especiales</p>
+                  </div>
+                </div>
+                <div class="st_contenedor_pasos_stepper">
+                  <div class="st_pasos_stepper"><span>3</span></div>
+                  <div>
+                    <p class="titulo_step">Ingresa el monto de tu préstamo</p>
+                    <p class="bajada_step">Edita el monto que prefieras</p>
+                  </div>
+                </div>
+                <div class="st_contenedor_pasos_stepper">
+                  <div class="st_pasos_stepper"><span>4</span></div>
+                  <div>
+                    <p class="titulo_step">Elige dónde recibirás tu préstamo</p>
+                    <p class="bajada_step">Podrás visualizar tus cuentas de ahorro</p>
+                  </div>
+                </div>
+                <div class="st_contenedor_pasos_stepper">
+                  <div class="st_pasos_stepper"><span>5</span></div>
+                  <div>
+                    <p class="titulo_step">Revisa la información y ¡listo!</p>
+                    <p class="bajada_step">Disfruta de tu Préstamo Tarjetero</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="container_imagenes">
+              <div class="cards_pasos_imagenes">
+                <div class="cards_pasos_flecha_izquierda">
+                  <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle r="23.5" transform="matrix(-1.19249e-08 -1 -1 1.19249e-08 24 24)" fill="#ff7800"></circle>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M31.998 24.9979L18.414 24.9979L21.709 28.2929C22.1 28.6839 22.1 29.3159 21.709 29.7069C21.318 30.0979 20.685 30.0979 20.295 29.7069L15.295 24.7069C14.904 24.3159 14.904 23.6839 15.295 23.2929L20.291 18.2929C20.486 18.0979 20.742 17.9999 20.998 17.9999C21.254 17.9999 21.51 18.0979 21.705 18.2929C22.096 18.6829 22.096 19.3159 21.706 19.7069L18.417 22.9979L31.998 22.9979C32.551 22.9979 32.998 23.4449 32.998 23.9979C32.998 24.5509 32.551 24.9979 31.998 24.9979Z" fill="#fff"></path>
+                  </svg>
+                </div>
+                <div class="cards_pasos_manual cards_pasos_manual_activo">
+                  <img src="https://www.viabcp.com/wcm/connect/8102b789-99a8-46ad-a237-111df8d018b7/1_desktop.png?MOD=AJPERES&amp;attachment=false&amp;id=1784577606664" alt="" style="width: 320px;">
+                </div>
+                <div class="cards_pasos_manual cards_pasos_manual_desactivo">
+                  <img src="https://www.viabcp.com/wcm/connect/9e33b58f-ab7c-49df-a44b-f43381a52ce6/2_desktop.png?MOD=AJPERES&amp;attachment=false&amp;id=1784577707233" alt="" style="width: 320px;">
+                </div>
+                <div class="cards_pasos_manual cards_pasos_manual_desactivo">
+                  <img src="https://www.viabcp.com/wcm/connect/4f04e7df-edad-4bc3-8624-9c60aab3dae2/3_desktop.png?MOD=AJPERES&amp;attachment=false&amp;id=1784577770814" alt="" style="width: 320px;">
+                </div>
+                <div class="cards_pasos_manual cards_pasos_manual_desactivo">
+                  <img src="https://www.viabcp.com/wcm/connect/2dafd2d3-ffac-4e2c-ba89-2ca59963eb53/4_desktop.png?MOD=AJPERES&amp;attachment=false&amp;id=1784577832570" alt="" style="width: 320px;">
+                </div>
+                <div class="cards_pasos_manual cards_pasos_manual_desactivo">
+                  <img src="https://www.viabcp.com/wcm/connect/e52de284-a96f-4feb-aa7d-cc879e323be6/5_desktop.png?MOD=AJPERES&amp;attachment=false&amp;id=1784577867158" alt="" style="width: 320px;">
+                </div>
+                <div class="cards_pasos_flecha_derecha">
+                  <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="23.5" transform="rotate(-90 24 24)" fill="#ff7800"></circle>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0024 24.9979L29.5864 24.9979L26.2914 28.2929C25.9004 28.6839 25.9004 29.3159 26.2914 29.7069C26.6824 30.0979 27.3154 30.0979 27.7054 29.7069L32.7054 24.7069C33.0964 24.3159 33.0964 23.6839 32.7054 23.2929L27.7094 18.2929C27.5144 18.0979 27.2584 17.9999 27.0024 17.9999C26.7464 17.9999 26.4904 18.0979 26.2954 18.2929C25.9044 18.6829 25.9044 19.3159 26.2944 19.7069L29.5834 22.9979L16.0024 22.9979C15.4494 22.9979 15.0024 23.4449 15.0024 23.9979C15.0024 24.5509 15.4494 24.9979 16.0024 24.9979Z" fill="#fff"></path>
+                  </svg>
+                </div>
+              </div>
+              <div class="dots-component">
+                <div class="dots-component__item active-dot"></div>
+                <div class="dots-component__item"></div>
+                <div class="dots-component__item"></div>
+                <div class="dots-component__item"></div>
+                <div class="dots-component__item"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+
+    // Insertar estilos
+    const style = document.createElement('style');
+    style.textContent = CSS;
+    document.head.appendChild(style);
+
+    // Insertar HTML después de la sección especificada
+    const seccionAnterior = document.querySelector(SELECTOR_SECCION_ANTERIOR);
+    if (!seccionAnterior) {
+      console.error('[Pasos Préstamo Tarjetero] No se encontró la sección anterior con selector:', SELECTOR_SECCION_ANTERIOR);
+      return;
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = HTML;
+    const seccionPasos = wrapper.querySelector('.section_pasos_home_new');
+    seccionAnterior.insertAdjacentElement('afterend', seccionPasos);
+
+    // Datos de los pasos (usados por la card mobile)
+    const pasosData = [
+      {
+        titulo: 'Ingresa a la sección "Para ti"',
+        bajada: 'Puedes encontrarla en la parte inferior de la pantalla',
+        img: 'https://www.viabcp.com/wcm/connect/c7ef79d9-5182-4ebb-8c6a-ae9636108de0/1_mobile.png?MOD=AJPERES&attachment=false&id=1784577916566',
+      },
+      {
+        titulo: 'Selecciona "Préstamo Tarjetero"',
+        bajada: 'En ofertas especiales',
+        img: 'https://www.viabcp.com/wcm/connect/3b6bcf39-4f6d-43fe-87dd-4139ce532d8a/2_mobile.png?MOD=AJPERES&attachment=false&id=1784577954105',
+      },
+      {
+        titulo: 'Ingresa el monto de tu préstamo',
+        bajada: 'Edita el monto que prefieras',
+        img: 'https://www.viabcp.com/wcm/connect/5f548df1-4e06-4858-8962-3422dde9248f/3_mobile.png?MOD=AJPERES&attachment=false&id=1784577990577',
+      },
+      {
+        titulo: 'Elige dónde recibirás tu préstamo',
+        bajada: 'Podrás visualizar tus cuentas de ahorro',
+        img: 'https://www.viabcp.com/wcm/connect/df70d681-e2a5-435c-9c4a-5d2351d03bb8/4_mobile.png?MOD=AJPERES&attachment=false&id=1784578029738',
+      },
+      {
+        titulo: 'Revisa la información y ¡listo!',
+        bajada: 'Disfruta de tu Préstamo Tarjetero',
+        img: 'https://www.viabcp.com/wcm/connect/5bacad5c-16d9-47d7-871b-95a358198880/5_mobile.png?MOD=AJPERES&attachment=false&id=1784578093954',
+      },
+    ];
+
+    let currentIndex = 0;
+
+    const mobilePasoActual = seccionPasos.querySelector('.mobile_paso_actual');
+    const mobileTitulo = seccionPasos.querySelector('.mobile_paso_titulo');
+    const mobileBajada = seccionPasos.querySelector('.mobile_paso_bajada');
+    const mobileImagen = seccionPasos.querySelector('.mobile_paso_imagen');
+    const prevBtn = seccionPasos.querySelector('#ma_prev_paso');
+    const nextBtn = seccionPasos.querySelector('#ma_next_paso');
+
+    function irAlPaso(idx) {
+      currentIndex = idx;
+      const paso = pasosData[idx];
+
+      // Card mobile
+      if (mobilePasoActual) mobilePasoActual.textContent = idx + 1;
+      if (mobileTitulo) mobileTitulo.textContent = paso.titulo;
+      if (mobileBajada) mobileBajada.textContent = paso.bajada;
+      if (mobileImagen) mobileImagen.src = paso.img;
+      if (prevBtn) prevBtn.disabled = idx === 0;
+      if (nextBtn) nextBtn.disabled = idx === pasosData.length - 1;
+
+      // Stepper + carrusel desktop
+      const cards = seccionPasos.querySelectorAll('.pasos_desktop_st .cards_pasos_manual');
+      const titulos = seccionPasos.querySelectorAll('.titulo_step');
+      const steppers = seccionPasos.querySelectorAll('.st_pasos_stepper');
+
+      cards.forEach((card, i) => {
+        titulos[i] && titulos[i].classList.toggle('activo', i === idx);
+        steppers[i] && steppers[i].classList.toggle('activo', i === idx);
+        card.classList.toggle('cards_pasos_manual_activo', i === idx);
+        card.classList.toggle('cards_pasos_manual_desactivo', i !== idx);
+      });
+
+      // Dots (mobile y desktop, cada grupo con su propio índice)
+      seccionPasos.querySelectorAll('.dots-component').forEach((grupo) => {
+        grupo.querySelectorAll('.dots-component__item').forEach((dot, i) => {
+          dot.classList.toggle('active-dot', i === idx);
+        });
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) irAlPaso(currentIndex - 1);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (currentIndex < pasosData.length - 1) irAlPaso(currentIndex + 1);
+      });
+    }
+
+    seccionPasos.querySelectorAll('.cards_pasos_flecha_izquierda').forEach((f) => {
+      f.addEventListener('click', () => irAlPaso(currentIndex > 0 ? currentIndex - 1 : pasosData.length - 1));
+    });
+
+    seccionPasos.querySelectorAll('.cards_pasos_flecha_derecha').forEach((f) => {
+      f.addEventListener('click', () => irAlPaso(currentIndex < pasosData.length - 1 ? currentIndex + 1 : 0));
+    });
+
+    seccionPasos.querySelectorAll('.dots-component').forEach((grupo) => {
+      grupo.querySelectorAll('.dots-component__item').forEach((dot, i) => {
+        dot.addEventListener('click', () => irAlPaso(i));
+      });
+    });
+
+    seccionPasos.querySelectorAll('.st_contenedor_pasos_stepper').forEach((stepper, i) => {
+      stepper.addEventListener('click', () => irAlPaso(i));
+    });
+  })();
+</script>
