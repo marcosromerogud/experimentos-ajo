@@ -1,0 +1,149 @@
+<!--
+  CONTROL — Oferta Adobe Target, mbox: cards-otp-ingreso-experimento (experimento TC1002)
+  Experiencia sin cambios en el paso OTP (/envio-de-codigo): la caja
+  "¿No recibiste el código?" se mantiene como en producción, sin cuenta regresiva.
+  Solo registra la vista de la variante control en digitalData (una vez por carga).
+-->
+<script>
+  (function () {
+    if (window.__abOtpTC1002ViewC) return;
+    window.__abOtpTC1002ViewC = true;
+
+    window.digitalData = window.digitalData || [];
+    window.digitalData.push({
+      promotion: {
+        name: 'OTP - Venta TC - TC1002 - c',
+        creative: 'Button',
+        position: 'Enviar SMS'
+      },
+      event: 'trackPromotionView'
+    });
+  })();
+</script>
+
+
+<!--
+  PILOTO — Oferta Adobe Target, mbox: cards-otp-ingreso-experimento (experimento TC1002)
+  Variante B del paso OTP (/envio-de-codigo):
+  muestra la cuenta regresiva del OTP también en la caja "¿No recibiste el código?".
+  Mientras corre:  "Puedes solicitarlo por mensaje de texto en / **N segundos**"
+  Al terminar:     se restaura el texto original (el botón "Solicitar SMS" lo habilita la app).
+  No toca nodos controlados por Angular/bcp-otp: solo lee el contador y oculta/muestra el párrafo original.
+  Registra la vista de la variante piloto en digitalData (una vez por carga).
+-->
+<script>
+  (function () {
+    if (window.__abOtpSmsTimer) return;
+    window.__abOtpSmsTimer = true;
+
+    window.digitalData = window.digitalData || [];
+    window.digitalData.push({
+      promotion: {
+        name: 'OTP - Venta TC - TC1002 - P',
+        creative: 'Button',
+        position: 'Enviar SMS'
+      },
+      event: 'trackPromotionView'
+    });
+
+    var STYLE_ID = 'ab-otp-sms-timer-style';
+    var CSS = [
+      '[data-ab-otp-sms-original] { display: none !important; }',
+      '.ab-otp-sms-timer { margin: 0; font-size: 0.875rem; line-height: 1.25rem; text-align: center; color: #202e44; }',
+      // Siempre 2 líneas: texto + "en" arriba, segundos abajo.
+      // En pantallas de 320px la línea 1 puede invadir unos px el padding de la caja (24px).
+      '.ab-otp-sms-timer__text, .ab-otp-sms-timer__seconds { display: block; white-space: nowrap; }'
+    ].join('\n');
+
+    if (!document.getElementById(STYLE_ID)) {
+      var style = document.createElement('style');
+      style.id = STYLE_ID;
+      style.textContent = CSS;
+      (document.head || document.documentElement).appendChild(style);
+    }
+
+    var TIMER_RE = /(\d+)\s*segundos?/i;
+
+    function isVisible(el) {
+      return !!el && el.getClientRects().length > 0;
+    }
+
+    // Texto "N segundos" del contador de bcp-otp, o null si no está corriendo.
+    function readCountdown(otpBox) {
+      var msg = otpBox.querySelector('bcp-otp .default-message');
+      if (!isVisible(msg)) return null;
+      var paragraphs = msg.querySelectorAll('p');
+      for (var i = 0; i < paragraphs.length; i++) {
+        var text = paragraphs[i].textContent.trim();
+        var match = text.match(TIMER_RE);
+        if (match && parseInt(match[1], 10) > 0) return text;
+      }
+      return null;
+    }
+
+    function findSmsParagraph(smsBox) {
+      var list = smsBox.querySelectorAll('bcp-paragraph');
+      for (var i = 0; i < list.length; i++) {
+        if (/mensaje de texto/i.test(list[i].textContent)) return list[i];
+      }
+      return list[1] || null;
+    }
+
+    function update() {
+      var root = document.querySelector('.xt21-push-content');
+      if (!root) return;
+      var otpBox = root.querySelector('.xt21-push-content__otp');
+      var smsBox = root.querySelector('.xt21-push-content__sms');
+      if (!otpBox || !smsBox) return;
+
+      var original = smsBox.querySelector('[data-ab-otp-sms-original]') || findSmsParagraph(smsBox);
+      if (!original) return;
+
+      var smsButton = smsBox.querySelector('bcp-button button');
+      var countdown = readCountdown(otpBox);
+      var running = countdown !== null && !(smsButton && !smsButton.disabled);
+
+      var custom = smsBox.querySelector('.ab-otp-sms-timer');
+
+      if (!running) {
+        if (custom) custom.parentNode.removeChild(custom);
+        if (original.hasAttribute('data-ab-otp-sms-original')) {
+          original.removeAttribute('data-ab-otp-sms-original');
+        }
+        return;
+      }
+
+      if (!custom) {
+        var baseText = original.textContent.replace(/\s+/g, ' ').trim();
+        custom = document.createElement('p');
+        custom.className = 'ab-otp-sms-timer bcp-font-regular';
+        var line1 = document.createElement('span');
+        line1.className = 'ab-otp-sms-timer__text';
+        line1.textContent = baseText + ' en';
+        custom.appendChild(line1);
+        var seconds = document.createElement('span');
+        seconds.className = 'ab-otp-sms-timer__seconds bcp-font-demi';
+        custom.appendChild(seconds);
+        original.parentNode.insertBefore(custom, original.nextSibling);
+      }
+
+      if (!original.hasAttribute('data-ab-otp-sms-original')) {
+        original.setAttribute('data-ab-otp-sms-original', '');
+      }
+
+      var secondsEl = custom.querySelector('.ab-otp-sms-timer__seconds');
+      if (secondsEl.textContent !== countdown) secondsEl.textContent = countdown;
+    }
+
+    // MutationObserver ya agrupa los cambios por microtarea; las escrituras propias
+    // solo ocurren cuando el texto cambia, así que el ciclo se estabiliza solo.
+    new MutationObserver(update).observe(document.body, {
+      subtree: true,
+      childList: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ['class', 'disabled', 'style', 'hidden']
+    });
+    update();
+  })();
+</script>
