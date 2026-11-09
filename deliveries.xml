@@ -1,0 +1,36 @@
+<srcSchema _cs="Deliveries (bcp)" created="2025-03-22 03:16:03.357Z" createdBy-id="0"
+           desc="Defines the parameters of a delivery (or of a delivery template)."
+           entitySchema="xtk:srcSchema" extendedSchema="nms:delivery" img="nms:campaign.png"
+           label="Deliveries" labelSingular="Delivery" lastModified="2026-11-04 07:41:09.141Z"
+           md5="58249553C31B5DEF5E53DFD2215B98D9" modifiedBy-id="0" name="delivery"
+           namespace="bcp" xtkschema="xtk:srcSchema">
+  <element desc="Defines the parameters of a delivery (or of a delivery template)."
+           img="nms:campaign.png" label="Deliveries" labelSingular="Delivery" name="delivery"/>
+  <enumeration basetype="byte" default="mail" label="Channel" name="messageType">
+    <value desc="Email channel" img="nms:email.png" label="Email" name="mail" value="0"/>
+    <value desc="Mobile channel (SMS)" img="nms:mobile.png" label="Mobile (SMS)"
+           name="sms" value="1"/>
+    <value desc="Telephone channel" img="nms:phone.png" label="Phone" name="phone"
+           value="2"/>
+    <value desc="Direct mail channel" img="nms:paper.png" label="Direct Mail" name="paper"
+           value="3"/>
+    <value desc="Fax channel" img="nms:fax.png" label="Fax" name="fax" value="4"/>
+    <value applicableIf="HasPackage('nms:centralLocal')" desc="Agency channel" img="nms:agency.png"
+           label="Agency" name="agency" value="5"/>
+    <value applicableIf="HasPackage('nms:social')" desc="Facebook channel" img="nms:facebook.png"
+           label="Facebook" name="facebook" value="20"/>
+    <value applicableIf="HasPackage('nms:social')" desc="Twitter Channel" img="nms:twitter.png"
+           label="Twitter" name="twitter" value="25"/>
+    <value applicableIf="HasPackage('nms:mobileApp')" desc="iOS applications channel"
+           img="nms:ios.png" label="iOS channel" name="ios" value="41"/>
+    <value applicableIf="HasPackage('nms:mobileApp')" desc="Android applications channel"
+           img="nms:android.png" label="Android channel" name="android" value="42"/>
+    <value applicableIf="HasPackage('nms:line') OR HasPackage('nms:lineV2')" desc="LINE channel"
+           img="nms:line.png" label="LINE" name="line" value="61"/>
+    <value desc="Other channel" img="nms:other.png" label="Other" name="other" value="120"/>
+    <value desc="Whatsapp channel" img="nl:WhatsappIcon.png" label="WhatsApp" name="whatsapp"
+           value="127"/>
+    <value desc="Undefined channel" img="nms:other.png" label="Undefined" name="undefined"
+           value="126"/>
+  </enumeration>
+</srcSchema>
