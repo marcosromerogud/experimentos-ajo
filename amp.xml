@@ -1,0 +1,38 @@
+<srcSchema name="respuestaAmp" namespace="cus" 
+  label="Respuestas de encuestas AMP"
+             labelSingular="Respuesta de encuesta 
+  AMP" desc="Lo que respondio cada destinatario en
+  una encuesta AMP de Postal Studio">
+    <element name="respuestaAmp" label="Respuestas
+  de encuestas AMP" autopk="true"
+             sqltable="CusRespuestaAmp">
+      <attribute name="fecha" type="datetime" 
+  label="Fecha" sqlname="tsFecha"/>
+      <attribute name="encuesta" type="string" 
+  length="16" label="Encuesta" 
+  sqlname="sEncuesta"/>
+      <attribute name="tipo" type="string" 
+  length="12" label="Tipo" sqlname="sTipo"/>
+      <attribute name="valor" type="string" 
+  length="40" label="Respuesta" sqlname="sValor"/>
+      <attribute name="comentario" type="memo" 
+  label="Comentario" sqlname="mComentario"/>
+      <attribute name="via" type="string" 
+  length="8" label="Via (amp o enlace)" 
+  sqlname="sVia"/>
+      <element name="delivery" type="link" 
+  target="nms:delivery" label="Envio"
+               revLink="_NONE_" 
+  integrity="neutral"/>
+      <element name="recipient" type="link" 
+  target="nms:recipient" label="Destinatario"
+               revLink="_NONE_" 
+  integrity="neutral"/>
+      <dbindex name="fecha">
+        <keyfield xpath="@fecha"/>
+      </dbindex>
+      <dbindex name="encuesta">
+        <keyfield xpath="@encuesta"/>
+      </dbindex>
+    </element>
+  </srcSchema>
