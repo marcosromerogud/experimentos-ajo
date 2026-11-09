@@ -62,3 +62,43 @@
              value="126"/>
     </enumeration>
   </srcSchema>
+
+
+ -- Log: Creating table 'DTI_CUENTAAHORRODTI_CUENTAAHORROCRM_NU'
+
+
+  
+
+ -- Log: Updating table 'BcpDTI_CONSOLIDADOCOMPORTAMIENTOCLIENTECRM'
+ALTER TABLE BcpDTI_CONSOLIDADOCOMPORTAMIENTOCLIENTECRM
+     ADD COLUMN dMTODISPONIBLEREDENCIONPAGOTARJETACREDITORECOMPENSACLILOYALTYSOL DOUBLE PRECISION Default 0 NOT NULL;
+ANALYZE BcpDTI_CONSOLIDADOCOMPORTAMIENTOCLIENTECRM;
+ALTER TABLE BcpDTI_CONSOLIDADOCOMPORTAMIENTOCLIENTECRM
+     DROP COLUMN dmtodisponibleredencionpagotarjetacreditorecompensacliloyaltyso;
+
+
+
+ -- Log: Updating table 'NmsDelivery'
+ALTER TABLE NmsDelivery
+     ADD COLUMN sExperiment_group VARCHAR(255),
+     ADD COLUMN sProduct_name VARCHAR(255);
+ANALYZE NmsDelivery;
+
+
+
+ -- Log: Updating table 'XtkWorkflow'
+DROP INDEX xtkworkflow_iaggregateid_idx;
+DROP INDEX xtkworkflow_icreatedbyid_idx;
+DROP INDEX xtkworkflow_ifolderid_idx;
+DROP INDEX xtkworkflow_ifolderprocessid_idx;
+DROP INDEX xtkworkflow_imodifiedbyid_idx;
+DROP INDEX xtkworkflow_ioperationid_idx;
+DROP INDEX xtkworkflow_iroutingoperationid_idx;
+DROP INDEX xtkworkflow_isupervisorid_idx;
+DROP INDEX xtkworkflow_iworkflowid_idx;
+DROP INDEX xtkworkflow_sinternalname_idx;
+DROP INDEX xtkworkflow_slabel_idx;
+
+
+
+
