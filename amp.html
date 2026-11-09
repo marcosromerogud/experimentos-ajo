@@ -1,0 +1,73 @@
+  # Para la pestaña AMP content:
+
+  <!doctype html>
+  <html amp4email data-css-strict>
+  <head>
+    <meta charset="utf-8">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-carousel"
+  src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+    <style amp4email-boilerplate>body{visibility:hidden}</style>
+    <style amp-custom>
+      body { margin: 0; background: #F2F4F8; font-family: Helvetica, Arial,
+  sans-serif; }
+      .caja { max-width: 600px; margin: 0 auto; background: #FFFFFF; }
+  font-weight: bold; }
+      .pie { padding: 20px 32px 32px; color: #333333; font-size: 15px;
+  line-height: 22px; }
+      .boton { display: inline-block; margin-top: 12px; padding: 12px 24px;
+  background: #FF7800; color: #FFFFFF; text-decoration: none; font-weight:
+  bold; border-radius: 4px; }
+    </style>
+  </head>
+  <body>
+    <div class="caja">
+      <div class="cab">Prueba de carrusel AMP</div>
+      <amp-carousel width="600" height="300" layout="responsive" type="slides"
+  controls loop aria-label="Carrusel de prueba">
+        <amp-img src="https://bcp-mid-stage10-res.adobe-campaign.com/res/track
+  ing/3c3739f80bd071796657b7b098b31490.png" width="600" height="300" 
+  layout="responsive" alt="Desliza hacia el lado"></amp-img>
+        <amp-img src="https://bcp-mid-stage10-res.adobe-campaign.com/res/track
+  ing/19e1f4fbc565a0a7cb6d35c6f572bdb5.png" width="600" height="300" 
+  layout="responsive" alt="Sin salir del correo"></amp-img>
+        <amp-img src="https://bcp-mid-stage10-res.adobe-campaign.com/res/track
+  ing/1b0d5012805d909fcb0dc4db004be194.png" width="600" height="300" 
+  layout="responsive" alt="Prueba de AMP"></amp-img>
+      </amp-carousel>
+      <div class="pie">
+        Si ves flechas y puedes pasar las imagenes, estas viendo la version
+  AMP de este correo.
+        <br><a class="boton" href="https://www.viabcp.com">Ir a viabcp.com</a>
+      </div>
+    </div>
+  </body>
+  </html>
+
+  # Para la pestaña HTML content (el respaldo):
+  <!DOCTYPE html>
+  <html><head><meta charset="utf-8"><meta name="viewport" 
+  content="width=device-width"><title>Prueba de carrusel AMP</title></head>
+  <body style="margin:0;background:#F2F4F8">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" 
+  border="0" style="background:#F2F4F8"><tr><td align="center">
+  <table role="presentation" width="600" cellpadding="0" cellspacing="0" 
+  border="0" style="width:600px;max-width:100%;background:#FFFFFF">
+  <tr><td style="padding:24px 32px 16px;font-family:Helvetica,Arial,sans-serif
+  ;font-size:22px;font-weight:bold;color:#002A8D">Prueba de carrusel
+  AMP</td></tr>
+  <tr><td><img src="https://bcp-mid-stage10-res.adobe-campaign.com/res/trackin
+  g/3c3739f80bd071796657b7b098b31490.png" width="600" alt="Desliza hacia el
+  lado" style="display:block;width:100%;max-width:600px;height:auto;border:0">
+  </td></tr>
+  <tr><td style="padding:20px 32px 32px;font-family:Helvetica,Arial,sans-serif
+  ;font-size:15px;line-height:22px;color:#333333">
+  Esta es la versi&oacute;n HTML de respaldo: tu bandeja no muestra AMP, por
+  eso ves una sola imagen fija.<br>
+  <a href="https://www.viabcp.com" 
+  style="display:inline-block;margin-top:12px;padding:12px
+  24px;background:#FF7800;color:#FFFFFF;text-decoration:none;font-weight:bold;
+  border-radius:4px">Ir a viabcp.com</a>
+  </td></tr></table>
+  </td></tr></table>
+  </body></html>
